@@ -3,18 +3,25 @@
 	email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
 [alias]
 	co = checkout
+	count   = !git shortlog -sn
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+				diff = auto
+				status = auto
+				branch = auto
+				ui = true
 [core]
 	excludesfile = <%= ENV['HOME'] %>/.gitignore
-	editor = mate -w
-	autocrlf = input
+	editor = vim
 [apply]
 	whitespace = nowarn
-[format]
-	pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
 [github]
 	user = <%= print("GitHub Username: "); STDOUT.flush; STDIN.gets.chomp %>
 	token = <%= print("GitHub API Token: "); STDOUT.flush; STDIN.gets.chomp %>
+[help]
+				autocorrect = 1
+[push]
+				# See `git help config` (search for push.default)
+				# for more information on different options of the below setting.
+				#
+				# Setting to git 2.0 default to surpress warning message
+				default = simple

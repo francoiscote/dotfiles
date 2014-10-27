@@ -1,0 +1,168 @@
+config defaultToCurrentScreen true
+config nudgePercentOf screenSize
+config resizePercentOf screenSize
+
+############ Aliases #####################################################################
+# Padding
+alias padding 0
+alias vPaddingRatio 0.1
+
+# Monitor Aliases
+alias mon-display     1920x1200
+alias mon-laptop      1440x900
+
+# Hyper Alias
+alias hyper ctrl;alt;cmd
+
+# Application Aliases
+alias mail      'Airmail'
+alias browser   'Google Chrome'
+alias editor    'Atom'
+alias term      'iTerm'
+alias files     'Finder'
+alias im        'Textual'
+alias twitter   'Tweetbot'
+alias music     'Rdio'
+alias notes     'nvALT'
+alias todo      'Wunderlist'
+
+############ Position and resize windows ##################################################
+# full
+alias full        move screenOriginX+${padding};screenOriginY+${padding}  screenSizeX-(${padding}*2);screenSizeY-(${padding}*2)
+
+# vertical halves of screen
+alias lefthalf        move screenOriginX+${padding};screenOriginY+${padding}  (screenSizeX/2)-(${padding}*1.5);screenSizeY-(${padding}*2)
+alias lefthalfvpad    move screenOriginX+${padding};screenOriginY+${padding}+(screenSizeY*${vPaddingRatio})  (screenSizeX/2)-(${padding}*1.5);(screenSizeY*(1-${vPaddingRatio}*2))-(${padding}*2)
+alias righthalf       move screenOriginX+screenSizeX/2+(${padding}/2);screenOriginY+${padding} (screenSizeX/2)-(${padding}*1.5);screenSizeY-(${padding}*2)
+alias righthalfvpad   move screenOriginX+screenSizeX/2+(${padding}/2);screenOriginY+${padding}+(screenSizeY*${vPaddingRatio}) (screenSizeX/2)-(${padding}*1.5);(screenSizeY*(1-${vPaddingRatio}*2))-(${padding}*2)
+
+# vertical 1/3 and 2/3 of screen
+alias leftmost        move screenOriginX+${padding};screenOriginY+${padding}  screenSizeX*0.6-(${padding}*1.5);screenSizeY-(${padding}*2)
+alias leftmostvpad    move screenOriginX+${padding};screenOriginY+${padding}+(screenSizeY*${vPaddingRatio})  screenSizeX*0.6-(${padding}*1.5);(screenSizeY*(1-${vPaddingRatio}*2))-(${padding}*2)
+alias leftless        move screenOriginX+${padding};screenOriginY+${padding}  screenSizeX*0.4-(${padding}*1.5);screenSizeY-(${padding}*2)
+alias leftlessvpad    move screenOriginX+${padding};screenOriginY+${padding}+(screenSizeY*${vPaddingRatio})  screenSizeX*0.4-(${padding}*1.5);(screenSizeY*(1-${vPaddingRatio}*2))-(${padding}*2)
+alias rightmost       move screenOriginX+screenSizeX*0.4+(${padding}/2);screenOriginY+${padding}  screenSizeX*0.6-(${padding}*1.5);screenSizeY-(${padding}*2)
+alias rightmostvpad   move screenOriginX+screenSizeX*0.4+(${padding}/2);screenOriginY+${padding}+(screenSizeY*${vPaddingRatio})  screenSizeX*0.6-(${padding}*1.5);(screenSizeY*(1-${vPaddingRatio}*2))-(${padding}*2)
+alias rightless       move screenOriginX+screenSizeX*0.6+(${padding}/2);screenOriginY+${padding}  screenSizeX*0.4-(${padding}*1.5);screenSizeY-(${padding}*2)
+alias rightlessvpad   move screenOriginX+screenSizeX*0.6+(${padding}/2);screenOriginY+${padding}+(screenSizeY*${vPaddingRatio})  screenSizeX*0.4-(${padding}*1.5);(screenSizeY*(1-${vPaddingRatio}*2))-(${padding}*2)
+
+# horizontal halves of screen
+alias tophalf      move screenOriginX+${padding};screenOriginY+${padding}  screenSizeX-(${padding}*2);screenSizeY/2-(${padding}*1.5)
+alias bottomhalf   move screenOriginX+${padding};screenOriginY+screenSizeY/2+(${padding}/2) screenSizeX-(${padding}*2);screenSizeY/2-(${padding}*1.5)
+
+# quarters of screen
+alias topleft     corner top-left resize:screenSizeX/2;screenSizeY/2
+alias topright    corner top-right resize:screenSizeX/2;screenSizeY/2
+alias bottomleft  corner bottom-left resize:screenSizeX/2;screenSizeY/2
+alias bottomright corner bottom-right resize:screenSizeX/2;screenSizeY/2
+
+# centred, half screen width
+alias center      move screenOriginX+screenSizeX/4;screenOriginY  screenSizeX/2;screenSizeY
+
+# confortable size for browser, centered
+alias browsersize move screenOriginX+screenSizeX/16*2;screenOriginY+${padding} screenSizeX/16*12;screenSizeY-(${padding}*2)
+
+# confortable size for email, centered
+alias emailsize move screenOriginX+screenSizeX/16*2;screenOriginY+screenSizeY/10*1 screenSizeX/16*12;screenSizeY/10*8
+
+# confortable size for files, centered
+alias findersize move screenOriginX+screenSizeX/16*4;screenOriginY+screenSizeY/10*2 screenSizeX/16*8;screenSizeY/10*6
+
+
+############ Layouts and Defaults ########################################################
+layout normalLayout 'Finder':REPEAT ${findersize}
+layout normalLayout 'iTerm':REPEAT ${full}
+layout normalLayout ${editor}:REPEAT ${full}
+layout normalLayout 'Google Chrome':MAIN_FIRST ${browsersize}
+layout normalLayout 'Airmail':REPEAT ${emailsize}
+layout normalLayout 'Calendar':REPEAT ${emailsize}
+layout normalLayout 'iTunes':REPEAT ${emailsize}
+layout normalLayout 'Rdio':REPEAT ${emailsize}
+layout normalLayout 'Wunderlist':REPEAT ${emailsize}
+layout normalLayout 'Evernote':REPEAT ${emailsize}
+layout normalLayout 'TaskPaper':REPEAT ${lefthalfvpad}
+
+default normalLayout resolutions:1920x1200
+default normalLayout resolutions:1440x900
+###########################################################################################
+
+############ Main movement bindings ###########################
+bind y:${hyper};shift ${findersize}
+bind u:${hyper};shift ${emailsize}
+bind i:${hyper};shift ${browsersize}
+bind o:${hyper};shift ${full}
+bind h:${hyper};shift chain ${lefthalf} | ${lefthalfvpad}
+bind l:${hyper};shift chain ${righthalf} | ${righthalfvpad}
+bind j:${hyper};shift ${bottomhalf}
+bind k:${hyper};shift ${tophalf}
+bind n:${hyper};shift chain ${leftless} | ${leftlessvpad} | ${rightless} | ${rightlessvpad}
+bind m:${hyper};shift chain ${rightmost} | ${rightmostvpad} | ${leftmost} | ${leftmostvpad}
+###############################################################
+
+
+# Resize Bindings
+# bind right:alt       resize +10% +0
+# bind left:alt        resize -10% +0
+# bind up:alt          resize +0   -10%
+# bind down:alt        resize +0   +10%
+# bind right:ctrl;alt  resize -10% +0 bottom-right
+# bind left:ctrl;alt   resize +10% +0 bottom-right
+# bind up:ctrl;alt     resize +0   +10% bottom-right
+# bind down:ctrl;alt   resize +0   -10% bottom-right
+
+# Push Bindings
+# bind right:ctrl;cmd  push right bar-resize:screenSizeX/3
+# bind left:ctrl;cmd   push left  bar-resize:screenSizeX/3
+# bind up:ctrl;cmd     push up    bar-resize:screenSizeY/2
+# bind down:ctrl;cmd   push down  bar-resize:screenSizeY/2
+
+# Nudge Bindings
+# bind right:shift;alt nudge +10% +0
+# bind left:shift;alt  nudge -10% +0
+# bind up:shift;alt    nudge +0   -10%
+# bind down:shift;alt  nudge +0   +10%
+
+# Throw Bindings
+bind space:${hyper};shift       throw next
+
+# Focus Bindings
+bind l:${hyper}           focus right
+bind h:${hyper}           focus left
+bind k:${hyper}           focus up
+bind j:${hyper}           focus down
+# bind up:${hyper}          focus behind
+# bind down:${hyper}        focus behind
+
+# App Focus Bindings
+# bind j:${hyper}   focus ${browser}
+# bind k:${hyper}   focus ${editor}
+# bind h:${hyper}   focus ${files}
+# bind l:${hyper}   focus ${term}
+# bind u:${hyper}   focus ${mail}
+# bind i:${hyper}   focus ${im}
+# bind o:${hyper}   focus ${twitter}
+# bind p:${hyper}   focus ${music}
+# bind n:${hyper}   focus ${notes}
+# bind m:${hyper}   focus ${todo}
+
+# Snapshots
+# bind f:${hyper} snapshot mainSnap save-to-disk
+# bind d:${hyper} activate-snapshot mainSnap
+
+# Bind Default Layout
+# bind d:${hyper} layout normalLayout
+
+# Window Hints
+config windowHintsShowIcons true
+config windowHintsSpread true
+config windowHintsIgnoreHiddenWindows false
+bind a:${hyper} hint HJKLYUIOPVBNM # keys to use for overlay
+
+# Grid
+bind g:${hyper} grid padding:5 1920x1200:16,10 1440x900:16,10
+
+# Use the Slate task switcher (beta)
+# bind tab:cmd switch
+
+# Reload Slate configuration file
+bind s:${hyper} relaunch

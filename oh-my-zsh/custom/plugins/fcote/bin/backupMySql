@@ -1,0 +1,28 @@
+#!/bin/sh
+# Copies a list of MySQL databases
+# this script requires that you load $mysql_u and $mysql_p variables from a
+# local config file.
+
+# backup location
+backup_location="$PROJECTS/_Backups/_MySQL"
+
+# list of mysql databases to backup
+dbs=(
+  alsaceaumenu
+  ecorce_c5
+  ecorce_wp
+  insideradialpoint_wp
+  montreal_ad
+  p2radialpoint_wp
+  radialpoint_wp
+  rousseau_wp
+  telefiction_wp
+)
+
+for db in ${dbs[@]}
+    do
+        echo "Backuping $db ... ";
+        mysqldump -u $mysql_u -p$mysql_p $db | gzip -9 > $backup_location/$db.sql.gz
+done
+
+echo "DONE!"

@@ -1,13 +1,44 @@
+# PATHs
+export PATH="/Applications/MAMP/bin/php/php5.5.17/bin:/Applications/MAMP/bin/apache2/bin:$HOME/.rbenv/shims:$ZSH/bin:$HOME/.android-sdk-macosx/tools:/usr/local/share/npm/bin:./bin:/usr/local/bin:/usr/local/sbin:$ZSH/bin:$PATH"
+
+# Add Brew Paths
+brew_path=$(which brew)
+if [[ -f $brew_path ]]
+then
+  export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
+fi
+
+export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
+
+
+# ZSH Configs
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="rbates"
-DISABLE_AUTO_UPDATE="true"
-DISABLE_LS_COLORS="true"
+ZSH_THEME="fcote"
+ZSH_CUSTOM=$HOME/.dotfiles/oh-my-zsh/custom
+plugins=(git github aws brew npm rsync tmux zsh_reload fcote)
 
-plugins=(git bundler brew gem rbates)
+#Bind KEYS
+bindkey '^[^[[D' backward-word
+bindkey '^[^[[C' forward-word
+bindkey '^[[5D' beginning-of-line
+bindkey '^[[5C' end-of-line
+bindkey '^[[3~' delete-char
+bindkey '^[^N' newtab
+bindkey '^?' backward-delete-char
 
-export PATH="/usr/local/bin:$PATH"
-export EDITOR='atom'
 
+# Editor
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='atom'
+fi
+
+
+# source private stuff
+source $HOME/.localrc
+
+# source Oh My Zsh
 source $ZSH/oh-my-zsh.sh
 
 # for Homebrew installed rbenv

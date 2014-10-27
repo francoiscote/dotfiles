@@ -1,4 +1,14 @@
 .DS_Store
-.svn
 *~
-.*.swp
+*.swp
+
+*.rbc
+doc/tags
+.tags*
+*.taskpaper
+*.log
+
+# Editors
+*.sublime-project
+*.sublime-workspace
+.idea
