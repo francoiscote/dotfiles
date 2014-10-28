@@ -18,8 +18,9 @@ ZSH_CUSTOM=$HOME/.dotfiles/oh-my-zsh/custom
 plugins=(git github aws brew npm rsync tmux zsh_reload fcote)
 
 # tmux plugin Configs
-ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_AUTOCONNECT=true
+ZSH_TMUX_AUTOSTART=false
+ZSH_TMUX_AUTOCONNECT=false
+ZSH_TMUX_FIXTERM=false
 ZSH_TMUX_ITERM2=true #forces -CC
 
 #Bind KEYS
@@ -38,10 +39,6 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='atom'
 fi
-
-
-# source private stuff
-source $HOME/.localrc
 
 # source Oh My Zsh
 source $ZSH/oh-my-zsh.sh

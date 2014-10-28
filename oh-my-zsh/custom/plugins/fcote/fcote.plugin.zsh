@@ -20,13 +20,14 @@ alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C
 alias ga='git-all'
 alias wtf='git-wtf'
 
-
-
 # flushdns, because I can never remember the full thing
 alias flushdns="sudo discoveryutil mdnsflushcache"
 
 # Pipe my public key to my clipboard.
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
+
+# source private stuff in a .localrc file
+source $HOME/.localrc
 
 # add plugin's bin directory to path
 export PATH="$(dirname $0)/bin:$PATH"

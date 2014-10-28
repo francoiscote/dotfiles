@@ -4,20 +4,9 @@
 # local config file.
 
 # backup location
-backup_location="$PROJECTS/_Backups/_MySQL"
+backup_location="$HOME/Code/_Backups/_MySQL"
 
-# list of mysql databases to backup
-dbs=(
-  alsaceaumenu
-  ecorce_c5
-  ecorce_wp
-  insideradialpoint_wp
-  montreal_ad
-  p2radialpoint_wp
-  radialpoint_wp
-  rousseau_wp
-  telefiction_wp
-)
+# db is defined in .localrc
 
 for db in ${dbs[@]}
     do
