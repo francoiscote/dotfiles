@@ -17,6 +17,11 @@ ZSH_THEME="fcote"
 ZSH_CUSTOM=$HOME/.dotfiles/oh-my-zsh/custom
 plugins=(git github aws brew npm rsync tmux zsh_reload fcote)
 
+# tmux plugin Configs
+ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOCONNECT=true
+ZSH_TMUX_ITERM2=true #forces -CC
+
 #Bind KEYS
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
