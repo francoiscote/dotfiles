@@ -15,13 +15,7 @@ export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="fcote"
 ZSH_CUSTOM=$HOME/.dotfiles/oh-my-zsh/custom
-plugins=(git github aws brew npm rsync tmux zsh_reload fcote)
-
-# tmux plugin Configs
-ZSH_TMUX_AUTOSTART=false
-ZSH_TMUX_AUTOCONNECT=false
-ZSH_TMUX_FIXTERM=false
-ZSH_TMUX_ITERM2=true #forces -CC
+plugins=(git github aws brew npm rsync zsh_reload fcote)
 
 #Bind KEYS
 bindkey '^[^[[D' backward-word

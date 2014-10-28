@@ -23,3 +23,10 @@ rake install
 See Ryan's original Repo for most of the features.
 
 I added a couple of git aliases and configs. I also have an alias for flushing my dns cache (because I always forget about it), and copying mu public key on the pasteboard.
+
+I also copied some usefull stuff from Holman's dotfiles:
+* a backupMySql script to quickly make a backup of all my local databases.
+* a git-wtf utility that gives you a nice overview of the state of your repo.
+*
+
+The plugin will also try to source a ~/.localrc file. I use this file to keep
