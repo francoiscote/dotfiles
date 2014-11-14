@@ -126,18 +126,18 @@ bind m:${hyper};shift chain ${rightmost} | ${rightmostvpad} | ${leftmost} | ${le
 bind space:${hyper};shift       throw next
 
 # Focus Bindings
-bind l:${hyper}           focus right
-bind h:${hyper}           focus left
-bind k:${hyper}           focus up
-bind j:${hyper}           focus down
+# bind l:${hyper}           focus right
+# bind h:${hyper}           focus left
+# bind k:${hyper}           focus up
+# bind j:${hyper}           focus down
 # bind up:${hyper}          focus behind
 # bind down:${hyper}        focus behind
 
 # App Focus Bindings
-# bind j:${hyper}   focus ${browser}
-# bind k:${hyper}   focus ${editor}
-# bind h:${hyper}   focus ${files}
-# bind l:${hyper}   focus ${term}
+bind j:${hyper}   focus ${browser}
+bind k:${hyper}   focus ${editor}
+bind l:${hyper}   focus ${mail}
+bind h:${hyper}   focus ${files}
 # bind u:${hyper}   focus ${mail}
 # bind i:${hyper}   focus ${im}
 # bind o:${hyper}   focus ${twitter}
