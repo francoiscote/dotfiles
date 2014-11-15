@@ -16,14 +16,15 @@ alias hyper ctrl;alt;cmd
 
 # Application Aliases
 alias mail      'Airmail'
+alias calendar  'Sunrise'
 alias browser   'Google Chrome'
 alias editor    'Atom'
 alias term      'iTerm'
 alias files     'Finder'
-alias im        'Textual'
-alias twitter   'Tweetbot'
-alias music     'Rdio'
-alias notes     'nvALT'
+alias im        'Textual 5'
+alias twitter   'TweetDeck'
+alias music     'Spotify'
+alias notes     'Write'
 alias todo      'Wunderlist'
 
 ############ Position and resize windows ##################################################
@@ -70,17 +71,17 @@ alias findersize move screenOriginX+screenSizeX/16*4;screenOriginY+screenSizeY/1
 
 
 ############ Layouts and Defaults ########################################################
-layout normalLayout 'Finder':REPEAT ${findersize}
-layout normalLayout 'iTerm':REPEAT ${full}
+layout normalLayout ${mail}:REPEAT ${emailsize}
+layout normalLayout ${calendar}:REPEAT ${emailsize}
+layout normalLayout ${browser}:MAIN_FIRST ${browsersize}
 layout normalLayout ${editor}:REPEAT ${full}
-layout normalLayout 'Google Chrome':MAIN_FIRST ${browsersize}
-layout normalLayout 'Airmail':REPEAT ${emailsize}
-layout normalLayout 'Calendar':REPEAT ${emailsize}
-layout normalLayout 'iTunes':REPEAT ${emailsize}
-layout normalLayout 'Rdio':REPEAT ${emailsize}
-layout normalLayout 'Wunderlist':REPEAT ${emailsize}
-layout normalLayout 'Evernote':REPEAT ${emailsize}
-layout normalLayout 'TaskPaper':REPEAT ${lefthalfvpad}
+layout normalLayout ${term}:REPEAT ${full}
+layout normalLayout ${files}:REPEAT ${findersize}
+layout normalLayout ${im}:REPEAT ${full}
+layout normalLayout ${twitter}:REPEAT ${full}
+layout normalLayout ${music}:REPEAT ${emailsize}
+layout normalLayout ${notes}:REPEAT ${emailsize}
+layout normalLayout ${todo}:REPEAT ${emailsize}
 
 default normalLayout resolutions:1920x1200
 default normalLayout resolutions:1440x900
@@ -138,12 +139,11 @@ bind j:${hyper}   focus ${browser}
 bind k:${hyper}   focus ${editor}
 bind l:${hyper}   focus ${mail}
 bind h:${hyper}   focus ${files}
-# bind u:${hyper}   focus ${mail}
-# bind i:${hyper}   focus ${im}
-# bind o:${hyper}   focus ${twitter}
-# bind p:${hyper}   focus ${music}
-# bind n:${hyper}   focus ${notes}
-# bind m:${hyper}   focus ${todo}
+bind i:${hyper}   focus ${im}
+bind o:${hyper}   focus ${twitter}
+bind p:${hyper}   focus ${music}
+bind n:${hyper}   focus ${notes}
+bind m:${hyper}   focus ${todo}
 
 # Snapshots
 # bind f:${hyper} snapshot mainSnap save-to-disk
