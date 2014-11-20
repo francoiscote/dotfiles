@@ -137,7 +137,8 @@ bind space:${hyper};shift       throw next
 # App Focus Bindings
 bind j:${hyper}   focus ${browser}
 bind k:${hyper}   focus ${editor}
-bind l:${hyper}   focus ${mail}
+bind l:${hyper}   focus ${term}
+bind ;:${hyper}   focus ${mail}
 bind h:${hyper}   focus ${files}
 bind i:${hyper}   focus ${im}
 bind o:${hyper}   focus ${twitter}
