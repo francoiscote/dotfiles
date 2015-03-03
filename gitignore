@@ -1,7 +1,21 @@
+# OSX
+# -----------------------------------
 .DS_Store
 
+
+# PHPStorm
+# -----------------------------------
+.idea
+
+
+# Sublime Text
+# -----------------------------------
+.sublime-project
+.sublime-workspace
+
+
+# Modules and Temporary files
+# -----------------------------------
 node_modules
 .tmp
 .sass-cache
-
-.idea
