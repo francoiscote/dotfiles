@@ -10,8 +10,7 @@
 
 # Sublime Text
 # -----------------------------------
-.sublime-project
-.sublime-workspace
+*.sublime-*
 
 
 # Modules and Temporary files
