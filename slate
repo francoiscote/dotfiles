@@ -124,7 +124,7 @@ bind m:${hyper};shift chain ${rightmost} | ${rightmostvpad} | ${leftmost} | ${le
 # bind down:shift;alt  nudge +0   +10%
 
 # Throw Bindings
-bind space:${hyper};shift       throw next
+bind space:${hyper};shift       throw prev
 
 # Focus Bindings
 # bind l:${hyper}           focus right
