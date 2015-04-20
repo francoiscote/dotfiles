@@ -1,5 +1,5 @@
 # PATHs
-export PATH="/Applications/MAMP/bin/php/php5.5.17/bin:/Applications/MAMP/bin/apache2/bin:$HOME/.rbenv/shims:$ZSH/bin:$HOME/.android-sdk-macosx/tools:/usr/local/share/npm/bin:./bin:/usr/local/bin:/usr/local/sbin:$ZSH/bin:$PATH"
+export PATH="/Applications/MAMP/bin/php/php5.5.17/bin:/Applications/MAMP/bin/apache2/bin:$HOME/.rbenv/shims:$ZSH/bin:/Applications/android-sdk-macosx/tools:/Applications/android-sdk-macosx/platform-tools:/Applications/android-sdk-macosx/build-tools:/usr/local/share/npm/bin:./bin:/usr/local/bin:/usr/local/sbin:$ZSH/bin:$PATH"
 
 # Add Brew Paths
 brew_path=$(which brew)
