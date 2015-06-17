@@ -2,6 +2,7 @@
 # Copies a list of MySQL databases
 # this script requires that you load $mysql_u and $mysql_p variables from a
 # local config file.
+source $HOME/.localrc
 
 # backup location
 backup_location="$HOME/Code/_Backups/_MySQL"
