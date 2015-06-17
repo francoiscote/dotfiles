@@ -3,14 +3,10 @@
 .DS_Store
 
 
-# PHPStorm
+# Editors
 # -----------------------------------
 .idea
-
-
-# Sublime Text
-# -----------------------------------
-*.sublime-*
+*.sublime-workspace
 
 
 # Modules and Temporary files

@@ -31,7 +31,7 @@ bindkey '^?' backward-delete-char
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='pstorm'
+  export EDITOR='atom'
 fi
 
 # source Oh My Zsh
