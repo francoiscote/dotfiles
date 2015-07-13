@@ -1,7 +1,8 @@
 # https://github.com/brigade/scss-lint/blob/master/config/default.yml
 
 linters:
-     Indentation:
+    Indentation:
             width: 4
     SelectorFormat:
+        enabled: true
         convention: hyphenated_BEM
