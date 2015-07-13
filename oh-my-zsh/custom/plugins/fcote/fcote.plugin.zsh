@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # c -> ~/Code/
 c() { cd ~/code/$1; }
 _c() { _files -W ~/code -/; }
@@ -21,7 +23,7 @@ alias ga='git-all'
 alias wtf='git-wtf'
 
 # flushdns, because I can never remember the full thing
-alias flushdns="sudo discoveryutil mdnsflushcache"
+alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
 
 # Pipe my public key to my clipboard.
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
