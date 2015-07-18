@@ -2,7 +2,11 @@
 
 linters:
     Indentation:
-            width: 4
+        width: 4
+    LeadingZero:
+        enabled: false
     SelectorFormat:
         enabled: true
         convention: hyphenated_BEM
+    SingleLinePerSelector:
+        enabled: false
