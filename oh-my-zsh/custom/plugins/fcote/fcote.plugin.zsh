@@ -28,6 +28,9 @@ alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
 # Pipe my public key to my clipboard.
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
 
+# Source my ZSH
+alias sz="source ~/.zshrc";
+
 # source private stuff in a .localrc file
 source $HOME/.localrc
 

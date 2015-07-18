@@ -1,12 +1,28 @@
-# PATHs
-export PATH="/Applications/MAMP/bin/php/php5.5.17/bin:/Applications/MAMP/bin/apache2/bin:$HOME/.rbenv/shims:$ZSH/bin:/Applications/android-sdk-macosx/tools:/Applications/android-sdk-macosx/platform-tools:/Applications/android-sdk-macosx/build-tools:/usr/local/share/npm/bin:./bin:/usr/local/bin:/usr/local/sbin:$ZSH/bin:$PATH"
+# -----------------------------------------
+# PATHS
 
-# Add Brew Paths
+# Zsh
+export PATH="$ZSH/bin:$PATH"
+# usr/local
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+# ./bin
+export PATH="./bin:$PATH"
+# npm
+export PATH="/usr/local/share/npm/bin:$PATH"
+# Android SDK
+export PATH="/Applications/android-sdk-macosx/tools:/Applications/android-sdk-macosx/platform-tools:/Applications/android-sdk-macosx/build-tools:$PATH"
+# MAMP
+export PATH="/Applications/MAMP/bin/php/php5.5.17/bin:/Applications/MAMP/bin/apache2/bin:$PATH"
+# Homebrew
 brew_path=$(which brew)
 if [[ -f $brew_path ]]
 then
   export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
 fi
+# Env managers
+export PATH="$HOME/.pyenv/shims:$HOME/.rbenv/shims:$PATH"
+
+# -----------------------------------------
 
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
@@ -15,7 +31,7 @@ export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="fcote"
 ZSH_CUSTOM=$HOME/.dotfiles/oh-my-zsh/custom
-plugins=(git github aws brew npm rsync zsh_reload fcote)
+plugins=(git github aws brew npm rsync pyenv rbenv fcote)
 
 #Bind KEYS
 bindkey '^[^[[D' backward-word
@@ -36,6 +52,3 @@ fi
 
 # source Oh My Zsh
 source $ZSH/oh-my-zsh.sh
-
-# for Homebrew installed rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
