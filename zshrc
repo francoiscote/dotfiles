@@ -3,27 +3,38 @@
 
 # Zsh
 export PATH="$ZSH/bin:$PATH"
+
 # usr/local
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
 # ./bin
 export PATH="./bin:$PATH"
+
 # npm
 export PATH="/usr/local/share/npm/bin:$PATH"
+
 # Android SDK
 export PATH="/Applications/android-sdk-macosx/tools:/Applications/android-sdk-macosx/platform-tools:/Applications/android-sdk-macosx/build-tools:$PATH"
+
 # MAMP
-export PATH="/Applications/MAMP/bin/php/php5.5.17/bin:/Applications/MAMP/bin/apache2/bin:$PATH"
+# export PATH="/Applications/MAMP/bin/php/php5.5.17/bin:/Applications/MAMP/bin/apache2/bin:$PATH"
+
 # Homebrew
 brew_path=$(which brew)
 if [[ -f $brew_path ]]
 then
   export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
 fi
-# Env managers
-export PATH="$HOME/.pyenv/shims:$HOME/.rbenv/shims:$PATH"
 
-# -----------------------------------------
+# rbenv
+export PATH="$HOME/.rbenv/shims:$PATH"
 
+
+
+# Pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+# Man Paths
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
 
