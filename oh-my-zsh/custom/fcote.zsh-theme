@@ -42,4 +42,4 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 
 
 # Right Prompt
-# RPROMPT=$''
+# RPROMPT=$'$(pyenv_prompt_info)'

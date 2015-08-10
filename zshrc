@@ -30,10 +30,6 @@ fi
 export PATH="$HOME/.rbenv/shims:$PATH"
 
 
-
-# Pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
 # Man Paths
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
