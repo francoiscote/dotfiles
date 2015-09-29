@@ -38,7 +38,7 @@ export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="fcote"
 ZSH_CUSTOM=$HOME/.dotfiles/oh-my-zsh/custom
-plugins=(git github aws brew npm rsync pyenv rbenv fcote)
+plugins=(aws autoenv brew git github npm pyenv rbenv rsync fcote)
 
 #Bind KEYS
 bindkey '^[^[[D' backward-word
