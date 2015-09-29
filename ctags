@@ -1,5 +1,4 @@
-# Basic options
+-f .tags
 --recurse=yes
 --tag-relative=yes
---exclude=.git,node_modules
--f .tags
+--exclude=.git, node_modules
