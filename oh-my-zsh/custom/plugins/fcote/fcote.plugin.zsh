@@ -28,6 +28,9 @@ alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
 # Pipe my public key to my clipboard.
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
 
+# rock run shortcut
+alias rockrun80="sudo HTTP_PORT=80 rock run"
+
 # Source my ZSH
 alias reload!="source ~/.zshrc";
 
