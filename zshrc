@@ -23,8 +23,12 @@ export PATH="/Applications/android-sdk-macosx/tools:/Applications/android-sdk-ma
 brew_path=$(which brew)
 if [[ -f $brew_path ]]
 then
+  #global brew
   export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
+  # PHP5.6 (for PEAR)
+  export PATH="$(brew --prefix php56)/bin:$PATH"
 fi
+
 
 # rbenv
 export PATH="$HOME/.rbenv/shims:$PATH"
