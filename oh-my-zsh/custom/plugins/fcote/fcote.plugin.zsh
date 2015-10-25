@@ -30,6 +30,7 @@ alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pa
 
 # rock run shortcut
 alias rockrun80="sudo HTTP_PORT=80 rock run"
+alias rockrun80dev="sudo HTTP_PORT=80 rock --env dev run"
 
 # Source my ZSH
 alias reload!="source ~/.zshrc";
