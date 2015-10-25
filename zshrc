@@ -31,8 +31,7 @@ fi
 
 
 # rbenv
-export PATH="$HOME/.rbenv/shims:$PATH"
-
+export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/versions/2.2.2/bin:$PATH"
 
 # Man Paths
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
