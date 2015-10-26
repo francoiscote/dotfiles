@@ -14,7 +14,7 @@ directory_name(){
 
 
 # LEFT Prompt
-PROMPT=$'\n$(prompt_context) → $(directory_name) $(git_prompt_info) [$(git_prompt_status)] \n› '
+PROMPT=$'\n$(prompt_context) → $(directory_name) $(git_prompt_info) $(git_prompt_status) \n› '
 
 # Prefix
 ZSH_THEME_GIT_PROMPT_PREFIX="\ue0a0 "
