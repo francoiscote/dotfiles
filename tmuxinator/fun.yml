@@ -1,7 +1,7 @@
-# ~/.tmuxinator/configs.yml
+# ~/.tmuxinator/fun.yml
 
-name: configs
-root: ~/code/configs
+name: fun
+root: ~/code/
 
 # Optional tmux socket
 # socket_name: foo
@@ -21,20 +21,19 @@ root: ~/code/configs
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
 # startup_window: logs
 
-# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# Controls whether the tmux session shouldnf be attached to automatically. Defaults to true.
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
 # post: tmux -CC attach -t premier
 
 windows:
-  - dotfiles:
-      root: ~/.dotfiles
+  - console:
       layout: main-vertical
       panes:
         -
         -
-  - configs:
+  - scratch:
       layout: main-vertical
       panes:
         -

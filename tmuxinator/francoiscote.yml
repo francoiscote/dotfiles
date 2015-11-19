@@ -1,7 +1,7 @@
-# ~/.tmuxinator/configs.yml
+# ~/.tmuxinator/francoiscote.net.yml
 
-name: configs
-root: ~/code/configs
+name: francoiscote
+root: ~/code/francoiscote.net
 
 # Optional tmux socket
 # socket_name: foo
@@ -28,13 +28,12 @@ root: ~/code/configs
 # post: tmux -CC attach -t premier
 
 windows:
-  - dotfiles:
-      root: ~/.dotfiles
+  - console:
       layout: main-vertical
       panes:
         -
         -
-  - configs:
+  - web:
       layout: main-vertical
       panes:
         -

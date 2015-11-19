@@ -1,7 +1,7 @@
-# ~/.tmuxinator/configs.yml
+# ~/.tmuxinator/premier.yml
 
-name: configs
-root: ~/code/configs
+name: rocket
+root: ~/code/rocketstock
 
 # Optional tmux socket
 # socket_name: foo
@@ -28,14 +28,12 @@ root: ~/code/configs
 # post: tmux -CC attach -t premier
 
 windows:
-  - dotfiles:
-      root: ~/.dotfiles
+  - console:
       layout: main-vertical
       panes:
         -
         -
-  - configs:
-      layout: main-vertical
-      panes:
-        -
-        -
+  - stg:
+      - ssh rs-stg
+  - prd:
+      - ssh rs-prd
