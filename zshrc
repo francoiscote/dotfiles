@@ -55,9 +55,13 @@ plugins=(aws autoenv brew git github npm pyenv rbenv rsync fcote)
 
 # Editor
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+    export EDITOR='vim'
 else
-  export EDITOR='atom'
+    if [ -x /usr/local/bin/atom-beta ]; then
+        export EDITOR='atom-beta'
+    else
+        export EDITOR='atom'
+    fi
 fi
 
 # source Oh My Zsh
