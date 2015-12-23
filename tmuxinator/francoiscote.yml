@@ -32,7 +32,6 @@ windows:
       layout: main-vertical
       panes:
         -
-        -
   - web:
       layout: main-vertical
       panes:

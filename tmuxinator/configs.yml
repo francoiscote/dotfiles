@@ -33,7 +33,6 @@ windows:
       layout: main-vertical
       panes:
         -
-        -
   - configs:
       layout: main-vertical
       panes:

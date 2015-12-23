@@ -32,7 +32,6 @@ windows:
       layout: main-vertical
       panes:
         -
-        -
   - stg:
       - ssh rs-stg
   - prd:
