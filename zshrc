@@ -41,7 +41,7 @@ export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="fcote"
 ZSH_CUSTOM=$HOME/.dotfiles/oh-my-zsh/custom
-plugins=(aws autoenv brew git github npm pyenv rbenv rsync fcote)
+plugins=(aws autoenv brew docker docker-composer git github npm nvm pyenv rbenv rsync fcote)
 
 #Bind KEYS
 # bindkey '^[^[[D' backward-word
@@ -63,6 +63,9 @@ else
         export EDITOR='atom'
     fi
 fi
+
+# setup env variables for docker machine
+eval "$(docker-machine env default)"
 
 # source Oh My Zsh
 source $ZSH/oh-my-zsh.sh
