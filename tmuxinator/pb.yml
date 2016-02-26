@@ -31,7 +31,7 @@ windows:
   - console:
       layout: main-vertical
       panes:
-        - vagrant up
+        - sudo vagrant up
         -
         -
   - stg:
