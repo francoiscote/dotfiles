@@ -28,9 +28,11 @@ root: ~/code/rocketstock
 # post: tmux -CC attach -t premier
 
 windows:
-  - console:
+  - cli:
       layout: main-vertical
       panes:
+        -
+        - ./start-dev.sh
         -
   - stg:
       - ssh rs-stg

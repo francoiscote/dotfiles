@@ -1,7 +1,7 @@
-# ~/.tmuxinator/premier.yml
+# ~/.tmuxinator/pb.yml
 
-name: premier
-root: ~/code/premier
+name: pb
+root: ~/code/premiumbeat
 
 # Optional tmux socket
 # socket_name: foo
@@ -28,24 +28,13 @@ root: ~/code/premier
 # post: tmux -CC attach -t premier
 
 windows:
-  - cli:
+  - console:
       layout: main-vertical
       panes:
-        -
-  - web:
-      layout: main-vertical
-      panes:
-        - rockrun80
-        - grunt watch
-  - api:
-      root: ~/code/premier-api
-      layout: main-vertical
-      panes:
-        - rock run
-        -
-  - tests:
-      root: ~/code/premier/tests/acceptance-node
-      layout: main-vertical
-      panes:
+        - vagrant up
         -
         -
+  - stg:
+      -
+  - prd:
+      -
