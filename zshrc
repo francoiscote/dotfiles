@@ -33,6 +33,10 @@ fi
 # rbenv
 export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/versions/2.2.2/bin:$PATH"
 
+# nvm (manually source from homebrew install, do not use the oh-my-zsh nvm plugin)
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
 # Man Paths
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
@@ -41,7 +45,7 @@ export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="fcote"
 ZSH_CUSTOM=$HOME/.dotfiles/oh-my-zsh/custom
-plugins=(aws autoenv brew docker docker-composer git github npm nvm pyenv rbenv rsync fcote)
+plugins=(aws autoenv brew docker docker-composer git github npm pyenv rbenv rsync fcote)
 
 #Bind KEYS
 # bindkey '^[^[[D' backward-word
