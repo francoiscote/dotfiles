@@ -31,9 +31,9 @@ windows:
   - console:
       layout: main-vertical
       panes:
+        - cd www.premiumbeat.com
         - sudo vagrant up
-        -
-        -
+        - cd api.premiumbeat.com
   - stg:
       -
   - prd:
