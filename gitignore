@@ -8,6 +8,7 @@
 .idea
 *.sublime-workspace
 .tags
+.tern-project
 
 
 # Modules and Temporary files
@@ -15,3 +16,4 @@
 node_modules
 .tmp
 .sass-cache
+.nvmrc

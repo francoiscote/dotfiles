@@ -4,11 +4,11 @@
 # Zsh
 export PATH="$ZSH/bin:$PATH"
 
-# usr/local
+# /usr/local
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # ./bin
-export PATH="./bin:$PATH"
+# export PATH="./bin:$PATH"
 
 # npm
 export PATH="/usr/local/share/npm/bin:$PATH"
@@ -29,9 +29,21 @@ then
   export PATH="$(brew --prefix php56)/bin:$PATH"
 fi
 
+# nvm (manually source from homebrew install, do not use the oh-my-zsh nvm plugin)
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
 
-# rbenv
-export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/versions/2.2.2/bin:$PATH"
+# auto run `nvm use` when .nvmrc is present
+autoload -U add-zsh-hook
+load-nvmrc() {
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    nvm use
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+
+# nvm autocompletion
+[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
 # Man Paths
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
@@ -41,7 +53,7 @@ export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="fcote"
 ZSH_CUSTOM=$HOME/.dotfiles/oh-my-zsh/custom
-plugins=(aws autoenv brew docker docker-composer git github npm nvm pyenv rbenv rsync fcote)
+plugins=(aws autoenv brew brew-cask docker docker-compose git github npm pyenv rbenv rsync fcote)
 
 #Bind KEYS
 # bindkey '^[^[[D' backward-word

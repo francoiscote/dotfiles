@@ -1,7 +1,8 @@
+#!/bin/zsh
 # Context: user@hostname (who am I and where am I)
 prompt_context() {
   if [[ -n "$SSH_CLIENT" ]]; then
-      echo "%{$fg[yellow]%}%n%{$reset_color%} @ %{$fg[blue]%}%m%{$reset_color%}"
+      echo "%{$fg[yellow]%}%n%{$reset_color%} %{$fg[blue]%}@ %m%{$reset_color%}"
   else
       echo "%{$fg_bold[yellow]%}%n%{$reset_color%}"
   fi
@@ -12,18 +13,26 @@ directory_name(){
   echo "%{$fg_bold[cyan]%}${PWD/#$HOME/~}/%\%{$reset_color%}"
 }
 
+# Node version from NVM
+node_version() {
+  local node_version=$(nvm current)
+  [[ -z "${node_version}" ]] && return
+  NODE_ICON=$'\u2B22' # ⬢
+  echo  "%{$fg[magenta]%}[$NODE_ICON v${node_version:1}]%{$reset_color%}"
+}
+
 
 #Icons
-FCOTE_THEME_ICON_DIRECTORY="→"
-FCOTE_THEME_ICON_GIT_BRANCH="\uf020"
-FCOTE_THEME_ICON_GIT_UNTRACKED="\uf02d"
-FCOTE_THEME_ICON_GIT_STASHED="\ue60f"
-FCOTE_THEME_ICON_GIT_REPO=""
-FCOTE_THEME_ICON_GIT_PUSH="\uf005"
-FCOTE_THEME_ICON_GIT_PULL="\uf006"
+FCOTE_THEME_ICON_DIRECTORY="@"
+FCOTE_THEME_ICON_GIT_BRANCH="→"
+FCOTE_THEME_ICON_GIT_UNTRACKED="!!"
+FCOTE_THEME_ICON_GIT_STASHED="¿"
+FCOTE_THEME_ICON_GIT_REPO="⦾"
+FCOTE_THEME_ICON_GIT_PUSH="↑"
+FCOTE_THEME_ICON_GIT_PULL="↓"
 
 # LEFT Prompt
-PROMPT=$'\n$(prompt_context) $FCOTE_THEME_ICON_DIRECTORY $(directory_name) $(git_prompt_info) $(git_prompt_status) \n› '
+PROMPT=$'\n$(prompt_context) $FCOTE_THEME_ICON_DIRECTORY $(directory_name) $(git_prompt_info) $(git_prompt_remote) $(git_remote_status) $(git_prompt_status) \n› '
 
 # Prefix
 ZSH_THEME_GIT_PROMPT_PREFIX="$FCOTE_THEME_ICON_GIT_BRANCH "
@@ -50,4 +59,4 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 
 
 # Right Prompt
-RPROMPT='$(git_prompt_remote) $(git_remote_status)'
+RPROMPT='$(node_version)'

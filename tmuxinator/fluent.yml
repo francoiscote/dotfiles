@@ -1,7 +1,7 @@
-# ~/.tmuxinator/pb.yml
+# ~/.tmuxinator/fluent.yml
 
-name: pb
-root: ~/code/premiumbeat
+name: fluent
+root: ~/code/fluent-2016
 
 # Optional tmux socket
 # socket_name: foo
@@ -21,7 +21,7 @@ root: ~/code/premiumbeat
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
 # startup_window: logs
 
-# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# Controls whether the tmux session shouldnf be attached to automatically. Defaults to true.
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
@@ -31,10 +31,8 @@ windows:
   - console:
       layout: main-vertical
       panes:
-        - cd www.premiumbeat.com
-        - sudo vagrant up
-        - cd api.premiumbeat.com
-  - stg:
-      -
-  - prd:
-      -
+        -
+  - scratch:
+      layout: main-vertical
+      panes:
+        -
