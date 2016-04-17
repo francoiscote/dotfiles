@@ -33,6 +33,18 @@ fi
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 
+# auto run `nvm use` when .nvmrc is present
+autoload -U add-zsh-hook
+load-nvmrc() {
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    nvm use
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+
+# nvm autocompletion
+[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+
 # Man Paths
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
