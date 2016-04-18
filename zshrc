@@ -81,8 +81,10 @@ else
     fi
 fi
 
-# setup env variables for docker machine
-eval "$(docker-machine env default)"
+if [ "$(uname)" == "Darwin" ]; then
+  # setup env variables for docker machine
+  eval "$(docker-machine env default)"
+fi
 
 # source Oh My Zsh
 source $ZSH/oh-my-zsh.sh
