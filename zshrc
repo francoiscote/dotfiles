@@ -31,7 +31,12 @@ fi
 
 # nvm (manually source from homebrew install, do not use the oh-my-zsh nvm plugin)
 export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+if [[ -f $brew_path ]]
+then
+  source $(brew --prefix nvm)/nvm.sh
+else
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+fi
 
 # auto run `nvm use` when .nvmrc is present
 autoload -U add-zsh-hook
@@ -81,6 +86,3 @@ eval "$(docker-machine env default)"
 
 # source Oh My Zsh
 source $ZSH/oh-my-zsh.sh
-
-export NVM_DIR="/home/fcote/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
