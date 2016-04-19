@@ -81,7 +81,7 @@ else
     fi
 fi
 
-if [ "$(uname)" == "Darwin" ]; then
+if [ "$(uname)" = "Darwin" ]; then
   # setup env variables for docker machine
   eval "$(docker-machine env default)"
 fi
