@@ -141,10 +141,13 @@
 
 # Program Workspaces
   assign [class="Firefox"] $workspace1
+  assign [class="gedit"] $workspace3
+  assign [class="atom-beta"] $workspace3
   assign [class="Spotify"] $workspace10
 
 # Floating
   for_window [class="Lxappearance"] floating enable
+  for_window [class="Nautilus"] floating enable
   #for_window [class="Seahorse"] floating enable
   #for_window [class="Pavucontrol"] floating enable
 
@@ -176,10 +179,10 @@
       }
     }
 
-bindsym $mod+shift+z exec i3lock
+bindsym $mod+shift+z exec i3lock --color "$base00"
 
 # Set Wallpaper
-exec_always feh --bg-scale /home/fcote/Pictures/wallpaper.jpg
+exec_always ~/.fehbg
 
 exec VBoxClient-all
 exec compton -f
