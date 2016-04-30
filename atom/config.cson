@@ -1,0 +1,146 @@
+"*":
+  Zen:
+    gutter: true
+    minimap: true
+    softWrap: true
+  aligner: {}
+  "aligner-scss": {}
+  "atom-beautify":
+    _analyticsUserId: "8ad713e3-3050-40d6-865d-b89bf2ce0a74"
+    css_preserve_newlines: true
+    html_wrap_attributes_indent_size: 2
+  "atom-material-ui":
+    colors: {}
+    fonts: {}
+    panels:
+      panelContrast: true
+    tabs:
+      rippleAccentColor: true
+      showTabIcons: "Show on all tabs"
+      tabSize: "Small"
+    treeView:
+      compactTreeView: true
+    ui:
+      accentColor: "Blue"
+      slimScrollbar: true
+  "autocomplete-plus": {}
+  "bracket-matcher": {}
+  core:
+    audioBeep: false
+    automaticallyUpdate: false
+    disabledPackages: [
+      "git-control"
+      "linter-phpcs"
+      "linter-eslint"
+      "meteor-helper"
+      "meteor-api"
+      "script"
+    ]
+    excludeVcsIgnoredPaths: false
+    ignoredNames: [
+      ".git"
+      ".svn"
+      ".hg"
+      ".DS_Store"
+      "._*"
+      "Thumbs.db"
+      ".tags"
+    ]
+    projectHome: "/Users/fcote/Code"
+  editor:
+    confirmCheckoutHeadRevision: false
+    fontFamily: "Operator Mono"
+    invisibles: {}
+    scrollSensitivity: 60
+    showIndentGuide: true
+    softWrap: true
+    tabType: "soft"
+  emmet: {}
+  "exception-reporting":
+    userId: "c0ae7570-4b22-b4eb-13a5-c0acd74f52f3"
+  "file-icons": {}
+  "fuzzy-finder":
+    ignoredNames: [
+      "bower_components"
+      "node_modules"
+      "vendor"
+    ]
+  "gist-it":
+    newGistsDefaultToPrivate: true
+    userToken: "959a639f84d09eb417c3a1e4b04dbfd20060ed24"
+  "git-blame": {}
+  "git-blame-plus": {}
+  "git-diff": {}
+  "git-history": {}
+  "git-log":
+    fontScale: 1
+  "highlight-line":
+    enableUnderline: true
+  "isotope-ui":
+    fontFamily: "System Default"
+    fontWeight: "Extra light / Thin"
+    minimalMode: true
+  "language-babel": {}
+  "lazy-motion":
+    showHoverIndicator: true
+  linter:
+    ignoredLinterErrors: [
+      "shellcheck"
+    ]
+    lintOnChange: false
+    lintOnEditorFocus: false
+    showErrorPanel: false
+    statusBar: "Show error of the selected line"
+    underlineIssues: false
+  "linter-eslint":
+    disableEslintIgnore: true
+    eslintPath: "/usr/local/bin/eslint"
+    globalNodePath: "/usr/local"
+    lintHtmlFiles: true
+    lintOnEdit: false
+  "linter-php": {}
+  "linter-phpcs":
+    autoConfigSearch: false
+    disableWhenNoConfigFile: true
+    executablePath: "/usr/local/opt/php56/bin/phpcs"
+  "linter-scss-lint":
+    executablePath: "/Users/fcote/.rbenv/shims/scss-lint"
+  "linter-shellcheck":
+    shellcheckExecutablePath: "/usr/local/bin/shellcheck"
+  "markdown-preview":
+    useGitHubStyle: true
+  "merge-conflicts":
+    gitPath: "/usr/local/bin/git"
+  minimap:
+    autoToggle: false
+    displayMinimapOnLeft: true
+    plugins:
+      "find-and-replace": true
+      "find-and-replaceDecorationsZIndex": 0
+      "git-diff": true
+      "git-diffDecorationsZIndex": 0
+      linter: true
+      linterDecorationsZIndex: 0
+      "minimap-autohide": false
+      "minimap-hide": false
+      "minimap-hideDecorationsZIndex": 0
+    scrollAnimation: true
+  "one-dark-ui":
+    layoutMode: "Compact"
+  pigments:
+    groupPaletteColors: "by file"
+    mergeColorDuplicates: true
+    sortPaletteColors: "by color"
+  "project-manager":
+    closeCurrent: true
+  react: {}
+  "status-bar": {}
+  "trailing-spaces":
+    enableForIndentation: true
+  "tree-view": {}
+  welcome:
+    showOnStartup: false
+  whitespace: {}
+".source.yaml":
+  editor:
+    tabLength: 2

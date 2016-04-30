@@ -1,0 +1,63 @@
+/*
+ * Your Stylesheet
+ *
+ * This stylesheet is loaded when Atom starts up and is reloaded automatically
+ * when it is changed.
+ *
+ * If you are unfamiliar with LESS, you can read more about it here:
+ * http://www.lesscss.org
+ */
+
+.tree-view {
+
+}
+
+// style the background and foreground colors on the atom-text-editor-element
+// itself
+atom-text-editor {
+}
+
+// To style other content in the text editor's shadow DOM, use the ::shadow
+// expression
+atom-text-editor::shadow .cursor {
+
+
+}
+
+// Prevent Highlight Line when pane is not active
+// ---------------------------------
+atom-pane:not(.active) {
+    .atom-text-editor .line.cursor-line,
+    :host .line.cursor-line,
+    atom-text-editor .line.cursor-line,
+    atom-text-editor::shadow .line.cursor-line {
+        // background: none;
+    }
+}
+
+// Font fixes and forces of italic for O
+// ---------------------------------
+atom-workspace,
+atom-text-editor {
+   font-family: "Operator Mono";
+   font-weight: 400;
+   line-height: 1.5;
+}
+atom-panel.tool-panel {
+   font-size: 1.1em;
+}
+.entity.other.attribute-name {
+    font-style: italic;
+}
+atom-text-editor::shadow{
+    .entity.other.attribute-name {
+        font-style: italic;
+    }
+}
+
+
+
+// <?php ?> Tags coloring. replace ugly red from One Dark
+//.punctuation.section.embedded {
+//  color: hsl(207, 82%, 66%);
+//}
