@@ -1,5 +1,8 @@
 
-atom/.apm
-atom/blob-store
-atom/compile-cache
-atom/storage
+atom/*
+!atom/config.cson
+!atom/init.coffee
+!atom/keymap.cson
+!atom/projects.cson
+!atom/snippets.cson
+!atom/styles.cson
