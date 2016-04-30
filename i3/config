@@ -20,8 +20,8 @@
   set $base0E #c0b7f9
   set $base0F #fcc09e
 
-  set $workspace1 "1: "
-  set $workspace2 "2: "
+  set $workspace1 "1: "
+  set $workspace2 "2: "
   set $workspace3 "3: "
   set $workspace4 "4: "
   set $workspace5 "5: "
@@ -140,10 +140,11 @@
 #  workspace $workspace10 output $monitor1
 
 # Program Workspaces
-  assign [class="Firefox"] $workspace1
+  assign [class="Firefox"] $workspace2
   assign [class="gedit"] $workspace3
   assign [class="atom-beta"] $workspace3
   assign [class="Spotify"] $workspace10
+  assign [class="Ubuntu Software Center"] $workspace8
 
 # Floating
   for_window [class="Lxappearance"] floating enable
@@ -161,7 +162,7 @@
   # Bar
     bar {
       font pango: System San Francisco Display, FontAwesome 10
-      #status_command i3Cblocks
+      status_command i3blocks -c ~/.i3/i3blocks.conf
       position bottom
       # strip_workspace_numbers yes
       #height 25
@@ -185,7 +186,9 @@ bindsym $mod+shift+z exec i3lock --color "$base00"
 exec_always ~/.fehbg
 
 exec VBoxClient-all
-exec compton -f
+#exec compton -f
+
+exec xrdb ~/.Xressources
 
 # Open Spotify
 #exec spotify
