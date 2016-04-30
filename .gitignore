@@ -3,6 +3,7 @@ atom/*
 !atom/config.cson
 !atom/init.coffee
 !atom/keymap.cson
+!atom/packages-install-list.txt
 !atom/projects.cson
 !atom/snippets.cson
 !atom/styles.cson
