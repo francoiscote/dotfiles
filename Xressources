@@ -45,3 +45,6 @@ URxvt.resize-font.bigger:  C-Up
 
 URxvt.url-launcher:        /usr/bin/chromium
 URxvt.colorUL:             #7780a1
+
+URxvt.iso14755: false
+URxvt.iso14755_52: false

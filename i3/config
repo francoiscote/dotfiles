@@ -27,7 +27,7 @@
   set $workspace5 "5: "
   set $workspace6 "6: "
   set $workspace7 "7: "
-  set $workspace8 "8: "
+  set $workspace8 "8: "
   set $workspace9 "9: "
   set $workspace10 "10: "
 
@@ -38,10 +38,15 @@
   font pango:System San Francisco Display 10
   #floating_modifier $mod
   #hide_edge_borders both
-  #new_window none
-  #smart_borders on
-  #gaps inner 0
-  #gaps outer 0
+  new_window none
+  smart_borders on
+  # smart_gaps on
+  gaps inner 10
+  gaps outer 0
+
+# Fix Graphic Glitch
+  for_window [class="^.*"] border pixel 0
+
 
 # Window-Related Bindings
   bindsym $mod+x kill
@@ -139,20 +144,23 @@
 #  workspace $workspace9 output $monitor1
 #  workspace $workspace10 output $monitor1
 
-# Program Workspaces
+# Assignements
   assign [class="Firefox"] $workspace2
-  assign [class="gedit"] $workspace3
-  assign [class="atom-beta"] $workspace3
-  assign [class="Spotify"] $workspace10
+  assign [class="Gedit"] $workspace3
+  assign [class="Atom"] $workspace3
   assign [class="Ubuntu Software Center"] $workspace8
+  assign [class="Nautilus"] $workspace8
 
-# Floating
+# Windows Management
+  # Spotify class assignement bugs forces me to move window instead
+  for_window [class="Spotify"] move to workspace $workspace10
+
   for_window [class="Lxappearance"] floating enable
   for_window [class="Nautilus"] floating enable
+  for_window [class="Pavucontrol"] floating enable
   #for_window [class="Seahorse"] floating enable
-  #for_window [class="Pavucontrol"] floating enable
 
-# Widow Colours
+# Window Colors
 #                         border  background text    indicator
   client.focused          $base01 $base01    $base07 $base0F
   client.focused_inactive $base02 $base02    $base03 $base0F
@@ -163,9 +171,9 @@
     bar {
       font pango: System San Francisco Display, FontAwesome 10
       status_command i3blocks -c ~/.i3/i3blocks.conf
-      position bottom
-      # strip_workspace_numbers yes
-      #height 25
+      position top
+      strip_workspace_numbers yes
+      height 25
       #bindsym button4 nop
       #bindsym button5 nop
       colors {
@@ -186,9 +194,6 @@ bindsym $mod+shift+z exec i3lock --color "$base00"
 exec_always ~/.fehbg
 
 exec VBoxClient-all
-#exec compton -f
+exec compton
 
 exec xrdb ~/.Xressources
-
-# Open Spotify
-#exec spotify
