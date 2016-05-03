@@ -1,8 +1,8 @@
 ! Fonts
-URxvt.font:                xft:Inconsolata-dz:size=10
-URxvt.boldFont:            xft:Inconsolata-dz:size=10:bold
-URxvt.italicFont:          xft:Inconsolata-dz:size=10:italic
-URxvt.boldItalicFont:      xft:Inconsolata-dz:size=10:bold:italic
+URxvt.font:                xft:Operator Mono Medium:size=10:
+URxvt.boldFont:            xft:Operator Mono Bold:size=10
+URxvt.italicFont:          xft:Operator Mono Medium:size=10:italic
+URxvt.boldItalicFont:      xft:Operator Mono Bold:size=10:italic
 URxvt.letterSpace:         -1
 
 ! Colors
@@ -33,7 +33,8 @@ URxvt.letterSpace:         -1
 *color7: #6C7A80
 *color15: #C5C8C6
 
-URxvt.internalBorder:      0
+
+URxvt.internalBorder:      5
 URxvt.externalBorder:      0
 
 URxvt.scrollBar:           false
@@ -44,7 +45,7 @@ URxvt.resize-font.smaller: C-Down
 URxvt.resize-font.bigger:  C-Up
 
 URxvt.url-launcher:        /usr/bin/chromium
-URxvt.colorUL:             #7780a1
+URxvt.colorUL:             #5F819D
 
 URxvt.iso14755: false
 URxvt.iso14755_52: false

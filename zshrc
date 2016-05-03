@@ -50,6 +50,11 @@ add-zsh-hook chpwd load-nvmrc
 # nvm autocompletion
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
+# Linux: load autoenv
+if [ "$(uname)" != "Darwin" ]; then
+  source ~/.autoenv/activate.sh
+fi
+
 # Man Paths
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 

@@ -49,7 +49,7 @@
     projectHome: "/Users/fcote/Code"
   editor:
     confirmCheckoutHeadRevision: false
-    fontFamily: "Operator Mono"
+    fontFamily: "Operator Mono Medium"
     invisibles: {}
     scrollSensitivity: 60
     showIndentGuide: true
