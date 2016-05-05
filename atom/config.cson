@@ -49,10 +49,12 @@
     projectHome: "/Users/fcote/Code"
   editor:
     confirmCheckoutHeadRevision: false
-    fontFamily: "Operator Mono Medium"
+    fontFamily: "Inconsolata-dz for Powerline"
+    fontSize: 12
     invisibles: {}
     scrollSensitivity: 60
     showIndentGuide: true
+    showInvisibles: true
     softWrap: true
     tabType: "soft"
   emmet: {}

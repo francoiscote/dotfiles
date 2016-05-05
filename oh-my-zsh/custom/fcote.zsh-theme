@@ -18,7 +18,7 @@ node_version() {
   local node_version=$(nvm current)
   [[ -z "${node_version}" ]] && return
   NODE_ICON=$'\u2B22' # ⬢
-  echo  "%{$fg[magenta]%}[$NODE_ICON v${node_version:1}]%{$reset_color%}"
+  echo  "%{$fg[magenta]%}[$NODE_ICON $node_version]%{$reset_color%}"
 }
 
 
