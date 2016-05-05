@@ -10,9 +10,6 @@ h() { cd ~/$1; }
 _h() { _files -W ~/ -/; }
 compdef _h h
 
-# autocorrect is more annoying than helpful
-unsetopt correct_all
-
 # Git Aliases
 alias gs='git status -sb'
 alias gl='git pull'
@@ -35,9 +32,6 @@ alias rcrb="rock clean; rock build"
 
 # Source my ZSH
 alias reload!="source ~/.zshrc";
-
-# source private stuff in a .localrc file
-source $HOME/.localrc
 
 # add plugin's bin directory to path
 export PATH="$(dirname $0)/bin:$PATH"
