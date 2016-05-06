@@ -4,7 +4,8 @@ source /usr/share/zsh/antigen/antigen.zsh
 
 antigen use oh-my-zsh
 antigen bundle git
-antigen bundle ~/.dotfiles/oh-my-zsh/custom/plugins/fcote
+antigen bundle ~/.dotfiles/oh-my-zsh/custom git_custom.zsh
+antigen bundle ~/.dotfiles/oh-my-zsh/custom/plugins fcote
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
@@ -13,6 +14,7 @@ antigen bundle tarrasch/zsh-autoenv
 antigen apply
 
 antigen theme ~/.dotfiles/oh-my-zsh/custom/ fcote
+
 
 # -----------------------------------------
 # PATHS
