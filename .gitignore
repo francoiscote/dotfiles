@@ -7,3 +7,4 @@ atom/*
 !atom/projects.cson
 !atom/snippets.cson
 !atom/styles.cson
+*.swp

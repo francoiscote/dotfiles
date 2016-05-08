@@ -37,16 +37,19 @@
 
 # General Configuration
   font pango:Ubuntu 10
-  #floating_modifier $mod
+  floating_modifier $mod
   #hide_edge_borders both
-  new_window none
   smart_borders on
-  # smart_gaps on
+  new_window none
   gaps inner 10
   gaps outer 0
 
-# Fix Graphic Glitch
-  for_window [class="^.*"] border pixel 0
+  new_window pixel 2
+
+
+
+# force remove titlebars for gaps to work correctly
+  for_window [class="^.*"] border pixel 2
 
 
 # Window-Related Bindings
@@ -95,9 +98,7 @@
   bindsym $mod+Shift+r restart
 
 # Program-Related Bindings
-  #bindsym $mod+Shift+f exec firefox
   bindsym $mod+Return exec --no-startup-id urxvt
-  #bindsym $mod+d exec dmenu_run
   bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 1200 -padding 100 -opacity "95" -bw 0 -bc "$base02" -bg "$base02" -fg "$base03" -hlbg "$base02" -hlfg "$base0E" -font "Ubuntu 16"
 
   # bindsym --release Print exec imgur-screenshot
@@ -165,11 +166,11 @@
   #for_window [class="Seahorse"] floating enable
 
 # Window Colors
-#                         border  background text    indicator
-  client.focused          $base01 $base01    $base07 $base0F
-  client.focused_inactive $base02 $base02    $base03 $base0F
-  client.unfocused        $base02 $base02    $base03 $base0F
-  client.urgent           $base02 $base08    $base00 $base0F
+#                         border  background text    indicator child_border
+  client.focused          $base01 $base01    $base07 $base0B   $base03
+  client.focused_inactive $base02 $base01    $base03 $base02   $base02
+  client.unfocused        $base01 $base02    $base03 $base02   $base02
+  client.urgent           $base01 $base08    $base00 $base02   $base02
 
   # Bar
     bar {
@@ -177,7 +178,7 @@
       status_command i3blocks -c ~/.i3/i3blocks.conf
       position top
       strip_workspace_numbers yes
-      height 25
+      height 20
       #bindsym button4 nop
       #bindsym button5 nop
       colors {
@@ -201,9 +202,8 @@ exec feh --bg-fill ~/Pictures/wallpaper.jpg
 exec_always xset r rate 300 50
 
 # start things
-exec dropbox
+exec --no-startup-id dropbox start
 exec pulseaudio --start
 exec VBoxClient-all
-exec compton
-
+exec_always compton
 exec_always xrdb ~/.Xressources
