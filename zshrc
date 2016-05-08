@@ -65,7 +65,7 @@ add-zsh-hook chpwd load-nvmrc
 
 
 # -----------------------------------------
-# EDITOR: vom, atom-beta, atom
+# EDITOR: vi.m, atom-beta, atom
 # -----------------------------------------
 if [[ -n $SSH_CONNECTION ]]; then
     export EDITOR='vim'
@@ -86,4 +86,6 @@ if [ "$(uname)" = "Darwin" ]; then
 fi
 
 # source private stuff in a .localrc file
-source $HOME/.localrc
+if [[ -f $HOME/.localrc ]]; then
+  source $HOME/.localrc
+fi
