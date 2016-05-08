@@ -1,3 +1,4 @@
+# i3 config file (v4)
 # Almost all copied from https://github.com/alexbooker/dotfiles/blob/master/.config/i3/config
 
 # Constants
@@ -35,7 +36,7 @@
 # set $monitor2 "HDMI-0"
 
 # General Configuration
-  font pango:System San Francisco Display 10
+  font pango:Ubuntu 10
   #floating_modifier $mod
   #hide_edge_borders both
   new_window none
@@ -97,7 +98,7 @@
   #bindsym $mod+Shift+f exec firefox
   bindsym $mod+Return exec --no-startup-id urxvt
   #bindsym $mod+d exec dmenu_run
-  bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$base02" -bg "$base02" -fg "$base03" -hlbg "$base02" -hlfg "$base0E" -font "System San Francisco Display 18"
+  bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 1200 -padding 100 -opacity "95" -bw 0 -bc "$base02" -bg "$base02" -fg "$base03" -hlbg "$base02" -hlfg "$base0E" -font "Ubuntu 16"
 
   # bindsym --release Print exec imgur-screenshot
   bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
@@ -150,6 +151,7 @@
   assign [class="Atom"] $workspace3
   assign [class="Ubuntu Software Center"] $workspace8
   assign [class="Nautilus"] $workspace8
+  assign [class="Thunar"] $workspace8
 
 # Windows Management
   # Spotify class assignement bugs forces me to move window instead
@@ -157,6 +159,8 @@
 
   for_window [class="Lxappearance"] floating enable
   for_window [class="Nautilus"] floating enable
+  for_window [class="Thunar"] floating enable
+  for_window [class="Ubuntu-software"] floating enable
   for_window [class="Pavucontrol"] floating enable
   #for_window [class="Seahorse"] floating enable
 
@@ -169,7 +173,7 @@
 
   # Bar
     bar {
-      font pango: System San Francisco Display, FontAwesome 10
+      font pango: Ubuntu, FontAwesome 10
       status_command i3blocks -c ~/.i3/i3blocks.conf
       position top
       strip_workspace_numbers yes
@@ -191,9 +195,15 @@
 bindsym $mod+shift+z exec i3lock --color "$base00"
 
 # Set Wallpaper
-exec_always ~/.fehbg
+exec feh --bg-fill ~/Pictures/wallpaper.jpg
 
+# set keyboard rate
+exec_always xset r rate 300 50
+
+# start things
+exec dropbox
+exec pulseaudio --start
 exec VBoxClient-all
 exec compton
 
-exec xrdb ~/.Xressources
+exec_always xrdb ~/.Xressources

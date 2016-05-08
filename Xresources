@@ -1,8 +1,8 @@
 ! Fonts
-URxvt.font:                xft:Operator Mono Medium:size=10:
-URxvt.boldFont:            xft:Operator Mono Bold:size=10
-URxvt.italicFont:          xft:Operator Mono Medium:size=10:italic
-URxvt.boldItalicFont:      xft:Operator Mono Bold:size=10:italic
+URxvt.font:                xft:Inconsolata-dz:size=10
+URxvt.boldFont:            xft:Inconsolata-dz:size=10:bold
+URxvt.italicFont:          xft:Inconsolata-dz:size=10:italic
+URxvt.boldItalicFont:      xft:Inconsolata-dz:size=10:bold:italic
 URxvt.letterSpace:         -1
 
 ! Colors
