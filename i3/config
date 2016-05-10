@@ -4,22 +4,19 @@
 # Constants
   set $mod Mod4
 
-  set $base00 #101218
-  set $base01 #1f222d
-  set $base02 #252936
-  set $base03 #7780a1
-  set $base04 #C0C5CE
-  set $base05 #d1d4e0
-  set $base06 #C9CCDB
-  set $base07 #ffffff
-  set $base08 #ee829f
-  set $base09 #f99170
-  set $base0A #ffefcc
-  set $base0B #a5ffe1
-  set $base0C #97e0ff
-  set $base0D #97bbf7
-  set $base0E #c0b7f9
-  set $base0F #fcc09e
+  set $black     #000000
+  set $bg        #1f2126
+  set $bglight   #404452
+  set $fg        #5F6B85
+  set $fglight   #95A2BB
+  set $white     #FFFFFF
+
+  set $red     #E06C75
+  set $green   #98C379
+  set $yellow  #E5C07B
+  set $blue    #56B6C2
+  set $magenta #C678DD
+  set $cyan    #61AEEE
 
   set $workspace1 "1: "
   set $workspace2 "2: "
@@ -43,17 +40,17 @@
   new_window none
   gaps inner 10
   gaps outer 0
+  focus_on_window_activation urgent
+  workspace_auto_back_and_forth yes
 
   new_window pixel 2
-
-
 
 # force remove titlebars for gaps to work correctly
   for_window [class="^.*"] border pixel 2
 
-
 # Window-Related Bindings
   bindsym $mod+x kill
+
   bindsym $mod+h focus left
   bindsym $mod+j focus down
   bindsym $mod+k focus up
@@ -62,6 +59,7 @@
   bindsym $mod+Down focus down
   bindsym $mod+Up focus up
   bindsym $mod+Right focus right
+
   bindsym $mod+Shift+h move left
   bindsym $mod+Shift+j move down
   bindsym $mod+Shift+k move up
@@ -70,15 +68,21 @@
   bindsym $mod+Shift+Down move down
   bindsym $mod+Shift+Up move up
   bindsym $mod+Shift+Right move right
+
+  bindsym $mod+space focus mode_toggle
   bindsym $mod+Shift+space floating toggle
   bindsym $mod+f fullscreen toggle
+
   bindsym $mod+s layout stacking
   bindsym $mod+w layout tabbed
   bindsym $mod+e layout toggle split
+
   bindsym $mod+b split h
   bindsym $mod+v split v
-  bindsym $mod+space focus mode_toggle
+
   bindsym $mod+a focus parent
+  bindsym $mod+Shift+a focus child
+
   bindsym $mod+r mode "  "
   mode "  " {
     bindsym h resize shrink width 10 px or 10 ppt
@@ -93,13 +97,17 @@
     bindsym Return mode "default"
   }
 
+# Scratchpad
+  bindsym $mod+Shift+minus move scratchpad
+  bindsym $mod+Shift+plus scratchpad show
+
 # Restart-Related Bindings
   bindsym $mod+Shift+c reload
   bindsym $mod+Shift+r restart
 
 # Program-Related Bindings
-  bindsym $mod+Return exec --no-startup-id urxvt
-  bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 1200 -padding 100 -opacity "95" -bw 0 -bc "$base02" -bg "$base02" -fg "$base03" -hlbg "$base02" -hlfg "$base0E" -font "Ubuntu 16"
+  bindsym $mod+Return exec --no-startup-id gnome-terminal
+  bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 1200 -padding 100 -opacity "95" -bw 0 -bc "$bg" -bg "$bg" -fg "$fg" -hlbg "$bglight" -hlfg "$magenta" -font "Ubuntu 14"
 
   # bindsym --release Print exec imgur-screenshot
   bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
@@ -156,7 +164,16 @@
 
 # Windows Management
   # Spotify class assignement bugs forces me to move window instead
+  for_window [class="Slack"] move to workspace $workspace9
   for_window [class="Spotify"] move to workspace $workspace10
+
+  for_window [window_role="pop-up"] floating enable
+  for_window [window_role="bubble"] floating enable
+  for_window [window_role="task_dialog"] floating enable
+  for_window [window_role="Preferences"] floating enable
+  for_window [window_type="dialog"] floating enable
+  for_window [window_type="menu"] floating enable
+  for_window [instance="__scratchpad"] floating enable
 
   for_window [class="Lxappearance"] floating enable
   for_window [class="Nautilus"] floating enable
@@ -166,11 +183,12 @@
   #for_window [class="Seahorse"] floating enable
 
 # Window Colors
-#                         border  background text    indicator child_border
-  client.focused          $base01 $base01    $base07 $base0B   $base03
-  client.focused_inactive $base02 $base01    $base03 $base02   $base02
-  client.unfocused        $base01 $base02    $base03 $base02   $base02
-  client.urgent           $base01 $base08    $base00 $base02   $base02
+#                         border    background text      indicator  child_border
+  client.focused_inactive $bg       $bg        $fg       $bglight   $bglight
+  client.focused          $cyan    $cyan       $bg       $green     $cyan
+  client.unfocused        $bg       $bg        $fg       $bglight   $bglight
+  client.urgent           $red      $bg        $fg       $bglight   $red
+  client.background       $bg
 
   # Bar
     bar {
@@ -182,28 +200,30 @@
       #bindsym button4 nop
       #bindsym button5 nop
       colors {
-        separator $base03
-        background $base01
-        statusline $base05
+        background $bg
+        separator $bglight
+        statusline $fg
   #                        border  background text
-        focused_workspace  $base01 $base01    $base07
-        active_workspace   $base01 $base02    $base03
-        inactive_workspace $base01 $base01    $base03
-        urgent_workspace   $base01 $base01    $base08
+        focused_workspace  $bg     $bg        $white
+        active_workspace   $bg     $bg        $fg
+        inactive_workspace $bg     $bg        $fg
+        urgent_workspace   $bg     $bg        $red
       }
     }
 
-bindsym $mod+shift+z exec i3lock --color "$base00"
+bindsym $mod+shift+z exec i3lock --color "$bg"
 
-# Set Wallpaper
-exec feh --bg-fill ~/Pictures/wallpaper.jpg
+# AUTOSTARTS
+exec_always xrdb ~/.Xressources
+exec_always feh --bg-fill ~/Pictures/wallpaper.jpg
+exec --no-startup-id compton
+exec --no-startup-id dunst
 
 # set keyboard rate
-exec_always xset r rate 300 50
+exec xset r rate 300 50
 
-# start things
-exec --no-startup-id dropbox start
-exec pulseaudio --start
+# start other things
 exec VBoxClient-all
-exec_always compton
-exec_always xrdb ~/.Xressources
+#exec pulseaudio --start
+exec --no-startup-id dropbox start
+exec --no-startup-id wine "C:\Program Files (x86)\1Password 4\Agile1pAgent.exe"

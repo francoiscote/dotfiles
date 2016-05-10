@@ -27,6 +27,7 @@
   "bracket-matcher": {}
   core:
     audioBeep: false
+    autoHideMenuBar: true
     automaticallyUpdate: false
     disabledPackages: [
       "git-control"
