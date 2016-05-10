@@ -19,18 +19,18 @@
   set $cyan    #61AEEE
 
   set $workspace1 "1: "
-  set $workspace2 "2: "
+  set $workspace2 "2: "
   set $workspace3 "3: "
-  set $workspace4 "4: "
+  set $workspace4 "4: "
   set $workspace5 "5: "
   set $workspace6 "6: "
   set $workspace7 "7: "
-  set $workspace8 "8: "
+  set $workspace8 "8: "
   set $workspace9 "9: "
   set $workspace10 "10: "
 
-# set $monitor1 "DVI-I-1"
-# set $monitor2 "HDMI-0"
+  set $monitor1 "VGA-1"
+  set $monitor2 "VGA-2"
 
 # General Configuration
   font pango:Ubuntu 10
@@ -145,22 +145,25 @@
   bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # Workspace Monitors
-#  workspace $workspace1 output $monitor1
-#  workspace $workspace2 output $monitor1
-#  workspace $workspace3 output $monitor1
-#  workspace $workspace4 output $monitor1
-#  workspace $workspace5 output $monitor1
-#  workspace $workspace6 output $monitor1
-#  workspace $workspace9 output $monitor1
-#  workspace $workspace10 output $monitor1
+  workspace $workspace1 output $monitor1
+  workspace $workspace2 output $monitor1
+  workspace $workspace3 output $monitor1
+  workspace $workspace4 output $monitor1
+  workspace $workspace5 output $monitor1
+  workspace $workspace6 output $monitor1
+  workspace $workspace7 output $monitor1
+  workspace $workspace8 output $monitor2
+  workspace $workspace9 output $monitor2
+  workspace $workspace10 output $monitor2
 
 # Assignements
   assign [class="Firefox"] $workspace2
+  assign [class="chromium-browser"] $workspace2
   assign [class="Gedit"] $workspace3
   assign [class="Atom"] $workspace3
   assign [class="Ubuntu Software Center"] $workspace8
-  assign [class="Nautilus"] $workspace8
-  assign [class="Thunar"] $workspace8
+  assign [class="Nautilus"] $workspace4
+  assign [class="Thunar"] $workspace4
 
 # Windows Management
   # Spotify class assignement bugs forces me to move window instead
@@ -214,9 +217,9 @@
 bindsym $mod+shift+z exec i3lock --color "$bg"
 
 # AUTOSTARTS
-exec_always xrdb ~/.Xressources
-exec_always feh --bg-fill ~/Pictures/wallpaper.jpg
-exec --no-startup-id compton
+exec_always xrdb ~/.Xressources &
+exec_always feh --bg-fill ~/Pictures/wallpaper.jpg &
+# exec_always --no-startup-id compton --config $HOME/.compton.conf &
 exec --no-startup-id dunst
 
 # set keyboard rate
@@ -227,3 +230,6 @@ exec VBoxClient-all
 #exec pulseaudio --start
 exec --no-startup-id dropbox start
 exec --no-startup-id wine "C:\Program Files (x86)\1Password 4\Agile1pAgent.exe"
+
+# give permission to node to run on privileged ports
+exec sudo setcap 'cap_net_bind_service=+ep' $(which node)
