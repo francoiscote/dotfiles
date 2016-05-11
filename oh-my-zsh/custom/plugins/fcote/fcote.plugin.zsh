@@ -14,7 +14,7 @@ compdef _h h
 alias gs='git status -sb'
 alias gl='git pull'
 alias gp='git push'
-alias gd='git diff'
+alias gd='!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd "$GIT_PREFIX"; git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX; }; f'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias ga='git-all'
 alias wtf='git-wtf'
