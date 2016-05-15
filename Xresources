@@ -1,8 +1,10 @@
+
+
 ! Fonts
-URxvt.font:                xft:Inconsolata-dz:size=10
-URxvt.boldFont:            xft:Inconsolata-dz:size=10:bold
-URxvt.italicFont:          xft:Inconsolata-dz:size=10:italic
-URxvt.boldItalicFont:      xft:Inconsolata-dz:size=10:bold:italic
+URxvt.font:                xft:Inconsolata:size=11
+URxvt.boldFont:            xft:Inconsolata:size=11:bold
+URxvt.italicFont:          xft:Inconsolata:size=11:italic
+URxvt.boldItalicFont:      xft:Inconsolata:size=11:bold:italic
 URxvt.letterSpace:         -1
 
 URxvt*background:                     #1F2126

@@ -33,7 +33,7 @@
   set $monitor2 "VGA-2"
 
 # General Configuration
-  font pango:SNFS Display 10
+  font pango:SFNS Display 10
   floating_modifier $mod
   #hide_edge_borders both
   smart_borders on
@@ -119,8 +119,8 @@ mode $keyboardMode {
   bindsym $mod+Shift+r restart
 
 # Program-Related Bindings
-  bindsym $mod+Return exec --no-startup-id gnome-terminal
-  bindsym $mod+d exec rofi -show run -lines 5 -eh 1 -line-margin 8 -width 50 -padding 70 -opacity "90" -bw 0 -bc "$bg" -bg "$bg" -fg "$fg" -hlbg "$cyan" -hlfg "$bg" -font "SNFS Display 14"
+  bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
+  bindsym $mod+d exec rofi -show run -lines 5 -eh 1 -line-margin 8 -width 50 -padding 70 -opacity "90" -bw 0 -bc "$bg" -bg "$bg" -fg "$fg" -hlbg "$cyan" -hlfg "$bg" -font "SFNS Display 14"
 
   # bindsym --release Print exec imgur-screenshot
   bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
@@ -208,7 +208,7 @@ mode $keyboardMode {
 
   # Bar
     bar {
-      font pango:SNFS Display 10
+      font pango:SFNS Display 10
       status_command i3blocks -c ~/.i3/i3blocks.conf
       position top
       strip_workspace_numbers yes

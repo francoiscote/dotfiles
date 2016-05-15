@@ -8,3 +8,7 @@ atom/*
 !atom/snippets.cson
 !atom/styles.cson
 *.swp
+
+config/*
+!config/termite/config
+!config/gtk-3.0/settings.ini
