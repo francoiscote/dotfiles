@@ -29,6 +29,7 @@
     audioBeep: false
     autoHideMenuBar: true
     automaticallyUpdate: false
+    destroyEmptyPanes: false
     disabledPackages: [
       "git-control"
       "linter-phpcs"
@@ -57,6 +58,7 @@
     showIndentGuide: true
     softWrap: true
     tabType: "soft"
+    zoomFontWhenCtrlScrolling: false
   emmet: {}
   "exception-reporting":
     userId: "c0ae7570-4b22-b4eb-13a5-c0acd74f52f3"

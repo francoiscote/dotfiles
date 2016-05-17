@@ -244,4 +244,4 @@ exec --no-startup-id dropbox start
 exec --no-startup-id wine "C:\Program Files (x86)\1Password 4\Agile1pAgent.exe"
 
 # give permission to node to run on privileged ports
-exec sudo setcap 'cap_net_bind_service=+ep' $(which node)
+# exec sudo setcap 'cap_net_bind_service=+ep' $(which node)

@@ -1,6 +1,4 @@
-
-
-! Fonts
+! urxvt
 URxvt.font:                xft:Inconsolata:size=11
 URxvt.boldFont:            xft:Inconsolata:size=11:bold
 URxvt.italicFont:          xft:Inconsolata:size=11:italic

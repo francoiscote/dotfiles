@@ -6,10 +6,13 @@ atom/*
 !atom/packages-install-list.txt
 !atom/projects.cson
 !atom/snippets.cson
-!atom/styles.cson
+!atom/styles.less
 *.swp
 
 config/*
+!config/termite/
 !config/termite/config
+!config/gtk-3.0/
 !config/gtk-3.0/settings.ini
+!config/fontconfig/
 !config/fontconfig/fonts.conf
