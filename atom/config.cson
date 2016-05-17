@@ -51,7 +51,7 @@
     projectHome: "/Users/fcote/Code"
   editor:
     confirmCheckoutHeadRevision: false
-    fontFamily: "Inconsolata-dz"
+    fontFamily: "Inconsolata-g"
     fontSize: 12
     invisibles: {}
     scrollSensitivity: 60

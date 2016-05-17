@@ -1,9 +1,18 @@
+Xft.antialias:  1
+Xft.autohint:   0
+Xft.dpi:        96
+Xft.hinting:    1
+Xft.hintstyle:  hintslight
+Xft.lcdfilter:  lcddefault
+Xft.rgba:       rgb
+
+
 ! urxvt
-URxvt.font:                xft:Inconsolata:size=11
-URxvt.boldFont:            xft:Inconsolata:size=11:bold
-URxvt.italicFont:          xft:Inconsolata:size=11:italic
-URxvt.boldItalicFont:      xft:Inconsolata:size=11:bold:italic
-URxvt.letterSpace:         -1
+URxvt.font:                xft:Inconsolata\-g:style=g:size=10
+URxvt.boldFont:            xft:Inconsolata\-g:style=g:size=10:bold
+URxvt.italicFont:          xft:Inconsolata\-g:style=g:size=10:italic
+URxvt.boldItalicFont:      xft:Inconsolata\-g:style=g:size=10:bold:italic
+!URxvt.letterSpace:         -1
 
 URxvt*background:                     #1F2126
 URxvt*foreground:                     #abb2bf
