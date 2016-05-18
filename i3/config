@@ -40,7 +40,7 @@
   new_window none
   gaps inner 10
   gaps outer 0
-  focus_on_window_activation urgent
+  focus_on_window_activation focus
   force_display_urgency_hint 1000 ms
   workspace_auto_back_and_forth yes
 
@@ -175,8 +175,6 @@ mode $keyboardMode {
   assign [class="Gedit"] $workspace3
   assign [class="Atom"] $workspace3
   assign [class="Ubuntu Software Center"] $workspace8
-  assign [class="Nautilus"] $workspace4
-  assign [class="Thunar"] $workspace4
 
 # Windows Management
   # Spotify class assignement bugs forces me to move window instead
@@ -192,10 +190,10 @@ mode $keyboardMode {
   for_window [instance="__scratchpad"] floating enable
 
   for_window [class="Lxappearance"] floating enable
-  for_window [class="Nautilus"] floating enable
   for_window [class="Thunar"] floating enable
   for_window [class="Ubuntu-software"] floating enable
   for_window [class="Pavucontrol"] floating enable
+  for_window [class="Slack"] floating enable
   #for_window [class="Seahorse"] floating enable
 
 # Window Colors
