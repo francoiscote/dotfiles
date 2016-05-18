@@ -28,7 +28,6 @@
   core:
     audioBeep: false
     autoHideMenuBar: true
-    automaticallyUpdate: false
     destroyEmptyPanes: false
     disabledPackages: [
       "git-control"
@@ -50,9 +49,9 @@
     ]
     projectHome: "/Users/fcote/Code"
   editor:
+    autoIndentOnPaste: false
     confirmCheckoutHeadRevision: false
-    fontFamily: "Inconsolata-g"
-    fontSize: 12
+    fontFamily: "Operator Mono Medium"
     invisibles: {}
     scrollSensitivity: 60
     showIndentGuide: true
