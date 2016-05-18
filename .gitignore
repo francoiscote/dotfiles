@@ -12,7 +12,5 @@ atom/*
 config/*
 !config/termite/
 !config/termite/config
-!config/gtk-3.0/
-!config/gtk-3.0/settings.ini
 !config/fontconfig/
 !config/fontconfig/fonts.conf
