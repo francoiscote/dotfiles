@@ -2,68 +2,68 @@
   title: "premier-music-front-end"
   icon: "icon-browser"
   paths: [
-    "/Users/fcote/code/premier-music-front-end"
+    "/home/fcote/code/premier-music-front-end"
   ]
 rocketstock:
   title: "rocketstock"
   icon: "icon-rocket"
   paths: [
-    "/Users/fcote/code/rocketstock"
+    "/home/fcote/code/rocketstock"
   ]
 "premiumbeat.com":
   title: "premiumbeat.com"
   icon: "icon-flame"
   paths: [
-    "/Users/fcote/Code/premiumbeat"
+    "/home/fcote/Code/premiumbeat"
   ]
 "shutterstock-audio":
   title: "shutterstock-audio"
   icon: "icon-rss"
   paths: [
-    "/Users/fcote/Code/shutterstock-audio"
+    "/home/fcote/Code/shutterstock-audio"
   ]
 "shutterstock-audio-api":
   title: "shutterstock-audio-api"
   icon: "icon-code"
   paths: [
-    "/Users/fcote/Code/shutterstock-audio-api"
+    "/home/fcote/Code/shutterstock-audio-api"
   ]
 configs:
   title: "configs"
   icon: "icon-gear"
   paths: [
-    "/Users/fcote/code/configs"
+    "/home/fcote/code/configs"
   ]
 ".dotfiles":
   title: ".dotfiles"
   paths: [
-    "/Users/fcote/.dotfiles"
-    "/Users/fcote/.oh-my-zsh"
+    "/home/fcote/.dotfiles"
+    "/etc/fonts"
   ]
   icon: "icon-tools"
 Notes:
   title: "Notes"
   icon: "icon-file-text"
   paths: [
-    "/Users/fcote/code/Notes"
+    "/home/fcote/code/Notes"
   ]
 "premier-api":
   title: "premier-api"
   icon: "icon-star"
   paths: [
-    "/Users/fcote/Code/premier-api"
+    "/home/fcote/Code/premier-api"
   ]
 premier:
   title: "premier"
   icon: "icon-star"
   paths: [
-    "/Users/fcote/Code/premier"
+    "/home/fcote/Code/premier"
   ]
 "fluent-2016":
   title: "fluent-2016"
   icon: "icon-star"
   paths: [
-    "/Users/fcote/Code/fluent-2016"
+    "/home/fcote/Code/fluent-2016"
   ]
 settings:
   "*":

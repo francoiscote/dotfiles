@@ -14,3 +14,5 @@ config/*
 !config/termite/config
 !config/fontconfig/
 !config/fontconfig/fonts.conf
+!config/yabar/
+!config/yabar/yabar.conf

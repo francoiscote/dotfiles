@@ -23,6 +23,7 @@
     ui:
       accentColor: "Blue"
       slimScrollbar: true
+  "autocomplete-php": {}
   "autocomplete-plus": {}
   "bracket-matcher": {}
   core:
@@ -36,6 +37,8 @@
       "meteor-helper"
       "meteor-api"
       "script"
+      "linter-scss-lint"
+      "autocomplete-php"
     ]
     excludeVcsIgnoredPaths: false
     ignoredNames: [
@@ -52,6 +55,7 @@
     autoIndentOnPaste: false
     confirmCheckoutHeadRevision: false
     fontFamily: "Operator Mono Medium"
+    fontSize: 13
     invisibles: {}
     scrollSensitivity: 60
     showIndentGuide: true

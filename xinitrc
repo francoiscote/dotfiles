@@ -31,6 +31,14 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+# Set Mouse Speed and Threshold
+exec xset mouse 11/10 2 &
+
+# Hi Res DPI
+# exec xrandr --dpi 220 &
+
+# Setup XSettingsd
 exec /usr/bin/xsettingsd &
 
+# Launch WM
 exec i3

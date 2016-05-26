@@ -30,6 +30,9 @@ alias rockrun80="sudo HTTP_PORT=80 rock run"
 alias rockrun80dev="sudo HTTP_PORT=80 rock --env dev run"
 alias rcrb="rock clean; rock build"
 
+# docker rock
+# alias rocker="docker run --rm -i -t -v $(pwd):/code -w /code rockstack:latest /bin/bash"
+
 # Source my ZSH
 alias reload!="source ~/.zshrc";
 

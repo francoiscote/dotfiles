@@ -6,6 +6,7 @@
 
   set $black     #000000
   set $bg        #1f2126
+  set $bgtrans   #1f2126AA
   set $bglight   #404452
   set $fg        #5F6B85
   set $fglight   #95A2BB
@@ -25,33 +26,53 @@
   set $workspace5 "5: "
   set $workspace6 "6: "
   set $workspace7 "7: "
-  set $workspace8 "8: "
+  set $workspace8 "8: "
   set $workspace9 "9: "
-  set $workspace10 "10: "
+  set $workspace10 "10: "
 
   set $monitor1 "VGA-1"
   set $monitor2 "VGA-2"
 
+  set $default_gaps_inner 10
+  set $default_gaps_outer 5
+  gaps inner $default_gaps_inner
+  gaps outer $default_gaps_outer
+
+  #set_from_reUbuntu $mode_pre    i3wm.modepre
+  #set_from_resource $mode_post   i3wm.modepost
+
+
 # General Configuration
-  font pango:SFNS Display 10
+  font pango: Ubuntu 9
   floating_modifier $mod
   #hide_edge_borders both
   smart_borders on
-  new_window none
-  gaps inner 10
-  gaps outer 0
   focus_on_window_activation focus
   force_display_urgency_hint 1000 ms
   workspace_auto_back_and_forth yes
 
-  new_window pixel 2
-
 # force remove titlebars for gaps to work correctly
+  new_window none
   for_window [class="^.*"] border pixel 2
+
+  # Restart-Related Bindings
+  bindsym $mod+Shift+c reload
+  bindsym $mod+Shift+r restart
+
+  # Program-Related Bindings
+  bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
+  bindsym $mod+Shift+Return exec --no-startup-id $editor --name __scratchpad
+  bindsym $mod+d exec --no-startup-id rofi -show run
+  bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+  # Scratchpad
+  bindsym $mod+Shift+minus move scratchpad
+  bindsym $mod+Shift+plus scratchpad show
 
 # Window-Related Bindings
   bindsym $mod+x kill
 
+# Focus Bindings
   bindsym $mod+h focus left
   bindsym $mod+j focus down
   bindsym $mod+k focus up
@@ -61,6 +82,7 @@
   bindsym $mod+Up focus up
   bindsym $mod+Right focus right
 
+# Move Bindings
   bindsym $mod+Shift+h move left
   bindsym $mod+Shift+j move down
   bindsym $mod+Shift+k move up
@@ -70,60 +92,122 @@
   bindsym $mod+Shift+Up move up
   bindsym $mod+Shift+Right move right
 
+# Floating Bindings
   bindsym $mod+space focus mode_toggle
   bindsym $mod+Shift+space floating toggle
   bindsym $mod+f fullscreen toggle
 
+# Sticky Bindings
+  bindsym $mod+Shift+s sticky toggle
+  # put YouTube into fullscreen and execute this for media mode
+  bindsym $mod+y fullscreen disable; floating enable; resize set 400 300; sticky enable; move window to position 2140 20
+
+# Layout Bindings
   bindsym $mod+s layout stacking
   bindsym $mod+w layout tabbed
   bindsym $mod+e layout toggle split
 
+# Split Bindings
   bindsym $mod+b split h
   bindsym $mod+v split v
 
+# Parent-Child Bingings
   bindsym $mod+a focus parent
   bindsym $mod+Shift+a focus child
 
-  # Mode Resize
-  bindsym $mod+r mode "  "
-  mode "  " {
+# Mode Resize
+  set $mode_resize "  "
+  bindsym $mod+r mode $mode_resize
+  mode $mode_resize {
     bindsym h resize shrink width 10 px or 10 ppt
     bindsym j resize grow height 10 px or 10 ppt
     bindsym k resize shrink height 10 px or 10 ppt
     bindsym l resize grow width 10 px or 10 ppt
+
     bindsym Left resize shrink width 10 px or 10 ppt
     bindsym Down resize grow height 10 px or 10 ppt
     bindsym Up resize shrink height 10 px or 10 ppt
     bindsym Right resize grow width 10 px or 10 ppt
+
+    bindsym 1 mode "default", resize set 1000 600
+    bindsym 2 mode "default", resize set 1500 500
+    bindsym 3 mode "default", resize set 1200 1000
+
     bindsym Escape mode "default"
     bindsym Return mode "default"
   }
 
+# Mode Gaps
+  set $mode_gaps "gaps"
+  set $mode_gaps_outer "outer gaps"
+  set $mode_gaps_inner "inner gaps"
+  bindsym $mod+Shift+g mode $mode_gaps
+  mode $mode_gaps {
+    bindsym o      mode $mode_gaps_outer
+    bindsym i      mode $mode_gaps_inner
+
+    bindsym 0      mode "default", exec --no-startup-id i3-msg "gaps inner current set 0" && i3-msg "gaps outer current set 0"
+    bindsym d      mode "default", exec --no-startup-id i3-msg "gaps inner current set $default_gaps_inner" && i3-msg "gaps outer current set $default_gaps_outer"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+  }
+
+mode $mode_gaps_inner {
+    bindsym plus  gaps inner current plus 5
+    bindsym minus gaps inner current minus 5
+    bindsym 0     mode "default", gaps inner current set 0
+    bindsym d     mode "default", gaps inner current set $default_gaps_inner
+
+    bindsym Shift+plus  gaps inner all plus 5
+    bindsym Shift+minus gaps inner all minus 5
+    bindsym Shift+0     mode "default", gaps inner all set 0
+    bindsym Shift+d     mode "default", gaps inner all set $default_gaps_inner
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+mode $mode_gaps_outer {
+    bindsym plus  gaps outer current plus 5
+    bindsym minus gaps outer current minus 5
+    bindsym 0     mode "default", gaps outer current set 0
+    bindsym d     mode "default", gaps outer current set $default_gaps_outer
+
+    bindsym Shift+plus  gaps outer all plus 5
+    bindsym Shift+minus gaps outer all minus 5
+    bindsym Shift+0     mode "default", gaps outer all set 0
+    bindsym Shift+d     mode "default", gaps outer all set $default_gaps_outer
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
 # Mode Keyboard Layout Switch
-set $keyboardMode " f=CAN-FR, e=US-EN"
-bindsym $mod+Escape mode $keyboardMode
-mode $keyboardMode {
+  set $keyboardMode " f=CAN-FR, e=US-EN"
+  bindsym $mod+Escape mode $keyboardMode
+  mode $keyboardMode {
     bindsym f exec "setxkbmap ca multi", mode "default"
     bindsym e exec "setxkbmap us", mode "default"
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
-}
+  }
 
-# Scratchpad
-  bindsym $mod+Shift+minus move scratchpad
-  bindsym $mod+Shift+plus scratchpad show
+# Mode Power
+set $mode_power power
+  bindsym Mod1+Control+l mode $mode_power
+  mode --pango_markup $mode_power {
+    bindsym l mode "default", exec --no-startup-id $HOME/.i3/i3exit lock
+    bindsym e mode "default", exec --no-startup-id $HOME/.i3/i3exit logout
+    bindsym s mode "default", exec --no-startup-id $HOME/.i3/i3exit suspend
+    bindsym h mode "default", exec --no-startup-id $HOME/.i3/i3exit hibernate
+    bindsym r mode "default", exec --no-startup-id $HOME/.i3/i3exit reboot
+    bindsym p mode "default", exec --no-startup-id $HOME/.i3/i3exit shutdown
 
-# Restart-Related Bindings
-  bindsym $mod+Shift+c reload
-  bindsym $mod+Shift+r restart
-
-# Program-Related Bindings
-  bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
-  bindsym $mod+d exec rofi -show run -lines 5 -eh 1 -line-margin 8 -width 50 -padding 70 -opacity "90" -bw 0 -bc "$bg" -bg "$bg" -fg "$fg" -hlbg "$cyan" -hlfg "$bg" -font "SFNS Display 14"
-
-  # bindsym --release Print exec imgur-screenshot
-  bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+  }
 
 # Volume & Media Bindings
   bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down
@@ -172,14 +256,15 @@ mode $keyboardMode {
 # Assignements
   assign [class="Firefox"] $workspace2
   assign [class="chromium-browser"] $workspace2
+  assign [class="chromium"] $workspace2
   assign [class="Gedit"] $workspace3
   assign [class="Atom"] $workspace3
-  assign [class="Ubuntu Software Center"] $workspace8
+  assign [class="Ubuntu Software Center"] $workspace10
 
 # Windows Management
   # Spotify class assignement bugs forces me to move window instead
+  for_window [class="Spotify"] move to workspace $workspace8
   for_window [class="Slack"] move to workspace $workspace9
-  for_window [class="Spotify"] move to workspace $workspace10
 
   for_window [window_role="pop-up"] floating enable
   for_window [window_role="bubble"] floating enable
@@ -194,6 +279,8 @@ mode $keyboardMode {
   for_window [class="Ubuntu-software"] floating enable
   for_window [class="Pavucontrol"] floating enable
   for_window [class="Slack"] floating enable
+  for_window [class="Galculator"] floating enable, sticky enable
+  for_window [class="(?i)gsimplecal"] floating enable, sticky enable, move position center
   #for_window [class="Seahorse"] floating enable
 
 # Window Colors
@@ -206,40 +293,38 @@ mode $keyboardMode {
 
   # Bar
     bar {
-      font pango:SFNS Display 10
+      i3bar_command i3bar -t
       status_command i3blocks -c ~/.i3/i3blocks.conf
+      font pango: Ubuntu 10
       position top
       strip_workspace_numbers yes
-      height 20
       tray_output $monitor1
       #bindsym button4 nop
       #bindsym button5 nop
       colors {
-        background $bg
+        background $bgtrans
         separator $bglight
         statusline $fg
-  #                        border  background text
-        focused_workspace  $bg     $bg        $white
-        active_workspace   $bg     $bg        $fg
-        inactive_workspace $bg     $bg        $fg
-        urgent_workspace   $bg     $bg        $red
+                         # border   background text
+        focused_workspace  $bgtrans $bgtrans   $white
+        active_workspace   $bgtrans $bgtrans   $fg
+        inactive_workspace $bgtrans $bgtrans   $fg
+        urgent_workspace   $bgtrans $bgtrans   $red
       }
     }
 
 bindsym $mod+shift+z exec i3lock --color "$bg"
 
 # AUTOSTART
-exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
-# exec_always --no-startup-id compton --config $HOME/.compton.conf
-exec --no-startup-id dunst
+# exec --no-startup-id compton -b --config $HOME/.compton.conf
 
 # set keyboard rate
 exec --no-startup-id xset r rate 300 50
 
 # start other things
-exec --no-startup-id VBoxClient-all
-exec --no-startup-id dropbox start
+exec --no-startup-id dunst &
+exec --no-startup-id VBoxClient-all &
+exec --no-startup-id dropbox start &
 exec --no-startup-id wine "C:\Program Files (x86)\1Password 4\Agile1pAgent.exe"
 
-# give permission to node to run on privileged ports
-# exec sudo setcap 'cap_net_bind_service=+ep' $(which node)
+exec_always --no-startup-id feh --bg-fill $HOME/Pictures/wallpaper.jpg
