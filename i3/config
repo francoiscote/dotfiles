@@ -52,8 +52,8 @@
   workspace_auto_back_and_forth yes
 
 # force remove titlebars for gaps to work correctly
-  new_window none
-  for_window [class="^.*"] border pixel 2
+  new_window pixel
+  #for_window [class="^.*"] border pixel 2
 
   # Restart-Related Bindings
   bindsym $mod+Shift+c reload
@@ -295,7 +295,7 @@ set $mode_power power
     bar {
       i3bar_command i3bar -t
       status_command i3blocks -c ~/.i3/i3blocks.conf
-      font pango: Ubuntu 10
+      font pango: Ubuntu 10, FontAwesome 10
       position top
       strip_workspace_numbers yes
       tray_output $monitor1
@@ -315,13 +315,14 @@ set $mode_power power
 
 bindsym $mod+shift+z exec i3lock --color "$bg"
 
-# AUTOSTART
-# exec --no-startup-id compton -b --config $HOME/.compton.conf
-
 # set keyboard rate
 exec --no-startup-id xset r rate 300 50
 
+# AUTOSTART
+# exec --no-startup-id compton -b --config $HOME/.compton.conf
+
 # start other things
+exec --no-startup-id nm-applet &
 exec --no-startup-id dunst &
 exec --no-startup-id VBoxClient-all &
 exec --no-startup-id dropbox start &

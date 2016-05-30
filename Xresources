@@ -8,19 +8,20 @@ Xft.rgba:       rgb
 
 ! Rofi
 rofi.color-enabled:                  true
-rofi.color-window:                   argb:EE1f2126, argb:EE404452, #404452
+rofi.color-window:                   argb:DD1f2126, argb:DD404452, #404452
 rofi.color-normal:                   argb:00000000, #5F6B85, argb:00000000, #404452, #95A2BB
 rofi.color-active:                   #1f2126, #61AEEE, #1f2126, #404452, #61AEEE
 rofi.color-urgent:                   #1f2126, #E06C75, #1f2126, #404452, #E06C75
 rofi.bw:                             0
 rofi.width:                          50
-rofi.lines:                          5
+rofi.padding:                        300
+rofi.fullscreen:                     true
+rofi.fixed-num-lines:                true
+rofi.lines:                          10
 rofi.line-margin:                    8
 rofi.separator-style:                solid
-rofi.font:                           Ubuntu 14
+rofi.font:                           Ubuntu 18
 rofi.eh:                             1
-rofi.padding:                        70
-rofi.fullscreen:                     false
 rofi.dpi:                            96
 
 ! urxvt

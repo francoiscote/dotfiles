@@ -12,17 +12,9 @@
   "atom-material-ui":
     colors: {}
     fonts: {}
-    panels:
-      panelContrast: true
-    tabs:
-      rippleAccentColor: true
-      showTabIcons: "Show on all tabs"
-      tabSize: "Small"
-    treeView:
-      compactTreeView: true
-    ui:
-      accentColor: "Blue"
-      slimScrollbar: true
+    tabs: {}
+    treeView: {}
+    ui: {}
   "autocomplete-php": {}
   "autocomplete-plus": {}
   "bracket-matcher": {}
@@ -41,6 +33,7 @@
       "autocomplete-php"
     ]
     excludeVcsIgnoredPaths: false
+    followSymlinks: false
     ignoredNames: [
       ".git"
       ".svn"
@@ -53,8 +46,9 @@
     projectHome: "/Users/fcote/Code"
   editor:
     autoIndentOnPaste: false
+    backUpBeforeSaving: true
     confirmCheckoutHeadRevision: false
-    fontFamily: "Operator Mono Medium"
+    fontFamily: "Inconsolata-dz"
     fontSize: 13
     invisibles: {}
     scrollSensitivity: 60
