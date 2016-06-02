@@ -16,7 +16,7 @@ font = Operator Mono 10
 cursor_blink = system
 
 # "block", "underline" or "ibeam"
-cursor_shape = underline
+cursor_shape = ibeam
 
 # Hide links that are no longer valid in url select overlay mode
 filter_unmatched_urls = true

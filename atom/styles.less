@@ -25,25 +25,37 @@ atom-text-editor::shadow .cursor {
 
 // Font fixes and forces of italic for Operator Mono
 // ---------------------------------
-// atom-workspace,
-// atom-text-editor {
-//   font-family: "Operator Mono Medium";
-//   font-weight: 400;
-//   line-height: 1.5;
-//   letter-spacing: -0.5px;
-// }
-// atom-panel.tool-panel {
-//   font-size: 1.1em;
-// }
-// .entity.other.attribute-name {
-//    font-style: italic;
-// }
-// atom-text-editor::shadow{
-//    .entity.other.attribute-name {
-//        font-style: italic;
-//    }
-// }
+atom-workspace {
+  font-family: "Operator Mono Medium";
+  // font-weight: 300;
+  letter-spacing: -0px;
+}
+atom-panel.tool-panel {
+  font-size: 1.1em;
+}
+.entity.other.attribute-name {
+   font-style: italic;
+}
+atom-text-editor::shadow{
+   .entity.other.attribute-name {
+       font-style: italic;
+   }
+}
 
+// Force Fira Code for ligatures
+// Operators, HTML Comments
+atom-text-editor::shadow .lines .keyword.operator,
+atom-text-editor::shadow .lines .punctuation.definition.comment.html {
+  font-family: "Fira Code";
+  font-weight: 500;
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+}
+// Disable Ligatures on the line that the cursor is currently on
+atom-text-editor::shadow .lines .cursor-line .keyword.operator,
+atom-text-editor::shadow .lines .cursor-line .punctuation.definition.comment.html {
+  text-rendering: auto;
+}
 
 
 // <?php ?> Tags coloring. replace ugly red from One Dark

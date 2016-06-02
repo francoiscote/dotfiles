@@ -1,38 +1,38 @@
-"premier-music-front-end":
-  title: "premier-music-front-end"
-  icon: "icon-browser"
-  paths: [
-    "/home/fcote/code/premier-music-front-end"
-  ]
-rocketstock:
+"rocketstock":
   title: "rocketstock"
   icon: "icon-rocket"
   paths: [
     "/home/fcote/code/rocketstock"
   ]
-"premiumbeat.com":
-  title: "premiumbeat.com"
+"pbv3":
+  title: "pbv3"
   icon: "icon-flame"
   paths: [
-    "/home/fcote/Code/premiumbeat"
+    "/home/fcote/code/pb/pbv3"
+  ]
+"pb-blob":
+  title: "pb-blog"
+  icon: "icon-flame"
+  paths: [
+    "/home/fcote/code/pb/pb-blog"
+  ]
+"pb-api":
+  title: "pb-api"
+  icon: "icon-flame"
+  paths: [
+    "/home/fcote/code/pb/api"
   ]
 "shutterstock-audio":
   title: "shutterstock-audio"
   icon: "icon-rss"
   paths: [
-    "/home/fcote/Code/shutterstock-audio"
+    "/home/fcote/code/shutterstock-audio"
   ]
 "shutterstock-audio-api":
   title: "shutterstock-audio-api"
   icon: "icon-code"
   paths: [
-    "/home/fcote/Code/shutterstock-audio-api"
-  ]
-configs:
-  title: "configs"
-  icon: "icon-gear"
-  paths: [
-    "/home/fcote/code/configs"
+    "/home/fcote/code/shutterstock-audio-api"
   ]
 ".dotfiles":
   title: ".dotfiles"
@@ -47,23 +47,17 @@ Notes:
   paths: [
     "/home/fcote/code/Notes"
   ]
-"premier-api":
-  title: "premier-api"
-  icon: "icon-star"
-  paths: [
-    "/home/fcote/Code/premier-api"
-  ]
 premier:
   title: "premier"
   icon: "icon-star"
   paths: [
-    "/home/fcote/Code/premier"
+    "/home/fcote/code/shutterstock-premier"
   ]
-"fluent-2016":
-  title: "fluent-2016"
+"premier-api":
+  title: "premier-api"
   icon: "icon-star"
   paths: [
-    "/home/fcote/Code/fluent-2016"
+    "/home/fcote/code/shutterstock-premier-api"
   ]
 settings:
   "*":

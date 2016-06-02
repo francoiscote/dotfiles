@@ -19,19 +19,19 @@
   set $magenta #C678DD
   set $cyan    #61AEEE
 
-  set $workspace1 "1: "
-  set $workspace2 "2: "
-  set $workspace3 "3: "
-  set $workspace4 "4: "
+  set $workspace1 "1: "
+  set $workspace2 "2: "
+  set $workspace3 "3: "
+  set $workspace4 "4: "
   set $workspace5 "5: "
   set $workspace6 "6: "
-  set $workspace7 "7: "
-  set $workspace8 "8: "
-  set $workspace9 "9: "
-  set $workspace10 "10: "
+  set $workspace7 "7: "
+  set $workspace8 "8: "
+  set $workspace9 "9: "
+  set $workspace10 "10: "
 
-  set $monitor1 "VGA-1"
-  set $monitor2 "VGA-2"
+  set $monitor1 "Virtual1"
+  set $monitor2 "Virtual2"
 
   set $default_gaps_inner 10
   set $default_gaps_outer 5
@@ -45,7 +45,7 @@
 # General Configuration
   font pango: Ubuntu 9
   floating_modifier $mod
-  #hide_edge_borders both
+  #hide_edge_borderTs both
   smart_borders on
   focus_on_window_activation focus
   force_display_urgency_hint 1000 ms
@@ -53,7 +53,7 @@
 
 # force remove titlebars for gaps to work correctly
   new_window pixel
-  #for_window [class="^.*"] border pixel 2
+  for_window [class="^.*"] border pixel 2
 
   # Restart-Related Bindings
   bindsym $mod+Shift+c reload
@@ -247,24 +247,24 @@ set $mode_power power
   workspace $workspace3 output $monitor1
   workspace $workspace4 output $monitor1
   workspace $workspace5 output $monitor1
-  workspace $workspace6 output $monitor1
-  workspace $workspace7 output $monitor1
+  workspace $workspace6 output $monitor2
+  workspace $workspace7 output $monitor2
   workspace $workspace8 output $monitor2
   workspace $workspace9 output $monitor2
   workspace $workspace10 output $monitor2
 
 # Assignements
-  assign [class="Firefox"] $workspace2
-  assign [class="chromium-browser"] $workspace2
-  assign [class="chromium"] $workspace2
-  assign [class="Gedit"] $workspace3
-  assign [class="Atom"] $workspace3
-  assign [class="Ubuntu Software Center"] $workspace10
+  assign [class="Firefox"] $workspace1
+  assign [class="chromium-browser"] $workspace1
+  assign [class="chromium"] $workspace1
+  assign [class="Gedit"] $workspace2
+  assign [class="Atom"] $workspace2
+  assign [class="Ubuntu Software Center"] $workspace4
 
 # Windows Management
   # Spotify class assignement bugs forces me to move window instead
-  for_window [class="Spotify"] move to workspace $workspace8
-  for_window [class="Slack"] move to workspace $workspace9
+  for_window [class="Spotify"] move to workspace $workspace7
+  for_window [class="Slack"] move to workspace $workspace8
 
   for_window [window_role="pop-up"] floating enable
   for_window [window_role="bubble"] floating enable
@@ -318,14 +318,18 @@ bindsym $mod+shift+z exec i3lock --color "$bg"
 # set keyboard rate
 exec --no-startup-id xset r rate 300 50
 
-# AUTOSTART
-# exec --no-startup-id compton -b --config $HOME/.compton.conf
+# VM Tools
+exec --no-startup-id vmware-user-suid-wrapper &
+
+exec --no-startup-id feh --bg-fill $HOME/Pictures/wallpaper.jpg
 
 # start other things
 exec --no-startup-id nm-applet &
 exec --no-startup-id dunst &
-exec --no-startup-id VBoxClient-all &
 exec --no-startup-id dropbox start &
-exec --no-startup-id wine "C:\Program Files (x86)\1Password 4\Agile1pAgent.exe"
+exec --no-startup-id wine "C:\Program Files (x86)\1Password 4\Agile1pAgent.exe" &
 
-exec_always --no-startup-id feh --bg-fill $HOME/Pictures/wallpaper.jpg
+
+# COMPTON
+#exec --no-startup-id compton -b --config $HOME/.compton.conf
+#exec compton -CGb --backend glx --glx-swap-method undefined --paint-on-overlay --glx-no-stencil --vsync opengl &

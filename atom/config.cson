@@ -48,8 +48,7 @@
     autoIndentOnPaste: false
     backUpBeforeSaving: true
     confirmCheckoutHeadRevision: false
-    fontFamily: "Inconsolata-dz"
-    fontSize: 13
+    fontFamily: "Operator Mono Medium"
     invisibles: {}
     scrollSensitivity: 60
     showIndentGuide: true
@@ -141,7 +140,9 @@
   "tree-view": {}
   welcome:
     showOnStartup: false
-  whitespace: {}
+  whitespace:
+    ensureSingleTrailingNewline: false
+    removeTrailingWhitespace: false
 ".source.yaml":
   editor:
     tabLength: 2
