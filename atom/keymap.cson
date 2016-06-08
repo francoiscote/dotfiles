@@ -28,7 +28,7 @@
 # Tree View = F1
 # Linter Panel = F3
 # Minimap toggle = F5
-'.platform-linux':
+'.platform-darwin':
   'f1': 'tree-view:toggle'
   'f4': 'linter:togglePanel'
   'f5': 'minimap:toggle'

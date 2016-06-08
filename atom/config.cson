@@ -21,7 +21,6 @@
   core:
     audioBeep: false
     autoHideMenuBar: true
-    automaticallyUpdate: false
     destroyEmptyPanes: false
     disabledPackages: [
       "git-control"
@@ -48,7 +47,8 @@
     autoIndentOnPaste: false
     backUpBeforeSaving: true
     confirmCheckoutHeadRevision: false
-    fontFamily: "Operator Mono Medium"
+    fontFamily: "Operator Mono"
+    fontSize: 13
     invisibles: {}
     scrollSensitivity: 60
     showIndentGuide: true
@@ -138,7 +138,9 @@
   "status-bar": {}
   "trailing-spaces":
     enableForIndentation: true
-  "tree-view": {}
+  "tree-view":
+    autoReveal: true
+    squashDirectoryNames: true
   welcome:
     showOnStartup: false
   whitespace:

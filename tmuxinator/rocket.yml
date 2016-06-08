@@ -32,7 +32,7 @@ windows:
       layout: main-vertical
       panes:
         -
-        - ./start-dev.sh
+        -
         -
   - stg:
       - ssh rs-stg

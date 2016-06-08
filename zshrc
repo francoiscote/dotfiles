@@ -70,7 +70,7 @@ add-zsh-hook chpwd load-nvmrc
 if [[ -n $SSH_CONNECTION ]]; then
     export EDITOR='vim'
 else
-    if [ -x /usr/bin/atom-beta ]; then
+    if [ -x /usr/local/bin/atom-beta ]; then
         export EDITOR='atom-beta'
     else
         export EDITOR='atom'

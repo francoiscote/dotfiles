@@ -25,11 +25,6 @@ alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
 # Pipe my public key to my clipboard.
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
 
-# rock run shortcut
-alias rockrun80="sudo HTTP_PORT=80 rock run"
-alias rockrun80dev="sudo HTTP_PORT=80 rock --env dev run"
-alias rcrb="rock clean; rock build"
-
 # docker rock
 alias rocker='docker run --rm --net=host -i -t -v $(pwd):/code -w /code rockstack:latest /bin/bash'
 

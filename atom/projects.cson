@@ -2,63 +2,68 @@ rocketstock:
   title: "rocketstock"
   icon: "icon-rocket"
   paths: [
-    "/home/fcote/code/rocketstock"
+    "/Users/fcote/code/rocketstock"
   ]
 pbv3:
   title: "pbv3"
   icon: "icon-flame"
   paths: [
-    "/home/fcote/code/pb/pbv3"
+    "/Users/fcote/code/pb/pbv3"
   ]
 "pb-blob":
   title: "pb-blog"
   icon: "icon-flame"
   paths: [
-    "/home/fcote/code/pb/pb-blog"
+    "/Users/fcote/code/pb/pb-blog"
   ]
 "pb-api":
   title: "pb-api"
   icon: "icon-flame"
   paths: [
-    "/home/fcote/code/pb/api"
+    "/Users/fcote/code/pb/api"
   ]
 "shutterstock-audio":
   title: "shutterstock-audio"
   icon: "icon-rss"
   paths: [
-    "/home/fcote/code/shutterstock-audio"
+    "/Users/fcote/code/shutterstock-audio"
   ]
 "shutterstock-audio-api":
   title: "shutterstock-audio-api"
   icon: "icon-code"
   paths: [
-    "/home/fcote/code/shutterstock-audio-api"
+    "/Users/fcote/code/shutterstock-audio-api"
   ]
 ".dotfiles":
   title: ".dotfiles"
   paths: [
-    "/home/fcote/.dotfiles"
-    "/etc/fonts"
-    "/home/fcote/.ssh"
+    "/Users/fcote/.dotfiles"
   ]
   icon: "icon-tools"
+Configs:
+  title: "Configs"
+  paths: [
+    "/etc"
+    "/Users/fcote/.dotfiles"
+    "/Users/fcote/.ssh"
+  ]
 Notes:
   title: "Notes"
   icon: "icon-file-text"
   paths: [
-    "/home/fcote/code/Notes"
+    "/Users/fcote/code/Notes"
   ]
 premier:
   title: "premier"
   icon: "icon-star"
   paths: [
-    "/home/fcote/code/shutterstock-premier"
+    "/Users/fcote/code/shutterstock-premier"
   ]
 "premier-api":
   title: "premier-api"
   icon: "icon-star"
   paths: [
-    "/home/fcote/code/shutterstock-premier-api"
+    "/Users/fcote/code/shutterstock-premier-api"
   ]
 settings:
   "*":
