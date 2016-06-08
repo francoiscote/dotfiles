@@ -27,7 +27,6 @@ atom-text-editor::shadow .cursor {
 // ---------------------------------
 atom-workspace {
   font-family: "Operator Mono Medium";
-  // font-weight: 300;
   letter-spacing: -0px;
 }
 atom-panel.tool-panel {
@@ -46,15 +45,14 @@ atom-text-editor::shadow{
 // Operators, HTML Comments
 atom-text-editor::shadow .lines .keyword.operator,
 atom-text-editor::shadow .lines .punctuation.definition.comment.html {
-  font-family: "Fira Code";
-  font-weight: 500;
+  font-family: "Fira Code Medium";
   font-style: normal;
   text-rendering: optimizeLegibility;
 }
 // Disable Ligatures on the line that the cursor is currently on
 atom-text-editor::shadow .lines .cursor-line .keyword.operator,
 atom-text-editor::shadow .lines .cursor-line .punctuation.definition.comment.html {
-  text-rendering: auto;
+  // text-rendering: auto;
 }
 
 

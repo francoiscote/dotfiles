@@ -21,11 +21,11 @@
   core:
     audioBeep: false
     autoHideMenuBar: true
+    automaticallyUpdate: false
     destroyEmptyPanes: false
     disabledPackages: [
       "git-control"
       "linter-phpcs"
-      "linter-eslint"
       "meteor-helper"
       "meteor-api"
       "script"
@@ -52,6 +52,7 @@
     invisibles: {}
     scrollSensitivity: 60
     showIndentGuide: true
+    showInvisibles: true
     softWrap: true
     tabType: "soft"
     zoomFontWhenCtrlScrolling: false
@@ -132,7 +133,7 @@
     mergeColorDuplicates: true
     sortPaletteColors: "by color"
   "project-manager":
-    closeCurrent: true
+    sortBy: "last modified"
   react: {}
   "status-bar": {}
   "trailing-spaces":

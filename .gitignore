@@ -18,3 +18,4 @@ config/*
 !config/fontconfig/fonts.conf
 !config/yabar/
 !config/yabar/yabar.conf
+!config/ranger/rc.conf

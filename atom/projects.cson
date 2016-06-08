@@ -1,10 +1,10 @@
-"rocketstock":
+rocketstock:
   title: "rocketstock"
   icon: "icon-rocket"
   paths: [
     "/home/fcote/code/rocketstock"
   ]
-"pbv3":
+pbv3:
   title: "pbv3"
   icon: "icon-flame"
   paths: [
@@ -39,6 +39,7 @@
   paths: [
     "/home/fcote/.dotfiles"
     "/etc/fonts"
+    "/home/fcote/.ssh"
   ]
   icon: "icon-tools"
 Notes:
