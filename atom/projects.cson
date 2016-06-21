@@ -1,9 +1,9 @@
 rocketstock:
   title: "rocketstock"
-  icon: "icon-rocket"
   paths: [
     "/Users/fcote/code/rocketstock"
   ]
+  icon: "icon-rocket"
 pbv3:
   title: "pbv3"
   icon: "icon-flame"
@@ -24,16 +24,16 @@ pbv3:
   ]
 "shutterstock-audio":
   title: "shutterstock-audio"
-  icon: "icon-rss"
   paths: [
     "/Users/fcote/code/shutterstock-audio"
   ]
+  icon: "icon-rss"
 "shutterstock-audio-api":
   title: "shutterstock-audio-api"
-  icon: "icon-code"
   paths: [
     "/Users/fcote/code/shutterstock-audio-api"
   ]
+  icon: "icon-code"
 ".dotfiles":
   title: ".dotfiles"
   paths: [
@@ -55,16 +55,16 @@ Notes:
   ]
 premier:
   title: "premier"
-  icon: "icon-star"
   paths: [
     "/Users/fcote/code/shutterstock-premier"
   ]
+  icon: "icon-star"
 "premier-api":
   title: "premier-api"
-  icon: "icon-star"
   paths: [
     "/Users/fcote/code/shutterstock-premier-api"
   ]
+  icon: "icon-star"
 settings:
   "*":
     whitespace:

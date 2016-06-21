@@ -1,7 +1,7 @@
-# ~/.tmuxinator/premier.yml
+# ~/.tmuxinator/audio.yml
 
-name: premier
-root: ~/code/shutterstock-premier
+name: audio
+root: ~/code/shutterstock-audio
 
 # Optional tmux socket
 # socket_name: foo
@@ -22,22 +22,33 @@ root: ~/code/shutterstock-premier
 # startup_window: logs
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
-# attach: false
+#attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t premier
+#post: tmux -CC attach -t audio
 
 windows:
-  - web:
+  - cli:
       layout: main-vertical
       panes:
-        - 
-        - 
+        - server: 
+          - rocker
+          - rock run_web
         -
+        - 
   - api:
-      root: ~/code/shutterstock-premier-api
+      root: ~/code/shutterstock-audio-api
       layout: main-vertical
       panes:
-        - 
+        - server: 
+          - rocker
+          - rock run_web
+        -
+        -
+  - tests:
+      root: ~/code/shutterstock-audio-acceptance
+      layout: main-vertical
+      panes:
+        -
         -
         -

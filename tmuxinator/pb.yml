@@ -1,7 +1,7 @@
 # ~/.tmuxinator/pb.yml
 
 name: pb
-root: ~/code/premiumbeat
+root: ~/code/pbv3
 
 # Optional tmux socket
 # socket_name: foo
@@ -31,10 +31,14 @@ windows:
   - console:
       layout: main-vertical
       panes:
-        - cd www.premiumbeat.com
-        - sudo vagrant up
-        - cd api.premiumbeat.com
+        - 
+        -
+        -
   - stg:
       -
+      -
+      -
   - prd:
+      -
+      -
       -

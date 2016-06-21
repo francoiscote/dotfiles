@@ -82,7 +82,7 @@ fi
 # -----------------------------------------
 if [ "$(uname)" = "Darwin" ]; then
   # setup env variables for docker machine
-  eval "$(docker-machine env default)"
+  #eval "$(docker-machine env default)"
 fi
 
 # source private stuff in a .localrc file

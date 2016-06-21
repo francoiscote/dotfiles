@@ -28,10 +28,6 @@ root: ~/code/tarmac-cms
 # post: tmux -CC attach -t premier
 
 windows:
-  - console:
-      layout: main-vertical
-      panes:
-        -
   - web:
       layout: main-vertical
       panes:

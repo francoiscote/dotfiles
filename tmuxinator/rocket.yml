@@ -31,7 +31,7 @@ windows:
   - cli:
       layout: main-vertical
       panes:
-        -
+        - ./start-dev.sh
         -
         -
   - stg:
