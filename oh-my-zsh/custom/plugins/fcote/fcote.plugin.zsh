@@ -26,7 +26,7 @@ alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
 
 # docker rock
-alias rocker='docker run --rm --net=host -i -t -v $(pwd):/code -w /code rockstack:latest /bin/bash'
+alias rocker='docker run --rm -p 80:80 -i -t -v $(pwd):/code -w /code rockstack:latest /bin/bash'
 
 # Source my ZSH
 alias reload!="source ~/.zshrc";

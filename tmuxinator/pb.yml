@@ -28,7 +28,7 @@ root: ~/code/pbv3
 # post: tmux -CC attach -t premier
 
 windows:
-  - console:
+  - web:
       layout: main-vertical
       panes:
         - 

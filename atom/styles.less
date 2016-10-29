@@ -23,11 +23,18 @@ atom-text-editor::shadow .cursor {
 
 }
 
-// Font fixes and forces of italic for Operator Mono
-// ---------------------------------
+// Use Operator Mono all of the Workspace
 atom-workspace {
-  font-family: "Operator Mono";
+  // font-family: "Operator Mono";
 }
+
+// Bigger font size in Tree View, modals and bottom panel. I'm getting old.
+atom-panel {
+  //font-size: 1.1em;
+}
+
+// Italic attributes for Operator Mono
+// ---------------------------------
 .entity.other.attribute-name {
    font-style: italic;
 }

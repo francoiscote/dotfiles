@@ -1,7 +1,7 @@
-# ~/.tmuxinator/premier.yml
+# ~/.tmuxinator/footage.yml
 
-name: rocket
-root: ~/code/rocketstock
+name: footage
+root: ~/code/php-shutterstock-footage
 
 # Optional tmux socket
 # socket_name: foo
@@ -28,13 +28,33 @@ root: ~/code/rocketstock
 # post: tmux -CC attach -t premier
 
 windows:
-  - cli:
+  - Local:
       layout: main-vertical
       panes:
-        - 
         -
         -
-  - qa:
-      - ssh rs-qa
-  - prd:
-      - ssh rs-prd
+        - footsync
+  - Dev:
+      layout: main-vertical
+      panes:
+        - dev-cli:
+          - ssh dev-code-footage01.nj01.shuttercorp.net
+          - cd ~/code/php-shutterstock-footage
+        - dev-web-server:
+          - ssh dev-code-footage01.nj01.shuttercorp.net
+          - cd ~/code/php-shutterstock-footage
+          - rock run
+        - dev-logs:
+          - ssh dev-code-footage01.nj01.shuttercorp.net
+          - cd ~/code/php-shutterstock-footage
+          - tail -f tmp/php.error.log
+  - QA/Acceptance:
+      root: ~/code/shutterstock-acceptance-footage
+      layout: main-vertical
+      panes:
+        -
+        - QA-Logs:
+          - ssh qa-log01.nj01.shuttercorp.net
+          - cd /var/log/flume
+        -
+      

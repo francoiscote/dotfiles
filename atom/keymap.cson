@@ -52,14 +52,19 @@
   'ctrl-alt-shift-cmd-home': 'move-panes:move-up'
   'ctrl-alt-shift-cmd-end': 'move-panes:move-down'
 
-# Lazy Motion
+  
 'atom-text-editor':
+  # Lazy Motion
   'cmd-e': 'lazy-motion:forward'
   'cmd-shift-e': 'lazy-motion:backward'
+  # New Shortcut for Select Word
+  'ctrl-cmd-w': 'editor:select-word'
+
+# Lazy Motion
 'atom-text-editor.lazy-motion':
   'cmd-e': 'lazy-motion:forward'
   'cmd-shift-e': 'lazy-motion:backward'
-
+  
 # Unset Emmet Reflect Css Values
 # (conflicts with toggle Project Symbols)
 'atom-text-editor:not([mini])':

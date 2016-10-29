@@ -1,29 +1,17 @@
-[user]
-	name = François Côté
-	email = francois@francoiscote.net
 [alias]
 	co = checkout
 	count = !git shortlog -sn
 	banane = fetch --prune
 [color]
-	diff = auto
-	status = auto
-	branch = auto
-	ui = true
+	ui = auto
 [core]
 	excludesfile = <%= ENV['HOME'] %>/.gitignore
 	editor = vi
 [apply]
 	whitespace = nowarn
-[github]
-	user = francoiscote
 [help]
 	autocorrect = 1
 [push]
-	# See `git help config` (search for push.default)
-	# for more information on different options of the below setting.
-	#
-	# Setting to git 2.0 default to surpress warning message
 	default = simple
 [pager]
   diff = "diff-so-fancy | less --tabs=4 -RFX"

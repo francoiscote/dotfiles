@@ -1,7 +1,7 @@
-# ~/.tmuxinator/premier.yml
+# ~/.tmuxinator/pb-blog.yml
 
-name: rocket
-root: ~/code/rocketstock
+name: pb-blog
+root: ~/code/pb-blog
 
 # Optional tmux socket
 # socket_name: foo
@@ -28,13 +28,17 @@ root: ~/code/rocketstock
 # post: tmux -CC attach -t premier
 
 windows:
-  - cli:
+  - web:
       layout: main-vertical
       panes:
         - 
         -
         -
-  - qa:
-      - ssh rs-qa
+  - stg:
+      -
+      -
+      -
   - prd:
-      - ssh rs-prd
+      -
+      -
+      -

@@ -1,71 +1,100 @@
-rocketstock:
-  title: "rocketstock"
-  paths: [
-    "/Users/fcote/code/rocketstock"
-  ]
-  icon: "icon-rocket"
-pbv3:
-  title: "pbv3"
-  icon: "icon-flame"
-  paths: [
-    "/Users/fcote/code/pb/pbv3"
-  ]
-"pb-blob":
-  title: "pb-blog"
-  icon: "icon-flame"
-  paths: [
-    "/Users/fcote/code/pb/pb-blog"
-  ]
-"pb-api":
-  title: "pb-api"
-  icon: "icon-flame"
-  paths: [
-    "/Users/fcote/code/pb/api"
-  ]
-"shutterstock-audio":
-  title: "shutterstock-audio"
-  paths: [
-    "/Users/fcote/code/shutterstock-audio"
-  ]
-  icon: "icon-rss"
-"shutterstock-audio-api":
-  title: "shutterstock-audio-api"
-  paths: [
-    "/Users/fcote/code/shutterstock-audio-api"
-  ]
-  icon: "icon-code"
-".dotfiles":
-  title: ".dotfiles"
-  paths: [
-    "/Users/fcote/.dotfiles"
-  ]
-  icon: "icon-tools"
-Configs:
-  title: "Configs"
-  paths: [
-    "/etc"
-    "/Users/fcote/.dotfiles"
-    "/Users/fcote/.ssh"
-  ]
-Notes:
-  title: "Notes"
-  icon: "icon-file-text"
-  paths: [
-    "/Users/fcote/code/Notes"
-  ]
-premier:
-  title: "premier"
-  paths: [
-    "/Users/fcote/code/shutterstock-premier"
-  ]
-  icon: "icon-star"
-"premier-api":
-  title: "premier-api"
-  paths: [
-    "/Users/fcote/code/shutterstock-premier-api"
-  ]
-  icon: "icon-star"
-settings:
-  "*":
-    whitespace:
-      removeTrailingWhitespace: false
+[
+  {
+    title: "rocketstock"
+    paths: [
+      "/Users/fcote/code/rocketstock"
+    ]
+    icon: "icon-rocket"
+  }
+  {
+    title: "pbv3"
+    paths: [
+      "/Users/fcote/code/pbv3"
+    ]
+    icon: "icon-flame"
+  }
+  {
+    title: "pb-blog"
+    paths: [
+      "/Users/fcote/code/pb-blog"
+    ]
+    icon: "icon-flame"
+  }
+  {
+    title: "pb-api"
+    paths: [
+      "/Users/fcote/code/api"
+    ]
+    icon: "icon-flame"
+  }
+  {
+    title: "footage"
+    paths: [
+      "/Users/fcote/code/php-shutterstock-footage"
+    ]
+    icon: "icon-device-camera-video"
+  }
+  {
+    title: "shutterstock-mason"
+    paths: [
+      "/Users/fcote/code/shutterstock-mason"
+    ]
+    icon: "icon-device-camera-video"
+  }
+  {
+    title: "audio"
+    paths: [
+      "/Users/fcote/code/shutterstock-audio"
+    ]
+    icon: "icon-rss"
+  }
+  {
+    title: "audio-api"
+    paths: [
+      "/Users/fcote/code/shutterstock-audio-api"
+    ]
+    icon: "icon-code"
+  }
+  {
+    title: "premier"
+    paths: [
+      "/Users/fcote/code/shutterstock-premier"
+    ]
+    icon: "icon-star"
+  }
+  {
+    title: "premier-api"
+    paths: [
+      "/Users/fcote/code/shutterstock-premier-api"
+    ]
+    icon: "icon-star"
+  }
+  {
+    title: "tarmac-cms"
+    paths: [
+      "/Users/fcote/code/tarmac-cms"
+    ]
+    icon: "icon-telescope"
+  }
+  {
+    title: "Configs"
+    paths: [
+      "/Users/fcote/.dotfiles"
+      "/Users/fcote/.ssh"
+      "/etc"
+    ]
+    icon: "icon-tools"
+  }
+  {
+    title: "Notes"
+    paths: [
+      "/Users/fcote/code/Notes"
+    ]
+    icon: "icon-file-text"
+  }
+  {
+    "*":
+      whitespace:
+        removeTrailingWhitespace: false
+  }
+]

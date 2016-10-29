@@ -3,12 +3,28 @@
     gutter: true
     minimap: true
     softWrap: true
+  "activate-power-mode":
+    autoToggle: false
+    particles:
+      size:
+        max: 3
+        min: 1
+      spawnCount: {}
+    screenShake:
+      enabled: false
+      maxIntensity: 2
   aligner: {}
   "aligner-scss": {}
   "atom-beautify":
-    _analyticsUserId: "8ad713e3-3050-40d6-865d-b89bf2ce0a74"
-    css_preserve_newlines: true
-    html_wrap_attributes_indent_size: 2
+    css:
+      preserve_newlines: true
+    general:
+      _analyticsUserId: "8ad713e3-3050-40d6-865d-b89bf2ce0a74"
+    html:
+      wrap_attributes_indent_size: 2
+    php:
+      cs_fixer_path: "/usr/local/bin/php-cs-fixer"
+      standard: "PSR2"
   "atom-material-ui":
     colors: {}
     fonts: {}
@@ -19,19 +35,25 @@
   "autocomplete-plus": {}
   "bracket-matcher": {}
   core:
-    audioBeep: false
     autoHideMenuBar: true
+    customFileTypes:
+      "source.ini": [
+        ".buckconfig"
+        ".flowconfig"
+      ]
+      "source.json": [
+        ".arcconfig"
+        "BUCK.autodeps"
+      ]
+      "source.python": [
+        "BUCK"
+      ]
     destroyEmptyPanes: false
     disabledPackages: [
-      "git-control"
-      "linter-phpcs"
-      "meteor-helper"
-      "meteor-api"
-      "script"
       "linter-scss-lint"
-      "autocomplete-php"
+      "php-debug"
+      "linter-phpcs"
     ]
-    excludeVcsIgnoredPaths: false
     followSymlinks: false
     ignoredNames: [
       ".git"
@@ -43,23 +65,27 @@
       ".tags"
     ]
     projectHome: "/Users/fcote/Code"
+    telemetryConsent: "limited"
+    useCustomTitleBar: true
   editor:
+    atomicSoftTabs: false
     autoIndentOnPaste: false
     backUpBeforeSaving: true
     confirmCheckoutHeadRevision: false
     fontFamily: "Operator Mono"
-    fontSize: 13
+    fontSize: 15
     invisibles: {}
     scrollSensitivity: 60
     showIndentGuide: true
-    showInvisibles: true
+    softTabs: false
     softWrap: true
-    tabType: "soft"
     zoomFontWhenCtrlScrolling: false
   emmet: {}
   "exception-reporting":
     userId: "c0ae7570-4b22-b4eb-13a5-c0acd74f52f3"
   "file-icons": {}
+  "file-watcher":
+    promptWhenFileHasChangedOnDisk: false
   "fuzzy-finder":
     ignoredNames: [
       "bower_components"
@@ -85,36 +111,33 @@
   "lazy-motion":
     showHoverIndicator: true
   linter:
+    gutterPosition: "Left"
     ignoredLinterErrors: [
       "shellcheck"
     ]
     lintOnChange: false
     lintOnEditorFocus: false
+    lintOnFly: false
     showErrorPanel: false
     statusBar: "Show error of the selected line"
-    underlineIssues: false
   "linter-eslint":
-    disableEslintIgnore: true
     eslintPath: "/usr/local/bin/eslint"
     globalNodePath: "/usr/local"
     lintHtmlFiles: true
     lintOnEdit: false
   "linter-php": {}
   "linter-phpcs":
-    autoConfigSearch: false
-    disableWhenNoConfigFile: true
+    disableExecuteTimeout: true
     executablePath: "/usr/local/opt/php56/bin/phpcs"
   "linter-scss-lint":
     executablePath: "/Users/fcote/.rbenv/shims/scss-lint"
   "linter-shellcheck":
     shellcheckExecutablePath: "/usr/local/bin/shellcheck"
-  "markdown-preview":
-    useGitHubStyle: true
+  "markdown-preview": {}
   "merge-conflicts":
     gitPath: "/usr/local/bin/git"
   minimap:
     autoToggle: false
-    displayMinimapOnLeft: true
     plugins:
       "find-and-replace": true
       "find-and-replaceDecorationsZIndex": 0
@@ -136,10 +159,11 @@
     sortBy: "last modified"
   react: {}
   "status-bar": {}
+  "tool-bar":
+    position: "Right"
   "trailing-spaces":
     enableForIndentation: true
   "tree-view":
-    autoReveal: true
     squashDirectoryNames: true
   welcome:
     showOnStartup: false

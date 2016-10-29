@@ -10,6 +10,7 @@ antigen bundle ~/.dotfiles/oh-my-zsh/custom/plugins fcote
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle tarrasch/zsh-autoenv
+antigen bundle felixr/docker-zsh-completion
 
 antigen apply
 
@@ -40,16 +41,22 @@ fi
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
 # -----------------------------------------
+# RBENV
+# -----------------------------------------
+eval "$(rbenv init -)"
+
+# -----------------------------------------
 # NVM
 # -----------------------------------------
-# nvm (manually source from homebrew install, do not use the oh-my-zsh nvm plugin)
 export NVM_DIR=~/.nvm
-if [[ -f $brew_path ]]
-then
-  source $(brew --prefix nvm)/nvm.sh
-else
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-fi
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# -----------------------------------------
+# PYENV
+# -----------------------------------------
+export PYENV_ROOT="/usr/local/var/pyenv"
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
 
 # auto run `nvm use` when .nvmrc is present
 autoload -U add-zsh-hook
