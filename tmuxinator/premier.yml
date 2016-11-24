@@ -28,14 +28,35 @@ root: ~/code/shutterstock-premier
 # post: tmux -CC attach -t premier
 
 windows:
-  - web:
+  - web-local:
+      layout: main-vertical	
+      panes:
+        -
+        -
+        - premiersync
+  - web-dev:
+      layout: main-vertical
+      panes:
+        - dev-cli:
+          - ssh dev-code09.nj01.shuttercorp.net
+          - cd ~/code/premier
+        - dev-web-server:
+          - ssh dev-code09.nj01.shuttercorp.net
+          - cd ~/code/premier
+          - rock run
+        - dev-logs:
+          - ssh dev-code09.nj01.shuttercorp.net
+          - cd ~/code/premier
+          - tail -f tmp/php.error.log
+  - api:
+      root: ~/code/shutterstock-premier-api
       layout: main-vertical
       panes:
         - 
-        - 
         -
-  - api:
-      root: ~/code/shutterstock-premier-api
+        -
+  - audio-cms:
+      root: ~/code/shutterstock-audio-cms
       layout: main-vertical
       panes:
         - 

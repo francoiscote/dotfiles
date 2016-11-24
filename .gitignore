@@ -1,3 +1,4 @@
+antigen
 
 atom/*
 !atom/config.cson

@@ -4,6 +4,7 @@ require 'erb'
 desc "install the dot files into user's home directory"
 task :install do
   install_oh_my_zsh
+  install_antigen
   switch_to_zsh
   replace_all = false
   files = Dir['*'] - %w[Rakefile README.rdoc README.md LICENSE oh-my-zsh]
@@ -84,6 +85,23 @@ def install_oh_my_zsh
       exit
     else
       puts "skipping oh-my-zsh, you will need to change ~/.zshrc"
+    end
+  end
+end
+
+def install_antigen
+  if File.exist?(File.join(ENV['HOME'], ".dotfiles/antigen"))
+    puts "found ~/.dotfiles/antigen"
+  else
+    print "install antigen? [ynq] "
+    case $stdin.gets.chomp
+    when 'y'
+      puts "installing antigen"
+      system %Q{git clone https://github.com/zsh-users/antigen.git "$HOME/.dotfiles/antigen"}
+    when 'q'
+      exit
+    else
+      puts "skipping antigen, you will need to change ~/.zshrc"
     end
   end
 end

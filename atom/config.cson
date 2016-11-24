@@ -118,7 +118,6 @@
     lintOnChange: false
     lintOnEditorFocus: false
     lintOnFly: false
-    showErrorPanel: false
     statusBar: "Show error of the selected line"
   "linter-eslint":
     eslintPath: "/usr/local/bin/eslint"
@@ -133,7 +132,8 @@
     executablePath: "/Users/fcote/.rbenv/shims/scss-lint"
   "linter-shellcheck":
     shellcheckExecutablePath: "/usr/local/bin/shellcheck"
-  "markdown-preview": {}
+  "markdown-preview":
+    useGitHubStyle: true
   "merge-conflicts":
     gitPath: "/usr/local/bin/git"
   minimap:

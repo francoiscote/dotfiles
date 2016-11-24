@@ -93,6 +93,12 @@
     icon: "icon-file-text"
   }
   {
+    title: "Shutterstock Audio Cms"
+    paths: [
+      "/Users/fcote/code/shutterstock-audio-cms"
+    ]
+  }
+  {
     "*":
       whitespace:
         removeTrailingWhitespace: false

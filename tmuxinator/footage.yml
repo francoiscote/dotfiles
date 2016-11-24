@@ -43,11 +43,11 @@ windows:
         - dev-web-server:
           - ssh dev-code-footage01.nj01.shuttercorp.net
           - cd ~/code/php-shutterstock-footage
-          - rock run
+          - HTTP_PORT=9033 rock run
         - dev-logs:
           - ssh dev-code-footage01.nj01.shuttercorp.net
           - cd ~/code/php-shutterstock-footage
-          - tail -f tmp/php.error.log
+          - 
   - QA/Acceptance:
       root: ~/code/shutterstock-acceptance-footage
       layout: main-vertical
