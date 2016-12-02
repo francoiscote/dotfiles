@@ -7,10 +7,12 @@ antigen bundle git
 antigen bundle ~/.dotfiles/oh-my-zsh/custom git_custom.zsh
 antigen bundle ~/.dotfiles/oh-my-zsh/custom/plugins fcote
 
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle tarrasch/zsh-autoenv
-antigen bundle felixr/docker-zsh-completion
+if [ "$(uname)" = "Darwin" ]; then
+	antigen bundle zsh-users/zsh-syntax-highlighting
+	antigen bundle zsh-users/zsh-autosuggestions
+	antigen bundle tarrasch/zsh-autoenv
+	antigen bundle felixr/docker-zsh-completion
+fi
 
 antigen apply
 
@@ -43,7 +45,7 @@ export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 # -----------------------------------------
 # RBENV
 # -----------------------------------------
-eval "$(rbenv init -)"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # -----------------------------------------
 # NVM
