@@ -1,7 +1,7 @@
-# ~/.tmuxinator/premier.yml
+# ~/.tmuxinator/fun.yml
 
-name: premier
-root: ~/code/shutterstock-premier
+name: commish
+root: ~/code/commish
 
 # Optional tmux socket
 # socket_name: foo
@@ -21,30 +21,20 @@ root: ~/code/shutterstock-premier
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
 # startup_window: logs
 
-# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# Controls whether the tmux session shouldnf be attached to automatically. Defaults to true.
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
 # post: tmux -CC attach -t premier
 
 windows:
-  - webapp:
+  - console:
       layout: main-vertical
       panes:
-        - 
-        - 
-        - 
-  - api:
-      root: ~/code/shutterstock-premier-api
+        -
+        -
+        -
+  - scratch:
       layout: main-vertical
       panes:
-        - 
-        -
-        -
-  - audio-cms:
-      root: ~/code/shutterstock-audio-cms
-      layout: main-vertical
-      panes:
-        - 
-        -
         -

@@ -54,7 +54,14 @@ windows:
       panes:
         -
         - QA-Logs:
-          - ssh qa-log01.nj01.shuttercorp.net
+          - ssh logs.qa.shuttercorp.net
+          - cd /var/log/flume
+        -
+  - Prod:
+      layout: main-vertical
+      panes:
+        - Prod-Logs:
+          - ssh logs.shuttercorp.net
           - cd /var/log/flume
         -
       
