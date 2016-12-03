@@ -2,10 +2,25 @@
 k = hs.hotkey.modal.new({}, "F17")
 
 -- Trigger existing hyper key shortcuts
-k:bind({}, 'm', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, 'm') end)
+k:bind({}, 'up', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, 'up') end)
+k:bind({}, 'left', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, 'left') end)
+k:bind({}, 'right', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, 'right') end)
+k:bind({}, '5', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, '5') end)
+k:bind({}, '6', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, '6') end)
+k:bind({}, '7', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, '7') end)
+k:bind({}, '8', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, '8') end)
+k:bind({}, '9', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, '9') end)
+k:bind({}, '0', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, '0') end)
 
--- OR build your own
+-- Shortcut to reload config
+ofun = function()
+  hs.reload()
+  hs.notify.new({title="Hammerspoon", informativeText="Config Reloaded"}):send()
+  k.triggered = true
+end
+k:bind({}, 'r', nil, ofun)
 
+-- Launch Apps
 launch = function(appname)
   hs.application.launchOrFocus(appname)
   k.triggered = true
@@ -13,22 +28,22 @@ end
 
 -- Single keybinding for app launch
 singleapps = {
+  {'u', 'SourceTree'},
   {'j', 'Atom Beta'},
+  {'n', 'iTerm'},
+  {'i', 'FirefoxDeveloperEdition'},
   {'k', 'Google Chrome'},
-  {'n', 'iTerm'}
+  {'o', 'Slack'},
+  {'l', 'Wmail'},
+  {'.', 'Wunderlist'},
+  {'h', 'Finder'},
+  {'p', 'Spotify'},
+  {';', 'Fantastical 2'}
 }
 
 for i, app in ipairs(singleapps) do
   k:bind({}, app[1], function() launch(app[2]); k:exit(); end)
 end
--- Shortcut to reload config
-
-ofun = function()
-  hs.reload()
-  hs.alert.show("Config loaded")
-  k.triggered = true
-end
-k:bind({}, 'r', nil, ofun)
 
 -- Enter Hyper Mode when F18 (Hyper/Capslock) is pressed
 pressedF18 = function()
