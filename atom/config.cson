@@ -79,6 +79,7 @@
     showIndentGuide: true
     softTabs: false
     softWrap: true
+    tabLength: 4
     zoomFontWhenCtrlScrolling: false
   emmet: {}
   "exception-reporting":
