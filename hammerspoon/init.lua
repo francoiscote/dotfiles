@@ -5,12 +5,84 @@ k = hs.hotkey.modal.new({}, "F17")
 k:bind({}, 'up', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, 'up') end)
 k:bind({}, 'left', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, 'left') end)
 k:bind({}, 'right', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, 'right') end)
-k:bind({}, '5', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, '5') end)
-k:bind({}, '6', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, '6') end)
-k:bind({}, '7', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, '7') end)
-k:bind({}, '8', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, '8') end)
-k:bind({}, '9', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, '9') end)
-k:bind({}, '0', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, '0') end)
+
+-- Resize Windows
+-------------------------------------------------------------------------------
+hs.window.animationDuration = 0
+-- 0 - Maximize
+k:bind({}, '0', nil, function() 
+    local win = hs.window.focusedWindow()
+    win:maximize()
+end)
+
+-- 9 - Browser
+k:bind({}, '9', nil, function() 
+    local win = hs.window.focusedWindow()
+    local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
+    
+    f.w = max.w * 0.8
+    f.y = max.y
+    f.h = max.h
+    win:setFrame(f)
+    win:centerOnScreen(nil, true)
+end)
+
+-- 8 - Email
+k:bind({}, '8', nil, function() 
+    local win = hs.window.focusedWindow()
+    local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
+    
+    f.w = max.w * 0.8
+    f.h = max.h * 0.8
+    win:setFrame(f)
+    win:centerOnScreen(nil, true)
+end)
+
+-- 7 - Finder
+k:bind({}, '7', nil, function() 
+    local win = hs.window.focusedWindow()
+    local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
+    
+    f.w = max.w * 0.6
+    f.h = max.h * 0.6
+    win:setFrame(f)
+    win:centerOnScreen(nil, true)
+end)
+
+-- 6 - Right
+k:bind({}, '6', nil, function() 
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x + (max.w / 2)
+  f.y = max.y
+  f.w = max.w / 2
+  f.h = max.h
+  win:setFrame(f)
+end)
+
+-- 5 - Left
+k:bind({}, '5', nil, function() 
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x
+  f.y = max.y
+  f.w = max.w / 2
+  f.h = max.h
+  win:setFrame(f)
+end)
+
 
 -- Shortcut to reload config
 ofun = function()
