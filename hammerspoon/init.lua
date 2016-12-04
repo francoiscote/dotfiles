@@ -1,14 +1,27 @@
 -- A global variable for the Hyper Mode
 k = hs.hotkey.modal.new({}, "F17")
 
--- Trigger existing hyper key shortcuts
+-- Move Windows
+-------------------------------------------------------------------------------
+-- Mission Control
 k:bind({}, 'up', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, 'up') end)
-k:bind({}, 'left', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, 'left') end)
-k:bind({}, 'right', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, 'right') end)
+
+-- Move to Left Screen
+k:bind({}, 'left', nil, function() 
+    local win = hs.window.focusedWindow()
+    win:moveOneScreenWest(false, true);
+end)
+-- Move to Right Screen
+k:bind({}, 'right', nil, function() 
+    local win = hs.window.focusedWindow()
+    win:moveOneScreenEast(false, true);
+end)
+
 
 -- Resize Windows
 -------------------------------------------------------------------------------
 hs.window.animationDuration = 0
+
 -- 0 - Maximize
 k:bind({}, '0', nil, function() 
     local win = hs.window.focusedWindow()
