@@ -20,6 +20,7 @@
       preserve_newlines: true
     general:
       _analyticsUserId: "8ad713e3-3050-40d6-865d-b89bf2ce0a74"
+      analytics: false
     html:
       wrap_attributes_indent_size: 2
     php:
@@ -53,6 +54,7 @@
       "linter-scss-lint"
       "php-debug"
       "linter-phpcs"
+      "whitespace"
     ]
     followSymlinks: false
     ignoredNames: [
