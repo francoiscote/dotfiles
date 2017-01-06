@@ -51,10 +51,10 @@
       ]
     destroyEmptyPanes: false
     disabledPackages: [
-      "linter-scss-lint"
       "php-debug"
       "linter-phpcs"
       "whitespace"
+      "linter-scss-lint"
     ]
     followSymlinks: false
     ignoredNames: [
