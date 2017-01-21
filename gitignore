@@ -19,5 +19,3 @@ node_modules
 .nvmrc
 
 php.ini
-
-karabiner.d/log/*

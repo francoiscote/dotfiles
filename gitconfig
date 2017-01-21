@@ -5,7 +5,7 @@
 [color]
 	ui = auto
 [core]
-	excludesfile = <%= ENV['HOME'] %>/.gitignore
+	excludesfile = ~/.gitignore
 	editor = vi
 [apply]
 	whitespace = nowarn

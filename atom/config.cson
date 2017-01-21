@@ -167,6 +167,7 @@
   "trailing-spaces":
     enableForIndentation: true
   "tree-view":
+    hideVcsIgnoredFiles: true
     squashDirectoryNames: true
   welcome:
     showOnStartup: false
