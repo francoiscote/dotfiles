@@ -37,6 +37,7 @@
   "bracket-matcher": {}
   core:
     autoHideMenuBar: true
+    automaticallyUpdate: false
     customFileTypes:
       "source.ini": [
         ".buckconfig"
@@ -54,6 +55,8 @@
       "php-debug"
       "linter-phpcs"
       "linter-scss-lint"
+      "atom-typescript"
+      "whitespace"
     ]
     followSymlinks: false
     ignoredNames: [

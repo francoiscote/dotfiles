@@ -114,7 +114,7 @@ end
 -- Single keybinding for app launch
 singleapps = {
   {'u', 'SourceTree'},
-  {'j', 'Atom Beta'},
+  {'j', 'Atom'},
   {'n', 'iTerm'},
   {'i', 'FirefoxDeveloperEdition'},
   {'k', 'Google Chrome'},
