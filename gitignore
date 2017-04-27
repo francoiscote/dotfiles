@@ -9,6 +9,7 @@
 *.sublime-workspace
 .tags
 .tern-project
+.vscode
 
 
 # Modules and Temporary files

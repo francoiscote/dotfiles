@@ -74,24 +74,18 @@ add-zsh-hook chpwd load-nvmrc
 
 
 # -----------------------------------------
-# EDITOR: vi.m, atom-beta, atom
+# EDITOR: if ssh -> vim, else -> VSCode or atom-beta or atom
 # -----------------------------------------
 if [[ -n $SSH_CONNECTION ]]; then
     export EDITOR='vim'
 else
-    if [ -x /usr/local/bin/atom-beta ]; then
+    if [ -x /usr/local/bin/code ]; then
+        export EDITOR='code'
+    elif [ -x /usr/local/bin/atom-beta ]; then
         export EDITOR='atom-beta'
     else
         export EDITOR='atom'
     fi
-fi
-
-# -----------------------------------------
-# OSX Only: init env variables for docker-machine
-# -----------------------------------------
-if [ "$(uname)" = "Darwin" ]; then
-  # setup env variables for docker machine
-  #eval "$(docker-machine env default)"
 fi
 
 # source private stuff in a .localrc file
