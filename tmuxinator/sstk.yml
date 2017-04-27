@@ -1,7 +1,7 @@
-# ~/.tmuxinator/premier.yml
+# ~/.tmuxinator/sstk.yml
 
-name: rocket
-root: ~/code/rocketstock
+name: sstk
+root: ~/code/sstk
 
 # Optional tmux socket
 # socket_name: foo
@@ -22,23 +22,15 @@ root: ~/code/rocketstock
 # startup_window: logs
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
-# attach: false
+#attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t premier
+#post: tmux -CC attach -t audio
 
 windows:
   - cli:
       layout: main-vertical
       panes:
+        -
+        -
         - 
-        -
-        -
-  - qa:
-      layout: main-vertical
-      panes:
-        - ssh qa-rs
-        - cd ~/code/rocketstock-qa-acceptance
-        - cd ~/code/rocketstock-qa-sox
-  - prd:
-      - ssh rs-prd

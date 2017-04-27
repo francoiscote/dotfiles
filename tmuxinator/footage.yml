@@ -33,7 +33,7 @@ windows:
       panes:
         -
         -
-        - footsync
+        - 
   - Dev:
       layout: main-vertical
       panes:

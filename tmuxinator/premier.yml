@@ -31,8 +31,8 @@ windows:
   - webapp:
       layout: main-vertical
       panes:
-        - 
-        - 
+        -
+        - cd ~/code/shutterstock-premier-starter 
         - 
   - api:
       root: ~/code/shutterstock-premier-api
