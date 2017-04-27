@@ -23,5 +23,6 @@
     ~/.ctags: ctags
     ~/.gitconfig: gitconfig
     ~/.gitignore: gitignore
+    ~/.hyper.js: hyper.js
     ~/.tmux.conf: tmux.conf
     ~/.zshrc: zshrc
