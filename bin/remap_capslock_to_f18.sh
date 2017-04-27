@@ -1,0 +1,2 @@
+# https://developer.apple.com/library/content/technotes/tn2450/_index.html
+hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x70000006D}]}'

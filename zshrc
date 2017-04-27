@@ -24,6 +24,8 @@ antigen theme ~/.dotfiles/oh-my-zsh/custom/ fcote
 # -----------------------------------------
 # Zsh
 export PATH="$ZSH/bin:$PATH"
+# .dotfiles bin
+export PATH="$HOME/.dotfiles/bin:$PATH"
 # /usr/local
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 # npm

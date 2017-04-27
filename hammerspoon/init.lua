@@ -26,6 +26,7 @@ hs.window.animationDuration = 0
 k:bind({}, '0', nil, function() 
     local win = hs.window.focusedWindow()
     win:maximize()
+    k.triggered = true
 end)
 
 -- 9 - Browser
@@ -40,6 +41,7 @@ k:bind({}, '9', nil, function()
     f.h = max.h
     win:setFrame(f)
     win:centerOnScreen(nil, true)
+    k.triggered = true
 end)
 
 -- 8 - Email
@@ -53,6 +55,7 @@ k:bind({}, '8', nil, function()
     f.h = max.h * 0.8
     win:setFrame(f)
     win:centerOnScreen(nil, true)
+    k.triggered = true
 end)
 
 -- 7 - Finder
@@ -66,6 +69,7 @@ k:bind({}, '7', nil, function()
     f.h = max.h * 0.6
     win:setFrame(f)
     win:centerOnScreen(nil, true)
+    k.triggered = true
 end)
 
 -- 6 - Right
@@ -80,6 +84,7 @@ k:bind({}, '6', nil, function()
   f.w = max.w / 2
   f.h = max.h
   win:setFrame(f)
+  k.triggered = true
 end)
 
 -- 5 - Left
@@ -94,6 +99,7 @@ k:bind({}, '5', nil, function()
   f.w = max.w / 2
   f.h = max.h
   win:setFrame(f)
+  k.triggered = true
 end)
 
 
