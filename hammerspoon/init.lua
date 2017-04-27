@@ -133,7 +133,7 @@ singleapps = {
 }
 
 for i, app in ipairs(singleapps) do
-  k:bind({}, app[1], function() launch(app[2]); k:exit(); end)
+  k:bind({}, app[1], function() launch(app[2]); end)
 end
 
 -- Enter Hyper Mode when F18 (Hyper/Capslock) is pressed
