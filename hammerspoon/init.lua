@@ -120,7 +120,7 @@ end
 -- Single keybinding for app launch
 singleapps = {
   {'u', 'SourceTree'},
-  {'j', 'Visual Studio Code'},
+  {'j', 'Atom'},
   {'n', 'iTerm'},
   {'i', 'FirefoxDeveloperEdition'},
   {'k', 'Google Chrome'},
