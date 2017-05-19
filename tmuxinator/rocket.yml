@@ -1,4 +1,4 @@
-# ~/.tmuxinator/premier.yml
+# ~/.tmuxinator/rocket.yml
 
 name: rocket
 root: ~/code/rocketstock
@@ -31,14 +31,10 @@ windows:
   - cli:
       layout: main-vertical
       panes:
-        - 
+        -
         -
         -
   - qa:
-      layout: main-vertical
-      panes:
-        - ssh qa-rs
-        - cd ~/code/rocketstock-qa-acceptance
-        - cd ~/code/rocketstock-qa-sox
+    - ssh rs-qa
   - prd:
-      - ssh rs-prd
+      -

@@ -10,7 +10,7 @@ root: ~/code/base-web
 # pre: sudo /etc/rc.d/mysqld start
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
-# pre_window: rbenv shell 2.0.0-p247
+pre_window: nvm use lts/argon
 
 # Pass command line options to tmux. Useful for specifying a different tmux.conf.
 # tmux_options: -f ~/.tmux.mac.conf
@@ -32,5 +32,7 @@ windows:
       layout: main-vertical
       panes:
         -
-        -
-        - 
+        - npm run assets:watch
+        - npm run webpack:watch
+        - npm run babel:watch
+        - npm run start:watch
