@@ -36,8 +36,8 @@
   "autocomplete-plus": {}
   "bracket-matcher": {}
   core:
-    autoHideMenuBar: true
-    automaticallyUpdate: false
+    audioBeep: false
+    autoHideMenuBar: false
     customFileTypes:
       "source.ini": [
         ".buckconfig"
@@ -56,7 +56,8 @@
       "linter-phpcs"
       "linter-scss-lint"
       "atom-typescript"
-      "whitespace"
+      "language-javascript"
+      "linter-eslint"
     ]
     followSymlinks: false
     ignoredNames: [
@@ -70,20 +71,21 @@
     ]
     projectHome: "/Users/fcote/Code"
     telemetryConsent: "limited"
-    useCustomTitleBar: true
+    titleBar: "custom"
+  docblockr:
+    extend_double_slash: false
   editor:
     atomicSoftTabs: false
     autoIndentOnPaste: false
     backUpBeforeSaving: true
     confirmCheckoutHeadRevision: false
     fontFamily: "Operator Mono"
-    fontSize: 15
+    fontSize: 16
     invisibles: {}
     scrollSensitivity: 60
     showIndentGuide: true
-    softTabs: false
+    showInvisibles: true
     softWrap: true
-    tabLength: 4
     zoomFontWhenCtrlScrolling: false
   emmet: {}
   "exception-reporting":
@@ -108,6 +110,8 @@
     fontScale: 1
   "highlight-line":
     enableUnderline: true
+  "highlight-selected":
+    showInStatusBar: false
   "isotope-ui":
     fontFamily: "System Default"
     fontWeight: "Extra light / Thin"
@@ -116,13 +120,11 @@
   "lazy-motion":
     showHoverIndicator: true
   linter:
-    gutterPosition: "Left"
     ignoredLinterErrors: [
       "shellcheck"
     ]
     lintOnChange: false
     lintOnEditorFocus: false
-    lintOnFly: false
     statusBar: "Show error of the selected line"
   "linter-eslint":
     eslintPath: "/usr/local/bin/eslint"
@@ -137,6 +139,7 @@
     executablePath: "/Users/fcote/.rbenv/shims/scss-lint"
   "linter-shellcheck":
     shellcheckExecutablePath: "/usr/local/bin/shellcheck"
+  "linter-ui-default": {}
   "markdown-preview":
     useGitHubStyle: true
   "merge-conflicts":
@@ -148,14 +151,15 @@
       "find-and-replaceDecorationsZIndex": 0
       "git-diff": true
       "git-diffDecorationsZIndex": 0
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
       linter: true
       linterDecorationsZIndex: 0
       "minimap-autohide": false
       "minimap-hide": false
       "minimap-hideDecorationsZIndex": 0
     scrollAnimation: true
-  "one-dark-ui":
-    layoutMode: "Compact"
+  "one-dark-ui": {}
   pigments:
     groupPaletteColors: "by file"
     mergeColorDuplicates: true
@@ -163,6 +167,10 @@
   "project-manager":
     sortBy: "last modified"
   react: {}
+  "seti-ui":
+    compactView: true
+    fileIcons: false
+    font: "Default Atom Font"
   "status-bar": {}
   "tool-bar":
     position: "Right"
@@ -172,6 +180,8 @@
     squashDirectoryNames: true
   welcome:
     showOnStartup: false
+  whitespace:
+    ensureSingleTrailingNewline: false
 ".source.yaml":
   editor:
     tabLength: 2

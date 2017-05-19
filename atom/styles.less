@@ -18,23 +18,34 @@ atom-panel {
   font-size: 1.1em;
 }
 
-// Italic attributes for Operator Mono
-// ---------------------------------
-atom-text-editor .syntax--entity.syntax--other.syntax--attribute-name {
-  font-style: italic;
-}
+// Text editor properties
+atom-text-editor,
+atom-text-editor.editor {
 
-// Force Fira Code for ligatures
-// Operators, HTML Comments
-atom-text-editor .syntax--keyword.syntax--operator,
-atom-text-editor .syntax--storage.syntax--type.syntax--function.syntax--arrow.syntax--js,
-atom-text-editor .syntax--punctuation.syntax--definition.syntax--comment.syntax--html {
-  font-family: "Fira Code";
-  font-style: normal;
-  text-rendering: optimizeLegibility;
-}
-// Disable Ligatures on the line that the cursor is currently on
-atom-text-editor .cursor-line .syntax--keyword.syntax--operator,
-atom-text-editor .cursor-line .syntax--punctuation.syntax--definition.syntax--comment.syntax--html {
-  // text-rendering: auto;
+  // Italic attributes for Operator Mono
+  // ---------------------------------
+  .syntax--entity.syntax--other.syntax--attribute-name {
+    font-style: italic;
+  }
+
+  // Force Fira Code for ligatures
+  // Operators, HTML Comments
+  .syntax--keyword.syntax--operator,
+  .syntax--storage.syntax--type.syntax--function.syntax--arrow.syntax--js,
+  .syntax--punctuation.syntax--definition.syntax--comment.syntax--html {
+    font-family: "Fira Code";
+    font-style: normal;
+    text-rendering: optimizeLegibility;
+  }
+  // Disable Ligatures on the line that the cursor is currently on
+  .cursor-line .syntax--keyword.syntax--operator,
+  .cursor-line .syntax--punctuation.syntax--definition.syntax--comment.syntax--html {
+    // text-rendering: auto;
+  }
+
+  // Subtle Highlight-selected
+  .highlights .highlight-selected .region {
+    border-color: #666666;
+  }
+
 }

@@ -74,20 +74,19 @@ add-zsh-hook chpwd load-nvmrc
 # nvm autocompletion
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
-
 # -----------------------------------------
-# EDITOR: if ssh -> vim, else -> VSCode or atom-beta or atom
+# EDITOR: if ssh -> vim, else -> atom
 # -----------------------------------------
 if [[ -n $SSH_CONNECTION ]]; then
     export EDITOR='vim'
 else
-    if [ -x /usr/local/bin/code ]; then
-        export EDITOR='code'
-    elif [ -x /usr/local/bin/atom-beta ]; then
-        export EDITOR='atom-beta'
-    else
-        export EDITOR='atom'
-    fi
+  if [ -x /usr/local/bin/atom-beta ]; then
+    export EDITOR='atom-beta'
+  elif [ -x /usr/local/bin/atom ]; then
+    export EDITOR='atom'
+  else
+    export EDITOR='vim'
+  fi
 fi
 
 # source private stuff in a .localrc file
