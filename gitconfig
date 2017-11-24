@@ -16,3 +16,6 @@
 [pager]
   diff = "diff-so-fancy | less --tabs=4 -RFX"
   show = "diff-so-fancy | less --tabs=4 -RFX"
+[user]
+	name = François Côté
+	email = francois@francoiscote.net

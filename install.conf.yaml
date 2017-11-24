@@ -6,23 +6,10 @@
 - clean: ['~']
 
 - link:
-    ~/.atom/config.cson: atom/config.cson
-    ~/.atom/init.coffee: atom/init.coffee
-    ~/.atom/keymap.cson: atom/keymap.cson
-    ~/.atom/packages-install-list.txt: atom/packages-install-list.txt
-    ~/.atom/projects.cson: atom/projects.cson
-    ~/.atom/snippets.cson: atom/snippets.cson
-    ~/.atom/styles.less: atom/styles.less
     ~/.config/karabiner/karabiner.json: config/karabiner/karabiner.json
-    ~/.config/htop/htoprc: config/htop/htoprc
     ~/.hammerspoon/init.lua: hammerspoon/init.lua
-    ~/.oh-my-zsh/custom/fcote.zsh-theme: oh-my-zsh/custom/fcote.zsh-theme
-    ~/.oh-my-zsh/custom/git_custom.zsh: oh-my-zsh/custom/git_custom.zsh
-    ~/.oh-my-zsh/custom/plugins/fcote: oh-my-zsh/custom/plugins/fcote
     ~/.tmuxinator: tmuxinator
-    ~/.ctags: ctags
     ~/.gitconfig: gitconfig
     ~/.gitignore: gitignore
-    ~/.hyper.js: hyper.js
     ~/.tmux.conf: tmux.conf
     ~/.zshrc: zshrc
