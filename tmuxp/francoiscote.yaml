@@ -1,0 +1,12 @@
+session_name: francoiscote
+start_directory: ~/code/francoiscote.net
+windows:
+- layout: main-vertical
+  panes:
+  - null
+  window_name: console
+- layout: main-vertical
+  panes:
+  - null
+  - null
+  window_name: web

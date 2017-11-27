@@ -10,9 +10,9 @@
 [submodule "vendor/zsh-users/zsh-history-substring-search"]
 	path = vendor/zsh-users/zsh-history-substring-search
 	url = git://github.com/zsh-users/zsh-history-substring-search.git
-[submodule "vendor/olivierverdier/zsh-git-prompt"]
-	path = vendor/olivierverdier/zsh-git-prompt
-	url = git@github.com:olivierverdier/zsh-git-prompt.git
 [submodule "vendor/zsh-users/zsh-autosuggestions"]
 	path = vendor/zsh-users/zsh-autosuggestions
 	url = git@github.com:zsh-users/zsh-autosuggestions.git
+[submodule "vendor/sindresorhus/pure"]
+	path = vendor/sindresorhus/pure
+	url = git@github.com:sindresorhus/pure.git

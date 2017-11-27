@@ -1,9 +1,14 @@
-# Changing/making/removing directory
+# -----------------------------------------
+# ZSH OPTIONS
+# -----------------------------------------
 setopt auto_cd
 setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushd_minus
 
+# -----------------------------------------
+# ALIASES
+# -----------------------------------------
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
@@ -33,3 +38,16 @@ alias la='ls -lAh'
 # Push and pop directories on directory stack
 alias pu='pushd'
 alias po='popd'
+
+# -----------------------------------------
+# SHORTCUT COMMANDS
+# -----------------------------------------
+# c -> ~/Code/
+c() { cd ~/code/$1; }
+_c() { _files -W ~/code -/; }
+compdef _c c
+
+# h -> ~/
+h() { cd ~/$1; }
+_h() { _files -W ~/ -/; }
+compdef _h h

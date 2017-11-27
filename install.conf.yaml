@@ -7,8 +7,9 @@
 
 - link:
     ~/.hammerspoon/init.lua: hammerspoon/init.lua
-    ~/.tmuxinator: tmuxinator
+    ~/.tmuxp: tmuxp
     ~/.gitconfig: gitconfig
     ~/.gitignore: gitignore
     ~/.tmux.conf: tmux.conf
     ~/.zshrc: zshrc
+    ~/.zfunctions: zfunctions

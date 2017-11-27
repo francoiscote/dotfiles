@@ -1,0 +1,11 @@
+session_name: fun
+start_directory: ~/code/
+windows:
+- layout: main-vertical
+  panes:
+  - null
+  window_name: console
+- layout: main-vertical
+  panes:
+  - null
+  window_name: scratch
