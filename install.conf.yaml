@@ -6,7 +6,6 @@
 - clean: ['~']
 
 - link:
-    ~/.config/karabiner/karabiner.json: config/karabiner/karabiner.json
     ~/.hammerspoon/init.lua: hammerspoon/init.lua
     ~/.tmuxinator: tmuxinator
     ~/.gitconfig: gitconfig

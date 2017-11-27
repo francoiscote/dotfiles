@@ -4,7 +4,7 @@ k = hs.hotkey.modal.new({}, "F17")
 -- Move Windows
 -------------------------------------------------------------------------------
 -- Mission Control
-k:bind({}, 'up', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, 'up') end)
+k:bind({}, 'up', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, 'F13') end)
 
 -- Move to Left Screen
 k:bind({}, 'left', nil, function() 
@@ -120,12 +120,12 @@ end
 -- Single keybinding for app launch
 singleapps = {
   {'u', 'SourceTree'},
-  {'j', 'Atom'},
+  {'j', 'Visual Studio Code'},
   {'n', 'iTerm'},
   {'i', 'FirefoxDeveloperEdition'},
   {'k', 'Google Chrome'},
   {'o', 'Slack'},
-  {'l', 'Wmail'},
+  {'l', 'Wavebox'},
   {'.', 'Wunderlist'},
   {'h', 'Finder'},
   {'p', 'Spotify'},
