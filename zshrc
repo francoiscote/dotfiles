@@ -70,6 +70,30 @@ alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pa
 alias reload!="source ~/.zshrc";
 
 # -----------------------------------------
+# LOAD NVM
+# -----------------------------------------
+export NVM_DIR=~/.nvm
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# nvm autocompletion
+[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+
+# auto run `nvm use` when .nvmrc is present
+autoload -U add-zsh-hook
+load-nvmrc() {
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    nvm use
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+
+# -----------------------------------------
+# TMUXP Completions
+# -----------------------------------------
+if which tmuxp > /dev/null; then eval "$(_TMUXP_COMPLETE=source tmuxp)"; fi
+
+
+# -----------------------------------------
 # PATHS
 # -----------------------------------------
 # Zsh
