@@ -29,14 +29,22 @@ k:bind({}, '0', nil, function()
     k.triggered = true
 end)
 
--- 9 - Browser
+-- 9 - "Browser" Size
 k:bind({}, '9', nil, function() 
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
     local max = screen:frame()
-    
-    f.w = max.w * 0.8
+    local screenratio = max.w / max.h
+    local widthratio = 1
+
+    if screenratio > 2 then
+      widthratio = 0.5
+    else
+      widthratio = 0.8
+    end
+
+    f.w = max.w * widthratio
     f.y = max.y
     f.h = max.h
     win:setFrame(f)
@@ -44,29 +52,37 @@ k:bind({}, '9', nil, function()
     k.triggered = true
 end)
 
--- 8 - Email
+-- 8 - "Email" Size
 k:bind({}, '8', nil, function() 
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
     local max = screen:frame()
+    local screenratio = max.w / max.h
+    local widthratio = 1
+
+    if screenratio > 2 then
+      widthratio = 0.5
+    else
+      widthratio = 0.8
+    end
     
-    f.w = max.w * 0.8
+    f.w = max.w * widthratio
     f.h = max.h * 0.8
     win:setFrame(f)
     win:centerOnScreen(nil, true)
     k.triggered = true
 end)
 
--- 7 - Finder
+-- 7 - "Finder" Size
 k:bind({}, '7', nil, function() 
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
     local max = screen:frame()
     
-    f.w = max.w * 0.6
     f.h = max.h * 0.6
+    f.w = f.h * 1.5
     win:setFrame(f)
     win:centerOnScreen(nil, true)
     k.triggered = true
@@ -119,17 +135,17 @@ end
 
 -- Single keybinding for app launch
 singleapps = {
-  {'u', 'SourceTree'},
+  {'u', 'gitup'},
   {'j', 'Visual Studio Code'},
   {'n', 'iTerm'},
-  {'i', 'FirefoxDeveloperEdition'},
+  {'i', 'Discord'},
   {'k', 'Google Chrome'},
   {'o', 'Slack'},
   {'l', 'Wavebox'},
   {'.', 'Wunderlist'},
   {'h', 'Finder'},
   {'p', 'Spotify'},
-  {';', 'Fantastical 2'}
+  {';', 'Sublime Text'}
 }
 
 for i, app in ipairs(singleapps) do
