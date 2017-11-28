@@ -26,6 +26,10 @@ autoload -U compaudit compinit
 autoload -U promptinit; promptinit
 prompt pure 
 
+# Right Prompt
+RPROMPT=$(node_version) # see lib/nvm.zsh for that function
+
+
 # -----------------------------------------
 # VENDORS
 # -----------------------------------------
