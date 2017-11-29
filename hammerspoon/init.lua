@@ -124,7 +124,7 @@ ofun = function()
   hs.reload()
   hs.notify.new({title="Hammerspoon", informativeText="Config Reloaded"}):send()
   k.triggered = true
-end
+endo
 k:bind({}, 'r', nil, ofun)
 
 -- Launch Apps
@@ -140,7 +140,7 @@ singleapps = {
   {'n', 'iTerm'},
   {'i', 'Discord'},
   {'k', 'Google Chrome'},
-  {'o', 'Slack'},
+  {'o', 'Discord'},
   {'l', 'Wavebox'},
   {'.', 'Wunderlist'},
   {'h', 'Finder'},
