@@ -29,8 +29,39 @@ k:bind({}, '0', nil, function()
     k.triggered = true
 end)
 
--- 9 - "Browser" Size
+-- 9 - Right
 k:bind({}, '9', nil, function() 
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x + (max.w / 2)
+  f.y = max.y
+  f.w = max.w / 2
+  f.h = max.h
+  win:setFrame(f)
+  k.triggered = true
+end)
+
+-- 8 - Left
+k:bind({}, '8', nil, function() 
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x
+  f.y = max.y
+  f.w = max.w / 2
+  f.h = max.h
+  win:setFrame(f)
+  k.triggered = true
+end)
+
+
+-- 7 - "Browser" Size
+k:bind({}, '7', nil, function() 
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -52,8 +83,8 @@ k:bind({}, '9', nil, function()
     k.triggered = true
 end)
 
--- 8 - "Email" Size
-k:bind({}, '8', nil, function() 
+-- 6 - "Email" Size
+k:bind({}, '6', nil, function() 
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -62,7 +93,7 @@ k:bind({}, '8', nil, function()
     local widthratio = 1
 
     if screenratio > 2 then
-      widthratio = 0.5
+      widthratio = 0.6
     else
       widthratio = 0.8
     end
@@ -74,8 +105,8 @@ k:bind({}, '8', nil, function()
     k.triggered = true
 end)
 
--- 7 - "Finder" Size
-k:bind({}, '7', nil, function() 
+-- 5 - "Finder" Size
+k:bind({}, '5', nil, function() 
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -87,37 +118,6 @@ k:bind({}, '7', nil, function()
     win:centerOnScreen(nil, true)
     k.triggered = true
 end)
-
--- 6 - Right
-k:bind({}, '6', nil, function() 
-  local win = hs.window.focusedWindow()
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  f.x = max.x + (max.w / 2)
-  f.y = max.y
-  f.w = max.w / 2
-  f.h = max.h
-  win:setFrame(f)
-  k.triggered = true
-end)
-
--- 5 - Left
-k:bind({}, '5', nil, function() 
-  local win = hs.window.focusedWindow()
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  f.x = max.x
-  f.y = max.y
-  f.w = max.w / 2
-  f.h = max.h
-  win:setFrame(f)
-  k.triggered = true
-end)
-
 
 -- Shortcut to reload config
 reload = function()
