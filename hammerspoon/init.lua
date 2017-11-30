@@ -120,12 +120,12 @@ end)
 
 
 -- Shortcut to reload config
-ofun = function()
+reload = function()
   hs.reload()
   hs.notify.new({title="Hammerspoon", informativeText="Config Reloaded"}):send()
   k.triggered = true
-endo
-k:bind({}, 'r', nil, ofun)
+end
+k:bind({}, 'r', nil, reload)
 
 -- Launch Apps
 launch = function(appname)
@@ -141,7 +141,7 @@ singleapps = {
   {'i', 'Discord'},
   {'k', 'Google Chrome'},
   {'o', 'Discord'},
-  {'l', 'Wavebox'},
+  {'l', 'Franz'},
   {'.', 'Wunderlist'},
   {'h', 'Finder'},
   {'p', 'Spotify'},
