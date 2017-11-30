@@ -1,0 +1,13 @@
+session_name: winktwitch
+start_directory: ~/code/wink-twitch
+windows:
+- window_name: console
+  layout: main-vertical
+  panes:
+  - null
+  - null
+- window_name: other
+  layout: main-vertical
+  panes:
+  - null
+  - null
