@@ -24,19 +24,7 @@ setopt interactivecomments
 autoload -U compaudit compinit
 
 autoload -U promptinit; promptinit
-prompt pure 
-
-# Right Prompt
-node_version() {
-  [[ -f "$NVM_DIR/nvm.sh" ]] || return
-  local nvm_prompt
-  nvm_prompt=$(node -v 2>/dev/null)
-  [[ "${nvm_prompt}x" == "x" ]] && return
-  nvm_prompt=${nvm_prompt:1}
-  NODE_ICON=$'\u2B22' # ⬢
-  echo "%F{magenta}[$NODE_ICON $nvm_prompt]%F{reset}"
-}
-RPROMPT=$(node_version) # see lib/nvm.zsh for that function
+prompt pure
 
 # -----------------------------------------
 # VENDORS
@@ -100,9 +88,33 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 
 # -----------------------------------------
+# NPM RUN Completions
+# -----------------------------------------
+source $DOTFILES/vendor/akoenig/npm-run/npm-run.plugin.zsh
+
+# -----------------------------------------
 # TMUXP Completions
 # -----------------------------------------
 if which tmuxp > /dev/null; then eval "$(_TMUXP_COMPLETE=source tmuxp)"; fi
+
+# -----------------------------------------
+# RIGHT PROMPT
+# -----------------------------------------
+prompt_nvm() {
+  local nvm_prompt
+  if type nvm >/dev/null 2>&1; then
+    nvm_prompt=$(nvm current 2>/dev/null)
+    [[ "${nvm_prompt}x" == "x" ]] && return
+  elif type node >/dev/null 2>&1; then
+    nvm_prompt="$(node --version)"
+  else
+    return
+  fi
+  nvm_prompt=${nvm_prompt}
+  NODE_ICON=$'\u2B22' # ⬢
+  echo "%F{magenta}[$NODE_ICON $nvm_prompt]%F{reset}"
+}
+RPROMPT='$(prompt_nvm)'
 
 
 # -----------------------------------------

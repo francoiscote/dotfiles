@@ -1,3 +1,9 @@
 Window Management:
-     ☐ fix hammerspoon to save and launch my twitch setup
-     ✔ fix `.zshrc:30 command not found: node_version @done(17-11-29 13:13)
+  ☐ fix hammerspoon to save and launch my twitch setup
+  ✔ fix `.zshrc:30 command not found: node_version @done(17-11-29 13:13)
+
+Prompt:
+  ✔ fix nvm version in right prompt @done(17-12-10 09:30)
+
+VSCode Settings:
+  ☐ dim gitignored files in the explorer tree

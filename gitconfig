@@ -5,7 +5,7 @@
 [color]
 	ui = auto
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = /Users/fcote/.gitignore
 	editor = vi
 [apply]
 	whitespace = nowarn
@@ -17,5 +17,13 @@
   diff = "diff-so-fancy | less --tabs=4 -RFX"
   show = "diff-so-fancy | less --tabs=4 -RFX"
 [user]
-	name = François Côté
+	name = François Côté
 	email = francois@francoiscote.net
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/fcote/.stCommitMsg
