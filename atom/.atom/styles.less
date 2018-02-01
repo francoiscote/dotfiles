@@ -1,0 +1,57 @@
+/*
+ * Your Stylesheet
+ *
+ * This stylesheet is loaded when Atom starts up and is reloaded automatically
+ * when it is changed.
+ *
+ * If you are unfamiliar with LESS, you can read more about it here:
+ * http://www.lesscss.org
+ */
+
+// Force use Operator Mono all of the Workspace
+atom-workspace {
+  font-family: "Operator Mono SSm Lig";
+}
+
+// Bigger font in tree-view, panels and some popups.
+.tree-view,
+.tool-panel,
+.modal {
+  // font-size: 1.1em;
+}
+
+.tree-view {
+  // font-size: 1.2em;
+}
+
+// Tree View: smaller line-height in file list
+.list-group li:not(.list-nested-item), .list-tree li:not(.list-nested-item), .list-group li.list-nested-item > .list-item, .list-tree li.list-nested-item > .list-item {
+  line-height: 1.8em;
+}
+
+// Tree View: folders in bold
+.list-group li:not(.list-nested-item), .list-tree li:not(.list-nested-item), .list-group li.list-nested-item > .list-item, .list-tree li.list-nested-item > .list-item {
+  font-weight: 200;
+}
+.tree-view .directory > .list-item > span.name {
+  font-weight: bold;
+}
+
+// Italic attributes for Operator Mono
+// ---------------------------------
+atom-text-editor .syntax--entity.syntax--other.syntax--attribute-name {
+  font-style: italic;
+}
+
+// Hightlight Selected
+// Make it more subtle, prettier.
+atom-text-editor {
+  // Box
+  .highlights .highlight-selected .region {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  // Background
+  .highlights .highlight-selected.background .region {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}

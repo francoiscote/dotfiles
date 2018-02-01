@@ -1,0 +1,33 @@
+#!/bin/sh
+#
+# Quick shortcut to an editor.
+#
+# This means that as I travel back and forth between editors, hey, I don't have
+# to re-learn any arcane commands. Neat.
+#
+# USAGE:
+#
+#   $ e
+#   # => opens the current directory in your code editor
+#
+#   $ e .
+#   $ e /usr/local
+#   # => opens the specified directory in your code editor
+
+if [[ -n $SSH_CONNECTION ]]; then
+    export CODEEDITOR='vim'
+else
+    if [ -x /usr/bin/atom-beta ]; then
+        export CODEEDITOR='atom-beta'
+    elif [ -x /usr/bin/atom ]; then
+        export CODEEDITOR='atom'
+    else
+        export CODEEDITOR='vim'
+    fi
+fi
+
+if [ "$1" = "" ] ; then
+  exec $CODEEDITOR .
+else
+  exec $CODEEDITOR "$1"
+fi

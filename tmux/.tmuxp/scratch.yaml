@@ -1,0 +1,12 @@
+session_name: scratch
+start_directory: /home/fcote/
+windows:
+- window_name: scratch1
+  focus: true
+  layout: main-horizontal
+  panes:
+  - pane
+- window_name: scratch2
+  layout: main-horizontal
+  panes:
+  - pane

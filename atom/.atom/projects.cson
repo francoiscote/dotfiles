@@ -1,0 +1,50 @@
+[
+  {
+    title: "dotfiles"
+    group: "Utils"
+    paths: [
+      "/home/fcote/.dotfiles"
+    ]
+    icon: "icon-tools"
+  }
+  {
+    title: "Notes"
+    group: "Utils"
+    paths: [
+      "/home/fcote/Google Drive/Notes"
+    ]
+    icon: "icon-file-text"
+  }
+  {
+    title: "Scratch"
+    group: "Utils"
+    paths: [
+      "/home/fcote/Code/scratch.js"
+    ]
+    icon: "icon-file-text"
+  }
+  {
+    title: "Overhead"
+    group: "Personal"
+    paths: [
+      "/home/fcote/Code/overhead"
+    ]
+    icon: "icon-beaker"
+  }
+  {
+    title: "Overhead API"
+    group: "Personal"
+    paths: [
+      "/home/fcote/Code/overhead-api"
+    ]
+    icon: "icon-beaker"
+  }
+  {
+    title: "Wink Twitch"
+    group: "Personal"
+    paths: [
+      "/home/fcote/Code/wink-twitch"
+    ]
+    icon: "icon-beaker"
+  }
+]

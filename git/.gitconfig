@@ -1,0 +1,25 @@
+[user]
+	name = "François Côté"
+	email = francois@francoiscote.net
+	useConfigOnly = true
+[alias]
+	co = checkout
+	count = !git shortlog -sn
+	banane = fetch --prune
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = true
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore
+[apply]
+	whitespace = nowarn
+[help]
+	autocorrect = 1
+[push]
+	default = simple
+[pager]
+  diff = "diff-so-fancy | less --tabs=4 -RFX"
+  show = "diff-so-fancy | less --tabs=4 -RFX"

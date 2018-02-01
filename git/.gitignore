@@ -1,0 +1,23 @@
+# OSX
+# -----------------------------------
+.DS_Store
+
+
+# Editors
+# -----------------------------------
+.idea
+*.sublime-workspace
+.tags
+.tern-project
+.vscode
+*.code-workspace
+
+
+# Modules and Temporary files
+# -----------------------------------
+node_modules
+.tmp
+.sass-cache
+.nvmrc
+.phpenv-version
+.tmuxp.yaml
