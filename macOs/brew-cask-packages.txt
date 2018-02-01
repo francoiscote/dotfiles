@@ -1,0 +1,17 @@
+1password
+alfred
+atom
+dash
+discord
+dropbox
+firefox-developer-edition
+google-drive-file-stream
+hammerspoon
+hyper
+istat-menus
+iterm2
+obs
+sketch
+slack
+spotify
+wavebox

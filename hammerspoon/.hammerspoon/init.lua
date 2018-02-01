@@ -1,18 +1,21 @@
 -- A global variable for the Hyper Mode
 k = hs.hotkey.modal.new({}, "F17")
-
+log = hs.logger.new('mymodule','debug')
 -- Move Windows
 -------------------------------------------------------------------------------
 -- Mission Control
-k:bind({}, 'up', nil, function() hs.eventtap.keyStroke({"cmd","alt","ctrl"}, 'F13') end)
+k:bind({}, 'up', nil, function()
+  hs.eventtap.keyStroke({"cmd","alt","ctrl"}, 'F12')
+end)
 
 -- Move to Left Screen
-k:bind({}, 'left', nil, function() 
+k:bind({}, 'left', nil, function()
     local win = hs.window.focusedWindow()
     win:moveOneScreenWest(false, true);
 end)
+
 -- Move to Right Screen
-k:bind({}, 'right', nil, function() 
+k:bind({}, 'right', nil, function()
     local win = hs.window.focusedWindow()
     win:moveOneScreenEast(false, true);
 end)
@@ -23,14 +26,14 @@ end)
 hs.window.animationDuration = 0
 
 -- 0 - Maximize
-k:bind({}, '0', nil, function() 
+k:bind({}, '0', nil, function()
     local win = hs.window.focusedWindow()
     win:maximize()
     k.triggered = true
 end)
 
 -- 9 - Right
-k:bind({}, '9', nil, function() 
+k:bind({}, '9', nil, function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -45,7 +48,7 @@ k:bind({}, '9', nil, function()
 end)
 
 -- 8 - Left
-k:bind({}, '8', nil, function() 
+k:bind({}, '8', nil, function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -61,7 +64,7 @@ end)
 
 
 -- 7 - "Browser" Size
-k:bind({}, '7', nil, function() 
+k:bind({}, '7', nil, function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -84,7 +87,7 @@ k:bind({}, '7', nil, function()
 end)
 
 -- 6 - "Email" Size
-k:bind({}, '6', nil, function() 
+k:bind({}, '6', nil, function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -97,7 +100,7 @@ k:bind({}, '6', nil, function()
     else
       widthratio = 0.8
     end
-    
+
     f.w = max.w * widthratio
     f.h = max.h * 0.8
     win:setFrame(f)
@@ -106,12 +109,12 @@ k:bind({}, '6', nil, function()
 end)
 
 -- 5 - "Finder" Size
-k:bind({}, '5', nil, function() 
+k:bind({}, '5', nil, function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
     local max = screen:frame()
-    
+
     f.h = max.h * 0.6
     f.w = f.h * 1.5
     win:setFrame(f)
@@ -136,16 +139,15 @@ end
 -- Single keybinding for app launch
 singleapps = {
   {'u', 'gitup'},
-  {'j', 'Visual Studio Code'},
-  {'n', 'iTerm'},
+  {'j', 'Atom'},
+  {'n', 'Wavebox'},
   {'i', 'Discord'},
   {'k', 'Google Chrome'},
   {'o', 'Discord'},
-  {'l', 'Franz'},
+  {'l', 'Hyper'},
   {'.', 'Wunderlist'},
   {'h', 'Finder'},
-  {'p', 'Spotify'},
-  {';', 'Sublime Text'}
+  {'p', 'Spotify'}
 }
 
 for i, app in ipairs(singleapps) do

@@ -15,7 +15,7 @@ Create the symbolic links for each component you need.
 
 ```
 $ cd ~/.dotfiles
-$ stow macos
+$ stow git
 $ stow tmux
 $ stow ...
 $ sudo chmod +x ~/.scripts/*

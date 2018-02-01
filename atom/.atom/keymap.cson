@@ -37,14 +37,6 @@
   'ctrl-alt-shift-cmd-l': 'pane:split-right-moving-current-tab'
   'ctrl-alt-shift-cmd-k': 'pane:split-up-moving-current-tab'
 
-'atom-text-editor':
-  # Linux, force Alt+Arrows to go to begining and end of lines.
-  # Mimics the Cmd+Arrows of macOS
-  'alt-right': 'editor:move-to-end-of-screen-line'
-  'alt-shift-right': 'editor:select-to-end-of-line'
-  'alt-left': 'editor:move-to-first-character-of-line'
-  'alt-shift-left': 'editor:select-to-first-character-of-line'
-
 # Force Emmet on Ctrl-e for jsx files
 'atom-text-editor[data-grammar="source js jsx"]:not([mini])':
   'ctrl-e': 'emmet:expand-abbreviation-with-tab'

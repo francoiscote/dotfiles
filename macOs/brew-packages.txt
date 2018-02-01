@@ -1,0 +1,7 @@
+antigen
+git
+neofetch
+stow
+tmux
+vim
+zsh
