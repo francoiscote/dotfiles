@@ -1,6 +1,16 @@
 -- A global variable for the Hyper Mode
 k = hs.hotkey.modal.new({}, "F17")
-log = hs.logger.new('mymodule','debug')
+log = hs.logger.new('WM','debug')
+
+-- Tools
+-------------------------------------------------------------------------------
+-- Inspect Focused Window
+k:bind({"shift"}, 'i', nil, function()
+  local win = hs.window.focusedWindow()
+  log.d("Size", win:size())
+  log.d("Frame", win:frame())
+end)
+
 -- Move Windows
 -------------------------------------------------------------------------------
 -- Mission Control
@@ -8,22 +18,41 @@ k:bind({}, 'up', nil, function()
   hs.eventtap.keyStroke({"cmd","alt","ctrl"}, 'F12')
 end)
 
--- Move to Left Screen
+-- Go To Previous Space
 k:bind({}, 'left', nil, function()
-    local win = hs.window.focusedWindow()
-    win:moveOneScreenWest(false, true);
+  hs.eventtap.keyStroke({"ctrl"}, 'left')
 end)
 
--- Move to Right Screen
 k:bind({}, 'right', nil, function()
-    local win = hs.window.focusedWindow()
-    win:moveOneScreenEast(false, true);
+  hs.eventtap.keyStroke({"ctrl"}, 'right')
 end)
-
 
 -- Resize Windows
 -------------------------------------------------------------------------------
 hs.window.animationDuration = 0
+
+-- 1 - Work Setup
+k:bind({}, '1', nil, function()
+  local windowLayout = {
+	    {"Atom", nil, nil, {x=0, y=0, w=0.7, h=1}, nil, nil},
+	    {"Google Chrome", nil, nil, {x=0, y=0, w=0.7, h=1}, nil, nil},
+	    {"Hyper", nil, nil, {x=0.7, y=0, w=0.3, h=1}, nil, nil },
+	}
+    hs.layout.apply(windowLayout)
+end)
+
+-- 2 - Twitch Setup
+k:bind({}, '2', nil, function()
+  local windowLayout = {
+	    {"Google Chrome", "Twitch", nil, nil, {x=0, y=0, w=914, h=615}, nil},
+      {"OBS", nil, nil, nil, {x=0, y=637, w=914, h=803}, nil},
+	    {"Atom", nil, nil, nil, {x=915, y=0, w=1724, h=1418}, nil},
+      {"Google Chrome", "francoiscote", nil, nil, {x=915, y=0, w=1724, h=1418}, nil},
+	    {"Hyper", nil, nil, nil, {x=2640, y=0, w=800, h=962}, nil},
+      {"Google Chrome", "Alert Box Widget", nil, nil, {x=2640, y=985, w=800, h=455}, nil},
+	}
+    hs.layout.apply(windowLayout, string.find)
+end)
 
 -- 0 - Maximize
 k:bind({}, '0', nil, function()
@@ -138,14 +167,14 @@ end
 
 -- Single keybinding for app launch
 singleapps = {
-  {'u', 'gitup'},
+  {'u', 'Wunderlist'},
   {'j', 'Atom'},
-  {'n', 'Wavebox'},
+  {'n', 'Sourcetree'},
   {'i', 'Discord'},
   {'k', 'Google Chrome'},
-  {'o', 'Discord'},
+  {'o', 'Slack'},
   {'l', 'Hyper'},
-  {'.', 'Wunderlist'},
+  {';', 'Wavebox'},
   {'h', 'Finder'},
   {'p', 'Spotify'}
 }

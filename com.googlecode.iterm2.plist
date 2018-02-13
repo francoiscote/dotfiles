@@ -292,9 +292,9 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>958 672 904 250 0 0 3440 1418 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>1336 969 918 401 0 0 3440 1418 </string>
+	<string>1336 897 796 473 0 0 3440 1418 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1720 0 1720 1418 0 0 3440 1418 </string>
+	<string>1720 917 730 501 0 0 3440 1418 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>1404 186 730 451 0 0 3440 1418 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -993,6 +993,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/fcote/.dotfiles</string>
+	<key>PromptOnQuit</key>
+	<false/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
@@ -1002,7 +1004,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-02-01T03:48:28Z</date>
+	<date>2018-02-02T14:20:37Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowBookmarkName</key>

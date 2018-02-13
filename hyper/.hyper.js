@@ -36,7 +36,16 @@ module.exports = {
     css: '',
 
     // custom css to embed in the terminal window
-    termCSS: '',
+    termCSS: `
+      x-screen a {
+        color: #E5C07B;
+        text-decoration: underline;
+      }
+
+      x-screen a.hover {
+        text-decoration: none;
+      }
+    `,
 
     // set to `true` (without backticks) if you're using a Linux setup that doesn't show native menus
     // default: `false` on Linux, `true` on Windows (ignored on macOS)
@@ -115,7 +124,9 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: [],
+  plugins: [
+    'hyperlinks',
+  ],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here

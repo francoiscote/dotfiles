@@ -50,7 +50,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 
 # the lazy load is too slow on macOS right now
 # export NVM_LAZY_LOAD=true
-antigen bundle lukechilds/zsh-nvm
+# antigen bundle lukechilds/zsh-nvm
 
 antigen apply
 
@@ -106,23 +106,6 @@ alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pa
 
 # Source my ZSH
 alias reload!="source ~/.zshrc";
-
-# -----------------------------------------
-# NVM
-# -----------------------------------------
-# nvm source
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s $NVM_DIR/bash_completion ] && \. "$NVM_DIR/bash_completion" # This loads bash_completion
-
-
-# auto run `nvm use` when .nvmrc is present
-autoload -U add-zsh-hook
-load-nvmrc() {
-  if [[ -f .nvmrc && -r .nvmrc ]]; then
-    nvm use
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
 
 # -----------------------------------------
 # PYENV
