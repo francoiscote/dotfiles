@@ -65,11 +65,13 @@ export PATH="$HOME/.scripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 # /usr/bin
 export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
+# python2.7 execs
+export PATH="$HOME/Library/Python/2.7/bin:$PATH"
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 # ruby
-export PATH="/home/fcote/.gem/ruby/2.4.0/bin:$PATH"
+export PATH="$HOME/.gem/ruby/2.4.0/bin:$PATH"
 # Man Paths
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
