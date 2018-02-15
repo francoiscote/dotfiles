@@ -167,14 +167,14 @@ end
 
 -- Single keybinding for app launch
 singleapps = {
-  {'u', 'Wunderlist'},
+  {'u', 'Todoist'},
   {'j', 'Atom'},
   {'n', 'Sourcetree'},
   {'i', 'Discord'},
   {'k', 'Google Chrome'},
   {'o', 'Slack'},
   {'l', 'Hyper'},
-  {';', 'Wavebox'},
+  {';', 'Boxy'},
   {'h', 'Finder'},
   {'p', 'Spotify'}
 }
