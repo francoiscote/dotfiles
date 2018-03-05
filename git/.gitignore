@@ -21,3 +21,4 @@ node_modules
 .nvmrc
 .phpenv-version
 .tmuxp.yaml
+yarn-error.log

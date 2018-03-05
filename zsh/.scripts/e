@@ -17,9 +17,9 @@
 if [[ -n $SSH_CONNECTION ]]; then
     export CODEEDITOR='vim'
 else
-    if [ -x /usr/bin/atom-beta ]; then
+    if [ -x /usr/local/bin/atom-beta ]; then
         export CODEEDITOR='atom-beta'
-    elif [ -x /usr/bin/atom ]; then
+    elif [ -x /usr/local/bin/atom ]; then
         export CODEEDITOR='atom'
     else
         export CODEEDITOR='vim'
