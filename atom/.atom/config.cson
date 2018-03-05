@@ -45,7 +45,6 @@
   "bracket-matcher": {}
   core:
     autoHideMenuBar: true
-    automaticallyUpdate: false
     customFileTypes:
       "source.ini": [
         ".buckconfig"
@@ -58,7 +57,6 @@
       "source.python": [
         "BUCK"
       ]
-    destroyEmptyPanes: false
     disabledPackages: [
       "php-debug"
       "pigments"
@@ -66,6 +64,7 @@
       "atom-typescript"
       "minimap-linter"
       "linter-ui-default"
+      "language-gfm"
     ]
     followSymlinks: false
     ignoredNames: [
