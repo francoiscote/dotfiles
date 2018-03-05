@@ -31,25 +31,45 @@ end)
 -------------------------------------------------------------------------------
 hs.window.animationDuration = 0
 
--- 1 - Work Setup
+-- 1 - Work Setup - Main Editor Left
 k:bind({}, '1', nil, function()
   local windowLayout = {
-	    {"Atom", nil, nil, {x=0, y=0, w=0.7, h=1}, nil, nil},
-	    {"Google Chrome", nil, nil, {x=0, y=0, w=0.7, h=1}, nil, nil},
-	    {"Hyper", nil, nil, {x=0.7, y=0, w=0.3, h=1}, nil, nil },
+      {"iTerm2", nil, nil, {x=0, y=0, w=0.3, h=1}, nil, nil },
+      {"Firefox Developer Edition", nil, nil, {x=0.3, y=0, w=0.7, h=1}, nil, nil},
+	    {"Atom", nil, nil, {x=0.3, y=0, w=0.7, h=1}, nil, nil}
 	}
-    hs.layout.apply(windowLayout)
+  hs.layout.apply(windowLayout)
 end)
 
--- 2 - Twitch Setup
+-- 2 - Work Setup - 50/50 split, terminal in the center
 k:bind({}, '2', nil, function()
   local windowLayout = {
-	    {"Google Chrome", "Twitch", nil, nil, {x=0, y=0, w=914, h=615}, nil},
+    {"iTerm2", nil, nil, {x=0.2, y=0.1, w=0.6, h=0.8}, nil, nil },
+    {"Firefox Developer Edition", nil, nil, {x=0, y=0, w=0.5, h=1}, nil, nil},
+    {"Atom", nil, nil, {x=0.5, y=0, w=0.5, h=1}, nil, nil},
+  }
+  hs.layout.apply(windowLayout, string.find)
+end)
+
+-- 3 - Work Setup - 1/3 split, Browser + Editor + Terminal
+k:bind({}, '3', nil, function()
+  local windowLayout = {
+    {"iTerm2", nil, nil, {x=0, y=0, w=0.2, h=1}, nil, nil },
+    {"Firefox Developer Edition", nil, nil, {x=0.2, y=0, w=0.4, h=1}, nil, nil},
+    {"Atom", nil, nil, {x=0.6, y=0, w=0.4, h=1}, nil, nil},
+  }
+  hs.layout.apply(windowLayout, string.find)
+end)
+
+-- 4 - Twitch Setup
+k:bind({}, '4', nil, function()
+  local windowLayout = {
+	    {"Firefox Developer Edition", "Twitch", nil, nil, {x=0, y=0, w=914, h=615}, nil},
       {"OBS", nil, nil, nil, {x=0, y=637, w=914, h=803}, nil},
 	    {"Atom", nil, nil, nil, {x=915, y=0, w=1724, h=1418}, nil},
-      {"Google Chrome", "francoiscote", nil, nil, {x=915, y=0, w=1724, h=1418}, nil},
-	    {"Hyper", nil, nil, nil, {x=2640, y=0, w=800, h=962}, nil},
-      {"Google Chrome", "Alert Box Widget", nil, nil, {x=2640, y=985, w=800, h=455}, nil},
+      {"Firefox Developer Edition", "francoiscote", nil, nil, {x=915, y=0, w=1724, h=1418}, nil},
+	    {"iTerm2", nil, nil, nil, {x=2640, y=0, w=800, h=962}, nil},
+      {"Firefox Developer Edition", "Alert Box Widget", nil, nil, {x=2640, y=985, w=800, h=455}, nil},
 	}
     hs.layout.apply(windowLayout, string.find)
 end)
@@ -167,13 +187,13 @@ end
 
 -- Single keybinding for app launch
 singleapps = {
-  {'u', 'Todoist'},
-  {'j', 'Atom'},
+  {'u', 'Wunderlist'},
+  {'j', 'Firefox Developer Edition'},
   {'n', 'Sourcetree'},
-  {'i', 'Discord'},
-  {'k', 'Google Chrome'},
-  {'o', 'Slack'},
-  {'l', 'Hyper'},
+  {'i', 'Slack'},
+  {'k', 'Atom'},
+  {'o', 'Discord'},
+  {'l', 'iTerm'},
   {';', 'Boxy'},
   {'h', 'Finder'},
   {'p', 'Spotify'}
