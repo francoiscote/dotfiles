@@ -72,9 +72,10 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 # ruby
 export PATH="$HOME/.gem/ruby/2.4.0/bin:$PATH"
+# OpenSSL fix for macOS
+export PATH="/usr/local/opt/openssl/bin:$PATH"
 # Man Paths
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
-
 
 # -----------------------------------------
 # SOURCE LIB/*.ZSH FILES
@@ -100,33 +101,6 @@ _h() { _files -W ~/ -/; }
 compdef _h h
 
 # -----------------------------------------
-# ALIASES
-# -----------------------------------------
-
-# Pipe my public key to my clipboard.
-alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
-
-# Source my ZSH
-alias reload!="source ~/.zshrc";
-
-# -----------------------------------------
-# PYENV
-# -----------------------------------------
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-
-# -----------------------------------------
-# PHPBREW
-# -----------------------------------------
-[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
-
-# -----------------------------------------
-# RBENV
-# -----------------------------------------
-# eval "$(rbenv init -)"
-
-# -----------------------------------------
 # RIGHT PROMPT
 # -----------------------------------------
 prompt_nvm() {
@@ -143,7 +117,20 @@ prompt_nvm() {
   NODE_ICON=$'\u2B22' # ⬢
   echo "%F{magenta}[$NODE_ICON $nvm_prompt]%F{reset}"
 }
-RPROMPT='$(prompt_nvm)'
+
+prompt_pyenv() {
+  local python_prompt
+  if type python >/dev/null 2>&1; then
+    python_version=$(python --version 2>/dev/null)
+  else
+    return
+  fi
+  python_prompt=${python_version}
+  NODE_ICON=$'\u2B22' # ⬢
+  echo "%F{yellow}[$NODE_ICON $python_prompt]%F{reset}"
+}
+
+RPROMPT='$(prompt_nvm)$(prompt_pyenv)'
 
 # source private stuff in a .localrc file
 if [[ -f $HOME/.localrc ]]; then

@@ -1,6 +1,4 @@
 # -----------------------------------------
-# PYENV
+# PHPBREW
 # -----------------------------------------
-if which pyenv > /dev/null;  then
-  eval "$(pyenv init -)"
-fi
+[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
