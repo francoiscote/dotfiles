@@ -7,7 +7,7 @@ These dotfiles are currently used on my [hackintosh setup](https://gist.github.c
 ## Installation
 ```
 $ brew install stow
-$ git clone git@github.com:francoiscote/dotfiles-macos.git ~/.dotfiles
+$ git clone --recurse-submodules git@github.com:francoiscote/dotfiles-macos.git ~/.dotfiles
 ```
 
 ## Usage
