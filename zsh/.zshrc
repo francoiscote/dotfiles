@@ -114,7 +114,7 @@ prompt_nvm() {
     return
   fi
   nvm_prompt=${nvm_prompt}
-  NODE_ICON=$'\u2B22' # ⬢
+  NODE_ICON="\u${CODEPOINT_OF_DEVICONS_NODEJS_SMALL}"
   echo "%F{magenta}[$NODE_ICON $nvm_prompt]%F{reset}"
 }
 
@@ -126,8 +126,8 @@ prompt_pyenv() {
     return
   fi
   python_prompt=${python_version}
-  NODE_ICON=$'\u2B22' # ⬢
-  echo "%F{yellow}[$NODE_ICON $python_prompt]%F{reset}"
+  PYTHON_ICON="\u${CODEPOINT_OF_DEVICONS_PYTHON}" # ⬢
+  echo "%F{yellow}[$PYTHON_ICON $python_prompt]%F{reset}"
 }
 
 RPROMPT='$(prompt_nvm)$(prompt_pyenv)'
