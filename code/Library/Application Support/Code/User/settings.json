@@ -32,5 +32,6 @@
         "terminal.ansiMagenta": "#c678dd",
         "terminal.ansiCyan": "#61afef"
     },
-    "diffEditor.renderSideBySide": false
+    "diffEditor.renderSideBySide": false,
+    "editor.scrollBeyondLastLine": false
 }
