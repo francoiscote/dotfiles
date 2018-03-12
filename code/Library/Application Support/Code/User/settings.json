@@ -23,7 +23,6 @@
     "terminal.integrated.cursorStyle": "underline",
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.fontSize": 14,
-    "workbench.editor.tabCloseButton": "off",
     "workbench.statusBar.feedback.visible": false,
     "workbench.colorCustomizations": {
         "terminal.ansiRed": "#e06c75",
@@ -32,5 +31,6 @@
         "terminal.ansiBlue": "#56b6c2",
         "terminal.ansiMagenta": "#c678dd",
         "terminal.ansiCyan": "#61afef"
-    }
+    },
+    "diffEditor.renderSideBySide": false
 }
