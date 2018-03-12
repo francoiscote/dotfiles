@@ -33,17 +33,11 @@ setopt interactivecomments
 autoload -U compaudit compinit
 
 # -----------------------------------------
-# PURE PROMPT CUSTOMIZATIONS
-# -----------------------------------------
-PURE_PROMPT_SYMBOL=">"
-
-# -----------------------------------------
 # ANTIGEN
 # -----------------------------------------
 source /usr/local/share/antigen/antigen.zsh
 
-antigen bundle mafredri/zsh-async
-antigen bundle sindresorhus/pure
+antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
@@ -100,39 +94,9 @@ h() { cd ~/$1; }
 _h() { _files -W ~/ -/; }
 compdef _h h
 
-# -----------------------------------------
-# RIGHT PROMPT
-# -----------------------------------------
-prompt_nvm() {
-  local nvm_prompt
-  if type nvm >/dev/null 2>&1; then
-    nvm_prompt=$(nvm current 2>/dev/null)
-    [[ "${nvm_prompt}x" == "x" ]] && return
-  elif type node >/dev/null 2>&1; then
-    nvm_prompt="$(node --version)"
-  else
-    return
-  fi
-  nvm_prompt=${nvm_prompt}
-  NODE_ICON="\u${CODEPOINT_OF_DEVICONS_NODEJS_SMALL}"
-  echo "%F{magenta}[$NODE_ICON $nvm_prompt]%F{reset}"
-}
-
-prompt_pyenv() {
-  local python_prompt
-  if type python >/dev/null 2>&1; then
-    python_version=$(python --version 2>/dev/null)
-  else
-    return
-  fi
-  python_prompt=${python_version}
-  PYTHON_ICON="\u${CODEPOINT_OF_DEVICONS_PYTHON}" # ⬢
-  echo "%F{yellow}[$PYTHON_ICON $python_prompt]%F{reset}"
-}
-
-RPROMPT='$(prompt_nvm)$(prompt_pyenv)'
-
 # source private stuff in a .localrc file
 if [[ -f $HOME/.localrc ]]; then
   source $HOME/.localrc
 fi
+
+source /Users/fcote/Code/InVision/InVision_Docker/scripts-native/invision.sh
