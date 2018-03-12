@@ -187,12 +187,13 @@ end
 
 -- Single keybinding for app launch
 singleapps = {
-  {'u', 'Wunderlist'},
+  {'y', 'Wunderlist'},
+  {'u', 'Discord'},
   {'j', 'Firefox Developer Edition'},
   {'n', 'Sourcetree'},
-  {'i', 'Slack'},
+  {'i', 'YakYak'},
   {'k', 'Atom'},
-  {'o', 'Discord'},
+  {'o', 'Slack'},
   {'l', 'iTerm'},
   {';', 'Boxy'},
   {'h', 'Finder'},
