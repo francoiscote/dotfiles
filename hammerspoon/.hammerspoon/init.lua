@@ -36,7 +36,8 @@ k:bind({}, '1', nil, function()
   local windowLayout = {
       {"iTerm2", nil, nil, {x=0, y=0, w=0.3, h=1}, nil, nil },
       {"Firefox Developer Edition", nil, nil, {x=0.3, y=0, w=0.7, h=1}, nil, nil},
-	    {"Atom", nil, nil, {x=0.3, y=0, w=0.7, h=1}, nil, nil}
+      {"Atom", nil, nil, {x=0.3, y=0, w=0.7, h=1}, nil, nil},
+      {"Code", nil, nil, {x=0.3, y=0, w=0.7, h=1}, nil, nil}
 	}
   hs.layout.apply(windowLayout)
 end)
@@ -47,6 +48,7 @@ k:bind({}, '2', nil, function()
     {"iTerm2", nil, nil, {x=0.2, y=0.1, w=0.6, h=0.8}, nil, nil },
     {"Firefox Developer Edition", nil, nil, {x=0, y=0, w=0.5, h=1}, nil, nil},
     {"Atom", nil, nil, {x=0.5, y=0, w=0.5, h=1}, nil, nil},
+    {"Code", nil, nil, {x=0.5, y=0, w=0.5, h=1}, nil, nil}
   }
   hs.layout.apply(windowLayout, string.find)
 end)
@@ -57,6 +59,7 @@ k:bind({}, '3', nil, function()
     {"iTerm2", nil, nil, {x=0, y=0, w=0.2, h=1}, nil, nil },
     {"Firefox Developer Edition", nil, nil, {x=0.2, y=0, w=0.4, h=1}, nil, nil},
     {"Atom", nil, nil, {x=0.6, y=0, w=0.4, h=1}, nil, nil},
+    {"Code", nil, nil, {x=0.6, y=0, w=0.4, h=1}, nil, nil}
   }
   hs.layout.apply(windowLayout, string.find)
 end)
@@ -66,7 +69,8 @@ k:bind({}, '4', nil, function()
   local windowLayout = {
 	    {"Firefox Developer Edition", "Twitch", nil, nil, {x=0, y=0, w=914, h=615}, nil},
       {"OBS", nil, nil, nil, {x=0, y=637, w=914, h=803}, nil},
-	    {"Atom", nil, nil, nil, {x=915, y=0, w=1724, h=1418}, nil},
+      {"Atom", nil, nil, nil, {x=915, y=0, w=1724, h=1418}, nil},
+      {"Code", nil, nil, nil, {x=915, y=0, w=1724, h=1418}, nil},
       {"Firefox Developer Edition", "francoiscote", nil, nil, {x=915, y=0, w=1724, h=1418}, nil},
 	    {"iTerm2", nil, nil, nil, {x=2640, y=0, w=800, h=962}, nil},
       {"Firefox Developer Edition", "Alert Box Widget", nil, nil, {x=2640, y=985, w=800, h=455}, nil},
