@@ -196,7 +196,7 @@ singleapps = {
   {'j', 'Firefox Developer Edition'},
   {'n', 'Sourcetree'},
   {'i', 'YakYak'},
-  {'k', 'Atom'},
+  {'k', 'Visual Studio Code'},
   {'o', 'Slack'},
   {'l', 'iTerm'},
   {';', 'Boxy'},

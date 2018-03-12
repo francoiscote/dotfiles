@@ -1,0 +1,29 @@
+session_name: InVision
+start_directory: ~/Code/Invision
+windows:
+- window_name: docker
+  start_directory: ~/Code/Invision/InVision_Docker
+  focus: true
+  layout: main-horizontal
+  panes:
+  - focus: true
+  - in www start
+  - in activity
+- window_name: design-v2
+  start_directory: ~/Code/Invision/design-v2.www.invisionapp.com
+  layout: main-horizontal
+  panes:
+  - null
+  - null
+- window_name: dbco
+  start_directory: ~/Code/Invision/designbetter.co
+  layout: main-horizontal
+  panes:
+  - null
+  - null
+- window_name: dbco-cms
+  start_directory: ~/Code/Invision/designbetter.co-cms
+  layout: main-horizontal
+  panes:
+  - null
+  - null
