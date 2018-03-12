@@ -37,14 +37,10 @@ autoload -U compaudit compinit
 # -----------------------------------------
 source /usr/local/share/antigen/antigen.zsh
 
-antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
-
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 
-# the lazy load is too slow on macOS right now
-# export NVM_LAZY_LOAD=true
-# antigen bundle lukechilds/zsh-nvm
+antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
 
 antigen apply
 
@@ -98,5 +94,3 @@ compdef _h h
 if [[ -f $HOME/.localrc ]]; then
   source $HOME/.localrc
 fi
-
-source /Users/fcote/Code/InVision/InVision_Docker/scripts-native/invision.sh
