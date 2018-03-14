@@ -33,5 +33,6 @@
         "terminal.ansiCyan": "#61afef"
     },
     "diffEditor.renderSideBySide": false,
-    "editor.scrollBeyondLastLine": false
+    "editor.scrollBeyondLastLine": false,
+    "editor.tabSize": 2
 }
