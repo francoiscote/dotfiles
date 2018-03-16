@@ -30,21 +30,7 @@
     "atom-ide-diagnostics-ui":
       showDiagnosticTraces: true
       showDirectoryColumn: true
-    use:
-      "atom-ide-busy-signal": "default"
-      "atom-ide-code-actions": "default"
-      "atom-ide-code-format": "default"
-      "atom-ide-code-highlight": "default"
-      "atom-ide-console": "default"
-      "atom-ide-datatip": "default"
-      "atom-ide-definitions": "default"
-      "atom-ide-diagnostics": "default"
-      "atom-ide-diagnostics-ui": "default"
-      "atom-ide-find-references": "default"
-      "atom-ide-global": "default"
-      "atom-ide-outline-view": "default"
-      "atom-ide-signature-help": "default"
-      hyperclick: "default"
+    use: {}
   "atom-material-ui":
     colors: {}
     fonts: {}
@@ -79,7 +65,6 @@
       "atom-typescript"
       "minimap-linter"
       "linter-ui-default"
-      "language-gfm"
     ]
     followSymlinks: false
     ignoredNames: [
@@ -202,6 +187,21 @@
   script:
     cwdBehavior: "Directory of the script"
   "status-bar": {}
+  "syntax-theme-auto-changer":
+    syntaxMap: [
+      "source.gfm:one-light-syntax"
+    ]
+  "theme-switch":
+    darkProfiles: [
+      "one-dark-ui one-dark-syntax"
+    ]
+    lightProfiles: [
+      "one-light-ui one-light-syntax"
+    ]
+    profiles: [
+      "one-dark-ui one-dark-syntax"
+      "one-light-ui one-light-syntax"
+    ]
   "tool-bar":
     position: "Right"
   "trailing-spaces":
