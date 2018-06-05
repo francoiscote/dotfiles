@@ -23,6 +23,7 @@ k:bind({}, 'left', nil, function()
   hs.eventtap.keyStroke({"ctrl"}, 'left')
 end)
 
+-- Go To Next Space
 k:bind({}, 'right', nil, function()
   hs.eventtap.keyStroke({"ctrl"}, 'right')
 end)
@@ -34,10 +35,10 @@ hs.window.animationDuration = 0
 -- 1 - Work Setup - Main Editor Left
 k:bind({}, '1', nil, function()
   local windowLayout = {
-      {"iTerm2", nil, nil, {x=0, y=0, w=0.3, h=1}, nil, nil },
-      {"Google Chrome", nil, nil, {x=0.3, y=0, w=0.7, h=1}, nil, nil},
-      {"Atom", nil, nil, {x=0.3, y=0, w=0.7, h=1}, nil, nil},
-      {"Code", nil, nil, {x=0.3, y=0, w=0.7, h=1}, nil, nil}
+    {"Google Chrome", nil, nil, {x=0, y=0, w=0.7, h=1}, nil, nil},
+    {"Atom", nil, nil, {x=0, y=0, w=0.7, h=1}, nil, nil},
+    {"Code", nil, nil, {x=0, y=0, w=0.7, h=1}, nil, nil},
+    {"iTerm2", nil, nil, {x=0.7, y=0, w=0.3, h=1}, nil, nil }
 	}
   hs.layout.apply(windowLayout)
 end)
@@ -100,6 +101,23 @@ k:bind({}, '9', nil, function()
   k.triggered = true
 end)
 
+-- Shift+9 - Small Right
+k:bind({"shift"}, '9', nil, function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+  local vPad = 0.07
+  local hPad = 0.02
+
+  f.x = (max.w / 2) + (hPad / 2 * max.w)
+  f.y = max.y + (max.h * vPad)
+  f.w = max.w * (1 - (hPad * 3)) / 2
+  f.h = max.h * (1 - (vPad * 2))
+  win:setFrame(f)
+  k.triggered = true
+end)
+
 -- 8 - Left
 k:bind({}, '8', nil, function()
   local win = hs.window.focusedWindow()
@@ -115,6 +133,22 @@ k:bind({}, '8', nil, function()
   k.triggered = true
 end)
 
+-- Shift+8 - Small Left
+k:bind({"shift"}, '8', nil, function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+  local vPad = 0.07
+  local hPad = 0.02
+
+  f.x = (hPad * max.w)
+  f.y = max.y + (max.h * vPad)
+  f.w = max.w * (1 - (hPad * 3)) / 2
+  f.h = max.h * (1 - (vPad * 2))
+  win:setFrame(f)
+  k.triggered = true
+end)
 
 -- 7 - "Browser" Size
 k:bind({}, '7', nil, function()
