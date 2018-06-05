@@ -98,7 +98,7 @@
     backUpBeforeSaving: true
     confirmCheckoutHeadRevision: false
     fontFamily: "Operator Mono SSm Lig"
-    fontSize: 15
+    fontSize: 13
     invisibles: {}
     scrollSensitivity: 60
     showIndentGuide: true

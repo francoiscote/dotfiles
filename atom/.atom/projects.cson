@@ -3,8 +3,7 @@
     title: "dotfiles"
     group: "Utils"
     paths: [
-      "~/.dotfiles"
-      "~/Code/dotfiles-linux"
+      "/Users/fcote/.dotfiles"
     ]
     icon: "icon-gear"
   }
