@@ -59,7 +59,7 @@
   "autocomplete-plus": {}
   "bracket-matcher": {}
   core:
-    autoHideMenuBar: true
+    autoHideMenuBar: false
     customFileTypes:
       "source.ini": [
         ".buckconfig"
@@ -131,6 +131,8 @@
     enableUnderline: true
   "highlight-selected":
     ignoreCase: true
+  "ide-flowtype":
+    tryFlowBin: true
   "isotope-ui":
     fontFamily: "System Default"
     fontWeight: "Extra light / Thin"
@@ -191,6 +193,7 @@
     sortPaletteColors: "by color"
   "prettier-atom":
     formatOnSaveOptions:
+      enabled: true
       showInStatusBar: true
     useEslint: true
   "project-manager":

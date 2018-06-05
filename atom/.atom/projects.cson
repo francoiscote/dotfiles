@@ -65,4 +65,11 @@
     ]
     icon: "icon-server"
   }
+  {
+    title: "invision-www-blog"
+    group: "InVision"
+    paths: [
+      "/Users/fcote/Code/invision-www-blog"
+    ]
+  }
 ]
