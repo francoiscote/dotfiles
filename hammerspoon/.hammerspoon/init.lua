@@ -210,6 +210,7 @@ k:bind({}, '5', nil, function()
 end)
 
 -- Shortcut to reload config
+-------------------------------------------------------------------------------
 reload = function()
   hs.reload()
   hs.notify.new({title="Hammerspoon", informativeText="Config Reloaded"}):send()
@@ -218,30 +219,51 @@ end
 k:bind({}, 'r', nil, reload)
 
 -- Launch Apps
+-------------------------------------------------------------------------------
 launch = function(appname)
   hs.application.launchOrFocus(appname)
   k.triggered = true
 end
 
 -- Single keybinding for app launch
+-------------------------------------------------------------------------------
 singleapps = {
-  {'y', 'Wunderlist'},
-  {'u', 'Discord'},
+  -- Top Row: IM + Spotify
+  {'u', 'Slack'},
+  {'i', 'Discord'},
+  {'o', 'YakYak'},
+  {'p', 'Spotify'},
+
+  -- Middle Row: Dev Tools
+  -- Dev Trifecta (Browser + Editor + Terminal) and SourceTree
   {'j', 'Google Chrome'},
-  {'n', 'Sourcetree'},
-  {'i', 'YakYak'},
-  -- {'k', 'Visual Studio Code'},
   {'k', 'Atom'},
-  {'o', 'Slack'},
   {'l', 'iTerm'},
-  {';', 'Boxy'},
-  {'h', 'Finder'},
-  {'p', 'Spotify'}
+  {';', 'Sourcetree'},
+
+  -- Bottom Row: Email, Calendar and ToDos
+  {'n', 'Boxy'},
+  {'m', 'Fantastical 2'},
+  {',', 'Wunderlist'},
+  {'.', 'Finder'}
 }
 
 for i, app in ipairs(singleapps) do
   k:bind({}, app[1], function() launch(app[2]); end)
 end
+
+-- Swap between Audio Outputs (Built in and Yeti Stereo Microphoneb)
+-------------------------------------------------------------------------------
+k:bind({}, 's', nil, function()
+  local currentDeviceName = hs.audiodevice.current().name
+  local nextDevice
+  if string.find(currentDeviceName, 'Yeti') then
+    nextDevice = hs.audiodevice.findDeviceByName('Built-in Output')
+  else
+    nextDevice = hs.audiodevice.findDeviceByName('Yeti Stereo Microphone')
+  end
+  nextDevice:setDefaultOutputDevice()
+end)
 
 -- Enter Hyper Mode when F18 (Hyper/Capslock) is pressed
 pressedF18 = function()
