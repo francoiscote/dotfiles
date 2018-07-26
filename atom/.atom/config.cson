@@ -55,6 +55,8 @@
     ignored: [
       "linter-scss-lint"
     ]
+  "autocomplete-modules":
+    babelPluginModuleResolver: true
   "autocomplete-php": {}
   "autocomplete-plus": {}
   "bracket-matcher": {}
@@ -90,7 +92,7 @@
       "Thumbs.db"
       ".tags"
     ]
-    projectHome: "/home/fcote/Code"
+    projectHome: "/Users/fcote/Code"
     telemetryConsent: "limited"
     titleBar: "custom"
   editor:
@@ -98,7 +100,7 @@
     backUpBeforeSaving: true
     confirmCheckoutHeadRevision: false
     fontFamily: "Operator Mono SSm Lig"
-    fontSize: 13
+    fontSize: 15
     invisibles: {}
     scrollSensitivity: 60
     showIndentGuide: true

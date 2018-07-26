@@ -231,7 +231,7 @@ singleapps = {
   -- Top Row: IM + Spotify
   {'u', 'Slack'},
   {'i', 'Discord'},
-  {'o', 'YakYak'},
+  {'o', 'Messages'},
   {'p', 'Spotify'},
 
   -- Middle Row: Dev Tools
