@@ -57,10 +57,10 @@ end)
 -- 3 - Work Setup - 1/3 split, Browser + Editor + Terminal
 k:bind({}, '3', nil, function()
   local windowLayout = {
-    {"iTerm2", nil, nil, {x=0, y=0, w=0.2, h=1}, nil, nil },
-    {"Google Chrome", nil, nil, {x=0.2, y=0, w=0.4, h=1}, nil, nil},
-    {"Atom", nil, nil, {x=0.6, y=0, w=0.4, h=1}, nil, nil},
-    {"Code", nil, nil, {x=0.6, y=0, w=0.4, h=1}, nil, nil}
+    {"Google Chrome", nil, nil, {x=0, y=0, w=0.4, h=1}, nil, nil},
+    {"Atom", nil, nil, {x=0.4, y=0, w=0.4, h=1}, nil, nil},
+    {"Code", nil, nil1, {x=0.4, y=0, w=0.4, h=1}, nil, nil},
+    {"iTerm2", nil, nil, {x=0.8, y=0, w=0.2, h=1}, nil, nil }
   }
   hs.layout.apply(windowLayout, string.find)
 end)
@@ -258,7 +258,7 @@ k:bind({}, 's', nil, function()
   local currentDeviceName = hs.audiodevice.current().name
   local nextDevice
   if string.find(currentDeviceName, 'Yeti') then
-    nextDevice = hs.audiodevice.findDeviceByName('Built-in Output')
+    nextDevice = hs.audiodevice.findDeviceByName('Built-in Line Output')
   else
     nextDevice = hs.audiodevice.findDeviceByName('Yeti Stereo Microphone')
   end

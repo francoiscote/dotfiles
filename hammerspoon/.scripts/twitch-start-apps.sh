@@ -12,5 +12,5 @@ atom -n
 /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --new-window https://github.com/francoiscote
 
 # Right Column: terminal, Alert Box
-open -a Hyper
+open -a iTerm
 /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --new-window https://streamlabs.com/alert-box/v3/0EBC1BEE88B1EC9FD2D9
