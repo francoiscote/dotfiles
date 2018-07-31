@@ -1,13 +1,13 @@
-session_name: commish
+session_name: Commish
 start_directory: ~/code/commish
 windows:
-- layout: main-vertical
+- layout: main-horizontal
   panes:
   - null
   - null
   - null
   window_name: console
-- layout: main-vertical
+- layout: main-horizontal
   panes:
   - null
   window_name: scratch

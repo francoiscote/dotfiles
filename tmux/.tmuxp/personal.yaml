@@ -1,0 +1,18 @@
+session_name: Personal
+start_directory: ~/code
+windows:
+- window_name: scratch
+  layout: main-horizontal
+  panes:
+  - null
+- window_name: dotfiles
+  layout: main-horizontal
+  start_directory: ~/.dotfiles
+  panes:
+  - null
+- window_name: francoiscote.net
+  start_directory: ~/code/francoiscote.net
+  layout: main-horizontal
+  panes:
+  - null
+  - null
