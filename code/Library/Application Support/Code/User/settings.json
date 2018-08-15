@@ -1,38 +1,26 @@
 {
-    "editor.fontSize": 15,
-    "editor.fontFamily": "Operator Mono SSm Lig, Menlo, Monaco, 'Courier New', monospace",
-    "editor.renderWhitespace": "all",
-    "workbench.colorTheme": "One Dark Pro",
-    "workbench.iconTheme": "vscode-great-icons",
-    "workbench.activityBar.visible": true,
-    "git.confirmSync": false,
-    "gitProjectManager.baseProjectsFolders": [
-        "/Users/fcote/Code",
-        "/Users/fcote/.dotfiles"
-    ],
-    "gitProjectManager.unversionedProjects": [
-        "/Volumes/GoogleDrive/My\ Drive/Notes"
-    ],
-    "gitProjectManager.storeRepositoriesBetweenSessions": true,
-    "gitProjectManager.warnIfFolderNotFound": true,
-    "gitProjectManager.maxDepthRecursion": 4,
-    "gitProjectManager.ignoredFolders": [
-        "node_modules"
-    ],
-    "explorer.confirmDelete": false,
-    "terminal.integrated.cursorStyle": "underline",
-    "terminal.integrated.cursorBlinking": true,
-    "terminal.integrated.fontSize": 14,
-    "workbench.statusBar.feedback.visible": false,
-    "workbench.colorCustomizations": {
-        "terminal.ansiRed": "#e06c75",
-        "terminal.ansiGreen": "#98c379",
-        "terminal.ansiYellow": "#e5c07b",
-        "terminal.ansiBlue": "#56b6c2",
-        "terminal.ansiMagenta": "#c678dd",
-        "terminal.ansiCyan": "#61afef"
-    },
-    "diffEditor.renderSideBySide": false,
-    "editor.scrollBeyondLastLine": false,
-    "editor.tabSize": 2
+  "editor.fontSize": 15,
+  "editor.fontFamily":
+    "Operator Mono SSm Lig, Menlo, Monaco, 'Courier New', monospace",
+  "editor.renderWhitespace": "all",
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.activityBar.visible": true,
+  "git.confirmSync": false,
+  "explorer.confirmDelete": false,
+  "terminal.integrated.cursorStyle": "underline",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.fontSize": 14,
+  "workbench.statusBar.feedback.visible": false,
+  "workbench.colorCustomizations": {
+    "terminal.ansiRed": "#e06c75",
+    "terminal.ansiGreen": "#98c379",
+    "terminal.ansiYellow": "#e5c07b",
+    "terminal.ansiBlue": "#56b6c2",
+    "terminal.ansiMagenta": "#c678dd",
+    "terminal.ansiCyan": "#61afef"
+  },
+  "diffEditor.renderSideBySide": false,
+  "editor.scrollBeyondLastLine": false,
+  "editor.tabSize": 2
 }
