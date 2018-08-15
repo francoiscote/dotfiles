@@ -4,7 +4,7 @@
     "Operator Mono SSm Lig, Menlo, Monaco, 'Courier New', monospace",
   "editor.renderWhitespace": "all",
   "workbench.colorTheme": "One Dark Pro",
-  "workbench.iconTheme": "vscode-icons",
+  "workbench.iconTheme": "vscode-great-icons",
   "workbench.activityBar.visible": true,
   "git.confirmSync": false,
   "explorer.confirmDelete": false,

@@ -19,7 +19,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
     if [ -x /usr/local/bin/code ]; then
         export CODEEDITOR='code'
-    if [ -x /usr/local/bin/atom-beta ]; then
+    elif [ -x /usr/local/bin/atom-beta ]; then
         export CODEEDITOR='atom-beta'
     elif [ -x /usr/local/bin/atom ]; then
         export CODEEDITOR='atom'
