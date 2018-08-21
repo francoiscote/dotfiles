@@ -15,7 +15,7 @@ end)
 -------------------------------------------------------------------------------
 -- Mission Control
 k:bind({}, 'up', nil, function()
-  hs.eventtap.keyStroke({"cmd","alt","ctrl"}, 'F12')
+  hs.eventtap.keyStroke({"cmd","alt","ctrl"}, '0')
 end)
 
 -- Go To Previous Space
@@ -237,7 +237,7 @@ singleapps = {
   -- Middle Row: Dev Tools
   -- Dev Trifecta (Browser + Editor + Terminal) and SourceTree
   {'j', 'Google Chrome'},
-  {'k', 'Atom'},
+  {'k', 'Visual Studio Code'},
   {'l', 'iTerm'},
   {';', 'Sourcetree'},
 

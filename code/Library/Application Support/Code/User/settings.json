@@ -3,7 +3,7 @@
   "editor.fontFamily": "Operator Mono SSm Lig, Menlo, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true,
   "editor.renderWhitespace": "all",
-  "workbench.colorTheme": "One Dark Pro",
+  "workbench.colorTheme": "One Dark Pro Italic",
   "workbench.iconTheme": "vscode-great-icons",
   "workbench.activityBar.visible": true,
   "git.confirmSync": false,

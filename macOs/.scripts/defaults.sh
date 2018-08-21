@@ -3,3 +3,4 @@
 
 defaults write com.googlecode.iterm2 AppleFontSmoothing -int 1
 defaults write com.github.atom AppleFontSmoothing -int 1
+defaults write com.microsoft.code AppleFontSmoothing -int 1
