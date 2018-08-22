@@ -258,7 +258,7 @@ k:bind({}, 's', nil, function()
   local currentDeviceName = hs.audiodevice.current().name
   local nextDevice
   if string.find(currentDeviceName, 'Yeti') then
-    nextDevice = hs.audiodevice.findDeviceByName('Built-in Line Output')
+    nextDevice = hs.audiodevice.findDeviceByName('USB audio CODEC')
   else
     nextDevice = hs.audiodevice.findDeviceByName('Yeti Stereo Microphone')
   end
