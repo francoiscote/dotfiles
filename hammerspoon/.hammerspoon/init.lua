@@ -258,7 +258,10 @@ k:bind({}, 's', nil, function()
   local currentDeviceName = hs.audiodevice.current().name
   local nextDevice
   if string.find(currentDeviceName, 'Yeti') then
-    nextDevice = hs.audiodevice.findDeviceByName('USB audio CODEC')
+    nextDevice = hs.audiodevice.findDeviceByName('Elgato Dock')
+    if (nextDevice == nil) then
+      nextDevice = hs.audiodevice.findDeviceByName('MacBook Pro Speakers')
+    end
   else
     nextDevice = hs.audiodevice.findDeviceByName('Yeti Stereo Microphone')
   end
