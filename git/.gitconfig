@@ -24,7 +24,7 @@
   whitespace = "red reverse"
 [core]
 	editor = vim
-	excludesfile = /Users/fcote/.gitignore
+	excludesfile = /Users/francoiscote/.gitignore_global
 [apply]
 	whitespace = nowarn
 [help]
