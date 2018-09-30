@@ -242,7 +242,7 @@ singleapps = {
   {';', 'Sourcetree'},
 
   -- Bottom Row: Email, Calendar and ToDos
-  {'n', 'Boxy'},
+  {'n', 'Mailplane'},
   {'m', 'Fantastical 2'},
   {',', 'Wunderlist'},
   {'.', 'Finder'}
@@ -258,7 +258,13 @@ k:bind({}, 's', nil, function()
   local currentDeviceName = hs.audiodevice.current().name
   local nextDevice
   if string.find(currentDeviceName, 'Yeti') then
-    nextDevice = hs.audiodevice.findDeviceByName('Elgato Dock')
+    nextDevice = hs.audiodevice.findDeviceByName('Bose Colour SoundLink')
+    if (nextDevice == nil) then
+      nextDevice = hs.audiodevice.findDeviceByName('Elgato Dock')
+    end
+    if (nextDevice == nil) then
+      nextDevice = hs.audiodevice.findDeviceByName('USB audio CODEC')
+    end
     if (nextDevice == nil) then
       nextDevice = hs.audiodevice.findDeviceByName('MacBook Pro Speakers')
     end
