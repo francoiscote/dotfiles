@@ -52,7 +52,12 @@
     "terminal.ansiBrightMagenta": "#c678dd",
     "terminal.ansiCyan": "#61afef",
     "terminal.ansiBrightCyan": "#61afef",
-    "textLink.foreground": "#00BCD4"
+    "textLink.foreground": "#00BCD4",
+    "settings.modifiedItemIndicator": "#00BCD4",
+    "settings.headerForeground": "#00BCD4",
+    "breadcrumb.activeSelectionForeground": "#00BCD4",
+    "menu.selectionForeground": "#00BCD4",
+    "menubar.selectionForeground": "#00BCD4"
   },
   "workbench.colorTheme": "One Dark Pro",
   "workbench.statusBar.feedback.visible": false,
@@ -63,6 +68,8 @@
       "token": "system"
     }
   ],
-  "terminal.integrated.fontWeight": "300",
-  "terminal.integrated.fontWeightBold": "500"
+  "terminal.external.osxExec": "iTerm.app",
+  "terminal.integrated.fontSize": 13,
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "emmet.triggerExpansionOnTab": true
 }
