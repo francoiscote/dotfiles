@@ -36,6 +36,7 @@ hs.window.animationDuration = 0
 k:bind({}, '1', nil, function()
   local windowLayout = {
     {"Google Chrome", nil, nil, {x=0, y=0, w=0.7, h=1}, nil, nil},
+    {"Firefox Developer Edition", nil, nil, {x=0, y=0, w=0.7, h=1}, nil, nil},
     {"Atom", nil, nil, {x=0, y=0, w=0.7, h=1}, nil, nil},
     {"Code", nil, nil, {x=0, y=0, w=0.7, h=1}, nil, nil},
     {"iTerm2", nil, nil, {x=0.7, y=0, w=0.3, h=1}, nil, nil }
@@ -48,6 +49,7 @@ k:bind({}, '2', nil, function()
   local windowLayout = {
     {"iTerm2", nil, nil, {x=0.2, y=0.1, w=0.6, h=0.8}, nil, nil },
     {"Google Chrome", nil, nil, {x=0, y=0, w=0.5, h=1}, nil, nil},
+    {"Firefox Developer Edition", nil, nil, {x=0, y=0, w=0.5, h=1}, nil, nil},
     {"Atom", nil, nil, {x=0.5, y=0, w=0.5, h=1}, nil, nil},
     {"Code", nil, nil, {x=0.5, y=0, w=0.5, h=1}, nil, nil}
   }
@@ -58,6 +60,7 @@ end)
 k:bind({}, '3', nil, function()
   local windowLayout = {
     {"Google Chrome", nil, nil, {x=0, y=0, w=0.4, h=1}, nil, nil},
+    {"Firefox Developer Edition", nil, nil, {x=0, y=0, w=0.4, h=1}, nil, nil},
     {"Atom", nil, nil, {x=0.4, y=0, w=0.4, h=1}, nil, nil},
     {"Code", nil, nil1, {x=0.4, y=0, w=0.4, h=1}, nil, nil},
     {"iTerm2", nil, nil, {x=0.8, y=0, w=0.2, h=1}, nil, nil }
@@ -244,7 +247,7 @@ singleapps = {
   -- Bottom Row: Email, Calendar and ToDos
   {'n', 'Mailplane'},
   {'m', 'Fantastical 2'},
-  {',', 'Wunderlist'},
+  {',', 'TickTick'},
   {'.', 'Finder'}
 }
 
