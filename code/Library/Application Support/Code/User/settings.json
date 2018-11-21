@@ -61,15 +61,16 @@
   },
   "workbench.colorTheme": "One Dark Pro",
   "workbench.statusBar.feedback.visible": false,
-  "github.hosts": [
+  "terminal.external.osxExec": "iTerm.app",
+  "terminal.integrated.fontSize": 13,
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "emmet.triggerExpansionOnTab": true,
+  "githubPullRequests.hosts": [
     {
       "host": "https://github.com",
       "username": "oauth",
       "token": "system"
     }
   ],
-  "terminal.external.osxExec": "iTerm.app",
-  "terminal.integrated.fontSize": 13,
-  "javascript.updateImportsOnFileMove.enabled": "never",
-  "emmet.triggerExpansionOnTab": true
+  "window.nativeFullScreen": false
 }
