@@ -65,12 +65,6 @@
   "terminal.integrated.fontSize": 13,
   "javascript.updateImportsOnFileMove.enabled": "never",
   "emmet.triggerExpansionOnTab": true,
-  "githubPullRequests.hosts": [
-    {
-      "host": "https://github.com",
-      "username": "oauth",
-      "token": "system"
-    }
-  ],
-  "window.nativeFullScreen": false
+  "window.nativeFullScreen": false,
+  "terminal.integrated.scrollback": 10000
 }
