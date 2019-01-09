@@ -48,10 +48,10 @@ end)
 k:bind({}, '2', nil, function()
   local windowLayout = {
     {"iTerm2", nil, nil, {x=0.2, y=0.1, w=0.6, h=0.8}, nil, nil },
-    {"Google Chrome", nil, nil, {x=0, y=0, w=0.5, h=1}, nil, nil},
-    {"Firefox Developer Edition", nil, nil, {x=0, y=0, w=0.5, h=1}, nil, nil},
-    {"Atom", nil, nil, {x=0.5, y=0, w=0.5, h=1}, nil, nil},
-    {"Code", nil, nil, {x=0.5, y=0, w=0.5, h=1}, nil, nil}
+    {"Atom", nil, nil, {x=0, y=0, w=0.5, h=1}, nil, nil},
+    {"Code", nil, nil, {x=0, y=0, w=0.5, h=1}, nil, nil},
+    {"Google Chrome", nil, nil, {x=0.5, y=0, w=0.5, h=1}, nil, nil},
+    {"Firefox Developer Edition", nil, nil, {x=0.5, y=0, w=0.5, h=1}, nil, nil}
   }
   hs.layout.apply(windowLayout, string.find)
 end)
@@ -216,8 +216,8 @@ end)
 -------------------------------------------------------------------------------
 reload = function()
   hs.reload()
-  hs.notify.new({title="Hammerspoon", informativeText="Config Reloaded"}):send()
   k.triggered = true
+  hs.notify.show("Hammerspoon", "Config Reloaded", "")
 end
 k:bind({}, 'r', nil, reload)
 
@@ -233,8 +233,8 @@ end
 singleapps = {
   -- Top Row: IM + Spotify
   {'u', 'Slack'},
-  {'i', 'Discord'},
-  {'o', 'Messages'},
+  {'i', 'Franz'},
+  {'o', 'Discord'},
   {'p', 'Spotify'},
 
   -- Middle Row: Dev Tools
@@ -242,7 +242,7 @@ singleapps = {
   {'j', 'Google Chrome'},
   {'k', 'Visual Studio Code'},
   {'l', 'iTerm'},
-  {';', 'Sourcetree'},
+  {';', 'Notion'},
 
   -- Bottom Row: Email, Calendar and ToDos
   {'n', 'Mailplane'},
