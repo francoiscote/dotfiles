@@ -8,11 +8,15 @@ source ~/.config/fish/lib/spacefish.fish
 
 # COLORS
 # -----------------------------------------
-set fish_color_autosuggestion brblack
-set fish_color_command green
-set fish_color_error red
-set fish_color_quote bryellow
-set fish_color_param blue
+set -g fish_color_autosuggestion brblack
+set -g fish_color_search_match --background=cyan
+set -g fish_pager_color_completion brblack
+set -g fish_pager_color_description yellow
+set -g fish_pager_color_prefix blue
+set -g fish_color_command green
+set -g fish_color_error red
+set -g fish_color_quote bryellow
+set -g fish_color_param blue
 
 # -----------------------------------------
 # PHPBREW
