@@ -11,6 +11,8 @@ source ~/.config/fish/lib/spacefish.fish
 set fish_color_autosuggestion brblack
 set fish_color_command green
 set fish_color_error red
+set fish_color_quote bryellow
+set fish_color_param blue
 
 # -----------------------------------------
 # PHPBREW
