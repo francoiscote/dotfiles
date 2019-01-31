@@ -1,3 +1,0 @@
-#!/bin/sh
-
-ip address show up | grep 'state UP' -A 2 | grep 'inet ' | awk '{split($2, a, "/"); print a[1]}'

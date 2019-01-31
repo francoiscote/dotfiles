@@ -1,11 +1,25 @@
-#!/bin/sh
-
-# -----------------------------------------
-# FUNCTIONS
-# -----------------------------------------
-
 # -----------------------------------------
 # ALIASES
+# -----------------------------------------
+
+# Pipe my public key to my clipboard.
+alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
+# Source configs
+alias reload="source ~/.config/fish/config.fish";
+
+# DIRECTORIES
+# -----------------------------------------
+alias l='ls -lah'
+alias md='mkdir -p'
+alias rd=rmdir
+alias d='dirh'
+
+# Push and pop directories on directory stack
+alias pu='pushd'
+alias po='popd'
+
+
+# GIT
 # -----------------------------------------
 alias ga='git add'
 alias gaa='git add --all'
@@ -74,7 +88,7 @@ alias grhh='git reset HEAD --hard'
 alias grmv='git remote rename'
 alias grrm='git remote remove'
 alias grset='git remote set-url'
-alias grt='cd $(git rev-parse --show-toplevel || echo ".")'
+alias grt='cd (git rev-parse --show-toplevel || echo ".")'
 alias gru='git reset --'
 alias grup='git remote update'
 alias grv='git remote -v'
@@ -102,5 +116,12 @@ alias gupv='git pull --rebase -v'
 alias glum='git pull upstream master'
 
 alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
-alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
+alias gwip='git add -A; git rm (git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
 alias wtf='git-wtf'
+
+# TMUX & TMUXP
+# -----------------------------------------
+# Load tmuxp in current folder
+alias tt="tmuxp load .tmuxp.yaml"
+# list tmux sessions
+alias tl="tmux list-sessions"

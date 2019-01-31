@@ -1,53 +1,63 @@
 session_name: InVision
-start_directory: ~/Code/Invision
+start_directory: ~/Code
 windows:
-- window_name: docker
-  start_directory: ~/Code/InVision_Docker
-  focus: true
-  layout: main-horizontal
-  panes:
-  - focus: true
-  - in www start
-  - in activity
-- window_name: design-v2
-  start_directory: ~/Code/design-v2.www.invisionapp.com
-  layout: main-horizontal
-  panes:
-  - null
-  - null
-- window_name: dbco
-  start_directory: ~/Code/designbetter.co
-  layout: main-horizontal
-  panes:
-  - null
-  - null
-- window_name: dbco-cms
-  start_directory: ~/Code/designbetter.co-cms
-  layout: main-horizontal
-  panes:
-  - null
-  - null
-- window_name: blog
-  start_directory: ~/Code/invision-www-blog
-  layout: main-horizontal
-  panes:
-  - null
-  - null
-- window_name: blog-cms
-  start_directory: ~/Code/invision-www-blog-cms
-  layout: main-horizontal
-  panes:
-  - null
-  - null
-- window_name: cobalt-modules
-  start_directory: ~/Code/cobalt-modules
-  layout: main-horizontal
-  panes:
-  - null
-  - null
-- window_name: www
-  start_directory: ~/Code/www.invisionapp.com
-  layout: main-horizontal
-  panes:
-  - null
-  - null
+  - window_name: InVision
+    focus: true
+    layout: main-horizontal
+    panes:
+      - focus: true
+      - null
+  - window_name: design-v2
+    start_directory: ~/Code/design-v2.www.invisionapp.com
+    layout: main-horizontal
+    panes:
+      - null
+      - null
+  - window_name: dbco
+    start_directory: ~/Code/designbetterco
+    layout: main-horizontal
+    panes:
+      - null
+      - null
+  - window_name: dbco-cms
+    start_directory: ~/Code/designbetterco-cms
+    layout: main-horizontal
+    panes:
+      - null
+      - null
+  - window_name: inside-design
+    start_directory: ~/Code/invision-inside-design
+    layout: main-horizontal
+    panes:
+      - null
+      - null
+  - window_name: blog-cms
+    start_directory: ~/Code/invision-www-blog-cms
+    layout: main-horizontal
+    panes:
+      - null
+      - null
+  - window_name: cobalt-modules
+    start_directory: ~/Code/cobalt-modules
+    layout: main-horizontal
+    panes:
+      - null
+      - null
+  - window_name: www
+    start_directory: ~/Code/www-invisionapp
+    layout: main-horizontal
+    panes:
+      - null
+      - null
+  - window_name: www-cms
+    start_directory: ~/Code/www-invisionapp-cms
+    layout: main-horizontal
+    panes:
+      - null
+      - null
+  - window_name: enterprise
+    start_directory: ~/Code/invision-www-enterprise
+    layout: main-horizontal
+    panes:
+      - null
+      - null

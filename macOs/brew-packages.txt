@@ -2,6 +2,7 @@ antigen
 autoconf
 composer
 curl
+fish
 fontconfig
 freetype
 gd
@@ -38,4 +39,3 @@ webp
 wp-cli
 xz
 yarn
-zsh
