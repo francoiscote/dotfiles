@@ -4,6 +4,17 @@ are managed by [GNU Stow](https://www.gnu.org/software/stow/).
 
 These dotfiles are currently used on my [hackintosh setup](https://gist.github.com/francoiscote/fd090c482936b94afe3e4322c4f6189b).
 
+## Features
+- Fish Shell
+- Spacefish (fish prompt)
+- Tmux & Tmuxp
+- Hammerspoon (OS scripting)
+- Hyper (not used at the moment)
+- Git configs
+- macOS defaults
+- VSCode Settings
+- Awesome Font Icons (as an optional vendor)
+
 ## Installation
 ```
 $ brew install stow
@@ -20,12 +31,3 @@ $ stow tmux
 $ stow ...
 $ sudo chmod +x ~/.scripts/*
 ```
-
-### zsh
-`zsh` depends on (antigen)[https://github.com/zsh-users/antigen/] (available on the AUR for Arch).
-```
-$ brew install antigen
-$ cd ~/.dotfiles
-$ stow zsh
-```
-Open a new shell prompt for antigen to install the dependencies.
