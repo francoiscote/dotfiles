@@ -7,7 +7,7 @@ DOTFILES=$HOME/.dotfiles
 GREP_EXCLUDE_DIR="{.git,.sass-cache,artwork,node_modules}"
 OS=`uname`
 path=($DOTFILES/bin $path)
-fpath=($DOTFILES/lib/completions $fpath)
+fpath=($HOME/.zsh-completions $fpath)
 
 export CLICOLOR=1
 export EDITOR=vim
@@ -22,7 +22,6 @@ export QUOTING_STYLE=literal
 # -----------------------------------------
 export GPGKEY=60C853AA
 
-
 # -----------------------------------------
 # ZSH OPTIONS
 # -----------------------------------------
@@ -30,7 +29,7 @@ setopt multios
 setopt prompt_subst
 setopt interactivecomments
 
-autoload -U compaudit compinit
+autoload -Uz compinit
 
 # -----------------------------------------
 # ANTIGEN
@@ -75,7 +74,7 @@ for config_file ($DOTFILES/zsh/lib/*.zsh); do
 done
 
 # compinit must be done after sourcing all libs
-compinit -i -d "${HOME}/.zcompdump"
+compinit
 
 # -----------------------------------------
 # SHORTCUT COMMANDS
