@@ -239,8 +239,8 @@ singleapps = {
 
   -- Middle Row: Dev Tools
   -- Dev Trifecta (Browser + Editor + Terminal) and SourceTree
-  {'j', 'Google Chrome'},
-  {'k', 'Visual Studio Code'},
+  {'j', 'Visual Studio Code'},
+  {'k', 'Google Chrome'},
   {'l', 'iTerm'},
   {';', 'Notion'},
 
