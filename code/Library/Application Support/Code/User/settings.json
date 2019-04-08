@@ -34,7 +34,6 @@
   "workbench.statusBar.feedback.visible": false,
   "javascript.updateImportsOnFileMove.enabled": "never",
   "emmet.triggerExpansionOnTab": true,
-  "window.nativeFullScreen": false,
   "php.validate.executablePath": "/usr/bin/php",
   "editor.tokenColorCustomizations": {
     "textMateRules": [
