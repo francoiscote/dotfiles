@@ -1,12 +1,16 @@
 -- A global variable for the Hyper Mode
 k = hs.hotkey.modal.new({}, "F17")
 log = hs.logger.new('WM','debug')
-
 -- Tools
 -------------------------------------------------------------------------------
+function isZoomRunning()
+  return hs.application.get('zoom.us')
+end
+
 -- Inspect Focused Window
 k:bind({"shift"}, 'i', nil, function()
   local win = hs.window.focusedWindow()
+  log.d("Title", win:title())
   log.d("Size", win:size())
   log.d("Frame", win:frame())
 end)
@@ -36,69 +40,83 @@ hs.window.animationDuration = 0
 k:bind({}, '1', nil, function()
   
   local withoutZoomLayout = {
-    {"Google Chrome", nil, nil, {x=0, y=0, w=0.7, h=1}, nil, nil},
-    {"Firefox Developer Edition", nil, nil, {x=0, y=0, w=0.7, h=1}, nil, nil},
-    {"Atom", nil, nil, {x=0, y=0, w=0.7, h=1}, nil, nil},
-    {"Code", nil, nil, {x=0, y=0, w=0.7, h=1}, nil, nil},
-    {"iTerm2", nil, nil, {x=0.7, y=0, w=0.3, h=1}, nil, nil }
+    {"Google Chrome", nil, nil, hs.layout.left70, nil, nil},
+    {"Firefox Developer Edition", nil, nil, hs.layout.left70, nil, nil},
+    {"Atom", nil, nil, hs.layout.left70, nil, nil},
+    {"Code", nil, nil, hs.layout.left70, nil, nil},
+    {"iTerm2", nil, nil, hs.layout.right30, nil, nil }
   }
 
   local withZoomLayout = {
-    {"Google Chrome", nil, nil, {x=0, y=0, w=0.7, h=1}, nil, nil},
-    {"Firefox Developer Edition", nil, nil, {x=0, y=0, w=0.7, h=1}, nil, nil},
-    {"Atom", nil, nil, {x=0, y=0, w=0.7, h=1}, nil, nil},
-    {"Code", nil, nil, {x=0, y=0, w=0.7, h=1}, nil, nil},
+    {"Google Chrome", nil, nil, hs.layout.left70, nil, nil},
+    {"Firefox Developer Edition", nil, nil, hs.layout.left70, nil, nil},
+    {"Atom", nil, nil, hs.layout.left70, nil, nil},
+    {"Code", nil, nil, hs.layout.left70, nil, nil},
     {"zoom.us", nil, nil, {x=0.7, y=0, w=0.3, h=0.5}, nil, nil },
     {"iTerm2", nil, nil, {x=0.7, y=0.5, w=0.3, h=0.5}, nil, nil }
   }
     
-  local isZoomRunning = hs.application.get('zoom.us')
-  if isZoomRunning then
+  if isZoomRunning() then
     hs.layout.apply(withZoomLayout)
   else
     hs.layout.apply(withoutZoomLayout)
   end
 end)
 
--- 2 - Work Setup - Code Editor Right
-k:bind({}, '2', nil, function()
+-- Shift+1 - Work Setup - Code Editor Right
+k:bind({'shift'}, '1', nil, function()
   
   local withoutZoomLayout = {
-    {"Google Chrome", nil, nil, {x=0.3, y=0, w=0.7, h=1}, nil, nil},
-    {"Firefox Developer Edition", nil, nil, {x=0.3, y=0, w=0.7, h=1}, nil, nil},
-    {"Atom", nil, nil, {x=0.3, y=0, w=0.7, h=1}, nil, nil},
-    {"Code", nil, nil, {x=0.3, y=0, w=0.7, h=1}, nil, nil},
-    {"iTerm2", nil, nil, {x=0, y=0, w=0.3, h=1}, nil, nil }
+    {"Google Chrome", nil, nil, hs.layout.right70, nil, nil},
+    {"Firefox Developer Edition", nil, nil, hs.layout.right70, nil, nil},
+    {"Atom", nil, nil, hs.layout.right70, nil, nil},
+    {"Code", nil, nil, hs.layout.right70, nil, nil},
+    {"iTerm2", nil, nil, hs.layout.left30, nil, nil }
   }
 
   local withZoomLayout = {
-    {"Google Chrome", nil, nil, {x=0.3, y=0, w=0.7, h=1}, nil, nil},
-    {"Firefox Developer Edition", nil, nil, {x=0.3, y=0, w=0.7, h=1}, nil, nil},
-    {"Atom", nil, nil, {x=0.3, y=0, w=0.7, h=1}, nil, nil},
-    {"Code", nil, nil, {x=0.3, y=0, w=0.7, h=1}, nil, nil},
+    {"Google Chrome", nil, nil, hs.layout.right70, nil, nil},
+    {"Firefox Developer Edition", nil, nil, hs.layout.right70, nil, nil},
+    {"Atom", nil, nil, hs.layout.right70, nil, nil},
+    {"Code", nil, nil, hs.layout.right70, nil, nil},
     {"zoom.us", nil, nil, {x=0, y=0, w=0.3, h=0.5}, nil, nil },
     {"iTerm2", nil, nil, {x=0, y=0.5, w=0.3, h=0.5}, nil, nil }
   }
     
-  local isZoomRunning = hs.application.get('zoom.us')
-  if isZoomRunning then
+  if isZoomRunning() then
     hs.layout.apply(withZoomLayout)
   else
     hs.layout.apply(withoutZoomLayout)
   end
 end)
 
--- 3 - Work Setup - 50/50 split, terminal in the center
-k:bind({}, '3', nil, function()
+
+-- 2 - Work Setup - 50/50 split, Editor Left, terminal in the center
+k:bind({}, '2', nil, function()
   local windowLayout = {
     {"iTerm2", nil, nil, {x=0.2, y=0.1, w=0.6, h=0.8}, nil, nil },
-    {"Atom", nil, nil, {x=0, y=0, w=0.5, h=1}, nil, nil},
-    {"Code", nil, nil, {x=0, y=0, w=0.5, h=1}, nil, nil},
-    {"Google Chrome", nil, nil, {x=0.5, y=0, w=0.5, h=1}, nil, nil},
-    {"Firefox Developer Edition", nil, nil, {x=0.5, y=0, w=0.5, h=1}, nil, nil}
+    {"Atom", nil, nil, hs.layout.left50, nil, nil},
+    {"Code", nil, nil, hs.layout.left50, nil, nil},
+    {"Google Chrome", nil, nil, hs.layout.right50, nil, nil},
+    {"Firefox Developer Edition", nil, nil, hs.layout.right50, nil, nil}
   }
   hs.layout.apply(windowLayout, string.find)
 end)
+
+-- Shift+2 - Work Setup - 50/50 split, Editor Right, terminal in the center
+k:bind({'shift'}, '2', nil, function()
+  local windowLayout = {
+    {"iTerm2", nil, nil, {x=0.2, y=0.1, w=0.6, h=0.8}, nil, nil },
+    {"Atom", nil, nil, hs.layout.right50, nil, nil},
+    {"Code", nil, nil, hs.layout.right50, nil, nil},
+    {"Google Chrome", nil, nil, hs.layout.left50, nil, nil},
+    {"Firefox Developer Edition", nil, nil, hs.layout.left50, nil, nil}
+  }
+  hs.layout.apply(windowLayout, string.find)
+end)
+
+-- 3 - TBD ?
+-- Shift+3 - TBD ?
 
 -- 4 - Twitch Setup
 k:bind({}, '4', nil, function()
