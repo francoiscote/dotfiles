@@ -244,6 +244,27 @@ k:bind({}, '5', nil, function()
     k.triggered = true
 end)
 
+-- Picture in Picture on top right
+-------------------------------------------------------------------------------
+k:bind({}, 'y', nil, function()
+  local ppWin = hs.window('Picture in Picture')
+  if (ppWin) then
+    local screen = ppWin:screen()
+    local max = screen:frame()
+
+    ppWin:setFrame({x=max.w-1032, y=max.y, w=1032, h=580})
+  end
+
+  local termWin = hs.application('iTerm2'):mainWindow()
+  if (termWin) then
+    local screen = termWin:screen()
+    local max = screen:frame()
+
+    termWin:setFrame({x=max.w-1032, y=603, w=1032, h=837})
+  end
+  k.triggered = true
+end)
+
 -- Shortcut to reload config
 -------------------------------------------------------------------------------
 reload = function()
