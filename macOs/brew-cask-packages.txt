@@ -1,6 +1,4 @@
-adobe-acrobat-reader
 alfred
-atom
 cyberduck
 dash
 discord
@@ -8,17 +6,11 @@ docker
 dropbox
 fantastical
 firefox-developer-edition
-google-drive-file-stream
-graphiql
 hammerspoon
 handbrake
-hyper
 insomnia
 istat-menus
-kitematic
-mysqlworkbench
 obs
-plex-media-server
 pritunl
 sequel-pro
 sketch
