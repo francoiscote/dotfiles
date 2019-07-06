@@ -265,7 +265,7 @@ end
 singleapps = {
   -- Top Row: IM + Spotify
   {'u', 'Slack'},
-  {'i', 'Station'},
+  {'i', 'Franz'},
   {'o', 'Discord'},
   {'p', 'Spotify'},
 
@@ -273,13 +273,14 @@ singleapps = {
   -- Dev Trifecta (Browser + Editor + Terminal) and SourceTree
   {'j', 'Visual Studio Code'},
   {'k', 'Google Chrome'},
+  -- {'k', 'Firefox Developer Edition'},
   {'l', 'iTerm'},
-  {';', 'Notion'},
+  {';', 'Sourcetree'},
 
   -- Bottom Row: Email, Calendar and ToDos
   {'n', 'Mailplane'},
   {'m', 'Fantastical 2'},
-  {',', 'TickTick'},
+  {',', 'Notion'},
   {'.', 'Finder'}
 }
 
