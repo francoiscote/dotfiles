@@ -1,0 +1,15 @@
+session_name: InVision DBCO
+start_directory: ~/Code
+windows:
+  - window_name: dbco
+    start_directory: ~/Code/designbetterco
+    layout: main-horizontal
+    panes:
+      - null
+      - null
+  - window_name: dbco-cms
+    start_directory: ~/Code/designbetterco-cms
+    layout: main-horizontal
+    panes:
+      - null
+      - null

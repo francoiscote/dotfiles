@@ -1,0 +1,33 @@
+session_name: InVision WWW
+start_directory: ~/Code
+windows:
+  - window_name: www
+    start_directory: ~/Code/www-invisionapp
+    layout: main-horizontal
+    panes:
+      - null
+      - null
+  - window_name: www-cms
+    start_directory: ~/Code/www-invisionapp-cms
+    layout: main-horizontal
+    panes:
+      - null
+      - null
+  - window_name: design-v2
+    start_directory: ~/Code/design-v2.www.invisionapp.com
+    layout: main-horizontal
+    panes:
+      - null
+      - null
+  - window_name: enterprise
+    start_directory: ~/Code/invision-www-enterprise
+    layout: main-horizontal
+    panes:
+      - null
+      - null
+  - window_name: cobalt-modules
+    start_directory: ~/Code/cobalt-modules
+    layout: main-horizontal
+    panes:
+      - null
+      - null
