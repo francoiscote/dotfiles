@@ -248,8 +248,8 @@ end)
 -------------------------------------------------------------------------------
 reload = function()
   hs.reload()
-  k.triggered = true
   hs.notify.show("Hammerspoon", "Config Reloaded", "")
+  k.triggered = true
 end
 k:bind({}, 'r', nil, reload)
 
