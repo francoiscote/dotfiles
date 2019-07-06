@@ -303,10 +303,10 @@ end
 -------------------------------------------------------------------------------
 singleapps = {
   -- Top Row: IM + Spotify
-  {'u', 'Slack'},
-  {'i', 'Franz'},
-  {'o', 'Discord'},
-  {'p', 'Spotify'},
+  {'u', 'Spotify'},
+  {'i', 'Slack'},
+  {'o', 'Franz'},
+  {'p', 'Discord'},
 
   -- Middle Row: Dev Tools
   -- Dev Trifecta (Browser + Editor + Terminal) and SourceTree
