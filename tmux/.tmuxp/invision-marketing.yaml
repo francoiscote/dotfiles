@@ -1,0 +1,16 @@
+session_name: InVision Marketing
+start_directory: ~/Code
+windows:
+  - window_name: marketing-pages
+    start_directory: ~/Code/marketing-pages
+    layout: main-horizontal
+    panes:
+      - null
+      - null
+  - window_name: sanity
+    start_directory: ~/Code/sanity-nextjs-landing-pages-localization-demo-master
+
+    layout: main-horizontal
+    panes:
+      - null
+      - null

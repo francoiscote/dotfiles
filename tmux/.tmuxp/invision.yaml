@@ -1,0 +1,27 @@
+session_name: InVision
+start_directory: ~/Code
+windows:
+  - window_name: EOS
+    start_directory: ~/Code/eos-ds
+    layout: main-horizontal
+    panes:
+      - null
+      - null
+  - window_name: cobalt-modules
+    start_directory: ~/Code/cobalt-modules
+    layout: main-horizontal
+    panes:
+      - null
+      - null
+  - window_name: trike
+    start_directory: ~/Code/trike
+    layout: main-horizontal
+    panes:
+      - null
+      - null
+  - window_name: pistanos
+    start_directory: ~/Code/pistanos
+    layout: main-horizontal
+    panes:
+      - null
+      - null
