@@ -13,10 +13,10 @@ module.exports = {
 
     // font family with optional fallbacks
     fontFamily:
-      '"Operator Mono SSm Lig", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+      '"Operator Mono SSm Lig"',
 
-    // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
-    cursorColor: "#5F6B85",
+    fontWeight: "500",
+    fontWeightBold: "500",
 
     // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
     cursorShape: "UNDERLINE",
@@ -24,33 +24,9 @@ module.exports = {
     // set to true for blinking cursor
     cursorBlink: true,
 
-    // color of the text
-    foregroundColor: "#ABB2BF",
-
-    // terminal background color
-    backgroundColor: "#282c34",
-
-    // border color (window, tabs)
-    borderColor: "#333",
-
-    // custom css to embed in the main window
-    css: "",
-
-    // custom css to embed in the terminal window
-    termCSS: `
-      x-screen a {
-        color: #E5C07B;
-        text-decoration: underline;
-      }
-
-      x-screen a.hover {
-        text-decoration: none;
-      }
-    `,
-
     // set to `true` (without backticks) if you're using a Linux setup that doesn't show native menus
     // default: `false` on Linux, `true` on Windows (ignored on macOS)
-    showHamburgerMenu: "",
+    showHamburgerMenu: "true",
 
     // set to `false` if you want to hide the minimize, maximize and close buttons
     // additionally, set to `'left'` if you want them on the left, like in Ubuntu
@@ -64,23 +40,38 @@ module.exports = {
     // including the 6 x 6 color cubes and the grayscale map, just provide
     // an array here instead of a color map object
     colors: {
-      black: "#000000",
-      red: "#E06C75",
-      green: "#98C379",
-      yellow: "#E5C07B",
-      blue: "#56B6C2",
-      magenta: "#C678DD",
-      cyan: "#61AFEF",
-      white: "#FFFFFF",
-      lightBlack: "#5F6B85",
-      lightRed: "#E06C75",
-      lightGreen: "#98C379",
-      lightYellow: "#E5C07B",
-      lightBlue: "#56B6C2",
-      lightMagenta: "#C678DD",
-      lightCyan: "#61AFEF",
+      black: "#4a4543",
+      red: "#db90a7",
+      green: "#87b6b6",
+      yellow: "#ffb4b8",
+      blue: "#32abde",
+      magenta: "#be88d9",
+      cyan: "#958ac5",
+      white: "#f1ecee",
+      lightBlack: "#e7cecd",
+      lightRed: "#eeaabe",
+      lightGreen: "#98c4ba",
+      lightYellow: "#e7d59a",
+      lightBlue: "#82b3e2",
+      lightMagenta: "#ce9ae8",
+      lightCyan: "#b4addf",
       lightWhite: "#FFFFFF"
     },
+
+    // color of the text
+    foregroundColor: "#c29ba3",
+
+    // terminal background color
+    backgroundColor: "#f1ecee",
+
+    // border color (window, tabs)
+    borderColor: "#c29ba3",
+
+    // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
+    cursorColor: "#c29ba3",
+
+    // custom css to embed in the main window
+    css: "",
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
     // if left empty, your system's login shell will be used by default
@@ -94,7 +85,7 @@ module.exports = {
     //
     // Powershell on Windows
     // - Example: `C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe`
-    shell: "/usr/local/bin/zsh",
+    shell: "",
 
     // for setting shell arguments (i.e. for using interactive shellArgs: ['-i'])
     // by default ['--login'] will be used
@@ -120,6 +111,7 @@ module.exports = {
     modifierKeys: {
       altIsMeta: true
     }
+
   },
 
   // a list of plugins to fetch and install from npm
@@ -129,6 +121,10 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: ["hyperlinks"],
+
+  hyperStatusLine: {
+    footerTransparent: false,
+  },
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
