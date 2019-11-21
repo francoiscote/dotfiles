@@ -13,3 +13,6 @@ alias reload!="source ~/.zshrc";
 alias tt="tmuxp load .tmuxp.yaml"
 # list tmux sessions
 alias tl="tmux list-sessions"
+
+# Docker
+alias dockerprune="docker image prune -af && docker volume prune -f"
