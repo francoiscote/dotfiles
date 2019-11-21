@@ -44,7 +44,8 @@ k:bind({}, '1', nil, function()
     {"Firefox Developer Edition", nil, nil, hs.layout.left70, nil, nil},
     {"Atom", nil, nil, hs.layout.left70, nil, nil},
     {"Code", nil, nil, hs.layout.left70, nil, nil},
-    {"iTerm2", nil, nil, hs.layout.right30, nil, nil }
+    {"iTerm2", nil, nil, hs.layout.right30, nil, nil },
+    {"Hyper", nil, nil, hs.layout.right30, nil, nil }
   }
 
   local withZoomLayout = {
@@ -53,7 +54,8 @@ k:bind({}, '1', nil, function()
     {"Atom", nil, nil, hs.layout.left70, nil, nil},
     {"Code", nil, nil, hs.layout.left70, nil, nil},
     {"zoom.us", nil, nil, {x=0.7, y=0, w=0.3, h=0.5}, nil, nil },
-    {"iTerm2", nil, nil, {x=0.7, y=0.5, w=0.3, h=0.5}, nil, nil }
+    {"iTerm2", nil, nil, {x=0.7, y=0.5, w=0.3, h=0.5}, nil, nil },
+    {"Hyper", nil, nil, {x=0.7, y=0.5, w=0.3, h=0.5}, nil, nil }
   }
     
   if isZoomRunning() then
@@ -71,7 +73,8 @@ k:bind({'shift'}, '1', nil, function()
     {"Firefox Developer Edition", nil, nil, hs.layout.right70, nil, nil},
     {"Atom", nil, nil, hs.layout.right70, nil, nil},
     {"Code", nil, nil, hs.layout.right70, nil, nil},
-    {"iTerm2", nil, nil, hs.layout.left30, nil, nil }
+    {"iTerm2", nil, nil, hs.layout.left30, nil, nil },
+    {"Hyper", nil, nil, hs.layout.left30, nil, nil }
   }
 
   local withZoomLayout = {
@@ -80,7 +83,8 @@ k:bind({'shift'}, '1', nil, function()
     {"Atom", nil, nil, hs.layout.right70, nil, nil},
     {"Code", nil, nil, hs.layout.right70, nil, nil},
     {"zoom.us", nil, nil, {x=0, y=0, w=0.3, h=0.5}, nil, nil },
-    {"iTerm2", nil, nil, {x=0, y=0.5, w=0.3, h=0.5}, nil, nil }
+    {"iTerm2", nil, nil, {x=0, y=0.5, w=0.3, h=0.5}, nil, nil },
+    {"Hyper", nil, nil, {x=0, y=0.5, w=0.3, h=0.5}, nil, nil }
   }
     
   if isZoomRunning() then
@@ -95,6 +99,7 @@ end)
 k:bind({}, '2', nil, function()
   local windowLayout = {
     {"iTerm2", nil, nil, {x=0.2, y=0.1, w=0.6, h=0.8}, nil, nil },
+    {"Hyper", nil, nil, {x=0.2, y=0.1, w=0.6, h=0.8}, nil, nil },
     {"Atom", nil, nil, hs.layout.left50, nil, nil},
     {"Code", nil, nil, hs.layout.left50, nil, nil},
     {"Google Chrome", nil, nil, hs.layout.right50, nil, nil},
@@ -107,6 +112,7 @@ end)
 k:bind({'shift'}, '2', nil, function()
   local windowLayout = {
     {"iTerm2", nil, nil, {x=0.2, y=0.1, w=0.6, h=0.8}, nil, nil },
+    {"Hyper", nil, nil, {x=0.2, y=0.1, w=0.6, h=0.8}, nil, nil },
     {"Atom", nil, nil, hs.layout.right50, nil, nil},
     {"Code", nil, nil, hs.layout.right50, nil, nil},
     {"Google Chrome", nil, nil, hs.layout.left50, nil, nil},
@@ -127,6 +133,7 @@ k:bind({}, '4', nil, function()
       {"Code", nil, nil, nil, {x=915, y=0, w=1724, h=1418}, nil},
       {"Google Chrome", "francoiscote", nil, nil, {x=915, y=0, w=1724, h=1418}, nil},
 	    {"iTerm2", nil, nil, nil, {x=2640, y=0, w=800, h=962}, nil},
+	    {"Hyper", nil, nil, nil, {x=2640, y=0, w=800, h=962}, nil},
       {"Google Chrome", "Alert Box Widget", nil, nil, {x=2640, y=985, w=800, h=455}, nil},
 	}
     hs.layout.apply(windowLayout, string.find)
@@ -314,6 +321,7 @@ singleapps = {
   {'k', 'Google Chrome'},
   -- {'k', 'Firefox Developer Edition'},
   {'l', 'iTerm'},
+  -- {'l', 'Hyper'},
   {';', 'Sourcetree'},
 
   -- Bottom Row: Email, Calendar and ToDos
@@ -332,19 +340,13 @@ end
 k:bind({}, 's', nil, function()
   local currentDeviceName = hs.audiodevice.current().name
   local nextDevice
-  if string.find(currentDeviceName, 'Yeti') then
-    nextDevice = hs.audiodevice.findDeviceByName('Bose Colour SoundLink')
-    if (nextDevice == nil) then
-      nextDevice = hs.audiodevice.findDeviceByName('Elgato Dock')
-    end
-    if (nextDevice == nil) then
-      nextDevice = hs.audiodevice.findDeviceByName('USB audio CODEC')
-    end
+  if string.find(currentDeviceName, 'Vanatoo T0') then
+    nextDevice = hs.audiodevice.findDeviceByName('Elgato Dock')
     if (nextDevice == nil) then
       nextDevice = hs.audiodevice.findDeviceByName('MacBook Pro Speakers')
     end
   else
-    nextDevice = hs.audiodevice.findDeviceByName('Yeti Stereo Microphone')
+    nextDevice = hs.audiodevice.findDeviceByName('Vanatoo T0')
   end
   nextDevice:setDefaultOutputDevice()
 end)
