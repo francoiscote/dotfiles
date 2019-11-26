@@ -138,7 +138,7 @@
   "material-icon-theme.activeIconPack": "react",
   "material-icon-theme.hidesExplorerArrows": true,
   "material-icon-theme.folders.theme": "classic",
-  "material-icon-theme.folders.color": "#c29ba3",
+  "material-icon-theme.folders.color": "#fdd835",
   "workbench.editor.closeEmptyGroups": false,
   "powermode.enabled": true,
   "powermode.comboThreshold": 80,
@@ -150,7 +150,7 @@
   "editor.minimap.showSlider": "always",
   "editor.smoothScrolling": true,
   "editor.cursorBlinking": "phase",
-  "workbench.colorTheme": "soft era",
+  "workbench.colorTheme": "One Dark Pro",
   "workbench.editor.focusRecentEditorAfterClose": false,
   "editor.renderControlCharacters": false,
   "editor.fontLigatures": true,
@@ -188,8 +188,9 @@
   "git.autofetch": true,
   "versionlens.showVersionLensesAtStartup": false,
   "editor.fontFamily": "Operator Mono SSm Lig",
-  "editor.fontSize": 12,
+  "editor.fontSize": 14,
   "editor.letterSpacing": -0.4,
   "color-highlight.markRuler": false,
-  "color-highlight.markerType": "dot-before"
+  "color-highlight.markerType": "dot-before",
+  "jest.autoEnable": false
 }
