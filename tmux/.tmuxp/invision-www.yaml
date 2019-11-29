@@ -1,4 +1,4 @@
-session_name: InVision WWW
+session_name: www
 start_directory: ~/Code
 windows:
   - window_name: gateway
