@@ -17,22 +17,29 @@ end)
 
 -- Mission Control
 -------------------------------------------------------------------------------
+
 -- Mission Control
 hyper:bind({"shift"}, 'up', nil, function()
-  hs.eventtap.keyStroke({"cmd","alt","ctrl"}, '0')
-  hyper.triggered = true
+  -- hs.eventtap.keyStroke({"ctrl"}, "f10")
+  -- hyper.triggered = true
 end)
 
 -- Go To Previous Space
 hyper:bind({"shift"}, 'left', nil, function()
-  hs.eventtap.keyStroke({"ctrl"}, 'left')
-  hyper.triggered = true
+  -- helpers.doKeyStroke({"ctrl","shift","cmd"}, 'left')
+  -- hyper.triggered = true
 end)
 
 -- Go To Next Space
 hyper:bind({"shift"}, 'right', nil, function()
-  hs.eventtap.keyStroke({"ctrl"}, 'right')
-  hyper.triggered = true
+  -- helpers.doKeyStroke({"ctrl","shift","cmd"}, 'right')
+  -- hyper.triggered = true
+end)
+
+-- Show Desktop
+hyper:bind({"shift"}, 'down', nil, function()
+  -- helpers.doKeyStroke({"ctrl","shift","cmd"}, 'down')
+  -- hyper.triggered = true
 end)
 
 -- Focus Windows
