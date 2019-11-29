@@ -60,8 +60,9 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 12
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
-# Save screenshots to the desktop
-defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+# specify folder to save screenshots to
+mkdir -p ${HOME}/Pictures/screenshots
+defaults write com.apple.screencapture location -string "${HOME}/Pictures/screenshots"
 
 # Save screenshots in JPG format (other options: BMP, GIF, PNG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "jpg"
@@ -73,15 +74,16 @@ defaults write com.apple.screencapture disable-shadow -bool true
 ###############################################################################
 # Fonts
 ###############################################################################
+# All of these are useless in macOS Catalina (10.15)
 
-defaults write -globalDomain AppleFontSmoothing -int 1
-defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
+# defaults write -globalDomain AppleFontSmoothing -int 1
+# defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
 
 # Font Smoothing, set to Thin for iTerm, Atom and VS Code
 # reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17
-defaults write com.googlecode.iterm2 AppleFontSmoothing -int 2
-defaults write com.github.atom AppleFontSmoothing -int 2
-defaults write com.microsoft.code AppleFontSmoothing -int 2
+# defaults write com.googlecode.iterm2 AppleFontSmoothing -int 2
+# defaults write com.github.atom AppleFontSmoothing -int 2
+# defaults write com.microsoft.code AppleFontSmoothing -int 2
 
 
 ###############################################################################
