@@ -1,3 +1,2 @@
 *.log
 .localrc
-fish/.config/fish/functions/fisher.fish
