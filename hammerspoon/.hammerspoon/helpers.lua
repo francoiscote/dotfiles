@@ -9,8 +9,8 @@ function helpers.logWindowInfo(w)
   log.d("Title:", w:title())
   log.d("Size:", w:size())
   log.d("Frame:", w:frame())
-  lod.d("Role:", w:role())
-  lod.d("Subrole:", w:subrole())
+  log.d("Role:", w:role())
+  log.d("Subrole:", w:subrole())
 end
 
 return helpers
