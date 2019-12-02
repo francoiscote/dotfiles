@@ -47,12 +47,10 @@ $ cd ~/.dotfiles
 $ stow git
 $ stow tmux
 $ stow ...
+```
 
 Make the content of `~/.scripts` executable
-```
 
-\$ sudo chmod +x ~/.scripts/\*
-
-```
-
+```sh
+$ sudo chmod +x ~/.scripts/\*
 ```
