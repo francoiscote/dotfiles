@@ -1,5 +1,4 @@
 session_name: Inside Design
-start_directory: ~/Code
 windows:
   - window_name: inside-design
     start_directory: ~/Code/invision-inside-design

@@ -1,5 +1,5 @@
 session_name: Stream
-start_directory: ~/code
+start_directory: ~/Code
 windows:
   - window_name: scratch
     layout: main-horizontal

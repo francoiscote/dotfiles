@@ -1,5 +1,5 @@
 session_name: Personal
-start_directory: ~/code
+start_directory: ~/Code
 windows:
   - window_name: scratch
     layout: main-horizontal
@@ -11,13 +11,13 @@ windows:
     panes:
       - null
   - window_name: francoiscote.net
-    start_directory: ~/code/francoiscote.net
+    start_directory: ~/Code/francoiscote.net
     layout: main-horizontal
     panes:
       - null
       - null
   - window_name: adventofcode
-    start_directory: ~/code/adventofcode
+    start_directory: ~/Code/adventofcode
     layout: main-horizontal
     panes:
       - null
