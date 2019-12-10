@@ -19,5 +19,5 @@ $ brew bundle --global
 ## Dump
 
 ```shell
-$ brew dump --global --force
+$ brew bundle dump --global --force
 ```
