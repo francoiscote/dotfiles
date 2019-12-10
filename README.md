@@ -3,8 +3,6 @@
 These are the dotfiles for my macOS setup. The dotfiles
 are managed by [GNU Stow](https://www.gnu.org/software/stow/).
 
-These dotfiles are currently used on my [hackintosh setup](https://gist.github.com/francoiscote/fd090c482936b94afe3e4322c4f6189b).
-
 ## Features
 
 - Zsh Shell
