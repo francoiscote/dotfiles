@@ -13,4 +13,19 @@ function helpers.logWindowInfo(w)
   log.d("Subrole:", w:subrole())
 end
 
+function helpers.setWindowsToCell(winFilter, grid, cell)
+  local wins = winFilter:getWindows()
+  for i,w in pairs(wins) do
+    grid.set(w, cell)
+  end
+end
+
+function helpers.getDynamicMargins(h, v)
+  local max = hs.window.focusedWindow():screen():frame()
+  local hPad = math.floor(max.w * h)
+  local vPad = math.floor(max.h * v)
+
+  return hs.geometry.size(hPad,vPad)
+end
+
 return helpers
