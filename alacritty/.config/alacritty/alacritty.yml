@@ -106,7 +106,7 @@ font:
     family: Operator Mono SSm
 
     # The `style` can be specified to pick a specific face.
-    style: Book
+    style: Light
 
   # Bold font face
   bold:
@@ -117,7 +117,7 @@ font:
     #family: monospace
 
     # The `style` can be specified to pick a specific face.
-    style: Medium
+    style: Book
 
   # Italic font face
   #italic:
@@ -174,7 +174,7 @@ font:
 #use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
-#draw_bold_text_with_bright_colors: true
+draw_bold_text_with_bright_colors: false
 
 # Colors (Tomorrow Night Bright)
 colors:
