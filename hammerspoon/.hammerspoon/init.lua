@@ -1,3 +1,12 @@
+-- USER VARIABLES
+-------------------------------------------------------------------------------
+local user = {
+  terminal = 'Alacritty',
+  browser =   'Google Chrome'
+  -- browser = 'Firefox Developer Edition',
+  -- browser = 'qutebrowser',
+}
+
 -- INITIALIZATION
 -------------------------------------------------------------------------------
 helpers = require("helpers")
@@ -79,7 +88,7 @@ hyper:bind({}, '1', nil, function()
     {"Atom", nil, nil, hs.layout.left70, nil, nil},
     {"Code", nil, nil, hs.layout.left70, nil, nil},
     {"iTerm2", nil, nil, hs.layout.right30, nil, nil },
-    {"Hyper", nil, nil, hs.layout.right30, nil, nil }
+    {"Alacritty", nil, nil, hs.layout.right30, nil, nil }
   }
 
   local withZoomLayout = {
@@ -90,7 +99,7 @@ hyper:bind({}, '1', nil, function()
     {"Code", nil, nil, hs.layout.left70, nil, nil},
     {"zoom.us", nil, nil, {x=0.7, y=0, w=0.3, h=0.5}, nil, nil },
     {"iTerm2", nil, nil, {x=0.7, y=0.5, w=0.3, h=0.5}, nil, nil },
-    {"Hyper", nil, nil, {x=0.7, y=0.5, w=0.3, h=0.5}, nil, nil }
+    {"Alacritty", nil, nil, {x=0.7, y=0.5, w=0.3, h=0.5}, nil, nil }
   }
     
   if helpers.isZoomRunning() then
@@ -111,7 +120,7 @@ hyper:bind({'shift'}, '1', nil, function()
     {"Atom", nil, nil, hs.layout.right70, nil, nil},
     {"Code", nil, nil, hs.layout.right70, nil, nil},
     {"iTerm2", nil, nil, hs.layout.left30, nil, nil },
-    {"Hyper", nil, nil, hs.layout.left30, nil, nil }
+    {"Alacritty", nil, nil, hs.layout.left30, nil, nil }
   }
 
   local withZoomLayout = {
@@ -122,7 +131,7 @@ hyper:bind({'shift'}, '1', nil, function()
     {"Code", nil, nil, hs.layout.right70, nil, nil},
     {"zoom.us", nil, nil, {x=0, y=0, w=0.3, h=0.5}, nil, nil },
     {"iTerm2", nil, nil, {x=0, y=0.5, w=0.3, h=0.5}, nil, nil },
-    {"Hyper", nil, nil, {x=0, y=0.5, w=0.3, h=0.5}, nil, nil }
+    {"Alacritty", nil, nil, {x=0, y=0.5, w=0.3, h=0.5}, nil, nil }
   }
     
   if helpers.isZoomRunning() then
@@ -138,7 +147,7 @@ end)
 hyper:bind({}, '2', nil, function()
   local windowLayout = {
     {"iTerm2", nil, nil, {x=0.2, y=0.1, w=0.6, h=0.8}, nil, nil },
-    {"Hyper", nil, nil, {x=0.2, y=0.1, w=0.6, h=0.8}, nil, nil },
+    {"Alacritty", nil, nil, {x=0.2, y=0.1, w=0.6, h=0.8}, nil, nil },
     {"Atom", nil, nil, hs.layout.left50, nil, nil},
     {"Code", nil, nil, hs.layout.left50, nil, nil},
     {"Google Chrome", nil, nil, hs.layout.right50, nil, nil},
@@ -152,7 +161,7 @@ end)
 hyper:bind({'shift'}, '2', nil, function()
   local windowLayout = {
     {"iTerm2", nil, nil, {x=0.2, y=0.1, w=0.6, h=0.8}, nil, nil },
-    {"Hyper", nil, nil, {x=0.2, y=0.1, w=0.6, h=0.8}, nil, nil },
+    {"Alacritty", nil, nil, {x=0.2, y=0.1, w=0.6, h=0.8}, nil, nil },
     {"Atom", nil, nil, hs.layout.right50, nil, nil},
     {"Code", nil, nil, hs.layout.right50, nil, nil},
     {"Google Chrome", nil, nil, hs.layout.left50, nil, nil},
@@ -174,7 +183,7 @@ hyper:bind({}, '4', nil, function()
       {"Code", nil, nil, nil, {x=915, y=0, w=1724, h=1418}, nil},
       {"Google Chrome", "francoiscote", nil, nil, {x=915, y=0, w=1724, h=1418}, nil},
 	    {"iTerm2", nil, nil, nil, {x=2640, y=0, w=800, h=962}, nil},
-	    {"Hyper", nil, nil, nil, {x=2640, y=0, w=800, h=962}, nil},
+	    {"Alacritty", nil, nil, nil, {x=2640, y=0, w=800, h=962}, nil},
       {"Google Chrome", "Alert Box Widget", nil, nil, {x=2640, y=985, w=800, h=455}, nil},
 	}
     hs.layout.apply(windowLayout, string.find)
@@ -361,11 +370,8 @@ singleapps = {
   {'h', 'Dash'},
   -- Dev Trifecta (Browser + Editor + Terminal) and SourceTree
   {'j', 'Visual Studio Code'},
-  {'k', 'Google Chrome'},
-  -- {'k', 'Firefox Developer Edition'},
-  -- {'k', 'qutebrowser'},
-  {'l', 'iTerm'},
-  -- {'l', 'Hyper'},
+  {'k', user.browser},
+  {'l', user.terminal},
   {';', 'Fork'},
 
   -- Bottom Row: Email, Calendar and ToDos
