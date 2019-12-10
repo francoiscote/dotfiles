@@ -8,7 +8,9 @@ dsznajder.es7-react-js-snippets
 eamodio.gitlens
 Equinusocio.vsc-material-theme
 esbenp.prettier-vscode
+felixfbecker.php-debug
 felixfbecker.php-intellisense
+felixfbecker.php-pack
 GitHub.vscode-pull-request-github
 hoovercj.vscode-power-mode
 ilich8086.coldfusion

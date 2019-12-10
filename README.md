@@ -6,41 +6,29 @@ are managed by [GNU Stow](https://www.gnu.org/software/stow/).
 ## Features
 
 - Zsh Shell
-- [Oh-my-zsh](https://ohmyz.sh/) framework
-- [Pure prompt](https://github.com/sindresorhus/pure)
-- `zsh-autosuggestions` and `zsh-syntax-highlighting`
-- Tmux & Tmuxp
-- Hammerspoon (OS scripting)
-- Hyper (not used at the moment)
-- Git configs
+  - [Oh-my-zsh](https://ohmyz.sh/) framework
+  - `zsh-autosuggestions` and `zsh-syntax-highlighting` plugins
+  - [Spaceship prompt](https://github.com/denysdovhan/spaceship-prompt)
+  - [tmux](https://github.com/tmux/tmux) & [tmuxp](https://github.com/tmux-python/tmuxp)
+- [Alacritty](https://github.com/jwilm/alacritty) terminal
+- [Hammerspoon](https://www.hammerspoon.org/)
+- [Karabiner Elements](https://pqrs.org/osx/karabiner/)
+- Git Configs
 - macOS defaults
 - VSCode Settings
-- Awesome Font Icons (as an optional vendor)
 
 ## Installation
 
-```sh
+```shell
 $ brew install stow
 $ git clone git@github.com:francoiscote/dotfiles-macos.git ~/.dotfiles
 ```
 
-### Install zsh-autosuggestions
-
-```sh
-$ git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-```
-
-### Install zsh-syntax-highlighting
-
-```sh
-$ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-```
-
 ## Usage
 
-Create the symbolic links for each component you need.
+Create the symbolic links for each feature you need. Watch out, some folders have a README.md with custom installation instructions
 
-```sh
+```shell
 $ cd ~/.dotfiles
 $ stow git
 $ stow tmux
@@ -49,6 +37,6 @@ $ stow ...
 
 Make the content of `~/.scripts` executable
 
-```sh
+```shell
 $ sudo chmod +x ~/.scripts/\*
 ```

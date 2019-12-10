@@ -12,12 +12,12 @@ Stows a `~/.Brewfile` to be used with `brew bundle`. It contains all taps, brews
 
 First, make sure you did `stow macOs` and that the Brewfile is simlinked as the global brewfile at `~/.Brewfile`. Then:
 
-```sh
+```shell
 $ brew bundle --global
 ```
 
 ## Dump
 
-```sh
+```shell
 $ brew dump --global --force
 ```
