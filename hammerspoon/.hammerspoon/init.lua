@@ -177,14 +177,15 @@ end)
 -- 4 - Twitch Setup
 hyper:bind({}, '4', nil, function()
   local windowLayout = {
-	    {"Google Chrome", "Twitch", nil, nil, {x=0, y=0, w=914, h=615}, nil},
-      {"OBS", nil, nil, nil, {x=0, y=637, w=914, h=803}, nil},
-      {"Atom", nil, nil, nil, {x=915, y=0, w=1724, h=1418}, nil},
-      {"Code", nil, nil, nil, {x=915, y=0, w=1724, h=1418}, nil},
-      {"Google Chrome", "francoiscote", nil, nil, {x=915, y=0, w=1724, h=1418}, nil},
-	    {"iTerm2", nil, nil, nil, {x=2640, y=0, w=800, h=962}, nil},
-	    {"Alacritty", nil, nil, nil, {x=2640, y=0, w=800, h=962}, nil},
-      {"Google Chrome", "Alert Box Widget", nil, nil, {x=2640, y=985, w=800, h=455}, nil},
+      {"OBS", "Windowed Projector (Preview)", nil, nil, {x=0, y=963, w=800, h=600}, nil},
+      {"iTerm2", nil, nil, nil, {x=0, y=0, w=800, h=962}, nil},
+      {"Alacritty", nil, nil, nil, {x=0, y=0, w=800, h=962}, nil},
+      {"Atom", nil, nil, nil, {x=801, y=0, w=1724, h=1418}, nil},
+      {"Code", nil, nil, nil, {x=801, y=0, w=1724, h=1418}, nil},
+      {"Google Chrome", "francoiscote", nil, nil, {x=801, y=0, w=1724, h=1418}, nil},
+      {"Google Chrome", "Alert Box Widget", nil, nil, {x=1725, y=985, w=800, h=455}, nil},
+	    {"Google Chrome", "Twitch", nil, nil, {x=2525, y=0, w=914, h=615}, nil},
+      {"OBS", nil, nil, nil, {x=2525, y=637, w=914, h=803}, nil}
 	}
     hs.layout.apply(windowLayout, string.find)
     hyper.triggered = true
@@ -192,7 +193,7 @@ end)
 
 -- 0 - Maximize
 hyper:bind({}, '0', nil, function()
-    local win = hs.window.focusedWindow()
+    local win = hs.window.focullsedWindow()
     win:maximize()
     hyper.triggered = true
 end)
