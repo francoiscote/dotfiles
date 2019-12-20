@@ -10,6 +10,11 @@ windows:
     start_directory: ~/.dotfiles
     panes:
       - null
+    window_name: soft-era
+    layout: main-horizontal
+    start_directory: ~/Code/soft-era-vs-code
+    panes:
+      - null
   - window_name: francoiscote.net
     start_directory: ~/Code/francoiscote.net
     layout: main-horizontal

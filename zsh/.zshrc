@@ -32,6 +32,14 @@ setopt interactivecomments
 autoload -Uz compinit
 
 # -----------------------------------------
+# SPACESHIP THEME CONFIGS 
+# (those ones need to be declared before sourcing the theme)
+# the rest of the Spaceship configs are in lib/spaceship.sh
+# -----------------------------------------
+SPACESHIP_PROMPT_DEFAULT_PREFIX="_ "
+SPACESHIP_GIT_SYMBOL="[]"
+
+# -----------------------------------------
 # OH-MY-ZSH
 # -----------------------------------------
 # Path to your oh-my-zsh installation.

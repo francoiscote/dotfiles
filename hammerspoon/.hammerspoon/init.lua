@@ -205,7 +205,7 @@ end)
 
 -- 0 - Maximize
 hyper:bind({}, '0', nil, function()
-    local win = hs.window.focullsedWindow()
+    local win = hs.window.focusedWindow()
     win:maximize()
     hyper.triggered = true
 end)
