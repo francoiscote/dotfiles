@@ -106,7 +106,7 @@ font:
     family: Operator Mono SSm
 
     # The `style` can be specified to pick a specific face.
-    style: Light
+    style: Book
 
   # Bold font face
   bold:
