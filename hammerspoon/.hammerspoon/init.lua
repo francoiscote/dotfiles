@@ -343,7 +343,10 @@ hyper:bind({}, 's', nil, function()
   local currentDeviceName = hs.audiodevice.current().name
   local nextDevice
   if string.find(currentDeviceName, 'Vanatoo T0') then
-    nextDevice = hs.audiodevice.findDeviceByName('Elgato Dock')
+    nextDevice = hs.audiodevice.findDeviceByName('Yeti Stereo Microphone')
+    if (nextDevice == nil) then
+      nextDevice = hs.audiodevice.findDeviceByName('Elgato Dock')
+    end
     if (nextDevice == nil) then
       nextDevice = hs.audiodevice.findDeviceByName('MacBook Pro Speakers')
     end
