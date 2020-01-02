@@ -15,6 +15,7 @@ are managed by [GNU Stow](https://www.gnu.org/software/stow/).
 - [Karabiner Elements](https://pqrs.org/osx/karabiner/)
 - Git Configs
 - macOS defaults
+- homebrew bundle
 - VSCode Settings
 
 ## Installation
