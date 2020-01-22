@@ -25,12 +25,6 @@ windows:
     panes:
       - null
       - null
-  - window_name: design-v2
-    start_directory: ~/Code/design-v2.www.invisionapp.com
-    layout: main-horizontal
-    panes:
-      - null
-      - null
   - window_name: genome
     start_directory: ~/Code/www-design-genome
     layout: main-horizontal
