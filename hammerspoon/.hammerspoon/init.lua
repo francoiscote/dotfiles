@@ -2,7 +2,7 @@ hs.logger.defaultLogLevel = 'info'
 -- USER VARIABLES
 -------------------------------------------------------------------------------
 local user = {
-  terminal = 'Alacritty',
+  terminal = 'iTerm',
   browser =   'Google Chrome',
   -- browser = 'Firefox Developer Edition',
   -- browser = 'qutebrowser',
@@ -322,9 +322,9 @@ singleapps = {
   {';', 'Fork'},
 
   -- Bottom Row: Email, Calendar and ToDos
-  {'n', 'Mailplane'},
-  {'m', 'Fantastical 2'},
-  {',', 'Notion'},
+  {'n', 'Notion'},
+  {'m', 'Mailplane'},
+  {',', 'Fantastical 2'},
   {'.', 'Finder'}
 }
 
@@ -343,7 +343,7 @@ hyper:bind({}, 's', nil, function()
   local currentDeviceName = hs.audiodevice.current().name
   local nextDevice
   if string.find(currentDeviceName, 'Vanatoo T0') then
-    nextDevice = hs.audiodevice.findDeviceByName('Elgato Dock')
+    nextDevice = hs.audiodevice.findDeviceByName('Yeti Stereo Microphone')
     if (nextDevice == nil) then
       nextDevice = hs.audiodevice.findDeviceByName('MacBook Pro Speakers')
     end
