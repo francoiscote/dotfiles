@@ -222,8 +222,9 @@
   "gitlens.views.lineHistory.location": "gitlens",
   "gitlens.views.compare.location": "gitlens",
   "gitlens.views.search.location": "gitlens",
-  "editor.fontSize": 12,
   "terminal.integrated.fontWeightBold": "500",
   "search.location": "panel",
   "eslint.debug": true,
+  "editor.lineHeight": 0,
+  "editor.fontSize": 12,
 }

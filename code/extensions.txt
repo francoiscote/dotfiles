@@ -1,7 +1,5 @@
-ahmadawais.shades-of-purple
 andys8.jest-snippets
 apollographql.vscode-apollo
-be5invis.vscode-custom-css
 bradgashler.htmltagwrap
 dbaeumer.vscode-eslint
 dsznajder.es7-react-js-snippets
@@ -11,10 +9,10 @@ esbenp.prettier-vscode
 felixfbecker.php-debug
 felixfbecker.php-intellisense
 felixfbecker.php-pack
+fosshaas.fontsize-shortcuts
 GitHub.vscode-pull-request-github
 hoovercj.vscode-power-mode
 ilich8086.coldfusion
-JoelCrosby.one-dark-darker
 jonkwheeler.styled-components-snippets
 jpoissonnier.vscode-styled-components
 legfrey.rocket-ui
@@ -30,10 +28,9 @@ pflannery.vscode-versionlens
 PKief.material-icon-theme
 robinbentley.sass-indented
 sdras.night-owl
-soft-aesthetic.soft-era-theme
 tombonnike.vscode-status-bar-format-toggle
 wayou.vscode-todo-highlight
 wix.glean
 wix.vscode-import-cost
+zhouronghui.propertylist
 zhuangtongfa.material-theme
-zolocode.editorzoom
