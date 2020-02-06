@@ -7,9 +7,3 @@ windows:
     panes:
       - null
       - null
-  - window_name: sanity
-    start_directory: ~/Code/sanity-nextjs-landing-pages-localization-demo-master
-    layout: main-horizontal
-    panes:
-      - null
-      - null
