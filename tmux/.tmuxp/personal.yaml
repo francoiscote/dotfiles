@@ -28,7 +28,7 @@ windows:
     panes:
       - null
       - null
-  - window_name: server
+  - window_name: piserver
     layout: main-horizontal
     shell_command_before:
       - ssh piserver && clear

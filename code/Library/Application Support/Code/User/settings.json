@@ -23,6 +23,7 @@
     "**/*.min.*",
     "**/*.map",
     "**/.next/**",
+    "**/.out/**",
     "**/coverage/**"
   ],
   "window.zoomLevel": 0,
@@ -191,7 +192,8 @@
     "editor.formatOnSave": false
   },
   "[typescriptreact]": {
-    "editor.formatOnSave": false
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -218,7 +220,6 @@
   "gitlens.views.compare.location": "gitlens",
   "gitlens.views.search.location": "gitlens",
   "terminal.integrated.fontWeightBold": "500",
-  "search.location": "panel",
   "eslint.debug": true,
   "material-icon-theme.folders.theme": "classic",
   "sshfs.configs": [
