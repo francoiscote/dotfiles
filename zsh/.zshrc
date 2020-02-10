@@ -47,7 +47,7 @@ export ZSH="/Users/francoiscote/.oh-my-zsh"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 ZSH_THEME="spaceship"
-plugins=(git docker docker-compose docker-machine yarn zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git docker docker-compose docker-machine yarn tmux zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 

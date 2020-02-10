@@ -345,11 +345,18 @@ hyper:bind({}, 's', nil, function()
   if string.find(currentDeviceName, 'Vanatoo T0') then
     nextDevice = hs.audiodevice.findDeviceByName('Yeti Stereo Microphone')
     if (nextDevice == nil) then
+      nextDevice = hs.audiodevice.findDeviceByName('Elgato Dock')
+    end
+    if (nextDevice == nil) then
       nextDevice = hs.audiodevice.findDeviceByName('MacBook Pro Speakers')
     end
   else
     nextDevice = hs.audiodevice.findDeviceByName('Vanatoo T0')
   end
   nextDevice:setDefaultOutputDevice()
+
+  local audioIcon = hs.image.imageFromPath('/System/Library/PreferencePanes/Sound.prefPane/Contents/Resources/SoundPref.icns')
+  hs.notify.new({ title = 'Sound Output Device', subTitle = nextDevice:name(), setIdImage = audioIcon, withdrawAfter = 2}):send()
+
   hyper.triggered = true
 end)

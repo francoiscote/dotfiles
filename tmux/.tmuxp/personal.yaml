@@ -3,6 +3,7 @@ start_directory: ~/Code
 windows:
   - window_name: scratch
     layout: main-horizontal
+    start_directory: ~/
     panes:
       - null
   - window_name: dotfiles
@@ -10,7 +11,7 @@ windows:
     start_directory: ~/.dotfiles
     panes:
       - null
-    window_name: soft-era
+  - window_name: soft-era
     layout: main-horizontal
     start_directory: ~/Code/soft-era-vs-code
     panes:
@@ -24,6 +25,13 @@ windows:
   - window_name: adventofcode
     start_directory: ~/Code/adventofcode
     layout: main-horizontal
+    panes:
+      - null
+      - null
+  - window_name: server
+    layout: main-horizontal
+    shell_command_before:
+      - ssh piserver && clear
     panes:
       - null
       - null

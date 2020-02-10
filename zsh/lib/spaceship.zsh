@@ -21,7 +21,7 @@ SPACESHIP_PROMPT_ORDER=(
   vi_mode       # Vi-mode indicator
   jobs          # Background jobs indicator
   exit_code     # Exit code section
-  char          # Prompt character
+  char          # Prompt charactre
 )
 
 SPACESHIP_RPROMPT_ORDER=(
