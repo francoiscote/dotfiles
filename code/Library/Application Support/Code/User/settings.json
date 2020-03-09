@@ -1,7 +1,7 @@
 {
   "breadcrumbs.enabled": true,
   "diffEditor.renderSideBySide": false,
-  "editor.renderWhitespace": "none",
+  "editor.renderWhitespace": "all",
   "editor.scrollBeyondLastLine": false,
   "editor.tabSize": 2,
   "explorer.autoReveal": false,
@@ -171,7 +171,7 @@
   "editor.minimap.showSlider": "always",
   "editor.smoothScrolling": true,
   "editor.cursorBlinking": "phase",
-  "workbench.colorTheme": "soft era",
+  "workbench.colorTheme": "Material Theme Palenight High Contrast",
   "workbench.editor.focusRecentEditorAfterClose": false,
   "editor.renderControlCharacters": false,
   "editor.fontLigatures": true,
@@ -219,7 +219,6 @@
   "gitlens.views.lineHistory.location": "gitlens",
   "gitlens.views.compare.location": "gitlens",
   "gitlens.views.search.location": "gitlens",
-  "terminal.integrated.fontWeightBold": "500",
   "eslint.debug": true,
   "material-icon-theme.folders.theme": "classic",
   "sshfs.configs": [
@@ -233,5 +232,9 @@
   ],
   "vscode-home-assistant.longLivedAccessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI5ODc4ZWNhMTE0MmU0NDJkOThiNmFjODAwMTFhZGZhMCIsImlhdCI6MTU3OTIwODU2OSwiZXhwIjoxODk0NTY4NTY5fQ.RxLzGrdp3ECtKmVUB4v4THR6_0QGr49FKqZG8_ndiG0",
   "vscode-home-assistant.hostUrl": "https://ha.francoiscote.net",
-  "materialTheme.accent": "Remove accents"
+  "materialTheme.accent": "Remove accents",
+  "workbench.preferredDarkColorTheme": "Material Theme Palenight High Contrast",
+  "workbench.preferredLightColorTheme": "soft era",
+  "editor.lineHeight": 0,
+  "editor.fontSize": 13
 }
