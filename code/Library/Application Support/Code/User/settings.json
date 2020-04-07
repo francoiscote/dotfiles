@@ -12,20 +12,6 @@
   "terminal.integrated.scrollback": 10000,
   "terminal.integrated.cursorBlinking": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "todohighlight.exclude": [
-    "**/node_modules/**",
-    "**/bower_components/**",
-    "**/dist/**",
-    "**/build/**",
-    "**/.vscode/**",
-    "**/.github/**",
-    "**/_output/**",
-    "**/*.min.*",
-    "**/*.map",
-    "**/.next/**",
-    "**/.out/**",
-    "**/coverage/**"
-  ],
   "window.zoomLevel": 0,
   "workbench.activityBar.visible": true,
   "workbench.iconTheme": "material-icon-theme",
@@ -221,20 +207,21 @@
   "gitlens.views.search.location": "gitlens",
   "eslint.debug": true,
   "material-icon-theme.folders.theme": "classic",
-  "sshfs.configs": [
-    {
-      "host": "server.local",
-      "name": "server",
-      "privateKeyPath": "/Users/francoiscote/.ssh/id_rsa",
-      "root": "/home/fcote/",
-      "username": "fcote"
-    }
-  ],
   "vscode-home-assistant.longLivedAccessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI5ODc4ZWNhMTE0MmU0NDJkOThiNmFjODAwMTFhZGZhMCIsImlhdCI6MTU3OTIwODU2OSwiZXhwIjoxODk0NTY4NTY5fQ.RxLzGrdp3ECtKmVUB4v4THR6_0QGr49FKqZG8_ndiG0",
   "vscode-home-assistant.hostUrl": "https://ha.francoiscote.net",
   "materialTheme.accent": "Remove accents",
   "workbench.preferredDarkColorTheme": "Material Theme Palenight High Contrast",
   "workbench.preferredLightColorTheme": "soft era",
   "editor.lineHeight": 0,
-  "editor.fontSize": 13
+  "editor.fontSize": 13,
+  "terminal.integrated.macOptionClickForcesSelection": true,
+  "explorer.confirmDragAndDrop": false,
+  "todo-tree.tree.showScanModeButton": false,
+  "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
+  "todo-tree.general.statusBar": "total",
+  "todo-tree.highlights.defaultHighlight": {
+    "foreground": "#292D3E",
+    "background": "#FFCB6B",
+    "iconColour": "#FFCB6B"
+},
 }
