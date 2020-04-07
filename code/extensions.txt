@@ -11,13 +11,15 @@ felixfbecker.php-intellisense
 felixfbecker.php-pack
 fosshaas.fontsize-shortcuts
 GitHub.vscode-pull-request-github
-hoovercj.vscode-power-mode
+Gruntfuggly.todo-tree
 ilich8086.coldfusion
 jonkwheeler.styled-components-snippets
 jpoissonnier.vscode-styled-components
 legfrey.rocket-ui
 mikestead.dotenv
 ms-azuretools.vscode-docker
+ms-vscode-remote.remote-ssh
+ms-vscode-remote.remote-ssh-edit
 ms-vsliveshare.vsliveshare
 ms-vsliveshare.vsliveshare-audio
 ms-vsliveshare.vsliveshare-pack
@@ -28,8 +30,8 @@ pflannery.vscode-versionlens
 PKief.material-icon-theme
 robinbentley.sass-indented
 sdras.night-owl
+soft-aesthetic.soft-era-theme
 tombonnike.vscode-status-bar-format-toggle
-wayou.vscode-todo-highlight
 wix.glean
 wix.vscode-import-cost
 zhouronghui.propertylist
