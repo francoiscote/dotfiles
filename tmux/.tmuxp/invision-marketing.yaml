@@ -1,9 +1,0 @@
-session_name: marketing-pages
-start_directory: ~/Code
-windows:
-  - window_name: marketing-pages
-    start_directory: ~/Code/marketing-pages
-    layout: main-horizontal
-    panes:
-      - null
-      - null
