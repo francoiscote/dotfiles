@@ -107,7 +107,7 @@ local wf=hs.window.filter
 w_browsers = wf.new{'Google Chrome', 'Firefox Developer Edition', 'qtebrowser'}
 w_editors = wf.new{'Atom', 'Code'}
 w_terminals = wf.new{'iTerm2', 'Alacritty'}
-w_videos = wf.new(false):setAppFilter('zoom.us',{allowTitles='Meeting'})
+w_videos = wf.new(false):setAppFilter('zoom.us',{ allowTitles='Meeting' })
 
 
 -- Shift+1 - Work Setup - Code Editor Right
@@ -309,7 +309,7 @@ hyper:bind({}, 'r', nil, reload)
 singleapps = {
   -- Top Row: IM + Spotify
   {'u', 'Slack'},
-  {'i', 'Franz'},
+  {'i', 'Station'},
   {'o', 'Discord'},
   {'p', 'Spotify'},
 
