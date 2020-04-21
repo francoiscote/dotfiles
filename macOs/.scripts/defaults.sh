@@ -1,6 +1,10 @@
 # Most of these are copied from the excellent list from Mathias Bynens
 # https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 
+###############################################################################
+# UI / UX                                                                     #
+###############################################################################
+
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
@@ -14,6 +18,13 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 # Disable Resume system-wide
 defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
+
+###############################################################################
+# Fonts
+###############################################################################
+
+# Enable Font Smoothing
+defaults write -g CGFontRenderingFontSmoothingDisabled -bool false
 
 ###############################################################################
 # SSD-specific tweaks                                                         #
@@ -53,12 +64,16 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 12
 
 
 ###############################################################################
-# Screen                                                                      #
+# Screensaver                                                                 #
 ###############################################################################
 
 # Require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+###############################################################################
+# Screenshots                                                                 #
+###############################################################################
 
 # specify folder to save screenshots to
 mkdir -p ${HOME}/Pictures/screenshots
@@ -69,22 +84,6 @@ defaults write com.apple.screencapture type -string "jpg"
 
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
-
-
-###############################################################################
-# Fonts
-###############################################################################
-# All of these are useless in macOS Catalina (10.15)
-
-# defaults write -globalDomain AppleFontSmoothing -int 1
-# defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
-
-# Font Smoothing, set to Thin for iTerm, Atom and VS Code
-# reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17
-# defaults write com.googlecode.iterm2 AppleFontSmoothing -int 2
-# defaults write com.github.atom AppleFontSmoothing -int 2
-# defaults write com.microsoft.code AppleFontSmoothing -int 2
-
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
