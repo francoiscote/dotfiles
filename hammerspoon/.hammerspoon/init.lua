@@ -2,7 +2,7 @@ hs.logger.defaultLogLevel = 'info'
 -- USER VARIABLES
 -------------------------------------------------------------------------------
 local user = {
-  terminal = 'iTerm',
+  terminal = 'alacritty',
   browser =   'Google Chrome',
   -- browser = 'Firefox Developer Edition',
   -- browser = 'qutebrowser',
