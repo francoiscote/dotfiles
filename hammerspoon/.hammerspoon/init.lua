@@ -110,7 +110,7 @@ w_terminals = wf.new{'iTerm2', 'Alacritty'}
 w_videos = wf.new(false):setAppFilter('zoom.us')
 
 
--- Shift+1 - Work Setup - Code Editor Right
+-- 1 - Work Setup - Code Editor Right
 hyper:bind({}, '1', nil, function()
   local cells = {
     leftFull = '0,0 3x16',
@@ -135,7 +135,7 @@ hyper:bind({}, '1', nil, function()
   hyper.triggered = true
 end)
 
--- 1 - Work Setup - Code Editor Left
+-- Shift+1 - Work Setup - Code Editor Left
 hyper:bind({'shift'}, '1', nil, function()
   local cells = {
     left = '0,0 7x18',
@@ -167,7 +167,7 @@ local evenSplitCells = {
 }
 
 
--- Shift+2 - Work Setup - 50/50 split, Editor Right, terminal in the center
+-- 2 - Work Setup - 50/50 split, Editor Right, terminal in the center
 hyper:bind({}, '2', nil, function()
   helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.left)
   helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.right)
@@ -175,7 +175,7 @@ hyper:bind({}, '2', nil, function()
   hyper.triggered = true
 end)
 
--- 2 - Work Setup - 50/50 split, Editor Left, terminal in the center
+-- Shift+2 - Work Setup - 50/50 split, Editor Left, terminal in the center
 hyper:bind({'shift'}, '2', nil, function()
   helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.left)
   helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.right)
