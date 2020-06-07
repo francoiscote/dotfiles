@@ -26,7 +26,6 @@ ms-vsliveshare.vsliveshare-pack
 msjsdiag.debugger-for-chrome
 naumovs.color-highlight
 Orta.vscode-jest
-pflannery.vscode-versionlens
 PKief.material-icon-theme
 robinbentley.sass-indented
 sdras.night-owl
