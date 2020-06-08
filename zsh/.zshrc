@@ -43,7 +43,7 @@ SPACESHIP_GIT_SYMBOL="[]"
 # OH-MY-ZSH
 # -----------------------------------------
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/francoiscote/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 ZSH_THEME="spaceship"

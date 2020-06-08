@@ -24,7 +24,7 @@
   whitespace = "red reverse"
 [core]
 	editor = vim
-	excludesfile = /Users/francoiscote/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [apply]
 	whitespace = nowarn
 [help]
@@ -42,4 +42,4 @@
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [commit]
-	template = /Users/francoiscote/.stCommitMsg
+	template = ~/.stCommitMsg
