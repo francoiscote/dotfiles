@@ -42,6 +42,5 @@ SPACESHIP_RPROMPT_ORDER=(
   pyenv         # Pyenv section
   dotnet        # .NET section
   ember         # Ember.js section
-  kubecontext   # Kubectl context section
   terraform     # Terraform workspace section 
 )
