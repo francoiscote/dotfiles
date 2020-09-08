@@ -147,12 +147,7 @@
   "material-icon-theme.activeIconPack": "react",
   "material-icon-theme.folders.color": "#61AFEF",
   "workbench.editor.closeEmptyGroups": false,
-  "powermode.enabled": true,
-  "powermode.comboThreshold": 80,
   "editor.minimap.enabled": true,
-  "powermode.comboTimeout": 2,
-  "powermode.shakeIntensity": 1,
-  "editor.minimap.renderCharacters": false,
   "editor.minimap.maxColumn": 200,
   "editor.minimap.showSlider": "always",
   "editor.smoothScrolling": true,
@@ -168,7 +163,7 @@
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
   "[javascript]": {
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": false
   },
   "[javascriptreact]": {
     "editor.formatOnSave": false
@@ -177,7 +172,7 @@
     "editor.formatOnSave": false
   },
   "[typescriptreact]": {
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": false
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -189,7 +184,6 @@
     "Dockerfile.*": "dockerfile"
   },
   "git.autofetch": true,
-  "versionlens.showVersionLensesAtStartup": false,
   "editor.fontFamily": "Operator Mono SSm Lig",
   "editor.letterSpacing": -0.3,
   "color-highlight.markRuler": false,
@@ -217,6 +211,9 @@
     "background": "#FFCB6B",
     "iconColour": "#FFCB6B"
   },
+  "workbench.sideBar.location": "left",
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "editor.minimap.renderCharacters": false,
   "editor.lineHeight": 0,
-  "editor.fontSize": 13,
+  "editor.fontSize": 13
 }

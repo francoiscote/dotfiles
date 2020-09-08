@@ -163,7 +163,7 @@ end)
 local evenSplitCells = {
   left = '0,0 5x16',
   right = '5,0 5x16',
-  center = '3,3 4x10'
+  center = '2,1 6x14'
 }
 
 

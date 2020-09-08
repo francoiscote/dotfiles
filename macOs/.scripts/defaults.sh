@@ -23,8 +23,7 @@ defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 # Fonts
 ###############################################################################
 
-# Enable Font Smoothing
-# defaults write -g CGFontRenderingFontSmoothingDisabled -bool false
+# TODO: enable "use Font Smoothing when available"
 
 ###############################################################################
 # SSD-specific tweaks                                                         #
