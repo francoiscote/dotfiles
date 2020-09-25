@@ -1,7 +1,6 @@
 {
   "breadcrumbs.enabled": true,
   "diffEditor.renderSideBySide": false,
-  "editor.renderWhitespace": "all",
   "editor.scrollBeyondLastLine": false,
   "editor.tabSize": 2,
   "explorer.autoReveal": false,
@@ -215,5 +214,7 @@
   "typescript.disableAutomaticTypeAcquisition": true,
   "editor.minimap.renderCharacters": false,
   "editor.lineHeight": 0,
-  "editor.fontSize": 13
+  "editor.fontSize": 13,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.renderWhitespace": "trailing"
 }
