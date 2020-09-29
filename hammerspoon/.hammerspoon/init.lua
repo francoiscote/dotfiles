@@ -324,7 +324,7 @@ singleapps = {
   -- Bottom Row: Email, Calendar and ToDos
   {'n', 'Notion'},
   {'m', 'Mailplane'},
-  {',', 'Fantastical'},
+  {',', 'Fantastical 2'},
   {'.', 'Finder'}
 }
 

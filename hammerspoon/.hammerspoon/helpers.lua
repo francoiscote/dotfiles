@@ -11,7 +11,7 @@ function helpers.logWindowInfo(w)
   log.d("Frame:", w:frame())
   log.d("Role:", w:role())
   log.d("Subrole:", w:subrole())
-  lod.d(w)
+  log.d(w)
 end
 
 function helpers.setWindowsToCell(winFilter, grid, cell)
