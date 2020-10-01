@@ -6,7 +6,6 @@ are managed by [GNU Stow](https://www.gnu.org/software/stow/).
 ## Features
 
 - Zsh Shell
-  - [Oh-my-zsh](https://ohmyz.sh/) framework
   - `zsh-autosuggestions` and `zsh-syntax-highlighting` plugins
   - [Spaceship prompt](https://github.com/denysdovhan/spaceship-prompt)
   - [tmux](https://github.com/tmux/tmux) & [tmuxp](https://github.com/tmux-python/tmuxp)
@@ -41,3 +40,25 @@ Make the content of `~/.scripts` executable
 ```shell
 $ sudo chmod +x ~/.scripts/\*
 ```
+
+## TO DO
+
+### Installation script
+
+- install XCode command line tools
+  - `xcode-select --install`
+- install brew
+  - `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
+- `brew install stow`
+
+- checkout `dotfiles-private` using https
+  - using https
+  - `stow localrc ssh tmuxp`
+  - fix permissions on `.ssh`
+- checkout `dotfiles`
+  - `stow ...`
+- install brew packages bundle
+  - `brew bundle --global`
+- `pip3 install tmuxp`
+- `npm install -g spaceshipt-prompt`
+- checkout git projects in "Code"
