@@ -39,17 +39,9 @@ autoload -Uz compinit
 SPACESHIP_PROMPT_DEFAULT_PREFIX="_ "
 SPACESHIP_GIT_SYMBOL="[]"
 
-# -----------------------------------------
-# OH-MY-ZSH
-# -----------------------------------------
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-ZSH_THEME="spaceship"
-plugins=(git docker docker-compose docker-machine yarn tmux zsh-autosuggestions zsh-syntax-highlighting)
-
-source $ZSH/oh-my-zsh.sh
+# Set Spaceship ZSH as a prompt
+autoload -U promptinit; promptinit
+prompt spaceship
 
 # -----------------------------------------
 # PATHS
