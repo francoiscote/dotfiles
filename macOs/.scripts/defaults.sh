@@ -19,25 +19,28 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 # Disable Resume system-wide
 defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
-###############################################################################
-# Fonts
-###############################################################################
+# TODO: Finder setup of sidebar shortcuts
+# TODO: New finder windows shows Downloads
+# TODO: Finder: hide all icons from desktop
+# TODO: Finder: show all filename extensions
+# TODO: Finder: show hidden files
+# TODO: Finder: use columns view by default everywhere
 
-# TODO: enable "use Font Smoothing when available"
+# TODO: default workspaces for different apps
 
 ###############################################################################
 # SSD-specific tweaks                                                         #
 ###############################################################################
 
 # Disable hibernation (speeds up entering sleep mode)
-sudo pmset -a hibernatemode 0
+# sudo pmset -a hibernatemode 0
 
 # Remove the sleep image file to save disk space
-sudo rm /private/var/vm/sleepimage
+# sudo rm /private/var/vm/sleepimage
 # Create a zero-byte file instead…
-sudo touch /private/var/vm/sleepimage
+# sudo touch /private/var/vm/sleepimage
 # …and make sure it can’t be rewritten
-sudo chflags uchg /private/var/vm/sleepimage
+# sudo chflags uchg /private/var/vm/sleepimage
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
@@ -61,6 +64,9 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
 
+# TODO: keyboard: use F1, F2 as function keys
+# TODO: keyboard: remove spotlight shortcut
+# TODO: keyboard: shortcut Alt+Space to toggle between layouts
 
 ###############################################################################
 # Screensaver                                                                 #
@@ -97,6 +103,9 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
 
+# TODO: Dock auto-hide
+# TODO: Dock don't show recent apps
+# TODO: Dock size and magnification
 
 ###############################################################################
 # Time Machine                                                                #
