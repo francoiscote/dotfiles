@@ -109,52 +109,49 @@ w_editors = wf.new{'Atom', 'Code'}
 w_terminals = wf.new{'iTerm2', 'Alacritty'}
 w_videos = wf.new(false):setAppFilter('zoom.us')
 
-
--- 1 - Work Setup - Code Editor Right
-hyper:bind({}, '1', nil, function()
-  local cells = {
-    leftFull = '0,0 3x16',
-    leftTop = '0,0 3x8',
-    leftBottom = '0,8 3x10',
-    right = '3,0 7x16'
+  local workCells = {
+    leftMain = '0,0 7x16',
+    leftSecondaryFull = '0,0 3x16',
+    leftSecondaryTop = '0,0 3x8',
+    leftSecondaryBottom = '0,8 3x10',
+    rightMain = '3,0 7x16',
+    rightSecondaryFull = '7,0 3x16',
+    rightSecondaryTop = '7,0 3x8',
+    rightSecondaryBottom = '7,8 3x10',
   }
+
+-- 1 - Work Setup - Code Editor Left
+hyper:bind({}, '1', nil, function()
   
   -- Different layout depending if we have Video windows or not
   local videoWins = w_videos:getWindows()
   if #videoWins == 0 then
-    helpers.setWindowsToCell(w_browsers, mygrid, cells.right)
-    helpers.setWindowsToCell(w_editors, mygrid, cells.right)
-    helpers.setWindowsToCell(w_terminals, mygrid, cells.leftFull)
+    helpers.setWindowsToCell(w_browsers, mygrid, workCells.leftMain)
+    helpers.setWindowsToCell(w_editors, mygrid, workCells.leftMain)
+    helpers.setWindowsToCell(w_terminals, mygrid, workCells.rightSecondaryFull)
   else
-    helpers.setWindowsToCell(w_browsers, mygrid, cells.right)
-    helpers.setWindowsToCell(w_editors, mygrid, cells.right)
-    helpers.setWindowsToCell(w_videos, mygrid, cells.leftTop)
-    helpers.setWindowsToCell(w_terminals, mygrid, cells.leftBottom)
+    helpers.setWindowsToCell(w_browsers, mygrid, workCells.leftMain)
+    helpers.setWindowsToCell(w_editors, mygrid, workCells.leftMain)
+    helpers.setWindowsToCell(w_videos, mygrid, workCells.rightSecondaryTop)
+    helpers.setWindowsToCell(w_terminals, mygrid, workCells.rightSecondaryBottom)
   end
   
   hyper.triggered = true
 end)
 
--- Shift+1 - Work Setup - Code Editor Left
+-- Shift+1 - Work Setup - Code Editor Right
 hyper:bind({'shift'}, '1', nil, function()
-  local cells = {
-    left = '0,0 7x18',
-    rightFull = '7,0 3x16',
-    rightTop = '7,0 3x8',
-    rightBottom = '7,8 3x10'
-  }
-    
   -- Different layout depending if we have Video windows or not
   local videoWins = w_videos:getWindows()
   if #videoWins == 0 then
-    helpers.setWindowsToCell(w_browsers, mygrid, cells.left)
-    helpers.setWindowsToCell(w_editors, mygrid, cells.left)
-    helpers.setWindowsToCell(w_terminals, mygrid, cells.rightFull)
+    helpers.setWindowsToCell(w_browsers, mygrid, workCells.rightMain)
+    helpers.setWindowsToCell(w_editors, mygrid, workCells.rightMain)
+    helpers.setWindowsToCell(w_terminals, mygrid, workCells.leftSecondaryFull)
   else
-    helpers.setWindowsToCell(w_browsers, mygrid, cells.left)
-    helpers.setWindowsToCell(w_editors, mygrid, cells.left)
-    helpers.setWindowsToCell(w_videos, mygrid, cells.rightTop)
-    helpers.setWindowsToCell(w_terminals, mygrid, cells.rightBottom)
+    helpers.setWindowsToCell(w_browsers, mygrid, workCells.rightMain)
+    helpers.setWindowsToCell(w_editors, mygrid, workCells.rightMain)
+    helpers.setWindowsToCell(w_videos, mygrid, workCells.leftSecondaryTop)
+    helpers.setWindowsToCell(w_terminals, mygrid, workCells.leftSecondaryBottom)
   end
 
   hyper.triggered = true
@@ -167,18 +164,18 @@ local evenSplitCells = {
 }
 
 
--- 2 - Work Setup - 50/50 split, Editor Right, terminal in the center
+-- 2 - Work Setup - 50/50 split, Editor Left, terminal in the center
 hyper:bind({}, '2', nil, function()
-  helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.left)
-  helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.right)
+  helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.right)
+  helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.left)
   helpers.setWindowsToCell(w_terminals, mygrid, evenSplitCells.center)
   hyper.triggered = true
 end)
 
--- Shift+2 - Work Setup - 50/50 split, Editor Left, terminal in the center
+-- Shift+2 - Work Setup - 50/50 split, Editor Right, terminal in the center
 hyper:bind({'shift'}, '2', nil, function()
-  helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.left)
-  helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.right)
+  helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.right)
+  helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.left)
   helpers.setWindowsToCell(w_terminals, mygrid, evenSplitCells.center)
   
   hyper.triggered = true
