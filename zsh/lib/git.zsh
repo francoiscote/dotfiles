@@ -11,8 +11,8 @@ alias gc='git commit -v'
 alias gca='git commit -v -a'
 alias gcam='git commit -a -m'
 
-alias gcb='git checkout -b'
 alias gco='git checkout'
+alias gcb='git checkout -b'
 
 alias gd='git diff'
 

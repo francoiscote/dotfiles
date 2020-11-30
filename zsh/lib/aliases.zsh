@@ -12,10 +12,10 @@ alias reload!="source ~/.zshrc";
 # TMUX
 # Load tmuxp in current folder
 alias tt="tmuxp load .tmuxp.yaml"
-# list tmux sessions
-alias tl="tmux list-sessions"
 # kill server
 alias tk="tmux kill-server"
+# load and goto a new tmuxp session
+alias goto="tmuxp load -y"
 
 # Docker
 alias dockerprune="docker image prune -af && docker volume prune -f"

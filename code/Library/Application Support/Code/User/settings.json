@@ -158,11 +158,12 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
-  "editor.formatOnType": true,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": false,
+  "editor.formatOnType": false,
   "[javascript]": {
-    "editor.formatOnSave": false
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascriptreact]": {
     "editor.formatOnSave": false
@@ -197,7 +198,7 @@
   "gitlens.views.compare.location": "gitlens",
   "gitlens.views.search.location": "gitlens",
   "material-icon-theme.folders.theme": "classic",
-  "materialTheme.accent": "Remove accents",
+  "materialTheme.accent": "Teal",
   "workbench.preferredDarkColorTheme": "Material Theme Palenight High Contrast",
   "workbench.preferredLightColorTheme": "soft era",
   "terminal.integrated.macOptionClickForcesSelection": true,
@@ -213,8 +214,8 @@
   "workbench.sideBar.location": "left",
   "typescript.disableAutomaticTypeAcquisition": true,
   "editor.minimap.renderCharacters": false,
-  "editor.lineHeight": 0,
-  "editor.fontSize": 13,
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "editor.renderWhitespace": "trailing"
+  "editor.renderWhitespace": "trailing",
+  "editor.lineHeight": 0,
+  "editor.fontSize": 13
 }
