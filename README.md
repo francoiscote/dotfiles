@@ -8,7 +8,7 @@ are managed by [GNU Stow](https://www.gnu.org/software/stow/).
 - Zsh Shell
   - `zsh-autosuggestions` and `zsh-syntax-highlighting` plugins
   - [Spaceship prompt](https://github.com/denysdovhan/spaceship-prompt)
-  - [tmux](https://github.com/tmux/tmux) & [tmuxp](https://github.com/tmux-python/tmuxp)
+  - [tmux](https://github.com/tmux/tmux) & [tmuxinator](https://github.com/tmuxinator/tmuxinator)
 - [Alacritty](https://github.com/jwilm/alacritty) terminal
 - [Hammerspoon](https://www.hammerspoon.org/)
 - [Karabiner Elements](https://pqrs.org/osx/karabiner/)
@@ -59,6 +59,5 @@ $ sudo chmod +x ~/.scripts/\*
   - `stow ...`
 - install brew packages bundle
   - `brew bundle --global`
-- `pip3 install tmuxp`
 - `npm install -g spaceshipt-prompt`
 - checkout git projects in "Code"
