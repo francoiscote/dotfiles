@@ -9,6 +9,11 @@ OS=`uname`
 path=($DOTFILES/bin $path)
 fpath=($HOME/.zsh-completions $fpath)
 
+# Brew completion paths
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
 export CLICOLOR=1
 export EDITOR=vim
 export QUOTING_STYLE=literal
