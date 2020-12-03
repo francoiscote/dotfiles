@@ -120,9 +120,26 @@ w_videos = wf.new(false):setAppFilter('zoom.us')
     rightSecondaryBottom = '7,8 3x10',
   }
 
--- 1 - Work Setup - Code Editor Left
-hyper:bind({}, '1', nil, function()
+  -- 1 - Work Setup - Code Editor Right
+  hyper:bind({}, '1', nil, function()
+    -- Different layout depending if we have Video windows or not
+    local videoWins = w_videos:getWindows()
+    if #videoWins == 0 then
+      helpers.setWindowsToCell(w_browsers, mygrid, workCells.rightMain)
+      helpers.setWindowsToCell(w_editors, mygrid, workCells.rightMain)
+      helpers.setWindowsToCell(w_terminals, mygrid, workCells.leftSecondaryFull)
+    else
+      helpers.setWindowsToCell(w_browsers, mygrid, workCells.rightMain)
+      helpers.setWindowsToCell(w_editors, mygrid, workCells.rightMain)
+      helpers.setWindowsToCell(w_videos, mygrid, workCells.leftSecondaryTop)
+      helpers.setWindowsToCell(w_terminals, mygrid, workCells.leftSecondaryBottom)
+    end
   
+    hyper.triggered = true
+  end)
+
+  -- Shift+1 - Work Setup - Code Editor Left
+hyper:bind({'shift'}, '1', nil, function()
   -- Different layout depending if we have Video windows or not
   local videoWins = w_videos:getWindows()
   if #videoWins == 0 then
@@ -139,23 +156,6 @@ hyper:bind({}, '1', nil, function()
   hyper.triggered = true
 end)
 
--- Shift+1 - Work Setup - Code Editor Right
-hyper:bind({'shift'}, '1', nil, function()
-  -- Different layout depending if we have Video windows or not
-  local videoWins = w_videos:getWindows()
-  if #videoWins == 0 then
-    helpers.setWindowsToCell(w_browsers, mygrid, workCells.rightMain)
-    helpers.setWindowsToCell(w_editors, mygrid, workCells.rightMain)
-    helpers.setWindowsToCell(w_terminals, mygrid, workCells.leftSecondaryFull)
-  else
-    helpers.setWindowsToCell(w_browsers, mygrid, workCells.rightMain)
-    helpers.setWindowsToCell(w_editors, mygrid, workCells.rightMain)
-    helpers.setWindowsToCell(w_videos, mygrid, workCells.leftSecondaryTop)
-    helpers.setWindowsToCell(w_terminals, mygrid, workCells.leftSecondaryBottom)
-  end
-
-  hyper.triggered = true
-end)
 
 local evenSplitCells = {
   left = '0,0 5x16',
@@ -164,20 +164,20 @@ local evenSplitCells = {
 }
 
 
--- 2 - Work Setup - 50/50 split, Editor Left, terminal in the center
+-- 2 - Work Setup - 50/50 split, Editor Right, terminal in the center
 hyper:bind({}, '2', nil, function()
-  helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.right)
-  helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.left)
-  helpers.setWindowsToCell(w_terminals, mygrid, evenSplitCells.center)
-  hyper.triggered = true
-end)
-
--- Shift+2 - Work Setup - 50/50 split, Editor Right, terminal in the center
-hyper:bind({'shift'}, '2', nil, function()
   helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.right)
   helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.left)
   helpers.setWindowsToCell(w_terminals, mygrid, evenSplitCells.center)
   
+  hyper.triggered = true
+end)
+
+-- Shift+2 - Work Setup - 50/50 split, Editor Left, terminal in the center
+hyper:bind({'shift'}, '2', nil, function()
+  helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.right)
+  helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.left)
+  helpers.setWindowsToCell(w_terminals, mygrid, evenSplitCells.center)
   hyper.triggered = true
 end)
 
@@ -334,7 +334,13 @@ for i, app in ipairs(singleapps) do
   )
 end
 
--- Swap between Audio Outputs (Built in and Yeti Stereo Microphoneb)
+-- Swap between a Main audio output and a series of ranked secondary outputs
+-- Main Output: Vanatoo T0
+-- Ranked Secondary Outputs:
+--   1) Sony Headphones
+--   2) Yeti DAC
+--   3) Elgato DAC
+--   4) Laptop Speakers
 -------------------------------------------------------------------------------
 hyper:bind({}, 's', nil, function()
   local currentDeviceName = hs.audiodevice.current().name
