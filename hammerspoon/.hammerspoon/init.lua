@@ -346,21 +346,21 @@ hyper:bind({}, 's', nil, function()
   local currentDeviceName = hs.audiodevice.current().name
   local nextDevice
   if string.find(currentDeviceName, 'Vanatoo T0') then
-    nextDevice = hs.audiodevice.findDeviceByName('WH-1000XM4')
+    nextDevice = hs.audiodevice.findOutputByName('WH-1000XM4')
     if (nextDevice == nil) then
-      nextDevice = hs.audiodevice.findDeviceByName('Yeti Stereo Microphone')
+      nextDevice = hs.audiodevice.findOutputByName('Yeti Stereo Microphone')
     end
     if (nextDevice == nil) then
-      nextDevice = hs.audiodevice.findDeviceByName('USB audio CODEC')
+      nextDevice = hs.audiodevice.findOutputByName('USB audio CODEC')
     end
     if (nextDevice == nil) then
-      nextDevice = hs.audiodevice.findDeviceByName('MacBook Pro Speakers')
+      nextDevice = hs.audiodevice.findOutputByName('MacBook Pro Speakers')
     end
   else
-    nextDevice = hs.audiodevice.findDeviceByName('Vanatoo T0')
+    nextDevice = hs.audiodevice.findOutputByName('Vanatoo T0')
   end
-  local didChange = nextDevice:setDefaultOutputDevice()
 
+  local didChange = nextDevice:setDefaultOutputDevice()
   if (didChange == true) then
     local audioIcon = hs.image.imageFromPath('/System/Library/PreferencePanes/Sound.prefPane/Contents/Resources/SoundPref.icns')
     hs.notify.new({ title = 'Sound Output Device', subTitle = nextDevice:name(), setIdImage = audioIcon, withdrawAfter = 2}):send()
