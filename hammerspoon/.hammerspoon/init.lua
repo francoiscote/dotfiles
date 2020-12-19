@@ -337,7 +337,7 @@ end
 -- Swap between a Main audio output and a series of ranked secondary outputs
 -- Main Output: Vanatoo T0
 -- Ranked Secondary Outputs:
---   1) Sony Headphones
+--   1) JDS Labs DAC
 --   2) Yeti DAC
 --   3) Elgato DAC
 --   4) Laptop Speakers
@@ -346,7 +346,7 @@ hyper:bind({}, 's', nil, function()
   local currentDeviceName = hs.audiodevice.current().name
   local nextDevice
   if string.find(currentDeviceName, 'Vanatoo T0') then
-    nextDevice = hs.audiodevice.findOutputByName('WH-1000XM4')
+    nextDevice = hs.audiodevice.findOutputByName('JDS Labs DAC')
     if (nextDevice == nil) then
       nextDevice = hs.audiodevice.findOutputByName('Yeti Stereo Microphone')
     end
