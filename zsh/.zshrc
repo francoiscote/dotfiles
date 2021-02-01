@@ -65,6 +65,10 @@ export PATH="$HOME/Library/Python/2.7/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.4.0/bin:$PATH"
 # OpenSSL fix for macOS
 export PATH="/usr/local/opt/openssl/bin:$PATH"
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/francois.cote/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/francois.cote/google-cloud-sdk/path.zsh.inc'; fi
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/francois.cote/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/francois.cote/google-cloud-sdk/completion.zsh.inc'; fi
 # Man Paths
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
