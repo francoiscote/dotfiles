@@ -3,8 +3,9 @@ hs.logger.defaultLogLevel = 'info'
 -------------------------------------------------------------------------------
 local user = {
   terminal = 'alacritty',
-  browser =   'Google Chrome',
+  -- browser =   'Google Chrome',
   -- browser = 'Firefox Developer Edition',
+  browser = 'Firefox',
   -- browser = 'qutebrowser',
   gapSize = 10,
   menuGapSize = 0
@@ -104,7 +105,7 @@ hs.window.animationDuration = 0
 local wf=hs.window.filter
 
 -- Windows Filters
-w_browsers = wf.new{'Google Chrome', 'Firefox Developer Edition', 'qtebrowser'}
+w_browsers = wf.new{'Google Chrome', 'Firefox Developer Edition', 'Firefox'}
 w_editors = wf.new{'Atom', 'Code'}
 w_terminals = wf.new{'iTerm2', 'Alacritty'}
 w_videos = wf.new(false):setAppFilter('zoom.us')
@@ -121,25 +122,25 @@ w_videos = wf.new(false):setAppFilter('zoom.us')
   }
 
   -- 1 - Work Setup - Code Editor Right
-  hyper:bind({}, '1', nil, function()
-    -- Different layout depending if we have Video windows or not
-    local videoWins = w_videos:getWindows()
-    if #videoWins == 0 then
-      helpers.setWindowsToCell(w_browsers, mygrid, workCells.rightMain)
-      helpers.setWindowsToCell(w_editors, mygrid, workCells.rightMain)
-      helpers.setWindowsToCell(w_terminals, mygrid, workCells.leftSecondaryFull)
-    else
-      helpers.setWindowsToCell(w_browsers, mygrid, workCells.rightMain)
-      helpers.setWindowsToCell(w_editors, mygrid, workCells.rightMain)
-      helpers.setWindowsToCell(w_videos, mygrid, workCells.leftSecondaryTop)
-      helpers.setWindowsToCell(w_terminals, mygrid, workCells.leftSecondaryBottom)
-    end
-  
-    hyper.triggered = true
-  end)
+hyper:bind({}, '1', nil, function()
+  -- Different layout depending if we have Video windows or not
+  local videoWins = w_videos:getWindows()
+  if #videoWins == 0 then
+    helpers.setWindowsToCell(w_browsers, mygrid, workCells.rightMain)
+    helpers.setWindowsToCell(w_editors, mygrid, workCells.rightMain)
+    helpers.setWindowsToCell(w_terminals, mygrid, workCells.leftSecondaryFull)
+  else
+    helpers.setWindowsToCell(w_browsers, mygrid, workCells.rightMain)
+    helpers.setWindowsToCell(w_editors, mygrid, workCells.rightMain)
+    helpers.setWindowsToCell(w_videos, mygrid, workCells.leftSecondaryTop)
+    helpers.setWindowsToCell(w_terminals, mygrid, workCells.leftSecondaryBottom)
+  end
+
+  hyper.triggered = true
+end)
 
   -- Shift+1 - Work Setup - Code Editor Left
-hyper:bind({'shift'}, '1', nil, function()
+  hyper:bind({'shift'}, '1', nil, function()
   -- Different layout depending if we have Video windows or not
   local videoWins = w_videos:getWindows()
   if #videoWins == 0 then
@@ -155,6 +156,7 @@ hyper:bind({'shift'}, '1', nil, function()
   
   hyper.triggered = true
 end)
+
 
 
 local evenSplitCells = {
@@ -178,6 +180,7 @@ hyper:bind({'shift'}, '2', nil, function()
   helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.right)
   helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.left)
   helpers.setWindowsToCell(w_terminals, mygrid, evenSplitCells.center)
+  
   hyper.triggered = true
 end)
 
