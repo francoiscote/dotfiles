@@ -171,7 +171,7 @@ font:
   draw_bold_text_with_bright_colors: true
 
 import:
-  - /Users/francois.cote/.config/alacritty/github-theme.yml
+  - /Users/francois.cote/.config/alacritty/githubgray-theme.yml
 
 # Visual Bell
 #
