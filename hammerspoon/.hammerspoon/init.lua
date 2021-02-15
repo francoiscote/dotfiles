@@ -316,8 +316,8 @@ singleapps = {
   -- Middle Row: Dev Tools
   {'h', 'Dash'},
   -- Dev Trifecta (Browser + Editor + Terminal) and SourceTree
-  {'j', 'Visual Studio Code'},
-  {'k', user.browser},
+  {'j', user.browser},
+  {'k', 'Visual Studio Code'},
   {'l', user.terminal},
   {';', 'Fork'},
 
