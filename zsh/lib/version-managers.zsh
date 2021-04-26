@@ -27,6 +27,18 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 # export CFLAGS="-I$TCLPREFIX/include"
 # export PYTHON_CONFIGURE_OPTS="--with-tcltk-includes='-I$TCLPREFIX/include' --with-tcltk-libs='-L$TCLPREFIX/lib -ltcl8.6 -ltk8.6'"
 
+# -----------------------------------------
+# JAVA
+# -----------------------------------------
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home"
+# executables (used for LS posserver)
+export PATH="/usr/local/opt/openjdk@8/bin:$PATH"
+# includes for compilers
+export CPPFLAGS="-I/usr/local/opt/openjdk@8/include"
+
+# -----------------------------------------
+# PYENV
+# -----------------------------------------
 if which pyenv > /dev/null;  then
   eval "$(pyenv init -)"
 fi

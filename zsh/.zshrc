@@ -25,7 +25,7 @@ export QUOTING_STYLE=literal
 # Default GPG Key
 # (if you fork this repo, change this to your own!)
 # -----------------------------------------
-export GPGKEY=60C853AA
+export GPG_TTY=8F02000860C853AA
 
 # -----------------------------------------
 # ZSH OPTIONS
@@ -56,6 +56,7 @@ export PATH="$ZSH/bin:$PATH"
 # scripts
 export PATH="$HOME/.scripts:$PATH"
 # local bin
+export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 # /usr/bin
 export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
