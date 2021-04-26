@@ -104,7 +104,7 @@ font:
     #   - (Windows) Consolas
     family: Operator Mono SSm Lig
     # The `style` can be specified to pick a specific face.
-    style: Light
+    style: Book
   # Bold font face
   bold:
     # Font family
@@ -113,7 +113,7 @@ font:
     # value specified for the normal font.
     #family: monospace
     # The `style` can be specified to pick a specific face.
-    style: Book
+    style: Medium
 
   # Italic font face
   #italic:
@@ -171,7 +171,7 @@ font:
   draw_bold_text_with_bright_colors: true
 
 import:
-  - /Users/francois.cote/.config/alacritty/githubgray-theme.yml
+  - /Users/francois.cote/.config/alacritty/palenight-theme.yml
 
 # Visual Bell
 #
@@ -221,7 +221,7 @@ cursor:
   #   - ▇ Block
   #   - _ Underline
   #   - | Beam
-  style: Underline
+  style: Block
 # If this is `true`, the cursor will be rendered as a hollow box when the
 # window is not focused.
 #unfocused_hollow: true
