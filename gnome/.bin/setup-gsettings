@@ -13,12 +13,7 @@ gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 15
 gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature 3700
 
 
-gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing "rgba"
-gsettings set org.gnome.settings-daemon.plugins.xsettings rgba-order "rgb"
-gsettings set org.gnome.settings-daemon.plugins.xsettings hinting "slight"
-
-
-gsettings set org.gnome.desktop.interface gtk-theme "Flat-Remix-GTK-Blue-Solid"
+# gsettings set org.gnome.desktop.interface gtk-theme "Flat-Remix-GTK-Blue-Solid"
 
 #------------------------------------
 # Window Management
@@ -27,10 +22,10 @@ gsettings set org.gnome.desktop.wm.preferences mouse-button-modifier "'<Super>'"
 gsettings set org.gnome.desktop.wm.preferences num-workspaces "6"
 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
 gsettings set org.gnome.desktop.wm.preferences button-layout "app:menu:close"
-gsettings set org.gnome.desktop.wm.preferences titlebar-font "Google Sans Medium 10"
-gsettings set org.gnome.desktop.wm.preferences titlebar-uses-system-font false
+#gsettings set org.gnome.desktop.wm.preferences titlebar-font "Google Sans Medium 10"
+#gsettings set org.gnome.desktop.wm.preferences titlebar-uses-system-font false
 gsettings set org.gnome.mutter attach-modal-dialogs true
-gsettings set org.gnome.mutter overlay-key 'Super_R'
+gsettings set org.gnome.mutter overlay-key 'Super_L'
 gsettings set org.gnome.mutter dynamic-workspaces false
 gsettings set org.gnome.mutter center-new-windows true
 
@@ -43,12 +38,10 @@ gsettings set org.gnome.shell disable-user-extensions false
 # WM - Keybindings
 #------------------------------------
 
-gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>F4', '<Super>x']"
+gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>F4', '<Super>w']"
 gsettings set org.gnome.desktop.wm.keybindings minimize "[]"
 gsettings set org.gnome.desktop.wm.keybindings move-to-center "['<Super>c']"
 gsettings set org.gnome.desktop.wm.keybindings show-desktop "['<Super>v']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['<Ctrl><Alt>Down']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['<Ctrl><Alt>Up']"
 
 gsettings set org.gnome.shell.keybindings focus-active-notification "[]"
 gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>s']"
@@ -64,7 +57,7 @@ sudo ln -sf ~/.bin/focusOrStart /usr/local/bin/focusOrStart
 # H-J-K-L
 #------------------------------------
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name "app Browser"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command "focusOrStart Navigator.Firefox firefox-developer-edition"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command "focusOrStart google-chrome"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding "<Super>k"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ name "app Editor"
@@ -82,8 +75,8 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ command "focusOrStart Slack slack"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ binding "<Super>u"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/ name "app Franz"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/ command "focusOrStart Franz franz"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/ name "app Ferdi"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/ command "focusOrStart Ferdi ferdi"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/ binding "<Super>i"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/ name "app Discord"

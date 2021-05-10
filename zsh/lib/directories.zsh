@@ -16,7 +16,6 @@ alias -g ....='../../..'
 alias -g .....='../../../..'
 alias -g ......='../../../../..'
 
-alias -- -='cd -'
 alias 1='cd -'
 alias 2='cd -2'
 alias 3='cd -3'
@@ -32,11 +31,10 @@ alias rd=rmdir
 alias d='dirs -v | head -10'
 
 # List directory contents
-alias lsa='ls -lah'
-alias l='ls -lah'
-alias ll='ls -lh'
-alias la='ls -lAh'
-alias ls='ls --color=auto'
+alias lsa='ls -lah --color'
+alias l='ls -lah --color'
+alias ll='ls -lh --color'
+alias la='ls -lAh --color'
 
 # Push and pop directories on directory stack
 alias pu='pushd'

@@ -26,7 +26,7 @@ export QT_STYLE_OVERIDE=GTK+
 # Default GPG Key
 # (if you fork this repo, change this to your own!)
 # -----------------------------------------
-export GPGKEY=60C853AA
+export GPGKEY=8F02000860C853AA
 
 
 # -----------------------------------------
@@ -36,7 +36,7 @@ setopt multios
 setopt prompt_subst
 setopt interactivecomments
 
-autoload -U compinit
+autoload -Uz compinit
 
 # -----------------------------------------
 # ZSH plugins
@@ -45,18 +45,26 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # -----------------------------------------
-# SPACESHIP PROMPT
+# SPACESHIP THEME CONFIGS 
+# (those ones need to be declared before sourcing the theme)
+# the rest of the Spaceship configs are in lib/spaceship.sh
 # -----------------------------------------
+SPACESHIP_PROMPT_DEFAULT_PREFIX="_ "
+SPACESHIP_GIT_SYMBOL="[]"
 
+# Set Spaceship ZSH as a prompt
 autoload -U promptinit; promptinit
 prompt spaceship
 
 # -----------------------------------------
 # PATHS
 # -----------------------------------------
-# home folder's bin
-export PATH="$HOME/.bin:$PATH"
+# Zsh
+export PATH="$ZSH/bin:$PATH"
+# scripts
+export PATH="$HOME/.scripts:$PATH"
 # local bin
+export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 # /usr/bin
 export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
