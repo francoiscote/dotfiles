@@ -30,9 +30,24 @@ gsettings set org.gnome.mutter dynamic-workspaces false
 gsettings set org.gnome.mutter center-new-windows true
 
 
-gsettings set org.gnome.shell.extensions.auto-move-windows application-list "['spotify.desktop:5', 'slack.desktop:2', 'franz.desktop:2', 'discord.desktop:2', 'visual-studio-code.desktop:1', 'notion-app.desktop:4']"
+#gsettings set org.gnome.shell.extensions.auto-move-windows application-list "['spotify.desktop:5', 'slack.desktop:2', 'franz.desktop:2', 'discord.desktop:2', 'visual-studio-code.desktop:1', 'notion-app.desktop:4']"
 
 gsettings set org.gnome.shell disable-user-extensions false
+
+#------------------------------------
+# Disable default Switch To Favorite Applications on Super+Numbers
+#------------------------------------
+
+gsettings set org.gnome.shell.keybindings switch-to-application-1 "[]"
+gsettings set org.gnome.shell.keybindings switch-to-application-2 "[]"
+gsettings set org.gnome.shell.keybindings switch-to-application-3 "[]"
+gsettings set org.gnome.shell.keybindings switch-to-application-4 "[]"
+gsettings set org.gnome.shell.keybindings switch-to-application-5 "[]"
+gsettings set org.gnome.shell.keybindings switch-to-application-6 "[]"
+gsettings set org.gnome.shell.keybindings switch-to-application-7 "[]"
+gsettings set org.gnome.shell.keybindings switch-to-application-8 "[]"
+gsettings set org.gnome.shell.keybindings switch-to-application-9 "[]"
+
 
 #------------------------------------
 # WM - Keybindings

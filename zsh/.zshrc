@@ -28,34 +28,6 @@ export QT_STYLE_OVERIDE=GTK+
 # -----------------------------------------
 export GPGKEY=8F02000860C853AA
 
-
-# -----------------------------------------
-# ZSH OPTIONS
-# -----------------------------------------
-setopt multios
-setopt prompt_subst
-setopt interactivecomments
-
-autoload -Uz compinit
-
-# -----------------------------------------
-# ZSH plugins
-# -----------------------------------------
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# -----------------------------------------
-# SPACESHIP THEME CONFIGS 
-# (those ones need to be declared before sourcing the theme)
-# the rest of the Spaceship configs are in lib/spaceship.sh
-# -----------------------------------------
-SPACESHIP_PROMPT_DEFAULT_PREFIX="_ "
-SPACESHIP_GIT_SYMBOL="[]"
-
-# Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
-prompt spaceship
-
 # -----------------------------------------
 # PATHS
 # -----------------------------------------
@@ -76,6 +48,32 @@ export PATH="/home/fcote/.gem/ruby/2.4.0/bin:$PATH"
 # Man Paths
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
+# -----------------------------------------
+# ZSH OPTIONS
+# -----------------------------------------
+setopt multios
+setopt prompt_subst
+setopt interactivecomments
+
+autoload -Uz compinit
+
+# -----------------------------------------
+# ZSH plugins
+# -----------------------------------------
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# -----------------------------------------
+# SPACESHIP THEME CONFIGS 
+# (those ones need to be declared before sourcing the theme)
+# the rest of the Spaceship configs are in lib/spaceship.sh
+# -----------------------------------------
+SPACESHIP_PROMPT_DEFAULT_PREFIX="_ "
+SPACESHIP_GIT_SYMBOL="[]"
+
+# Set Spaceship ZSH as a prompt
+autoload -U promptinit; promptinit
+prompt spaceship
 
 # -----------------------------------------
 # SOURCE LIB/*.ZSH FILES
@@ -105,3 +103,4 @@ compdef _h h
 if [[ -f $HOME/.localrc ]]; then
   source $HOME/.localrc
 fi
+fpath=($fpath "/home/fcote/.zfunctions")

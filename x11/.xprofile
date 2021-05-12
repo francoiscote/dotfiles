@@ -1,8 +1,0 @@
-#!/bin/sh
-#
-# ~/.xprofile
-
-xmodmap ~/.Xmodmap
-
-# Keyboard Rate
-xset r rate 180 60
