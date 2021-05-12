@@ -59,7 +59,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
-  decorations: none
+  decorations: full
   # Startup Mode (changes require restart)
   #
   # Values for `startup_mode`:
@@ -102,9 +102,10 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Operator Mono SSm Lig
+    # family: Operator Mono SSm Lig
+    family: "Fira Code"
     # The `style` can be specified to pick a specific face.
-    style: Book
+    style: Retina
   # Bold font face
   bold:
     # Font family
@@ -143,7 +144,7 @@ font:
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
     x: -1
-    y: -1
+    y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
@@ -221,7 +222,7 @@ cursor:
   #   - ▇ Block
   #   - _ Underline
   #   - | Beam
-  style: Underline
+  style: Block
 # If this is `true`, the cursor will be rendered as a hollow box when the
 # window is not focused.
 #unfocused_hollow: true
