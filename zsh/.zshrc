@@ -45,6 +45,8 @@ export PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix=~/.node_modules
 # ruby
 export PATH="/home/fcote/.gem/ruby/2.4.0/bin:$PATH"
+# Firefox (installed Manually)
+export PATH="/opt/firefox:$PATH"
 # Man Paths
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
