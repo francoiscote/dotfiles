@@ -64,18 +64,6 @@ source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # -----------------------------------------
-# SPACESHIP THEME CONFIGS 
-# (those ones need to be declared before sourcing the theme)
-# the rest of the Spaceship configs are in lib/spaceship.sh
-# -----------------------------------------
-SPACESHIP_PROMPT_DEFAULT_PREFIX="_ "
-SPACESHIP_GIT_SYMBOL="[]"
-
-# Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
-prompt spaceship
-
-# -----------------------------------------
 # SOURCE LIB/*.ZSH FILES
 # -----------------------------------------
 for config_file ($DOTFILES/zsh/lib/*.zsh); do
@@ -104,3 +92,8 @@ if [[ -f $HOME/.localrc ]]; then
   source $HOME/.localrc
 fi
 fpath=($fpath "/home/fcote/.zfunctions")
+
+# -----------------------------------------
+# PROMPT
+# -----------------------------------------
+eval "$(starship init zsh)"
