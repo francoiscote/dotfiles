@@ -257,5 +257,6 @@
   "editor.fontFamily": "'Fira Code'",
   "editor.fontWeight": 450,
   "editor.renderWhitespace": "boundary",
-  "workbench.colorTheme": "GitHub Light"
+  "workbench.colorTheme": "GitHub Light",
+  "window.zoomLevel": 0.5
 }
