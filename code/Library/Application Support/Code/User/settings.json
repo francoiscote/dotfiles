@@ -157,7 +157,7 @@
     "Dockerfile.*": "dockerfile"
   },
   "git.autofetch": true,
-  "editor.fontFamily": "Operator Mono SSm Lig",
+  "editor.fontFamily": "FiraCode Nerd Font",
   "editor.letterSpacing": -0.3,
   "color-highlight.markRuler": false,
   "color-highlight.markerType": "dot-before",
@@ -198,6 +198,7 @@
   },
   "material-icon-theme.saturation": 1,
   "terminal.integrated.fontWeightBold": "500",
+  "editor.fontWeight": 400,
   "editor.lineHeight": 0,
-  "editor.fontSize": 13
+  "editor.fontSize": 14
 }

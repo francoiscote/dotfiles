@@ -36,17 +36,7 @@ setopt interactivecomments
 
 autoload -Uz compinit
 
-# -----------------------------------------
-# SPACESHIP THEME CONFIGS 
-# (those ones need to be declared before sourcing the theme)
-# the rest of the Spaceship configs are in lib/spaceship.sh
-# -----------------------------------------
-SPACESHIP_PROMPT_DEFAULT_PREFIX="_ "
-SPACESHIP_GIT_SYMBOL="[]"
-
-# Set Spaceship ZSH as a prompt
 autoload -U promptinit; promptinit
-prompt spaceship
 
 # -----------------------------------------
 # PATHS
@@ -100,3 +90,6 @@ compdef _h h
 if [[ -f $HOME/.localrc ]]; then
   source $HOME/.localrc
 fi
+
+# Source Starship prompt
+eval "$(starship init zsh)"

@@ -1,4 +1,3 @@
-
 # -----------------------------------------
 # ALIASES
 # -----------------------------------------
@@ -11,9 +10,9 @@ alias reload!="source ~/.zshrc";
 
 # TMUX
 # Load tmuxp in current folder
-alias tt="tmuxp load .tmuxp.yaml"
+alias tload="tmuxp load .tmuxp.yaml"
 # kill server
-alias tk="tmux kill-server"
+alias tkill="tmux kill-server"
 # simpler tmuxinator alias
 alias goto="tmuxinator"
 

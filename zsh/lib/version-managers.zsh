@@ -16,6 +16,9 @@ export PATH=$N_PREFIX/bin:$PATH
 # -----------------------------------------
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+if which pyenv > /dev/null;  then
+  eval "$(pyenv init --path)"
+fi
 
 # tcl-tk
 # I don't remember why I had that, but running brew prefix is slow. Temporary disabling this
@@ -35,13 +38,6 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home"
 export PATH="/usr/local/opt/openjdk@8/bin:$PATH"
 # includes for compilers
 export CPPFLAGS="-I/usr/local/opt/openjdk@8/include"
-
-# -----------------------------------------
-# PYENV
-# -----------------------------------------
-if which pyenv > /dev/null;  then
-  eval "$(pyenv init -)"
-fi
 
 # -----------------------------------------
 # RBENV

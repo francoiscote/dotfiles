@@ -59,5 +59,5 @@ $ sudo chmod +x ~/.scripts/\*
   - `stow ...`
 - install brew packages bundle
   - `brew bundle --global`
-- `npm install -g spaceshipt-prompt`
+- `brew install starship`
 - checkout git projects in "Code"
