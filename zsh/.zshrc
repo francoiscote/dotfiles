@@ -18,9 +18,6 @@ export CLICOLOR=1
 export EDITOR=vim
 export QUOTING_STYLE=literal
 
-# fix "xdg-open fork-bomb" export your preferred browser from here
-# export BROWSER=/bin/vivaldi-stable
-
 # -----------------------------------------
 # Default GPG Key
 # (if you fork this repo, change this to your own!)
@@ -62,6 +59,12 @@ if [ -f '/Users/francois.cote/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/f
 if [ -f '/Users/francois.cote/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/francois.cote/google-cloud-sdk/completion.zsh.inc'; fi
 # Man Paths
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
+
+# -----------------------------------------
+# SOURCE ZSH PLUGINS
+# -----------------------------------------
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # -----------------------------------------
 # SOURCE LIB/*.ZSH FILES
