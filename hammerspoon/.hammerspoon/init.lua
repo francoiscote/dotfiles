@@ -3,10 +3,12 @@ hs.logger.defaultLogLevel = 'info'
 -------------------------------------------------------------------------------
 local user = {
   terminal = 'alacritty',
+  editor = 'Visual Studio Code',
   browser =   'Google Chrome',
   -- browser = 'Firefox Developer Edition',
   -- browser = 'Firefox',
   -- browser = 'qutebrowser',
+  mailclient = 'Mailplane',
   gapSize = 10,
   menuGapSize = 0
 }
@@ -62,34 +64,16 @@ w_videos = wf.new(false):setAppFilter('zoom.us')
 local seventySplitCells = {
   leftMain = '0,0 7x16',
   leftSecondaryFull = '0,0 3x16',
-  leftSecondaryTop = '0,0 3x8',
-  leftSecondaryBottom = '0,8 3x10',
+  leftSecondaryTop = '0,0 3x6',
+  leftSecondaryBottom = '0,6 3x10',
   rightMain = '3,0 7x16',
   rightSecondaryFull = '7,0 3x16',
-  rightSecondaryTop = '7,0 3x8',
-  rightSecondaryBottom = '7,8 3x10',
+  rightSecondaryTop = '7,0 3x6',
+  rightSecondaryBottom = '7,6 3x10',
 }
 
--- q - Work Setup - Browser/Code in Main Right, Terminal in secondary Left
+-- q - Work Setup - Browser/Code in Main Left, Terminal in secondary Right
 hyper:bind({}, 'q', nil, function()
-  -- Different layout depending if we have Video windows or not
-  local videoWins = w_videos:getWindows()
-  if #videoWins == 0 then
-    helpers.setWindowsToCell(w_browsers, mygrid, seventySplitCells.rightMain)
-    helpers.setWindowsToCell(w_editors, mygrid, seventySplitCells.rightMain)
-    helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.leftSecondaryFull)
-  else
-    helpers.setWindowsToCell(w_browsers, mygrid, seventySplitCells.rightMain)
-    helpers.setWindowsToCell(w_editors, mygrid, seventySplitCells.rightMain)
-    helpers.setWindowsToCell(w_videos, mygrid, seventySplitCells.leftSecondaryTop)
-    helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.leftSecondaryBottom)
-  end
-
-  hyper.triggered = true
-end)
-
--- Shift+q - Work Setup - Browser/Code in Main Left, Terminal in secondary Right
-hyper:bind({'shift'}, 'q', nil, function()
   -- Different layout depending if we have Video windows or not
   local videoWins = w_videos:getWindows()
   if #videoWins == 0 then
@@ -106,37 +90,37 @@ hyper:bind({'shift'}, 'q', nil, function()
   hyper.triggered = true
 end)
 
-local sixtySplitCells = {
-  leftMain = '0,0 6x16',
-  leftSecondaryFull = '0,0 4x16',
-  leftSecondaryTop = '0,0 4x8',
-  leftSecondaryBottom = '0,8 4x10',
-  rightMain = '4,0 6x16',
-  rightSecondaryFull = '6,0 4x16',
-  rightSecondaryTop = '6,0 4x8',
-  rightSecondaryBottom = '6,8 4x10',
-}
-
--- w - Work Setup - Code in Main Right, Browser/Terminal in secondary Left
-hyper:bind({}, 'w', nil, function()
+-- Shift+q - Work Setup - Browser/Code in Main Right, Terminal in secondary Left
+hyper:bind({'shift'}, 'q', nil, function()
   -- Different layout depending if we have Video windows or not
   local videoWins = w_videos:getWindows()
   if #videoWins == 0 then
-    helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.leftSecondaryFull)
-    helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.leftSecondaryFull)
-    helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.rightMain)
+    helpers.setWindowsToCell(w_browsers, mygrid, seventySplitCells.rightMain)
+    helpers.setWindowsToCell(w_editors, mygrid, seventySplitCells.rightMain)
+    helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.leftSecondaryFull)
   else
-    helpers.setWindowsToCell(w_videos, mygrid, sixtySplitCells.leftSecondaryTop)
-    helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.leftSecondaryBottom)
-    helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.leftSecondaryBottom)
-    helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.rightMain)
+    helpers.setWindowsToCell(w_browsers, mygrid, seventySplitCells.rightMain)
+    helpers.setWindowsToCell(w_editors, mygrid, seventySplitCells.rightMain)
+    helpers.setWindowsToCell(w_videos, mygrid, seventySplitCells.leftSecondaryTop)
+    helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.leftSecondaryBottom)
   end
 
   hyper.triggered = true
 end)
 
--- w - Work Setup - Terminal/Code in Main Left, Browser in secondary Right
-hyper:bind({'shift'}, 'w', nil, function()
+local sixtySplitCells = {
+  leftMain = '0,0 6x16',
+  leftSecondaryFull = '0,0 4x16',
+  leftSecondaryTop = '0,0 4x6',
+  leftSecondaryBottom = '0,6 4x10',
+  rightMain = '4,0 6x16',
+  rightSecondaryFull = '6,0 4x16',
+  rightSecondaryTop = '6,0 4x6',
+  rightSecondaryBottom = '6,6 4x10',
+}
+
+-- w - Work Setup - Code in Main Right, Browser/Terminal in secondary Left
+hyper:bind({}, 'w', nil, function()
   -- Different layout depending if we have Video windows or not
   local videoWins = w_videos:getWindows()
   if #videoWins == 0 then
@@ -153,6 +137,25 @@ hyper:bind({'shift'}, 'w', nil, function()
   hyper.triggered = true
 end)
 
+-- w - Work Setup - Terminal/Code in Main Left, Browser in secondary Right
+hyper:bind({'shift'}, 'w', nil, function()
+  -- Different layout depending if we have Video windows or not
+  local videoWins = w_videos:getWindows()
+  if #videoWins == 0 then
+    helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.leftSecondaryFull)
+    helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.leftSecondaryFull)
+    helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.rightMain)
+  else
+    helpers.setWindowsToCell(w_videos, mygrid, sixtySplitCells.leftSecondaryTop)
+    helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.leftSecondaryBottom)
+    helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.leftSecondaryBottom)
+    helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.rightMain)
+  end
+  
+  hyper.triggered = true
+end)
+
+
 local evenSplitCells = {
   left = '0,0 5x16',
   right = '5,0 5x16',
@@ -161,8 +164,8 @@ local evenSplitCells = {
 
 -- e - Work Setup - 50/50 split, Editor Right, terminal in the center
 hyper:bind({}, 'e', nil, function()
-  helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.right)
-  helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.left)
+  helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.right)
+  helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.left)
   helpers.setWindowsToCell(w_terminals, mygrid, evenSplitCells.center)
   
   hyper.triggered = true
@@ -170,12 +173,13 @@ end)
 
 -- Shift+e - Work Setup - 50/50 split, Editor Left, terminal in the center
 hyper:bind({'shift'}, 'e', nil, function()
-  helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.right)
-  helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.left)
+  helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.right)
+  helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.left)
   helpers.setWindowsToCell(w_terminals, mygrid, evenSplitCells.center)
   
   hyper.triggered = true
 end)
+
 
 -- 1 - 40% Left
 local fortyLeftCell = '0,0 4,16'
@@ -356,14 +360,14 @@ singleapps = {
   -- Middle Row: Dev Tools
   {'h', 'Dash'},
   -- Dev Trifecta (Browser + Editor + Terminal) and SourceTree
-  {'j', user.browser},
-  {'k', 'Visual Studio Code'},
+  {'j', user.editor},
+  {'k', user.browser},
   {'l', user.terminal},
   {';', 'Fork'},
 
   -- Bottom Row: Email, Calendar and ToDos
   {'n', 'Notion'},
-  {'m', 'Mailplane'},
+  {'m', user.mailclient},
   {',', 'Fantastical'},
   {'.', 'Finder'}
 }
