@@ -3,7 +3,6 @@
   "diffEditor.renderSideBySide": false,
   "editor.scrollBeyondLastLine": false,
   "editor.tabSize": 2,
-  "explorer.autoReveal": false,
   "explorer.confirmDelete": false,
   "git.confirmSync": false,
   "terminal.external.osxExec": "Alacritty.app",
@@ -124,59 +123,30 @@
   "editor.minimap.showSlider": "always",
   "editor.smoothScrolling": true,
   "editor.cursorBlinking": "phase",
-  "workbench.colorTheme": "GitHub Light",
+  "workbench.colorTheme": "GitHub Light Default",
   "workbench.editor.focusRecentEditorAfterClose": false,
   "editor.renderControlCharacters": false,
   "editor.fontLigatures": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
-  "editor.formatOnType": true,
-  "[javascript]": {
-    "editor.formatOnSave": false,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascriptreact]": {
-    "editor.formatOnSave": false
-  },
-  "[typescript]": {
-    "editor.formatOnSave": false
-  },
-  "[typescriptreact]": {
-    "editor.formatOnSave": false
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "files.associations": {
     "Dockerfile.*": "dockerfile"
   },
   "git.autofetch": true,
-  "editor.fontFamily": "FiraCode Nerd Font",
+  "editor.fontFamily": "Operator Mono SSm Lig",
   "editor.letterSpacing": -0.3,
   "color-highlight.markRuler": false,
   "color-highlight.markerType": "dot-before",
-  "jest.autoEnable": false,
   "zenMode.fullScreen": false,
   "window.title": "${rootName}",
   "git.enableSmartCommit": true,
-  "gitlens.views.repositories.location": "gitlens",
-  "gitlens.views.fileHistory.location": "gitlens",
-  "gitlens.views.lineHistory.location": "gitlens",
-  "gitlens.views.compare.location": "gitlens",
-  "gitlens.views.search.location": "gitlens",
   "material-icon-theme.folders.theme": "classic",
   "materialTheme.accent": "Purple",
   "workbench.preferredDarkColorTheme": "Material Theme Palenight High Contrast",
   "workbench.preferredLightColorTheme": "soft era",
   "terminal.integrated.macOptionClickForcesSelection": true,
   "explorer.confirmDragAndDrop": false,
-  "todo-tree.tree.showScanModeButton": false,
   "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
   "todo-tree.general.statusBar": "total",
   "todo-tree.highlights.defaultHighlight": {
@@ -199,6 +169,13 @@
   "material-icon-theme.saturation": 1,
   "terminal.integrated.fontWeightBold": "500",
   "editor.fontWeight": 400,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": false,
+  "editor.formatOnType": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "vetur.validation.template": false,
+  "vetur.validation.templateProps": true,
+  "vetur.validation.interpolation": false,
   "editor.lineHeight": 0,
-  "editor.fontSize": 14
+  "editor.fontSize": 14,
 }
