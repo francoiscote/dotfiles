@@ -1,5 +1,160 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
+# Color Schemes
+schemes:
+  github: &github
+    # Default colors
+    primary:
+      background: "0xffffff"
+      foreground: "0x333333"
+
+    # Colors the cursor will use if `custom_cursor_colors` is true
+    cursor:
+      text: "0xffffff"
+      cursor: "0x333333"
+
+    # Normal colors
+    normal:
+      black: "0xffffff"
+      red: "0xed6a43"
+      green: "0x183691"
+      yellow: "0x795da3"
+      blue: "0x795da3"
+      magenta: "0xa71d5d"
+      cyan: "0x183691"
+      white: "0x333333"
+
+    # Bright colors
+    bright:
+      black: "0x969896"
+      red: "0xed6a43"
+      green: "0x183691"
+      yellow: "0x795da3"
+      blue: "0x795da3"
+      magenta: "0xa71d5d"
+      cyan: "0x183691"
+      white: "0xffffff"
+
+    indexed_colors:
+      - { index: 16, color: "0x0086b3" }
+      - { index: 17, color: "0x333333" }
+      - { index: 18, color: "0xf5f5f5" }
+      - { index: 19, color: "0xc8c8fa" }
+      - { index: 20, color: "0xe8e8e8" }
+      - { index: 21, color: "0xffffff" }
+
+  night-owl: &night-owl
+    primary:
+      background: "#011627"
+      foreground: "#d6deeb"
+
+    # Cursor colors
+    cursor:
+      text: CellBackground
+      cursor: CellForeground
+
+    # Vi mode cursor colors
+    vi_mode_cursor:
+      text: CellBackground
+      cursor: "#22da6e"
+
+    # Selection colors
+    selection:
+      text: "#ffffff"
+      background: "#0d486e"
+
+    # Search colors
+    search:
+      matches:
+        foreground: "#000000"
+        background: "#22da6e"
+
+        focused_match:
+          foreground: "#ffffff"
+          background: "#22da6e"
+
+      bar:
+        foreground: "#ffffff"
+        background: "#1d3b53"
+
+    # Normal colors
+    normal:
+      black: "#011627"
+      red: "#EF5350"
+      green: "#22da6e"
+      yellow: "#c5e478"
+      blue: "#82AAFF"
+      magenta: "#C792EA"
+      cyan: "#2AA298"
+      white: "#ffffff"
+
+    # Bright colors
+    bright:
+      black: "#575656"
+      red: "#EF5350"
+      green: "#22da6e"
+      yellow: "#ffeb95"
+      blue: "#82AAFF"
+      magenta: "#C792EA"
+      cyan: "#2AA298"
+      white: "#ffffff"
+
+  night-owl-light: &night-owl-light
+    primary:
+      background: "#F6F6F6"
+      foreground: "#403f53"
+
+    # Cursor colors
+    cursor:
+      text: CellBackground
+      cursor: "#90A7B2"
+
+    # Vi mode cursor colors
+    vi_mode_cursor:
+      text: CellBackground
+      cursor: "#08916a"
+
+    # Selection colors
+    selection:
+      text: "#000000"
+      background: "#E0E0E0"
+
+    # Search colors
+    search:
+      matches:
+        foreground: "#F6F6F6"
+        background: "#08916a"
+
+        focused_match:
+          foreground: "#000000"
+          background: "#08916a"
+
+      bar:
+        foreground: "#403f53"
+        background: "#E0E0E0"
+
+    # Normal colors
+    normal:
+      black: "#403f53"
+      red: "#de3d3b"
+      green: "#08916a"
+      yellow: "#daaa01"
+      blue: "#288ed7"
+      magenta: "#d6438a"
+      cyan: "#2AA298"
+      white: "#F0F0F0"
+
+    # Bright colors
+    bright:
+      black: "#403f53"
+      red: "#de3d3b"
+      green: "#08916a"
+      yellow: "#daaa01"
+      blue: "#288ed7"
+      magenta: "#d6438a"
+      cyan: "#2AA298"
+      white: "#F0F0F0"
+
 # Import additional configuration files
 #
 # Imports are loaded in order, skipping all missing files, with the importing
@@ -170,8 +325,7 @@ font:
   # If `true`, bold text is drawn using the bright color variants.
   draw_bold_text_with_bright_colors: true
 
-import:
-  - /Users/fcote/.config/alacritty/themes/github-theme.yml
+colors: *github
 
 # Visual Bell
 #

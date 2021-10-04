@@ -123,7 +123,7 @@
   "editor.minimap.showSlider": "always",
   "editor.smoothScrolling": true,
   "editor.cursorBlinking": "phase",
-  "workbench.colorTheme": "GitHub Light Default",
+  "workbench.colorTheme": "GitHub Light",
   "workbench.editor.focusRecentEditorAfterClose": false,
   "editor.renderControlCharacters": false,
   "editor.fontLigatures": true,
