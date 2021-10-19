@@ -123,7 +123,6 @@
   "editor.minimap.showSlider": "always",
   "editor.smoothScrolling": true,
   "editor.cursorBlinking": "phase",
-  "workbench.colorTheme": "GitHub Light",
   "workbench.editor.focusRecentEditorAfterClose": false,
   "editor.renderControlCharacters": false,
   "editor.fontLigatures": true,
@@ -177,5 +176,6 @@
   "vetur.validation.templateProps": true,
   "vetur.validation.interpolation": false,
   "editor.lineHeight": 0,
-  "editor.fontSize": 14,
+  "editor.fontSize": 16,
+  "workbench.colorTheme": "Community Material Theme Palenight High Contrast",
 }
