@@ -142,8 +142,8 @@
   "git.enableSmartCommit": true,
   "material-icon-theme.folders.theme": "classic",
   "materialTheme.accent": "Purple",
-  "workbench.preferredDarkColorTheme": "Material Theme Palenight High Contrast",
-  "workbench.preferredLightColorTheme": "soft era",
+  "workbench.preferredDarkColorTheme": "Community Material Theme Palenight High Contrast",
+  "workbench.preferredLightColorTheme": "GitHub Light Default",
   "terminal.integrated.macOptionClickForcesSelection": true,
   "explorer.confirmDragAndDrop": false,
   "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
@@ -177,5 +177,5 @@
   "vetur.validation.interpolation": false,
   "workbench.colorTheme": "Community Material Theme Palenight High Contrast",
   "editor.lineHeight": 0,
-  "editor.fontSize": 16,
+  "editor.fontSize": 14,
 }

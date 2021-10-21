@@ -18,3 +18,6 @@ alias goto="tmuxinator"
 
 # Docker
 alias dockerprune="docker image prune -af && docker volume prune -f"
+
+# Lazygit
+alias lg="lazygit"
