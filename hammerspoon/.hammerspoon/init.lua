@@ -4,10 +4,7 @@ hs.logger.defaultLogLevel = 'info'
 local user = {
   terminal = 'alacritty',
   editor = 'Visual Studio Code',
-  -- browser =   'Google Chrome',
-  browser = 'Firefox Developer Edition',
-  -- browser = 'Firefox',
-  -- browser = 'qutebrowser',
+  browser =   'Google Chrome',
   mailclient = 'Mailplane',
   gapSize = 10,
   menuGapSize = 0
@@ -359,8 +356,8 @@ singleapps = {
   -- Middle Row: Dev Tools
   {'h', 'Dash'},
   -- Dev Trifecta (Browser + Editor + Terminal) and SourceTree
-  {'j', user.editor},
-  {'k', user.browser},
+  {'j', user.browser},
+  {'k', user.editor},
   {'l', user.terminal},
   {';', 'Fork'},
 
