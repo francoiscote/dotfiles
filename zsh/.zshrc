@@ -40,8 +40,6 @@ autoload -U promptinit; promptinit
 # -----------------------------------------
 # Zsh
 export PATH="$ZSH/bin:$PATH"
-# scripts
-export PATH="$HOME/.scripts:$PATH"
 # local bin
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
