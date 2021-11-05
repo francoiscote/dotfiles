@@ -16,8 +16,14 @@ alias tkill="tmux kill-server"
 # simpler tmuxinator alias
 alias goto="tmuxinator"
 
+# Neovim
+# -----------------------------------------
+alias vim="nvim"
+
 # Docker
+# -----------------------------------------
 alias dockerprune="docker image prune -af && docker volume prune -f"
 
 # Lazygit
+# -----------------------------------------
 alias lg="lazygit"

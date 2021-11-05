@@ -153,7 +153,6 @@
     "background": "#FFCB6B",
     "iconColour": "#FFCB6B"
   },
-  "workbench.sideBar.location": "left",
   "typescript.disableAutomaticTypeAcquisition": true,
   "editor.minimap.renderCharacters": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
@@ -167,7 +166,7 @@
   },
   "material-icon-theme.saturation": 1,
   "terminal.integrated.fontWeightBold": "500",
-  "editor.fontWeight": 300,
+  "editor.fontWeight": 400,
   "editor.formatOnPaste": false,
   "editor.formatOnSave": false,
   "editor.formatOnType": false,
@@ -177,5 +176,5 @@
   "vetur.validation.interpolation": false,
   "workbench.colorTheme": "Community Material Theme Palenight High Contrast",
   "editor.lineHeight": 0,
-  "editor.fontSize": 16,
+  "editor.fontSize": 15,
 }
