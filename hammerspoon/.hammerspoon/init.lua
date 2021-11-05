@@ -318,10 +318,10 @@ end)
 --   local ppWin = hs.window('Picture in Picture')
 --   if (ppWin) then
 --     local screen = ppWin:screen()
---     local max = screen:frame()
+--     local max = screen:frame(
 
 --     ppWin:setFrame({x=max.w-1032, y=max.y, w=1032, h=580})
---   end
+--   en 
 
 --   local termWin = hs.application('iTerm2'):mainWindow()
 --   if (termWin) then
@@ -333,11 +333,32 @@ end)
 --   hyper.triggered = true
 -- end)
 
+-- Move Windows
+-------------------------------------------------------------------------------
 -- C - Center
 hyper:bind({}, 'c', nil, function()
     local win = hs.window.focusedWindow()
     win:centerOnScreen(nil, true)
     hyper.triggered = true
+end)
+
+-- Hyper+equal - Send window to next screen
+hyper:bind({}, '=', nil, function()
+  -- Get the focused window, its window frame dimensions, its screen frame dimensions,
+  -- and the next screen's frame dimensions.
+  local focusedWindow = hs.window.focusedWindow()
+  local focusedScreenFrame = focusedWindow:screen():frame()
+  local nextScreenFrame = focusedWindow:screen():next():frame()
+  local windowFrame = focusedWindow:frame()
+
+  -- Calculate the coordinates of the window frame in the next screen and retain aspect ratio
+  windowFrame.x = ((((windowFrame.x - focusedScreenFrame.x) / focusedScreenFrame.w) * nextScreenFrame.w) + nextScreenFrame.x)
+  windowFrame.y = ((((windowFrame.y - focusedScreenFrame.y) / focusedScreenFrame.h) * nextScreenFrame.h) + nextScreenFrame.y)
+  windowFrame.h = ((windowFrame.h / focusedScreenFrame.h) * nextScreenFrame.h)
+  windowFrame.w = ((windowFrame.w / focusedScreenFrame.w) * nextScreenFrame.w)
+
+  -- Set the focused window's new frame dimensions
+  focusedWindow:setFrame(windowFrame)
 end)
 
 -- Shortcut to reload config
