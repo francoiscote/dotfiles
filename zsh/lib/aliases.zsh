@@ -9,12 +9,9 @@ alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pa
 alias reload!="source ~/.zshrc";
 
 # TMUX
-# Load tmuxp in current folder
-alias tload="tmuxp load .tmuxp.yaml"
+# -----------------------------------------
 # kill server
-alias tkill="tmux kill-server"
-# simpler tmuxinator alias
-alias goto="tmuxinator"
+alias tkill="for s in \$(tmux list-sessions | awk '{print \$1}' | rg ':' -r '' | fzf); do tmux kill-session -t \$s; done;"
 
 # Neovim
 # -----------------------------------------

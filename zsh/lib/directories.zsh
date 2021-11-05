@@ -31,11 +31,8 @@ alias rd=rmdir
 alias d='dirs -v | head -10'
 
 # List directory contents
-alias lsa='ls -lah'
-alias l='ls -lah'
-alias ll='ls -lh'
-alias la='ls -lAh'
-
-# Push and pop directories on directory stack
-alias pu='pushd'
-alias po='popd'
+EXA_ICON_SPACING=2
+alias l='exa -l --icons'
+alias ll='exa -l -a -g --git --icons'
+alias lt='exa -T --icons'
+alias llt='exa -T -a --icons'

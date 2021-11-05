@@ -74,19 +74,6 @@ done
 # compinit must be done after sourcing all libs
 compinit
 
-# -----------------------------------------
-# SHORTCUT COMMANDSy
-# -----------------------------------------
-# c -> ~/Code/
-c() { cd ~/Code/$1; }
-_c() { _files -W ~/Code -/; }
-compdef _c c
-
-# h -> ~/
-h() { cd ~/$1; }
-_h() { _files -W ~/ -/; }
-compdef _h h
-
 # source private stuff in a .localrc file
 if [[ -f $HOME/.localrc ]]; then
   source $HOME/.localrc
@@ -94,3 +81,6 @@ fi
 
 # Source Starship prompt
 eval "$(starship init zsh)"
+
+# Start or attach default tmux session
+~/.local/bin/ta
