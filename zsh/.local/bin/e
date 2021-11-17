@@ -20,7 +20,7 @@ else
     #if [ -x $(brew --prefix)/bin/code ]; then
     #    export CODEEDITOR='code'
     #else
-        export CODEEDITOR='nvim'
+        export CODEEDITOR="nvim '+Telescope find_files'"
     #fi
 fi
 
