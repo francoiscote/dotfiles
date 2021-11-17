@@ -7,6 +7,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'kyazdani42/nvim-palenight.lua'
 
 	if has ("nvim")
+		" LSP Config
 		Plug 'neovim/nvim-lspconfig'	
 
 		" Treesitter
@@ -18,7 +19,8 @@ call plug#begin('~/.vim/plugged')
 		Plug 'nvim-lua/plenary.nvim'
 		Plug 'nvim-telescope/telescope.nvim'
 	  Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+		"Vim-Tmux
+		Plug 'christoomey/vim-tmux-navigator'
 	endif
 call plug#end()
-
-

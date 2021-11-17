@@ -133,7 +133,7 @@
     "Dockerfile.*": "dockerfile"
   },
   "git.autofetch": true,
-  "editor.fontFamily": "Operator Mono SSm Lig",
+  "editor.fontFamily": "OperatorMonoSSmLig Nerd Font",
   "editor.letterSpacing": -0.3,
   "color-highlight.markRuler": false,
   "color-highlight.markerType": "dot-before",
@@ -176,5 +176,5 @@
   "vetur.validation.interpolation": false,
   "workbench.colorTheme": "Community Material Theme Palenight High Contrast",
   "editor.lineHeight": 0,
-  "editor.fontSize": 15,
+  "editor.fontSize": 13,
 }
