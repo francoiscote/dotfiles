@@ -2,7 +2,7 @@ hs.logger.defaultLogLevel = 'info'
 -- USER VARIABLES
 -------------------------------------------------------------------------------
 local user = {
-  terminal = 'alacritty',
+  terminal = 'iTerm',
   editor = 'Visual Studio Code',
   browser =   'Google Chrome',
   mailclient = 'Mailplane',
@@ -55,7 +55,7 @@ local wf=hs.window.filter
 -- Windows Filters
 w_browsers = wf.new{['Google Chrome'] = {rejectTitles='Picture in Picture'}, 'Firefox Developer Edition', 'Firefox'}
 w_editors = wf.new{'Atom', 'Code'}
-w_terminals = wf.new{'iTerm2', 'Alacritty'}
+w_terminals = wf.new{'iTerm', 'Alacritty'}
 w_zoom = wf.new(false):setAppFilter('zoom.us')
 w_pip = wf.new(false):setAppFilter('Google Chrome',{allowTitles='Picture in Picture'})
 
@@ -383,15 +383,14 @@ singleapps = {
   {'h', 'Dash'},
   -- Dev Trifecta (Browser + Editor + Terminal) and SourceTree
   {'j', user.browser},
-  {'k', user.editor},
-  {'l', user.terminal},
-  {';', 'Fork'},
+  {'k', user.terminal},
+  {'l', user.editor},
+  {';', 'Finder'},
 
   -- Bottom Row: Email, Calendar and ToDos
   {'n', 'Notion'},
   {'m', user.mailclient},
   {',', 'Fantastical'},
-  {'.', 'Finder'}
 }
 
 for i, app in ipairs(singleapps) do
