@@ -4,7 +4,8 @@ hs.logger.defaultLogLevel = 'info'
 local user = {
   terminal = 'iTerm',
   editor = 'Visual Studio Code',
-  browser =   'Google Chrome',
+  browser_main = 'Google Chrome',
+  browser_alt = 'Firefox Developer Edition',
   mailclient = 'Mailplane',
   gapSize = 10,
   menuGapSize = 0
@@ -381,10 +382,10 @@ singleapps = {
 
   -- Middle Row: Dev Tools
   {'h', 'Dash'},
-  -- Dev Trifecta (Browser + Editor + Terminal) and SourceTree
-  {'j', user.browser},
-  {'k', user.terminal},
-  {'l', user.editor},
+  -- Dev Trifecta (Browsers + Editor + Terminal) and SourceTree
+  {'j', user.terminal},
+  {'k', user.browser_main},
+  {'l', user.browser_alt},
   {';', 'Finder'},
 
   -- Bottom Row: Email, Calendar and ToDos
