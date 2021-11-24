@@ -383,8 +383,8 @@ singleapps = {
   -- Middle Row: Dev Tools
   {'h', 'Dash'},
   -- Dev Trifecta (Browsers + Editor + Terminal) and SourceTree
-  {'j', user.terminal},
-  {'k', user.browser_main},
+  {'j', user.browser_main},
+  {'k', user.terminal},
   {'l', user.browser_alt},
   {';', 'Finder'},
 
