@@ -376,7 +376,7 @@ hyper:bind({}, 'r', nil, reload)
 singleapps = {
   -- Top Row: IM + Spotify
   {'u', 'Slack'},
-  {'i', 'All-in-One Messenger'},
+  {'i', 'Franz'},
   {'o', 'Discord'},
   {'p', 'Spotify'},
 

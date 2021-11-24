@@ -30,9 +30,6 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 
-" Theme
-set background=dark
-set termguicolors
 
 " Give more space for displaying messages.
 set cmdheight=1
@@ -52,10 +49,11 @@ if has("unix")
 	endif
 endif
 
-" Allow for italics
+" Theme
+set background=dark
+set termguicolors
 let g:material_style = 'palenight'
 let g:material_terminal_italics = 1
-" Activate Theme	
 colorscheme material
 
 " =====================================
