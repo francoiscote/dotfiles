@@ -4,21 +4,25 @@ set relativenumber
 set number
 
 " Search and Case-sensitivity
-set nohlsearch
+set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 
 set colorcolumn=80
 set signcolumn=yes
-set cursorline
 set hidden
 set noerrorbells
 
-" Tabs
-set tabstop=4 softtabstop=4
-set shiftwidth=4
+" Cursor Line
+set cursorline
+
+" Indentation
+filetype plugin indent on
+set tabstop=2 softtabstop=2
+set shiftwidth=2
 set expandtab
+set autoindent
 set smartindent
 
 set nowrap
@@ -30,14 +34,13 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 
+" incremental substitution (neovim)
+if has('nvim')
+  set inccommand=split
+endif
 
-" Give more space for displaying messages.
-set cmdheight=1
-
-" default to Tree View in file explorer
-let g:netrw_liststyle=3
-
-let g:nvim_tree_add_trailing = 1
+" Nvim Tree
+let g:nvim_tree_highlight_opened_files = 1
 
 runtime ./plug.vim
 
@@ -55,6 +58,9 @@ set termguicolors
 let g:material_style = 'palenight'
 let g:material_terminal_italics = 1
 colorscheme material
+
+" Highlight yank with yellow bg
+highlight! link HighlightedyankRegion Cursor
 
 " =====================================
 " key maps
