@@ -1,10 +1,7 @@
 " Plugins
 call plug#begin('~/.vim/plugged')
-	" Plug 'tpope/vim-fugitive'
-	" Plug 'tpope/vim-rhubarb'
-
 	Plug 'hoob3rt/lualine.nvim'
-  Plug 'marko-cerovac/material.nvim'
+  Plug 'rose-pine/neovim'
 	
   Plug 'machakann/vim-highlightedyank'
 

@@ -55,12 +55,11 @@ endif
 " Theme
 set background=dark
 set termguicolors
-let g:material_style = 'palenight'
-let g:material_terminal_italics = 1
-colorscheme material
+let g:rose_pine_variant = "moon"
+colorscheme rose-pine
 
 " Highlight yank with yellow bg
-highlight! link HighlightedyankRegion Cursor
+highlight HighlightedyankRegion guifg=#191724 guibg=#f6c177
 
 " =====================================
 " key maps
