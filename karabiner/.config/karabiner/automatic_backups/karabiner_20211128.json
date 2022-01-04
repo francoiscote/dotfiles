@@ -30,14 +30,14 @@
                                 "to": [
                                     {
                                         "key_code": "left_control",
-                                        "lazy": true
+																				"lazy": true
                                     }
                                 ],
-                                "to_if_alone": [
-                                    {
-                                        "key_code": "escape"
-                                    }
-                                ],
+																"to_if_alone": [
+																	{
+																			"key_code": "escape"
+																	}
+																],
                                 "type": "basic"
                             }
                         ]
