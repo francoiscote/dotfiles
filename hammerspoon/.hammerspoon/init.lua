@@ -55,8 +55,8 @@ local wf=hs.window.filter
 
 -- Windows Filters
 w_browsers = wf.new{['Google Chrome'] = {rejectTitles='Picture in Picture'}, 'Firefox Developer Edition', 'Firefox'}
-w_editors = wf.new{'Atom', 'Code'}
-w_terminals = wf.new{'iTerm', 'Alacritty'}
+w_editors = wf.new{'Code'}
+w_terminals = wf.new{'iTerm2', 'Alacritty'}
 w_zoom = wf.new(false):setAppFilter('zoom.us')
 w_pip = wf.new(false):setAppFilter('Google Chrome',{allowTitles='Picture in Picture'})
 
@@ -313,6 +313,18 @@ hyper:bind({}, '0', nil, function()
     hyper.triggered = true
 end)
 
+
+-- Shift-0 - Fullscreen
+hyper:bind({"shift"}, '0', nil, function()
+    local win = hs.window.focusedWindow()
+    if win:isFullScreen() then
+      win:setFullScreen(false)
+    else 
+      win:setFullScreen(true)
+    end
+    hyper.triggered = true
+end)
+
 -- Picture in Picture on top right
 -------------------------------------------------------------------------------
 -- hyper:bind({}, 'y', nil, function()
@@ -384,8 +396,8 @@ singleapps = {
   {'h', 'Dash'},
   -- Dev Trifecta (Browsers + Editor + Terminal) and SourceTree
   {'j', user.browser_main},
-  {'k', user.terminal},
-  {'l', user.browser_alt},
+  {'k', user.editor},
+  {'l', user.terminal},
   {';', 'Finder'},
 
   -- Bottom Row: Email, Calendar and ToDos
