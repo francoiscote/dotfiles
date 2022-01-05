@@ -2,7 +2,7 @@ hs.logger.defaultLogLevel = 'info'
 -- USER VARIABLES
 -------------------------------------------------------------------------------
 local user = {
-  terminal = 'iTerm',
+  terminal = 'alacritty',
   editor = 'Visual Studio Code',
   browser_main = 'Google Chrome',
   browser_alt = 'Firefox Developer Edition',

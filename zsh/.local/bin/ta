@@ -92,7 +92,6 @@ else
     (TMUX='' 
     tmux new-session -Ad -s "$session_name" -c $path_name;
     tmux new-window -d -t "$session_name" -c $path_name;
-    tmux send-keys -t "$session_name" "nvim '+Telescope find_files'" Enter;
     )
 fi
  }
