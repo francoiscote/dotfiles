@@ -174,8 +174,7 @@
   "vetur.validation.template": false,
   "vetur.validation.templateProps": true,
   "vetur.validation.interpolation": false,
-  "workbench.colorTheme": "Community Material Theme Palenight High Contrast",
-  "editor.cursorStyle": "block",
+  "workbench.colorTheme": "Moonlight II",
   "editor.lineHeight": 0,
   "editor.fontSize": 16,
 }
