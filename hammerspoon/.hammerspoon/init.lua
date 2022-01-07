@@ -2,7 +2,7 @@ hs.logger.defaultLogLevel = 'info'
 -- USER VARIABLES
 -------------------------------------------------------------------------------
 local user = {
-  terminal = 'alacritty',
+  terminal = 'iTerm',
   editor = 'Visual Studio Code',
   browser_main = 'Google Chrome',
   browser_alt = 'Firefox Developer Edition',
@@ -398,12 +398,14 @@ singleapps = {
   {'j', user.browser_main},
   {'k', user.editor},
   {'l', user.terminal},
-  {';', 'Finder'},
+  -- Empty spot right here on the ";"
+  -- {';', 'Finder'},
 
   -- Bottom Row: Email, Calendar and ToDos
   {'n', 'Notion'},
   {'m', user.mailclient},
   {',', 'Fantastical'},
+  {'.', 'Finder'},
 }
 
 for i, app in ipairs(singleapps) do
