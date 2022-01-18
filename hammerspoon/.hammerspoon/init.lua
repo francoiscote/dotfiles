@@ -57,6 +57,7 @@ local wf=hs.window.filter
 w_browsers = wf.new{['Google Chrome'] = {rejectTitles='Picture in Picture'}, 'Firefox Developer Edition', 'Firefox'}
 w_editors = wf.new{'Code'}
 w_terminals = wf.new{'iTerm2', 'Alacritty'}
+w_notes = wf.new{'Notion'}
 w_zoom = wf.new(false):setAppFilter('zoom.us')
 w_pip = wf.new(false):setAppFilter('Google Chrome',{allowTitles='Picture in Picture'})
 
@@ -75,16 +76,17 @@ local seventySplitCells = {
 hyper:bind({}, 'q', nil, function()
   -- Different layout depending if we have Video windows or not
   local videoWindows = #w_zoom:getWindows() + #w_pip:getWindows()
-  if videoWindows == 0 then
-    helpers.setWindowsToCell(w_browsers, mygrid, seventySplitCells.rightMain)
-    helpers.setWindowsToCell(w_editors, mygrid, seventySplitCells.rightMain)
+  helpers.setWindowsToCell(w_browsers, mygrid, seventySplitCells.rightMain)
+  helpers.setWindowsToCell(w_editors, mygrid, seventySplitCells.rightMain)
+
+  if videoWindows == 0 then  
     helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.leftSecondaryFull)
+    helpers.setWindowsToCell(w_notes, mygrid, seventySplitCells.leftSecondaryFull)
   else
-    helpers.setWindowsToCell(w_browsers, mygrid, seventySplitCells.rightMain)
-    helpers.setWindowsToCell(w_editors, mygrid, seventySplitCells.rightMain)
     helpers.setWindowsToCell(w_zoom, mygrid, seventySplitCells.leftSecondaryTop)
     helpers.setWindowsToCell(w_pip, mygrid, seventySplitCells.leftSecondaryTop)
     helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.leftSecondaryBottom)
+    helpers.setWindowsToCell(w_notes, mygrid, seventySplitCells.leftSecondaryBottom)
   end
 
   hyper.triggered = true
@@ -94,13 +96,12 @@ end)
 hyper:bind({'shift'}, 'q', nil, function()
   -- Different layout depending if we have Video windows or not
   local videoWindows = #w_zoom:getWindows() + #w_pip:getWindows()
+  helpers.setWindowsToCell(w_browsers, mygrid, seventySplitCells.leftMain)
+  helpers.setWindowsToCell(w_editors, mygrid, seventySplitCells.leftMain)
+  helpers.setWindowsToCell(w_notes, mygrid, seventySplitCells.leftMain)
   if videoWindows == 0 then
-    helpers.setWindowsToCell(w_browsers, mygrid, seventySplitCells.leftMain)
-    helpers.setWindowsToCell(w_editors, mygrid, seventySplitCells.leftMain)
     helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.rightSecondaryFull)
   else
-    helpers.setWindowsToCell(w_browsers, mygrid, seventySplitCells.leftMain)
-    helpers.setWindowsToCell(w_editors, mygrid, seventySplitCells.leftMain)
     helpers.setWindowsToCell(w_zoom, mygrid, seventySplitCells.rightSecondaryTop)
     helpers.setWindowsToCell(w_pip, mygrid, seventySplitCells.rightSecondaryTop)
     helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.rightSecondaryBottom)
@@ -124,16 +125,17 @@ local sixtySplitCells = {
 hyper:bind({}, 'w', nil, function()
   local videoWindows = #w_zoom:getWindows() + #w_pip:getWindows()
   -- Different layout depending if we have Video windows or not
+  helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.rightMain)
   if videoWindows == 0 then
     helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.leftSecondaryFull)
     helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.leftSecondaryFull)
-    helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.rightMain)
+    helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.leftSecondaryFull)
   else
     helpers.setWindowsToCell(w_zoom, mygrid, sixtySplitCells.leftSecondaryTop)
     helpers.setWindowsToCell(w_pip, mygrid, sixtySplitCells.leftSecondaryTop)
     helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.leftSecondaryBottom)
     helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.leftSecondaryBottom)
-    helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.rightMain)
+    helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.leftSecondaryBottom)
   end
 
   hyper.triggered = true
@@ -143,16 +145,18 @@ end)
 hyper:bind({'shift'}, 'w', nil, function()
   -- Different layout depending if we have Video windows or not
   local videoWindows = #w_zoom:getWindows() + #w_pip:getWindows()
+  helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.leftMain)
+
   if videoWindows == 0 then
-    helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.leftMain)
-    helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.leftMain)
     helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.rightSecondaryFull)
+    helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.rightSecondaryFull)
+    helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.rightSecondaryFull)
   else
-    helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.leftMain)
-    helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.leftMain)
     helpers.setWindowsToCell(w_zoom, mygrid, sixtySplitCells.rightSecondaryTop)
     helpers.setWindowsToCell(w_pip, mygrid, sixtySplitCells.rightSecondaryTop)
     helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.rightSecondaryBottom)
+    helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.rightSecondaryBottom)
+    helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.rightSecondaryBottom)
   end
 
   hyper.triggered = true
@@ -168,6 +172,7 @@ local evenSplitCells = {
 -- e - Work Setup - 50/50 split, Editor Right, terminal in the center
 hyper:bind({}, 'e', nil, function()
   helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.right)
+  helpers.setWindowsToCell(w_notes, mygrid, evenSplitCells.right)
   helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.left)
   helpers.setWindowsToCell(w_terminals, mygrid, evenSplitCells.center)
   
@@ -178,6 +183,7 @@ end)
 hyper:bind({'shift'}, 'e', nil, function()
   helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.right)
   helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.left)
+  helpers.setWindowsToCell(w_notes, mygrid, evenSplitCells.left)
   helpers.setWindowsToCell(w_terminals, mygrid, evenSplitCells.center)
   
   hyper.triggered = true
@@ -399,7 +405,7 @@ singleapps = {
   {'k', user.editor},
   {'l', user.terminal},
   -- Empty spot right here on the ";"
-  -- {';', 'Finder'},
+  {';', user.browser_alt},
 
   -- Bottom Row: Email, Calendar and ToDos
   {'n', 'Notion'},
