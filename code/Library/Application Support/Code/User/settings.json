@@ -72,6 +72,10 @@
   "vetur.validation.templateProps": true,
   "vetur.validation.interpolation": false,
   "workbench.colorTheme": "Rosé Pine Moon",
+  "workbench.colorCustomizations": {
+    "editorCursor.foreground": "#f6c177",
+    "editor.selectionBackground": "#f6c17733",
+  },
   "terminal.integrated.fontSize": 15,
   "terminal.integrated.fontFamily": "OperatorMonoSSmLig Nerd Font",
   "editor.lineHeight": 0,
