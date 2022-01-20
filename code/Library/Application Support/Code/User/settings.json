@@ -13,7 +13,7 @@
   "emmet.triggerExpansionOnTab": true,
   "php.validate.executablePath": "/usr/bin/php",
   "material-icon-theme.activeIconPack": "react",
-  "material-icon-theme.folders.color": "#42a5f5",
+  "material-icon-theme.folders.color": "#3e8fb0",
   "workbench.editor.closeEmptyGroups": false,
   "editor.minimap.enabled": true,
   "editor.minimap.maxColumn": 200,
