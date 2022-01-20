@@ -30,7 +30,7 @@
     "Dockerfile.*": "dockerfile"
   },
   "git.autofetch": true,
-  "editor.fontFamily": "Operator Mono SSm Lig",
+  "editor.fontFamily": "OperatorMonoSSmLig Nerd Font",
   "editor.letterSpacing": -0.3,
   "color-highlight.markRuler": false,
   "color-highlight.markerType": "dot-before",
