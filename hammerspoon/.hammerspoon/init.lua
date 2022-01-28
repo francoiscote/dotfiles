@@ -41,7 +41,7 @@ end
 local defaultMargins = user.gapSize .. 'x' .. user.gapSize
 local largeMargins = helpers.getDynamicMargins(0.03, 0.07)
 
-local mygrid = hs.grid.setGrid('10x16', screen, frame).setMargins(defaultMargins)
+local mygrid = hs.grid.setGrid('10x10', screen, frame).setMargins(defaultMargins)
 
 hyper:bind({}, 'g', nil, function()
   mygrid.toggleShow()
@@ -55,11 +55,13 @@ local wf=hs.window.filter
 
 -- Windows Filters
 w_browsers = wf.new{['Google Chrome'] = {rejectTitles='Picture in Picture'}, 'Firefox Developer Edition', 'Firefox'}
+w_chrome = wf.new{'Google Chrome'}
+w_firefox = wf.new{'Firefox Developer Edition', 'Firefox'}
 w_editors = wf.new{'Code'}
 w_terminals = wf.new{'iTerm2', 'Alacritty'}
 w_notes = wf.new{'Notion'}
 w_zoom = wf.new(false):setAppFilter('zoom.us')
-w_pip = wf.new(false):setAppFilter('Google Chrome',{allowTitles='Picture in Picture'})
+w_obs = wf.new{'OBS'}
 
 local seventySplitCells = {
   leftMain = '0,0 7x16',
@@ -75,7 +77,7 @@ local seventySplitCells = {
 -- q - Work Setup - Browser/Code in Main Right, Terminal in secondary Left
 hyper:bind({}, 'q', nil, function()
   -- Different layout depending if we have Video windows or not
-  local videoWindows = #w_zoom:getWindows() + #w_pip:getWindows()
+  local videoWindows = #w_zoom:getWindows()
   helpers.setWindowsToCell(w_browsers, mygrid, seventySplitCells.rightMain)
   helpers.setWindowsToCell(w_editors, mygrid, seventySplitCells.rightMain)
 
@@ -84,7 +86,6 @@ hyper:bind({}, 'q', nil, function()
     helpers.setWindowsToCell(w_notes, mygrid, seventySplitCells.leftSecondaryFull)
   else
     helpers.setWindowsToCell(w_zoom, mygrid, seventySplitCells.leftSecondaryTop)
-    helpers.setWindowsToCell(w_pip, mygrid, seventySplitCells.leftSecondaryTop)
     helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.leftSecondaryBottom)
     helpers.setWindowsToCell(w_notes, mygrid, seventySplitCells.leftSecondaryBottom)
   end
@@ -95,7 +96,7 @@ end)
 -- Shift+q - Work Setup - Browser/Code in Main Left, Terminal in secondary Right
 hyper:bind({'shift'}, 'q', nil, function()
   -- Different layout depending if we have Video windows or not
-  local videoWindows = #w_zoom:getWindows() + #w_pip:getWindows()
+  local videoWindows = #w_zoom:getWindows()
   helpers.setWindowsToCell(w_browsers, mygrid, seventySplitCells.leftMain)
   helpers.setWindowsToCell(w_editors, mygrid, seventySplitCells.leftMain)
   helpers.setWindowsToCell(w_notes, mygrid, seventySplitCells.leftMain)
@@ -103,7 +104,6 @@ hyper:bind({'shift'}, 'q', nil, function()
     helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.rightSecondaryFull)
   else
     helpers.setWindowsToCell(w_zoom, mygrid, seventySplitCells.rightSecondaryTop)
-    helpers.setWindowsToCell(w_pip, mygrid, seventySplitCells.rightSecondaryTop)
     helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.rightSecondaryBottom)
   end
   
@@ -123,7 +123,7 @@ local sixtySplitCells = {
 
 -- w - Work Setup - Code in Main Right, Browser/Terminal in secondary Left
 hyper:bind({}, 'w', nil, function()
-  local videoWindows = #w_zoom:getWindows() + #w_pip:getWindows()
+  local videoWindows = #w_zoom:getWindows()
   -- Different layout depending if we have Video windows or not
   helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.rightMain)
   if videoWindows == 0 then
@@ -132,7 +132,6 @@ hyper:bind({}, 'w', nil, function()
     helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.leftSecondaryFull)
   else
     helpers.setWindowsToCell(w_zoom, mygrid, sixtySplitCells.leftSecondaryTop)
-    helpers.setWindowsToCell(w_pip, mygrid, sixtySplitCells.leftSecondaryTop)
     helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.leftSecondaryBottom)
     helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.leftSecondaryBottom)
     helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.leftSecondaryBottom)
@@ -144,7 +143,7 @@ end)
 -- w - Work Setup - Terminal/Code in Main Left, Browser in secondary Right
 hyper:bind({'shift'}, 'w', nil, function()
   -- Different layout depending if we have Video windows or not
-  local videoWindows = #w_zoom:getWindows() + #w_pip:getWindows()
+  local videoWindows = #w_zoom:getWindows()
   helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.leftMain)
 
   if videoWindows == 0 then
@@ -153,7 +152,6 @@ hyper:bind({'shift'}, 'w', nil, function()
     helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.rightSecondaryFull)
   else
     helpers.setWindowsToCell(w_zoom, mygrid, sixtySplitCells.rightSecondaryTop)
-    helpers.setWindowsToCell(w_pip, mygrid, sixtySplitCells.rightSecondaryTop)
     helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.rightSecondaryBottom)
     helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.rightSecondaryBottom)
     helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.rightSecondaryBottom)
@@ -188,6 +186,25 @@ hyper:bind({'shift'}, 'e', nil, function()
   
   hyper.triggered = true
 end)
+
+-- Hyper+r
+-- Hyper+Shit+r
+-- Hyper+t
+-- Hyper+Shit+t
+-- Hyper+r - Default Twitch Layout
+hyper:bind({}, 'r', nil, function()
+  helpers.setWindowsToCell(w_terminals, mygrid, '0,0 2x7')
+
+  helpers.setWindowsToCell(w_editors, mygrid, '2,0 5x7')
+  helpers.setWindowsToCell(w_chrome, mygrid, '2,0 5x7')
+  
+  helpers.setWindowsToCell(w_notes, mygrid, '0,7 5x3')
+
+
+  helpers.setWindowsToCell(w_firefox, mygrid, '7,0 3x6')
+  helpers.setWindowsToCell(w_obs, mygrid, '7,6 6x6')
+end)
+-- Hyper+Shit+y
 
 -- 1 - 40% Left
 local fortyLeftCell = '0,0 4,16'
@@ -380,14 +397,14 @@ hyper:bind({}, '=', nil, function()
   focusedWindow:setFrame(windowFrame)
 end)
 
--- Shortcut to reload config
+-- Hyper+Z - Shortcut to reload config
 -------------------------------------------------------------------------------
 reload = function()
   hs.reload()
   hs.notify.show("Hammerspoon", "Config Reloaded", "")
   hyper.triggered = true
 end
-hyper:bind({}, 'r', nil, reload)
+hyper:bind({}, 'z', nil, reload)
 
 -- Single keybinding for app launch
 -------------------------------------------------------------------------------
