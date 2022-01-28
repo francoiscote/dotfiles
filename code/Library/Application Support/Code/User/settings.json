@@ -5,7 +5,6 @@
   "editor.tabSize": 2,
   "explorer.confirmDelete": false,
   "git.confirmSync": false,
-  "terminal.external.osxExec": "Alacritty.app",
   "terminal.integrated.scrollback": 10000,
   "terminal.integrated.cursorBlinking": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -18,19 +17,17 @@
   "editor.minimap.enabled": true,
   "editor.minimap.maxColumn": 200,
   "editor.minimap.showSlider": "always",
+  "editor.minimap.renderCharacters": false,
   "editor.smoothScrolling": true,
   "editor.cursorBlinking": "phase",
   "workbench.editor.focusRecentEditorAfterClose": false,
   "editor.renderControlCharacters": false,
-  "editor.fontLigatures": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
   "files.associations": {
     "Dockerfile.*": "dockerfile"
   },
   "git.autofetch": true,
   "editor.fontFamily": "OperatorMonoSSmLig Nerd Font",
+  "editor.fontLigatures": true,
   "editor.letterSpacing": -0.3,
   "color-highlight.markRuler": false,
   "color-highlight.markerType": "dot-before",
@@ -38,7 +35,6 @@
   "window.title": "${rootName}",
   "git.enableSmartCommit": true,
   "material-icon-theme.folders.theme": "specific",
-  "materialTheme.accent": "Purple",
   "workbench.preferredDarkColorTheme": "Community Material Theme Palenight High Contrast",
   "workbench.preferredLightColorTheme": "GitHub Light Default",
   "terminal.integrated.macOptionClickForcesSelection": true,
@@ -51,7 +47,6 @@
     "iconColour": "#FFCB6B"
   },
   "typescript.disableAutomaticTypeAcquisition": true,
-  "editor.minimap.renderCharacters": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "editor.renderWhitespace": "trailing",
   "extensions.ignoreRecommendations": false,
@@ -64,9 +59,6 @@
   "material-icon-theme.saturation": 1,
   "terminal.integrated.fontWeightBold": "500",
   "editor.fontWeight": 400,
-  "editor.formatOnPaste": false,
-  "editor.formatOnSave": false,
-  "editor.formatOnType": false,
   "diffEditor.ignoreTrimWhitespace": false,
   "vetur.validation.template": false,
   "vetur.validation.templateProps": true,
@@ -74,10 +66,13 @@
   "workbench.colorTheme": "Rosé Pine Moon",
   "workbench.colorCustomizations": {
     "editorCursor.foreground": "#f6c177",
-    "editor.selectionBackground": "#f6c17733",
+    "editor.selectionBackground": "#f6c17733"
   },
   "terminal.integrated.fontSize": 15,
   "terminal.integrated.fontFamily": "OperatorMonoSSmLig Nerd Font",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "window.zoomLevel": 1,
   "editor.lineHeight": 0,
-  "editor.fontSize": 15,
+  "editor.fontSize": 15
 }
