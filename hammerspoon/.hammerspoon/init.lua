@@ -163,9 +163,9 @@ end)
 
 
 local evenSplitCells = {
-  left = '0,0 5x16',
-  right = '5,0 5x16',
-  center = '2,1 6x14'
+  left = '0,0 5x10',
+  right = '5,0 5x10',
+  center = '2,1 6x8'
 }
 
 -- e - Work Setup - 50/50 split, Editor Right, terminal in the center
@@ -239,7 +239,7 @@ local fortyLeftCell = '0,0 4,10'
 
 hyper:bind({}, '1', nil, function()
   local win = hs.window.focusedWindow()
-  mygrid.set(win, fortyLeftCell)
+  mygrid.set(win, '0,0 4,10')
   hyper.triggered = true
 end)
 -- Shift+1 - 40% Left w/ large Margins
