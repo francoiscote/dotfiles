@@ -59,17 +59,18 @@ w_chrome = wf.new{'Google Chrome'}
 w_firefox = wf.new{'Firefox Developer Edition', 'Firefox'}
 w_editors = wf.new{'Code'}
 w_terminals = wf.new{'iTerm2', 'Alacritty'}
-w_notes = wf.new{'Notion'}
+w_notes = wf.new{['Notion'] = {rejectTitles='Stream Scratch'}}
+w_notes_streamScratch = wf.new{['Notion'] = {allowTitles='Stream Scratch'}}
 w_zoom = wf.new(false):setAppFilter('zoom.us')
 w_obs = wf.new{'OBS'}
 
 local seventySplitCells = {
-  leftMain = '0,0 7x16',
-  leftSecondaryFull = '0,0 3x16',
+  leftMain = '0,0 7x10',
+  leftSecondaryFull = '0,0 3x10',
   leftSecondaryTop = '0,0 3x5',
   leftSecondaryBottom = '0,5 3x11',
-  rightMain = '3,0 7x16',
-  rightSecondaryFull = '7,0 3x16',
+  rightMain = '3,0 7x10',
+  rightSecondaryFull = '7,0 3x10',
   rightSecondaryTop = '7,0 3x5',
   rightSecondaryBottom = '7,5 3x11',
 }
@@ -111,14 +112,14 @@ hyper:bind({'shift'}, 'q', nil, function()
 end)
 
 local sixtySplitCells = {
-  leftMain = '0,0 6x16',
-  leftSecondaryFull = '0,0 4x16',
-  leftSecondaryTop = '0,0 4x6',
-  leftSecondaryBottom = '0,6 4x10',
-  rightMain = '4,0 6x16',
-  rightSecondaryFull = '6,0 4x16',
-  rightSecondaryTop = '6,0 4x6',
-  rightSecondaryBottom = '6,6 4x10',
+  leftMain = '0,0 6x10',
+  leftSecondaryFull = '0,0 4x10',
+  leftSecondaryTop = '0,0 4x4',
+  leftSecondaryBottom = '0,4 4x6',
+  rightMain = '4,0 6x10',
+  rightSecondaryFull = '6,0 4x10',
+  rightSecondaryTop = '6,0 4x4',
+  rightSecondaryBottom = '6,4 4x6',
 }
 
 -- w - Work Setup - Code in Main Right, Browser/Terminal in secondary Left
@@ -187,27 +188,54 @@ hyper:bind({'shift'}, 'e', nil, function()
   hyper.triggered = true
 end)
 
--- Hyper+r
--- Hyper+Shit+r
--- Hyper+t
--- Hyper+Shit+t
--- Hyper+r - Default Twitch Layout
+
+function placeHiddenTwitchTooling() 
+  helpers.setWindowsToCell(w_notes, mygrid, '0,7 5x3')
+  helpers.setWindowsToCell(w_notes_streamScratch, mygrid, '5,7 2x3')
+  helpers.setWindowsToCell(w_firefox, mygrid, '7,0 3x6')
+  helpers.setWindowsToCell(w_obs, mygrid, '7,6 6x6')
+end 
+
+-- Hyper+r - Twitch Default Layout
 hyper:bind({}, 'r', nil, function()
+  placeHiddenTwitchTooling()
   helpers.setWindowsToCell(w_terminals, mygrid, '0,0 2x7')
 
   helpers.setWindowsToCell(w_editors, mygrid, '2,0 5x7')
   helpers.setWindowsToCell(w_chrome, mygrid, '2,0 5x7')
-  
-  helpers.setWindowsToCell(w_notes, mygrid, '0,7 5x3')
-
-
-  helpers.setWindowsToCell(w_firefox, mygrid, '7,0 3x6')
-  helpers.setWindowsToCell(w_obs, mygrid, '7,6 6x6')
 end)
+-- Hyper+Shit+r - Twitch Default Layout (Inverted)
+hyper:bind({'shift'}, 'r', nil, function()
+  placeHiddenTwitchTooling()
+  helpers.setWindowsToCell(w_editors, mygrid, '0,0 5x7')
+  helpers.setWindowsToCell(w_chrome, mygrid, '0,0 5x7')
+  helpers.setWindowsToCell(w_terminals, mygrid, '5,0 2x7')
+end)
+
+-- Hyper+t - Twitch Even Split Layout
+hyper:bind({}, 't', nil, function()
+  placeHiddenTwitchTooling()
+  helpers.setWindowsToCell(w_chrome, mygrid, '0,0 3.5x7')
+  helpers.setWindowsToCell(w_terminals, mygrid, '0,0 3.5x7')
+
+  helpers.setWindowsToCell(w_editors, mygrid, '3.5,0 3.5x7')
+end)
+
+-- Hyper+Shit+t - Twitch Even Split Layout (Inverted)
+hyper:bind({'shift'}, 't', nil, function()
+  placeHiddenTwitchTooling()
+  helpers.setWindowsToCell(w_editors, mygrid, '0,0 3.5x7')
+
+  helpers.setWindowsToCell(w_chrome, mygrid, '3.5,0 3.5x7')
+  helpers.setWindowsToCell(w_terminals, mygrid, '3.5,0 3.5x7')
+end)
+
+-- AVAILABLE SPOT HERE
+-- Hyper+y
 -- Hyper+Shit+y
 
 -- 1 - 40% Left
-local fortyLeftCell = '0,0 4,16'
+local fortyLeftCell = '0,0 4,10'
 
 hyper:bind({}, '1', nil, function()
   local win = hs.window.focusedWindow()
@@ -224,7 +252,7 @@ hyper:bind({"shift"}, '1', nil, function()
 end)
 
 -- 2 - 50% Left
-local halfLeftCell = '0,0 5,16'
+local halfLeftCell = '0,0 5,10'
 
 hyper:bind({}, '2', nil, function()
   local win = hs.window.focusedWindow()
@@ -241,7 +269,7 @@ hyper:bind({"shift"}, '2', nil, function()
 end)
 
 -- 3 - 60% Left
-local sixtyLeftCell = '0,0 6,16'
+local sixtyLeftCell = '0,0 6,10'
 
 hyper:bind({}, '3', nil, function()
   local win = hs.window.focusedWindow()
@@ -260,26 +288,47 @@ end)
 -- 4 - "Finder" Size
 hyper:bind({}, '4', nil, function()
   local win = hs.window.focusedWindow()
-  mygrid.set(win, '3,3 4x10')
+  mygrid.set(win, '3,2 4x6')
+  hyper.triggered = true
+end)
+
+-- Shift-4 - "Finder" Size - Twich Mode
+hyper:bind({'shift'}, '4', nil, function()
+  local win = hs.window.focusedWindow()
+  mygrid.set(win, '2,1.5 3x4')
   hyper.triggered = true
 end)
 
 -- 5 - "Spotify" Size
 hyper:bind({}, '5', nil, function()
   local win = hs.window.focusedWindow()
-  mygrid.set(win, '2,1 6x14')
+  mygrid.set(win, '2,1 6x8')
+  hyper.triggered = true
+end)
+
+-- 5 - "Spotify" Size - Twitch Mode
+hyper:bind({'shift'}, '5', nil, function()
+  local win = hs.window.focusedWindow()
+  mygrid.set(win, '1,0.5 5x6')
   hyper.triggered = true
 end)
 
 -- 6 - "Browser" Size
 hyper:bind({}, '6', nil, function()
   local win = hs.window.focusedWindow()
-  mygrid.set(win, '2,0 6x16')
+  mygrid.set(win, '2,0 6x10')
+  hyper.triggered = true
+end)
+
+-- 6 - "Full" Size for Twich
+hyper:bind({'shift'}, '6', nil, function()
+  local win = hs.window.focusedWindow()
+  mygrid.set(win, '0,0 7x7')
   hyper.triggered = true
 end)
 
 -- 7 - 60% Right
-local sixtyRightCells = '4,0 6x16'
+local sixtyRightCells = '4,0 6x10'
 hyper:bind({}, '7', nil, function()
   local win = hs.window.focusedWindow()
   mygrid.set(win, sixtyRightCells)
@@ -296,7 +345,7 @@ hyper:bind({"shift"}, '7', nil, function()
 end)
 
 -- 8 - 50% Right
-local halfRightCell = '5,0 5x16'
+local halfRightCell = '5,0 5x10'
 hyper:bind({}, '8', nil, function()
   local win = hs.window.focusedWindow()
   mygrid.set(win, halfRightCell)
@@ -313,7 +362,7 @@ hyper:bind({"shift"}, '8', nil, function()
 end)
 
 -- 9 - 40% Right
-local fortyRightCells = '6,0 4x16'
+local fortyRightCells = '6,0 4x10'
 hyper:bind({}, '9', nil, function()
   local win = hs.window.focusedWindow()
   mygrid.set(win, fortyRightCells)
@@ -347,27 +396,6 @@ hyper:bind({"shift"}, '0', nil, function()
     end
     hyper.triggered = true
 end)
-
--- Picture in Picture on top right
--------------------------------------------------------------------------------
--- hyper:bind({}, 'y', nil, function()
---   local ppWin = hs.window('Picture in Picture')
---   if (ppWin) then
---     local screen = ppWin:screen()
---     local max = screen:frame(
-
---     ppWin:setFrame({x=max.w-1032, y=max.y, w=1032, h=580})
---   en 
-
---   local termWin = hs.application('iTerm2'):mainWindow()
---   if (termWin) then
---     local screen = termWin:screen()
---     local max = screen:frame()
-
---     termWin:setFrame({x=max.w-1032, y=603, w=1032, h=837})
---   end
---   hyper.triggered = true
--- end)
 
 -- Move Windows
 -------------------------------------------------------------------------------
@@ -454,13 +482,10 @@ hyper:bind({}, 's', nil, function()
   if string.find(currentDeviceName, 'Vanatoo T0') then
     nextDevice = hs.audiodevice.findOutputByName('EVO4')
     if (nextDevice == nil) then
-      nextDevice = hs.audiodevice.findOutputByName('JDS Labs DAC')
-    end
-    if (nextDevice == nil) then
       nextDevice = hs.audiodevice.findOutputByName('USB audio CODEC')
     end
     if (nextDevice == nil) then
-      nextDevice = hs.audiodevice.findOutputByName('MacBook Pro Speakers')
+      nextDevice = hs.audiodevice.findOutputByName('Mac mini Speakers')
     end
   else
     nextDevice = hs.audiodevice.findOutputByName('Vanatoo T0')

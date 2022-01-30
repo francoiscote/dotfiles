@@ -72,7 +72,6 @@
   "terminal.integrated.fontFamily": "OperatorMonoSSmLig Nerd Font",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "window.zoomLevel": 1,
   "editor.lineHeight": 0,
-  "editor.fontSize": 15
+  "editor.fontSize": 16
 }
