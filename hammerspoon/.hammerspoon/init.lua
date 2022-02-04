@@ -59,8 +59,8 @@ w_chrome = wf.new{'Google Chrome'}
 w_firefox = wf.new{'Firefox Developer Edition', 'Firefox'}
 w_editors = wf.new{'Code'}
 w_terminals = wf.new{'iTerm2', 'Alacritty'}
-w_notes = wf.new{['Notion'] = {rejectTitles='Stream Scratch'}}
-w_notes_streamScratch = wf.new{['Notion'] = {allowTitles='Stream Scratch'}}
+w_notes = wf.new{['Notion'] = {rejectTitles='Stream Scratch', currentSpace = true}}
+w_notes_streamScratch = wf.new{['Notion'] = {allowTitles='Stream Scratch', currentSpace = true}}
 w_zoom = wf.new(false):setAppFilter('zoom.us')
 w_obs = wf.new{'OBS'}
 
