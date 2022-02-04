@@ -425,6 +425,42 @@ hyper:bind({}, '=', nil, function()
   focusedWindow:setFrame(windowFrame)
 end)
 
+function moveWindowOneSpace(direction)
+  local keyCode = direction == "left" and 123 or 124
+
+  -- get current window
+  local focusedWindow = hs.window.focusedWindow()
+  -- log.d("Window TopLeft:", focusedWindow:topLeft())
+  
+  -- click at {+64,+4} and hold
+  local clickPos = focusedWindow:topLeft():move({64,4})
+  -- log.d("Click Pos:", clickPos)
+  hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftMouseDown, clickPos):post()
+  
+  -- execute keyboard shortcut
+  hs.timer.usleep(1000)
+  -- log.d("Key Stroke")
+  hs.osascript.applescript([[
+    tell application "System Events" 
+        keystroke (key code ]] .. keyCode .. [[ using control down)
+    end tell
+  ]])
+
+  -- -- MouseUp
+  hs.timer.usleep(1000)
+  log.d("MouseUp")
+  hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftMouseUp, clickPos):post()
+end
+
+hyper:bind({}, 'right', nil, function()
+  moveWindowOneSpace('right')
+end)
+
+hyper:bind({}, 'left', nil, function()
+  moveWindowOneSpace('left')
+end)
+
+
 -- Hyper+Z - Shortcut to reload config
 -------------------------------------------------------------------------------
 reload = function()
