@@ -23,6 +23,7 @@ log = hs.logger.new('WM','debug')
 
 -- Inspect Focused Window
 hyper:bind({"shift"}, 'i', nil, function()
+  log.d("screens", hs.screen.mainScreen())
   local win = hs.window.focusedWindow()
   helpers.logWindowInfo(win)
   hyper.triggered = true
@@ -30,18 +31,18 @@ end)
 
 -- GRID
 -------------------------------------------------------------------------------
-local screen = hs.screen.mainScreen()
+local mainScreen = hs.screen.mainScreen()
 local frame = nil
 
 if user.menuGapSize > 0 then
-  local max = screen:frame()
+  local max = mainScreen:frame()
   frame = hs.geometry(0, user.menuGapSize, max.w, max.h - user.menuGapSize)
 end
 
 local defaultMargins = user.gapSize .. 'x' .. user.gapSize
 local largeMargins = helpers.getDynamicMargins(0.03, 0.07)
 
-local mygrid = hs.grid.setGrid('10x10', screen, frame).setMargins(defaultMargins)
+local mygrid = hs.grid.setGrid('10x10', mainScreen, frame).setMargins(defaultMargins)
 
 hyper:bind({}, 'g', nil, function()
   mygrid.toggleShow()
@@ -54,13 +55,12 @@ hs.window.animationDuration = 0
 local wf=hs.window.filter
 
 -- Windows Filters
-w_browsers = wf.new{['Google Chrome'] = {rejectTitles='Picture in Picture'}, 'Firefox Developer Edition', 'Firefox'}
+w_browsers = wf.new{['Google Chrome'] = { currentSpace = true, allowScreens = mainScreen:id() }, ['Firefox Developer Edition'] = { currentSpace = true, allowScreens = mainScreen:id() }}
 w_chrome = wf.new{'Google Chrome'}
-w_firefox = wf.new{'Firefox Developer Edition', 'Firefox'}
+w_firefox = wf.new{['Firefox Developer Edition'] = {currentSpace = true, allowScreens = mainScreen:id() }}
 w_editors = wf.new{'Code'}
 w_terminals = wf.new{'iTerm2', 'Alacritty'}
-w_notes = wf.new{['Notion'] = {rejectTitles='Stream Scratch', currentSpace = true}}
-w_notes_streamScratch = wf.new{['Notion'] = {allowTitles='Stream Scratch', currentSpace = true}}
+w_notes = wf.new{['Notion'] = {currentSpace = true}}
 w_zoom = wf.new(false):setAppFilter('zoom.us')
 w_obs = wf.new{'OBS'}
 
@@ -76,8 +76,7 @@ local seventySplitCells = {
 }
 
 -- q - Work Setup - Browser/Code in Main Right, Terminal in secondary Left
-hyper:bind({}, 'q', nil, function()
-  -- Different layout depending if we have Video windows or not
+hyper:bind({}, 'q', nil, function()  -- Different layout depending if we have Video windows or not
   local videoWindows = #w_zoom:getWindows()
   helpers.setWindowsToCell(w_browsers, mygrid, seventySplitCells.rightMain)
   helpers.setWindowsToCell(w_editors, mygrid, seventySplitCells.rightMain)
@@ -190,49 +189,72 @@ end)
 
 
 function placeHiddenTwitchTooling() 
-  helpers.setWindowsToCell(w_notes, mygrid, '0,7 5x3')
-  helpers.setWindowsToCell(w_notes_streamScratch, mygrid, '5,7 2x3')
-  helpers.setWindowsToCell(w_firefox, mygrid, '7,0 3x6')
-  helpers.setWindowsToCell(w_obs, mygrid, '7,6 6x6')
+  helpers.setWindowsToCell(w_firefox, mygrid, '7,0 3x5')
+  helpers.setWindowsToCell(w_obs, mygrid, '3,8 4x2')
+  helpers.setWindowsToCell(w_notes, mygrid, '7,5 3x5')
 end 
 
--- Hyper+r - Twitch Default Layout
+-- Hyper+r - Twitch Default Layout (Terminal Left)
 hyper:bind({}, 'r', nil, function()
   placeHiddenTwitchTooling()
-  helpers.setWindowsToCell(w_terminals, mygrid, '0,0 2x7')
-
-  helpers.setWindowsToCell(w_editors, mygrid, '2,0 5x7')
-  helpers.setWindowsToCell(w_chrome, mygrid, '2,0 5x7')
+  helpers.setWindowsToCell(w_terminals, mygrid, '0,0 2x8')
+  helpers.setWindowsToCell(w_editors, mygrid, '2,0 5x8')
+  helpers.setWindowsToCell(w_chrome, mygrid, '2,0 5x8')
+  
 end)
--- Hyper+Shit+r - Twitch Default Layout (Inverted)
+-- Hyper+Shit+r - Twitch Default Layout (Terminal Right)
 hyper:bind({'shift'}, 'r', nil, function()
   placeHiddenTwitchTooling()
-  helpers.setWindowsToCell(w_editors, mygrid, '0,0 5x7')
-  helpers.setWindowsToCell(w_chrome, mygrid, '0,0 5x7')
-  helpers.setWindowsToCell(w_terminals, mygrid, '5,0 2x7')
+  helpers.setWindowsToCell(w_editors, mygrid, '0,0 5x8  ')
+  helpers.setWindowsToCell(w_chrome, mygrid, '0,0 5x8 ')
+
+  helpers.setWindowsToCell(w_terminals, mygrid, '5,0 2x8')
+
+  
 end)
 
--- Hyper+t - Twitch Even Split Layout
+-- Hyper+t - Twitch Even Split Layout (Browser on the Left)
 hyper:bind({}, 't', nil, function()
   placeHiddenTwitchTooling()
-  helpers.setWindowsToCell(w_chrome, mygrid, '0,0 3.5x7')
-  helpers.setWindowsToCell(w_terminals, mygrid, '0,0 3.5x7')
+  helpers.setWindowsToCell(w_chrome, mygrid, '0,0 3.5x8')
 
-  helpers.setWindowsToCell(w_editors, mygrid, '3.5,0 3.5x7')
+  helpers.setWindowsToCell(w_editors, mygrid, '3.5,0 3.5x8')
+  helpers.setWindowsToCell(w_terminals, mygrid, '3.5,0 3.5x8')
+
+
+
 end)
 
--- Hyper+Shit+t - Twitch Even Split Layout (Inverted)
+-- Hyper+Shit+t - Twitch Even Split Layout (Browser on the Right)
 hyper:bind({'shift'}, 't', nil, function()
   placeHiddenTwitchTooling()
-  helpers.setWindowsToCell(w_editors, mygrid, '0,0 3.5x7')
+  helpers.setWindowsToCell(w_editors, mygrid, '0,0 3.5x8')
+  helpers.setWindowsToCell(w_terminals, mygrid, '0,0 3.5x8')
+  
+  helpers.setWindowsToCell(w_chrome, mygrid, '3.5,0 3.5x8')
+end)
 
-  helpers.setWindowsToCell(w_chrome, mygrid, '3.5,0 3.5x7')
-  helpers.setWindowsToCell(w_terminals, mygrid, '3.5,0 3.5x7')
+-- Hyper+y - Twitch Vertical Split Layout (Terminal on the bottom)
+hyper:bind({}, 'y', nil, function()
+  placeHiddenTwitchTooling()
+  helpers.setWindowsToCell(w_editors, mygrid, '0,0 7x5')
+  helpers.setWindowsToCell(w_chrome, mygrid, '0,0 7x5')
+
+  helpers.setWindowsToCell(w_terminals, mygrid, '0,5 7x3')
+  
 end)
 
 -- AVAILABLE SPOT HERE
--- Hyper+y
--- Hyper+Shit+y
+-- Hyper+Shift+y - Twitch Vertical Split Layout 
+-- (Terminal at the bottom, Browser and Editor split at top)
+hyper:bind({'shift'}, 'y', nil, function()
+  placeHiddenTwitchTooling()
+  helpers.setWindowsToCell(w_chrome, mygrid, '0,0 3.5x5')
+  helpers.setWindowsToCell(w_editors, mygrid, '3.5,0 3.5x5')
+
+  helpers.setWindowsToCell(w_terminals, mygrid, '0,5 7x3')
+  
+end)
 
 -- 1 - 40% Left
 local fortyLeftCell = '0,0 4,10'
@@ -309,7 +331,7 @@ end)
 -- 5 - "Spotify" Size - Twitch Mode
 hyper:bind({'shift'}, '5', nil, function()
   local win = hs.window.focusedWindow()
-  mygrid.set(win, '1,0.5 5x6')
+  mygrid.set(win, '0.5,0.5 6x7')
   hyper.triggered = true
 end)
 
@@ -320,10 +342,10 @@ hyper:bind({}, '6', nil, function()
   hyper.triggered = true
 end)
 
--- 6 - "Full" Size for Twich
+-- 6 - "Browser" Size for Twich
 hyper:bind({'shift'}, '6', nil, function()
   local win = hs.window.focusedWindow()
-  mygrid.set(win, '0,0 7x7')
+  mygrid.set(win, '1,0 5x8')
   hyper.triggered = true
 end)
 
@@ -386,15 +408,11 @@ hyper:bind({}, '0', nil, function()
 end)
 
 
--- Shift-0 - Fullscreen
+-- Shift-0 - "Full" Size for Twich
 hyper:bind({"shift"}, '0', nil, function()
-    local win = hs.window.focusedWindow()
-    if win:isFullScreen() then
-      win:setFullScreen(false)
-    else 
-      win:setFullScreen(true)
-    end
-    hyper.triggered = true
+  local win = hs.window.focusedWindow()
+  mygrid.set(win, '0,0 7x8')
+  hyper.triggered = true
 end)
 
 -- Move Windows
@@ -489,6 +507,7 @@ singleapps = {
   {';', user.browser_alt},
 
   -- Bottom Row: Email, Calendar and ToDos
+  {'b', 'OBS'},
   {'n', 'Notion'},
   {'m', user.mailclient},
   {',', 'Fantastical'},
@@ -503,6 +522,14 @@ for i, app in ipairs(singleapps) do
     end
   )
 end
+
+-- Hyper+Shift+p = Pretzel
+-- TODO: make this possible with a shift option above.
+-- TODO: also map secondary browser to Hyper+Shift+J
+hyper:bind({'shift'}, 'p', function() 
+  hs.application.launchOrFocus('Pretzel')
+  hyper.triggered = true
+end)
 
 -- Swap between a Main audio output and a series of ranked secondary outputs
 -- Main Output: Vanatoo T0
