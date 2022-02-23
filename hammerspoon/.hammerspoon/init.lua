@@ -7,6 +7,7 @@ local user = {
   browser_main = 'Google Chrome',
   browser_alt = 'Firefox Developer Edition',
   mailclient = 'Mimestream',
+  calendar = 'Fantastical',
   gapSize = 10,
   menuGapSize = 0
 }
@@ -510,7 +511,7 @@ singleapps = {
   {'b', 'OBS'},
   {'n', 'Notion'},
   {'m', user.mailclient},
-  {',', 'Calendar'},
+  {',', user.calendar,},
   {'.', 'Finder'},
 }
 
