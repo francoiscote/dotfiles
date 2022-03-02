@@ -30,7 +30,7 @@
 [help]
 	autocorrect = 1
 [init]
-	defaultBranch = 'main'
+	defaultBranch = main
 [pull]
   rebase = false
 [push]
