@@ -64,6 +64,7 @@ w_terminals = wf.new{'iTerm2', 'Alacritty'}
 w_notes = wf.new{['Notion'] = {currentSpace = true}}
 w_zoom = wf.new(false):setAppFilter('zoom.us')
 w_obs = wf.new{'OBS'}
+w_figma = wf.new{'Figma'}
 
 local seventySplitCells = {
   leftMain = '0,0 7x10',
@@ -81,6 +82,7 @@ hyper:bind({}, 'q', nil, function()  -- Different layout depending if we have Vi
   local videoWindows = #w_zoom:getWindows()
   helpers.setWindowsToCell(w_browsers, mygrid, seventySplitCells.rightMain)
   helpers.setWindowsToCell(w_editors, mygrid, seventySplitCells.rightMain)
+  helpers.setWindowsToCell(w_figma, mygrid, seventySplitCells.rightMain)
 
   if videoWindows == 0 then  
     helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.leftSecondaryFull)
@@ -101,6 +103,7 @@ hyper:bind({'shift'}, 'q', nil, function()
   helpers.setWindowsToCell(w_browsers, mygrid, seventySplitCells.leftMain)
   helpers.setWindowsToCell(w_editors, mygrid, seventySplitCells.leftMain)
   helpers.setWindowsToCell(w_notes, mygrid, seventySplitCells.leftMain)
+  helpers.setWindowsToCell(w_figma, mygrid, seventySplitCells.leftMain)
   if videoWindows == 0 then
     helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.rightSecondaryFull)
   else
@@ -131,11 +134,13 @@ hyper:bind({}, 'w', nil, function()
     helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.leftSecondaryFull)
     helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.leftSecondaryFull)
     helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.leftSecondaryFull)
+    helpers.setWindowsToCell(w_figma, mygrid, sixtySplitCells.leftSecondaryFull)
   else
     helpers.setWindowsToCell(w_zoom, mygrid, sixtySplitCells.leftSecondaryTop)
     helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.leftSecondaryBottom)
     helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.leftSecondaryBottom)
     helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.leftSecondaryBottom)
+    helpers.setWindowsToCell(w_figma, mygrid, sixtySplitCells.leftSecondaryBottom)
   end
 
   hyper.triggered = true
@@ -146,16 +151,18 @@ hyper:bind({'shift'}, 'w', nil, function()
   -- Different layout depending if we have Video windows or not
   local videoWindows = #w_zoom:getWindows()
   helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.leftMain)
-
+  
   if videoWindows == 0 then
     helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.rightSecondaryFull)
     helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.rightSecondaryFull)
     helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.rightSecondaryFull)
+    helpers.setWindowsToCell(w_figma, mygrid, sixtySplitCells.rightSecondaryFull)
   else
     helpers.setWindowsToCell(w_zoom, mygrid, sixtySplitCells.rightSecondaryTop)
     helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.rightSecondaryBottom)
     helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.rightSecondaryBottom)
     helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.rightSecondaryBottom)
+    helpers.setWindowsToCell(w_figma, mygrid, sixtySplitCells.rightSecondaryBottom)
   end
 
   hyper.triggered = true
@@ -173,6 +180,7 @@ hyper:bind({}, 'e', nil, function()
   helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.right)
   helpers.setWindowsToCell(w_notes, mygrid, evenSplitCells.right)
   helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.left)
+  helpers.setWindowsToCell(w_figma, mygrid, evenSplitCells.left)
   helpers.setWindowsToCell(w_terminals, mygrid, evenSplitCells.center)
   
   hyper.triggered = true
@@ -181,6 +189,7 @@ end)
 -- Shift+e - Work Setup - 50/50 split, Editor Left, terminal in the center
 hyper:bind({'shift'}, 'e', nil, function()
   helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.right)
+  helpers.setWindowsToCell(w_figma, mygrid, evenSplitCells.right)
   helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.left)
   helpers.setWindowsToCell(w_notes, mygrid, evenSplitCells.left)
   helpers.setWindowsToCell(w_terminals, mygrid, evenSplitCells.center)
@@ -499,7 +508,7 @@ singleapps = {
   {'p', 'Spotify'},
 
   -- Middle Row: Dev Tools
-  {'h', 'Dash'},
+  {'h', 'Figma'},
   -- Dev Trifecta (Browsers + Editor + Terminal) and SourceTree
   {'j', user.browser_main},
   {'k', user.editor},
