@@ -62,7 +62,6 @@ w_firefox = wf.new{['Firefox Developer Edition'] = {currentSpace = true, allowSc
 w_editors = wf.new{'Code'}
 w_terminals = wf.new{'iTerm2', 'Alacritty'}
 w_notes = wf.new{['Notion'] = {currentSpace = true}}
-w_zoom = wf.new(false):setAppFilter('zoom.us')
 w_obs = wf.new{'OBS'}
 w_figma = wf.new{'Figma'}
 
@@ -79,37 +78,22 @@ local seventySplitCells = {
 
 -- q - Work Setup - Browser/Code in Main Right, Terminal in secondary Left
 hyper:bind({}, 'q', nil, function()  -- Different layout depending if we have Video windows or not
-  local videoWindows = #w_zoom:getWindows()
   helpers.setWindowsToCell(w_browsers, mygrid, seventySplitCells.rightMain)
   helpers.setWindowsToCell(w_editors, mygrid, seventySplitCells.rightMain)
   helpers.setWindowsToCell(w_figma, mygrid, seventySplitCells.rightMain)
-
-  if videoWindows == 0 then  
-    helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.leftSecondaryFull)
-    helpers.setWindowsToCell(w_notes, mygrid, seventySplitCells.leftSecondaryFull)
-  else
-    helpers.setWindowsToCell(w_zoom, mygrid, seventySplitCells.leftSecondaryTop)
-    helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.leftSecondaryBottom)
-    helpers.setWindowsToCell(w_notes, mygrid, seventySplitCells.leftSecondaryBottom)
-  end
+  helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.leftSecondaryFull)
+  helpers.setWindowsToCell(w_notes, mygrid, seventySplitCells.leftSecondaryFull)
 
   hyper.triggered = true
 end)
 
 -- Shift+q - Work Setup - Browser/Code in Main Left, Terminal in secondary Right
 hyper:bind({'shift'}, 'q', nil, function()
-  -- Different layout depending if we have Video windows or not
-  local videoWindows = #w_zoom:getWindows()
   helpers.setWindowsToCell(w_browsers, mygrid, seventySplitCells.leftMain)
   helpers.setWindowsToCell(w_editors, mygrid, seventySplitCells.leftMain)
   helpers.setWindowsToCell(w_notes, mygrid, seventySplitCells.leftMain)
   helpers.setWindowsToCell(w_figma, mygrid, seventySplitCells.leftMain)
-  if videoWindows == 0 then
-    helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.rightSecondaryFull)
-  else
-    helpers.setWindowsToCell(w_zoom, mygrid, seventySplitCells.rightSecondaryTop)
-    helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.rightSecondaryBottom)
-  end
+  helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.rightSecondaryFull)
   
   hyper.triggered = true
 end)
@@ -127,43 +111,22 @@ local sixtySplitCells = {
 
 -- w - Work Setup - Code in Main Right, Browser/Terminal in secondary Left
 hyper:bind({}, 'w', nil, function()
-  local videoWindows = #w_zoom:getWindows()
-  -- Different layout depending if we have Video windows or not
-  helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.rightMain)
-  if videoWindows == 0 then
-    helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.leftSecondaryFull)
-    helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.leftSecondaryFull)
-    helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.leftSecondaryFull)
-    helpers.setWindowsToCell(w_figma, mygrid, sixtySplitCells.leftSecondaryFull)
-  else
-    helpers.setWindowsToCell(w_zoom, mygrid, sixtySplitCells.leftSecondaryTop)
-    helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.leftSecondaryBottom)
-    helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.leftSecondaryBottom)
-    helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.leftSecondaryBottom)
-    helpers.setWindowsToCell(w_figma, mygrid, sixtySplitCells.leftSecondaryBottom)
-  end
+  helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.rightMain)  
+  helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.leftSecondaryFull)
+  helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.leftSecondaryFull)
+  helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.leftSecondaryFull)
+  helpers.setWindowsToCell(w_figma, mygrid, sixtySplitCells.leftSecondaryFull)
 
   hyper.triggered = true
 end)
 
 -- w - Work Setup - Terminal/Code in Main Left, Browser in secondary Right
 hyper:bind({'shift'}, 'w', nil, function()
-  -- Different layout depending if we have Video windows or not
-  local videoWindows = #w_zoom:getWindows()
-  helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.leftMain)
-  
-  if videoWindows == 0 then
-    helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.rightSecondaryFull)
-    helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.rightSecondaryFull)
-    helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.rightSecondaryFull)
-    helpers.setWindowsToCell(w_figma, mygrid, sixtySplitCells.rightSecondaryFull)
-  else
-    helpers.setWindowsToCell(w_zoom, mygrid, sixtySplitCells.rightSecondaryTop)
-    helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.rightSecondaryBottom)
-    helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.rightSecondaryBottom)
-    helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.rightSecondaryBottom)
-    helpers.setWindowsToCell(w_figma, mygrid, sixtySplitCells.rightSecondaryBottom)
-  end
+  helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.leftMain)  
+  helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.rightSecondaryFull)
+  helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.rightSecondaryFull)
+  helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.rightSecondaryFull)
+  helpers.setWindowsToCell(w_figma, mygrid, sixtySplitCells.rightSecondaryFull)
 
   hyper.triggered = true
 end)
