@@ -515,24 +515,15 @@ end)
 hyper:bind({}, 's', nil, function()
   local currentDeviceName = hs.audiodevice.current().name
   local nextDevice
-  if string.find(currentDeviceName, 'Vanatoo T0') then
+  if string.find(currentDeviceName, 'Vanatoo T0') or string.find(currentDeviceName, 'USB audio CODEC') then
     nextDevice = hs.audiodevice.findOutputByName('EVO4')
     if (nextDevice == nil) then
-      nextDevice = hs.audiodevice.findOutputByName('USB audio CODEC')
-    end
-    if (nextDevice == nil) then
-      nextDevice = hs.audiodevice.findOutputByName('MacBook Pro Speakers')
+      nextDevice = hs.audiodevice.findOutputByName('External Headphones')
     end
   else
     nextDevice = hs.audiodevice.findOutputByName('Vanatoo T0')
     if (nextDevice == nil) then
-      nextDevice = hs.audiodevice.findOutputByName('EVO4')
-    end
-    if (nextDevice == nil) then
       nextDevice = hs.audiodevice.findOutputByName('USB audio CODEC')
-    end
-    if (nextDevice == nil) then
-      nextDevice = hs.audiodevice.findOutputByName('MacBook Pro Speakers')
     end
   end
 
