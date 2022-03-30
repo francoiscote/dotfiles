@@ -6,8 +6,8 @@ local user = {
   editor = 'Visual Studio Code',
   browser_main = 'Google Chrome',
   browser_alt = 'Firefox Developer Edition',
-  mailclient = 'Mimestream',
-  calendar = 'Fantastical',
+  mailclient = 'Gmail',
+  calendar = 'Google Calendar',
   gapSize = 10,
   menuGapSize = 0
 }
@@ -466,7 +466,7 @@ hyper:bind({}, 'z', nil, reload)
 singleapps = {
   -- Top Row: IM + Spotify
   {'u', 'Slack'},
-  {'i', 'Franz'},
+  {'i', 'Ferdi'},
   {'o', 'Discord'},
   {'p', 'Spotify'},
 
@@ -521,10 +521,19 @@ hyper:bind({}, 's', nil, function()
       nextDevice = hs.audiodevice.findOutputByName('USB audio CODEC')
     end
     if (nextDevice == nil) then
-      nextDevice = hs.audiodevice.findOutputByName('Mac mini Speakers')
+      nextDevice = hs.audiodevice.findOutputByName('MacBook Pro Speakers')
     end
   else
     nextDevice = hs.audiodevice.findOutputByName('Vanatoo T0')
+    if (nextDevice == nil) then
+      nextDevice = hs.audiodevice.findOutputByName('EVO4')
+    end
+    if (nextDevice == nil) then
+      nextDevice = hs.audiodevice.findOutputByName('USB audio CODEC')
+    end
+    if (nextDevice == nil) then
+      nextDevice = hs.audiodevice.findOutputByName('MacBook Pro Speakers')
+    end
   end
 
   local didChange = nextDevice:setDefaultOutputDevice()
