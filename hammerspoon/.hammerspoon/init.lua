@@ -112,10 +112,10 @@ local sixtySplitCells = {
 -- w - Work Setup - Code in Main Right, Browser/Terminal in secondary Left
 hyper:bind({}, 'w', nil, function()
   helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.rightMain)  
+  helpers.setWindowsToCell(w_figma, mygrid, sixtySplitCells.rightMain)
   helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.leftSecondaryFull)
   helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.leftSecondaryFull)
   helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.leftSecondaryFull)
-  helpers.setWindowsToCell(w_figma, mygrid, sixtySplitCells.leftSecondaryFull)
 
   hyper.triggered = true
 end)
@@ -123,10 +123,10 @@ end)
 -- w - Work Setup - Terminal/Code in Main Left, Browser in secondary Right
 hyper:bind({'shift'}, 'w', nil, function()
   helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.leftMain)  
+  helpers.setWindowsToCell(w_figma, mygrid, sixtySplitCells.leftMain)
   helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.rightSecondaryFull)
   helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.rightSecondaryFull)
   helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.rightSecondaryFull)
-  helpers.setWindowsToCell(w_figma, mygrid, sixtySplitCells.rightSecondaryFull)
 
   hyper.triggered = true
 end)
@@ -513,7 +513,7 @@ end)
 --   4) Laptop Speakers
 -------------------------------------------------------------------------------
 hyper:bind({}, 's', nil, function()
-  local currentDeviceName = hs.audiodevice.current().name
+  local currentDeviceName = hs.audiodevice.defaultOutputDevice():name()
   local nextDevice
   if string.find(currentDeviceName, 'Vanatoo T0') or string.find(currentDeviceName, 'USB audio CODEC') then
     nextDevice = hs.audiodevice.findOutputByName('EVO4')
@@ -528,6 +528,10 @@ hyper:bind({}, 's', nil, function()
   end
 
   local didChange = nextDevice:setDefaultOutputDevice()
+  -- Also set the default Effect device because of a bug where it would change to something random when using setDefaultOutputDevice()
+  -- it can't keep the "Selected Sound Output Device" setting.
+  nextDevice:setDefaultEffectDevice()
+
   if (didChange == true) then
     local audioIcon = hs.image.imageFromPath('/System/Library/PreferencePanes/Sound.prefPane/Contents/Resources/SoundPref.icns')
     hs.notify.new({ title = 'Sound Output Device', subTitle = nextDevice:name(), setIdImage = audioIcon, withdrawAfter = 2}):send()
