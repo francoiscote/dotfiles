@@ -23,7 +23,6 @@
   new        = "green bold"
   whitespace = "red reverse"
 [core]
-	editor = vim
 	excludesfile = ~/.gitignore_global
 [apply]
 	whitespace = nowarn

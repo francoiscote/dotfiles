@@ -15,7 +15,8 @@ if type brew &>/dev/null; then
 fi
 
 export CLICOLOR=1
-export EDITOR=nvim
+export VISUAL=nvim
+export EDITOR="$VISUAL"
 export QUOTING_STYLE=literal
 
 # -----------------------------------------
