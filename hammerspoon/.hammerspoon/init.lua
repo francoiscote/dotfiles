@@ -7,7 +7,7 @@ local user = {
   browser_main = 'Google Chrome',
   browser_alt = 'Firefox Developer Edition',
   mailclient = 'Gmail',
-  calendar = 'Google Calendar',
+  calendar = 'Fantastical',
   gapSize = 10,
   menuGapSize = 0
 }
