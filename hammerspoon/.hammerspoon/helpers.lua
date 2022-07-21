@@ -1,10 +1,15 @@
 local helpers = {}
 
-function helpers.isZoomRunning()
-  return hs.application.get('zoom.us')
+function helpers.isVideoWindows()
+  local wf=hs.window.filter
+  local zoomWindows = #wf.new(false):setAppFilter('zoom.us'):getWindows()
+  local meetWindows = #wf.new{'Google Meet'}:getWindows()
+
+  return zoomWindows > 0 or meetWindows > 0
 end
 
 function helpers.logWindowInfo(w)
+  log.d("Application Name:", w:application():name())
   log.d("Id:", w:id())
   log.d("Title:", w:title())
   log.d("TopLeft:", w:topLeft())
@@ -20,6 +25,13 @@ function helpers.setWindowsToCell(winFilter, grid, cell)
   local wins = winFilter:getWindows()
   for i,w in pairs(wins) do
     grid.set(w, cell)
+  end
+end
+
+function helpers.maximiseAll(winFilter)
+  local wins = winFilter:getWindows()
+  for i,w in pairs(wins) do
+    w:maximize()
   end
 end
 

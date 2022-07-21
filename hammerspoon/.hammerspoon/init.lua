@@ -17,6 +17,11 @@ local user = {
 helpers = require("helpers")
 hyperConstructor = require("hyper")
 
+
+hs.spaces.watcher.new(function(spaceNum)
+  log.d("Space", spaceNum);
+end):start()
+
 -- Tools
 -------------------------------------------------------------------------------
 hyper = hyperConstructor('F18')
@@ -50,50 +55,70 @@ hyper:bind({}, 'g', nil, function()
   hyper.triggered = true
 end)
 
--- Resize Windows
+-- Window Managements
 -------------------------------------------------------------------------------
 hs.window.animationDuration = 0
 local wf=hs.window.filter
 
 -- Windows Filters
-w_browsers = wf.new{['Google Chrome'] = { currentSpace = true, allowScreens = mainScreen:id() }, ['Firefox Developer Edition'] = { currentSpace = true, allowScreens = mainScreen:id() }}
+-- Single Apps
 w_chrome = wf.new{'Google Chrome'}
-w_firefox = wf.new{['Firefox Developer Edition'] = {currentSpace = true, allowScreens = mainScreen:id() }}
-w_editors = wf.new{'Code'}
-w_terminals = wf.new{'iTerm2', 'Alacritty'}
-w_notes = wf.new{['Notion'] = {currentSpace = true}}
+w_firefox = wf.new{'Firefox Developer Edition'}
 w_obs = wf.new{'OBS'}
 w_figma = wf.new{'Figma'}
 
+-- Groups of Apps
+w_browsers = wf.new{'Google Chrome', 'Firefox Developer Edition'}
+w_editors = wf.new{'Code'}
+w_terminals = wf.new{'iTerm2', 'Alacritty'}
+w_videos = wf.new{'Google Meet', 'zoom.us'}
+w_notes = wf.new{['Notion'] = {currentSpace = true}}
+w_chats = wf.new{'Slack', 'Ferdi', 'Discord'}
+
+
 local seventySplitCells = {
+  center = '2,1 6x8',
   leftMain = '0,0 7x10',
   leftSecondaryFull = '0,0 3x10',
-  leftSecondaryTop = '0,0 3x5',
-  leftSecondaryBottom = '0,5 3x11',
+  leftSecondaryTop = '0,0 3x4',
+  leftSecondaryBottom = '0,4 3x6',
   rightMain = '3,0 7x10',
   rightSecondaryFull = '7,0 3x10',
-  rightSecondaryTop = '7,0 3x5',
-  rightSecondaryBottom = '7,5 3x11',
+  rightSecondaryTop = '7,0 3x4',
+  rightSecondaryBottom = '7,4 3x6',
 }
+
+-- q - Work Setup - Browser/Code Maximized, Terminal centered
+hyper:bind({}, 'tab', nil, function()  -- Different layout depending if we have Video windows or not
+  helpers.maximiseAll(w_browsers)
+  helpers.maximiseAll(w_editors)
+  helpers.maximiseAll(w_figma)
+  helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.center)
+  helpers.setWindowsToCell(w_notes, mygrid, seventySplitCells.center)
+
+  hyper.triggered = true
+end)
 
 -- q - Work Setup - Browser/Code in Main Right, Terminal in secondary Left
 hyper:bind({}, 'q', nil, function()  -- Different layout depending if we have Video windows or not
+  log.d("helpers.isVideoWindows()", helpers.isVideoWindows());
+
+  helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.leftSecondaryFull)
+  -- helpers.setWindowsToCell(w_notes, mygrid, seventySplitCells.leftSecondaryFull)
   helpers.setWindowsToCell(w_browsers, mygrid, seventySplitCells.rightMain)
   helpers.setWindowsToCell(w_editors, mygrid, seventySplitCells.rightMain)
   helpers.setWindowsToCell(w_figma, mygrid, seventySplitCells.rightMain)
-  helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.leftSecondaryFull)
-  helpers.setWindowsToCell(w_notes, mygrid, seventySplitCells.leftSecondaryFull)
 
   hyper.triggered = true
 end)
 
 -- Shift+q - Work Setup - Browser/Code in Main Left, Terminal in secondary Right
 hyper:bind({'shift'}, 'q', nil, function()
+  helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.rightSecondaryFull)
+  -- helpers.setWindowsToCell(w_notes, mygrid, seventySplitCells.rightSecondaryFull)
   helpers.setWindowsToCell(w_browsers, mygrid, seventySplitCells.leftMain)
   helpers.setWindowsToCell(w_editors, mygrid, seventySplitCells.leftMain)
-  helpers.setWindowsToCell(w_notes, mygrid, seventySplitCells.leftMain)
   helpers.setWindowsToCell(w_figma, mygrid, seventySplitCells.leftMain)
-  helpers.setWindowsToCell(w_terminals, mygrid, seventySplitCells.rightSecondaryFull)
   
   hyper.triggered = true
 end)
@@ -101,50 +126,53 @@ end)
 local sixtySplitCells = {
   leftMain = '0,0 6x10',
   leftSecondaryFull = '0,0 4x10',
-  leftSecondaryTop = '0,0 4x4',
-  leftSecondaryBottom = '0,4 4x6',
+  leftSecondaryTop = '0,0 4x5',
+  leftSecondaryBottom = '0,5 4x5',
   rightMain = '4,0 6x10',
   rightSecondaryFull = '6,0 4x10',
-  rightSecondaryTop = '6,0 4x4',
-  rightSecondaryBottom = '6,4 4x6',
+  rightSecondaryTop = '6,0 4x5',
+  rightSecondaryBottom = '6,5 4x5',
 }
 
 -- w - Work Setup - Code in Main Right, Browser/Terminal in secondary Left
 hyper:bind({}, 'w', nil, function()
-  helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.rightMain)  
-  helpers.setWindowsToCell(w_figma, mygrid, sixtySplitCells.rightMain)
   helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.leftSecondaryFull)
   helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.leftSecondaryFull)
-  helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.leftSecondaryFull)
-
+  -- helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.leftSecondaryFull)
+  helpers.setWindowsToCell(w_figma, mygrid, sixtySplitCells.rightMain)
+  helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.rightMain)
   hyper.triggered = true
 end)
 
 -- w - Work Setup - Terminal/Code in Main Left, Browser in secondary Right
 hyper:bind({'shift'}, 'w', nil, function()
-  helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.leftMain)  
-  helpers.setWindowsToCell(w_figma, mygrid, sixtySplitCells.leftMain)
   helpers.setWindowsToCell(w_browsers, mygrid, sixtySplitCells.rightSecondaryFull)
   helpers.setWindowsToCell(w_terminals, mygrid, sixtySplitCells.rightSecondaryFull)
-  helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.rightSecondaryFull)
+  -- helpers.setWindowsToCell(w_notes, mygrid, sixtySplitCells.rightSecondaryFull)
+  helpers.setWindowsToCell(w_editors, mygrid, sixtySplitCells.leftMain)  
+  helpers.setWindowsToCell(w_figma, mygrid, sixtySplitCells.leftMain)
 
   hyper.triggered = true
 end)
 
 
 local evenSplitCells = {
-  left = '0,0 5x10',
-  right = '5,0 5x10',
+  leftFull = '0,0 5x10',
+  leftTop = '0,0 5x6',
+  leftBottom = '0,6 5x4',
+  rightFull = '5,0 5x10',
+  rightTop = '5,0 5x6',
+  rightBottom = '5,6 5x4',
   center = '2,1 6x8'
 }
 
 -- e - Work Setup - 50/50 split, Editor Right, terminal in the center
 hyper:bind({}, 'e', nil, function()
-  helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.right)
-  helpers.setWindowsToCell(w_notes, mygrid, evenSplitCells.right)
-  helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.left)
-  helpers.setWindowsToCell(w_figma, mygrid, evenSplitCells.left)
+  helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.leftFull)
+  helpers.setWindowsToCell(w_figma, mygrid, evenSplitCells.leftFull)
   helpers.setWindowsToCell(w_terminals, mygrid, evenSplitCells.center)
+  helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.rightFull)
+  -- helpers.setWindowsToCell(w_notes, mygrid, evenSplitCells.rightFull)
   
   hyper.triggered = true
 end)
@@ -154,128 +182,62 @@ hyper:bind({'shift'}, 'e', nil, function()
   helpers.setWindowsToCell(w_browsers, mygrid, evenSplitCells.right)
   helpers.setWindowsToCell(w_figma, mygrid, evenSplitCells.right)
   helpers.setWindowsToCell(w_editors, mygrid, evenSplitCells.left)
-  helpers.setWindowsToCell(w_notes, mygrid, evenSplitCells.left)
   helpers.setWindowsToCell(w_terminals, mygrid, evenSplitCells.center)
+  -- helpers.setWindowsToCell(w_notes, mygrid, evenSplitCells.left)
   
   hyper.triggered = true
 end)
 
 
-function placeHiddenTwitchTooling() 
-  helpers.setWindowsToCell(w_firefox, mygrid, '7,0 3x5')
-  helpers.setWindowsToCell(w_obs, mygrid, '3,8 4x2')
-  helpers.setWindowsToCell(w_notes, mygrid, '7,5 3x5')
-end 
-
--- Hyper+r - Twitch Default Layout (Terminal Left)
-hyper:bind({}, 'r', nil, function()
-  placeHiddenTwitchTooling()
-  helpers.setWindowsToCell(w_terminals, mygrid, '0,0 2x8')
-  helpers.setWindowsToCell(w_editors, mygrid, '2,0 5x8')
-  helpers.setWindowsToCell(w_chrome, mygrid, '2,0 5x8')
-  
-end)
--- Hyper+Shit+r - Twitch Default Layout (Terminal Right)
-hyper:bind({'shift'}, 'r', nil, function()
-  placeHiddenTwitchTooling()
-  helpers.setWindowsToCell(w_editors, mygrid, '0,0 5x8  ')
-  helpers.setWindowsToCell(w_chrome, mygrid, '0,0 5x8 ')
-
-  helpers.setWindowsToCell(w_terminals, mygrid, '5,0 2x8')
-
-  
-end)
-
--- Hyper+t - Twitch Even Split Layout (Browser on the Left)
+-- Hyper+t - EMPTY
 hyper:bind({}, 't', nil, function()
-  placeHiddenTwitchTooling()
-  helpers.setWindowsToCell(w_chrome, mygrid, '0,0 3.5x8')
-
-  helpers.setWindowsToCell(w_editors, mygrid, '3.5,0 3.5x8')
-  helpers.setWindowsToCell(w_terminals, mygrid, '3.5,0 3.5x8')
-
-
-
 end)
 
--- Hyper+Shit+t - Twitch Even Split Layout (Browser on the Right)
+-- Hyper+Shit+t - EMPTY
 hyper:bind({'shift'}, 't', nil, function()
-  placeHiddenTwitchTooling()
-  helpers.setWindowsToCell(w_editors, mygrid, '0,0 3.5x8')
-  helpers.setWindowsToCell(w_terminals, mygrid, '0,0 3.5x8')
-  
-  helpers.setWindowsToCell(w_chrome, mygrid, '3.5,0 3.5x8')
 end)
 
--- Hyper+y - Twitch Vertical Split Layout (Terminal on the bottom)
-hyper:bind({}, 'y', nil, function()
-  placeHiddenTwitchTooling()
-  helpers.setWindowsToCell(w_editors, mygrid, '0,0 7x5')
-  helpers.setWindowsToCell(w_chrome, mygrid, '0,0 7x5')
-
-  helpers.setWindowsToCell(w_terminals, mygrid, '0,5 7x3')
-  
-end)
-
--- AVAILABLE SPOT HERE
--- Hyper+Shift+y - Twitch Vertical Split Layout 
--- (Terminal at the bottom, Browser and Editor split at top)
-hyper:bind({'shift'}, 'y', nil, function()
-  placeHiddenTwitchTooling()
-  helpers.setWindowsToCell(w_chrome, mygrid, '0,0 3.5x5')
-  helpers.setWindowsToCell(w_editors, mygrid, '3.5,0 3.5x5')
-
-  helpers.setWindowsToCell(w_terminals, mygrid, '0,5 7x3')
-  
-end)
-
--- 1 - 40% Left
-local fortyLeftCell = '0,0 4,10'
-
+-- 1 - 30% Left
 hyper:bind({}, '1', nil, function()
   local win = hs.window.focusedWindow()
-  mygrid.set(win, '0,0 4,10')
+  mygrid.set(win, '0,0 3,10')
   hyper.triggered = true
 end)
 -- Shift+1 - 40% Left w/ large Margins
 hyper:bind({"shift"}, '1', nil, function()
   local win = hs.window.focusedWindow()
   mygrid.setMargins(largeMargins)
-  mygrid.set(win, fortyLeftCell)
+  mygrid.set(win, '0,0 3,10')
   mygrid.setMargins(defaultMargins)
   hyper.triggered = true
 end)
 
 -- 2 - 50% Left
-local halfLeftCell = '0,0 5,10'
-
 hyper:bind({}, '2', nil, function()
   local win = hs.window.focusedWindow()
-  mygrid.set(win, halfLeftCell)
+  mygrid.set(win, '0,0 5,10')
   hyper.triggered = true
 end)
 -- Shift+2 - 50% Left w/ large Margins
 hyper:bind({"shift"}, '2', nil, function()
   local win = hs.window.focusedWindow()
   mygrid.setMargins(largeMargins)
-  mygrid.set(win, halfLeftCell)
+  mygrid.set(win, '0,0 5,10')
   mygrid.setMargins(defaultMargins)
   hyper.triggered = true
 end)
 
--- 3 - 60% Left
-local sixtyLeftCell = '0,0 6,10'
-
+-- 3 - 70% Left
 hyper:bind({}, '3', nil, function()
   local win = hs.window.focusedWindow()
-  mygrid.set(win, sixtyLeftCell)
+  mygrid.set(win, '0,0 7,10')
   hyper.triggered = true
 end)
--- Shift+3 - 60% Left w/ large Margins
+-- Shift+3 - 70% Left w/ large Margins
 hyper:bind({"shift"}, '3', nil, function()
   local win = hs.window.focusedWindow()
   mygrid.setMargins(largeMargins)
-  mygrid.set(win, sixtyLeftCell)
+  mygrid.set(win, '0,0 7,10')
   mygrid.setMargins(defaultMargins)
   hyper.triggered = true
 end)
@@ -322,28 +284,26 @@ hyper:bind({'shift'}, '6', nil, function()
   hyper.triggered = true
 end)
 
--- 7 - 60% Right
-local sixtyRightCells = '4,0 6x10'
+-- 7 - 70% Right
 hyper:bind({}, '7', nil, function()
   local win = hs.window.focusedWindow()
-  mygrid.set(win, sixtyRightCells)
+  mygrid.set(win, '3,0 7x10')
   hyper.triggered = true
 end)
 
--- Shift+7 - Small 50% Right
+-- Shift+7 - Small 70% Right
 hyper:bind({"shift"}, '7', nil, function()
   local win = hs.window.focusedWindow()
   mygrid.setMargins(largeMargins)
-  mygrid.set(win, sixtyRightCells)
+  mygrid.set(win, '3,0 7x10')
   mygrid.setMargins(defaultMargins)
   hyper.triggered = true
 end)
 
 -- 8 - 50% Right
-local halfRightCell = '5,0 5x10'
 hyper:bind({}, '8', nil, function()
   local win = hs.window.focusedWindow()
-  mygrid.set(win, halfRightCell)
+  mygrid.set(win, '5,0 5x10')
   hyper.triggered = true
 end)
 
@@ -351,16 +311,15 @@ end)
 hyper:bind({"shift"}, '8', nil, function()
   local win = hs.window.focusedWindow()
   mygrid.setMargins(largeMargins)
-  mygrid.set(win, halfRightCell)
+  mygrid.set(win, '5,0 5x10')
   mygrid.setMargins(defaultMargins)
   hyper.triggered = true
 end)
 
--- 9 - 40% Right
-local fortyRightCells = '6,0 4x10'
+-- 9 - 30% Right
 hyper:bind({}, '9', nil, function()
   local win = hs.window.focusedWindow()
-  mygrid.set(win, fortyRightCells)
+  mygrid.set(win, '7,0 3x10')
   hyper.triggered = true
 end)
 
@@ -368,7 +327,7 @@ end)
 hyper:bind({"shift"}, '9', nil, function()
   local win = hs.window.focusedWindow()
   mygrid.setMargins(largeMargins)
-  mygrid.set(win, fortyRightCells)
+  mygrid.set(win, '7,0 3x10')
   mygrid.setMargins(defaultMargins)
   hyper.triggered = true
 end)
@@ -465,6 +424,7 @@ hyper:bind({}, 'z', nil, reload)
 -------------------------------------------------------------------------------
 singleapps = {
   -- Top Row: IM + Spotify
+  {'y', 'Messages'},
   {'u', 'Slack'},
   {'i', 'Ferdi'},
   {'o', 'Discord'},
@@ -476,11 +436,10 @@ singleapps = {
   {'j', user.browser_main},
   {'k', user.editor},
   {'l', user.terminal},
-  -- Empty spot right here on the ";"
-  {';', user.browser_alt},
 
+  {';', user.browser_alt},
   -- Bottom Row: Email, Calendar and ToDos
-  {'b', 'OBS'},
+  {'b', 'com.culturedcode.ThingsMac'},
   {'n', 'Notion'},
   {'m', user.mailclient},
   {',', user.calendar,},
@@ -489,9 +448,12 @@ singleapps = {
 
 for i, app in ipairs(singleapps) do
   hyper:bind({}, app[1], 
-    function() 
-      hs.application.launchOrFocus(app[2])
-      hyper.triggered = true
+    function()
+      if (hs.application.launchOrFocus(app[2])) then
+        hyper.triggered = true
+      elseif (hs.application.launchOrFocusByBundleID(app[2])) then
+        hyper.triggered = true
+      end
     end
   )
 end
@@ -506,7 +468,7 @@ end)
 
 -- Swap between a Main audio output and a series of ranked secondary outputs
 -- Main Output: Vanatoo T0
--- Ranked Secondary Outputs:
+-- Ranked Secondary Outputs:x
 --   1) JDS Labs DAC
 --   2) Yeti DAC
 --   3) Elgato DAC
@@ -533,8 +495,7 @@ hyper:bind({}, 's', nil, function()
   nextDevice:setDefaultEffectDevice()
 
   if (didChange == true) then
-    local audioIcon = hs.image.imageFromPath('/System/Library/PreferencePanes/Sound.prefPane/Contents/Resources/SoundPref.icns')
-    hs.notify.new({ title = 'Sound Output Device', subTitle = nextDevice:name(), setIdImage = audioIcon, withdrawAfter = 2}):send()
+    local notif = hs.notify.new({ title = 'Sound Output Device', subTitle = nextDevice:name(), withdrawAfter = 2}):send()
   end
 
   hyper.triggered = true

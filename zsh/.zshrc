@@ -84,4 +84,4 @@ fi
 eval "$(starship init zsh)"
 
 # Start or attach default tmux session
-~/.local/bin/ta
+# ~/.local/bin/ta
