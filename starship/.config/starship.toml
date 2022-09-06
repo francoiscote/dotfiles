@@ -1,10 +1,8 @@
+continuation_prompt = "▶▶"
+
 
 [aws]
 symbol = "  "
-
-# Replace the "❯" symbol in the prompt with "➜"
-#[character]                            # The name of the module we are configuring is "character"
-#success_symbol = "[➜](green)"     # The "success_symbol" segment is being set to "➜" with the color "green"
 
 [battery]
 disabled = true
@@ -28,6 +26,7 @@ symbol = " "
 symbol = " "
 
 [git_branch]
+style = "bold blue"
 symbol = " "
 
 [golang]
