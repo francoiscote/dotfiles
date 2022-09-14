@@ -16,6 +16,7 @@ local charToApps = {
   {';', 'Firefox Developer Edition'},
   
   -- Bottom Row: Email, Calendar and ToDos
+  {'v', 'Obsidian'},
   {'b', 'Todoist'},
   {'n', 'Notion'},
   {'m', 'Gmail'},

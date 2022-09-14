@@ -138,7 +138,7 @@ hs.hotkey.bind(hyper, "c", function()
     hyper.triggered = true
 end)
 
--- Hyper+equal - Hide everything else and Center
+-- Hyper+- - Hide everything else and Center
 -- TBD
 hs.hotkey.bind(hyper, "-", function()
 end)
@@ -163,10 +163,10 @@ hs.hotkey.bind(hyper, "=", function()
   focusedWindow:setFrame(windowFrame)
 end)
 
-hs.hotkey.bind(hyper, "right", function()
+hs.hotkey.bind(hyperShift, "right", function()
   helpers.moveWindowOneSpace('right')
 end)
 
-hs.hotkey.bind(hyper, "left", function()
+hs.hotkey.bind(hyperShift, "left", function()
   helpers.moveWindowOneSpace('left')
 end)
