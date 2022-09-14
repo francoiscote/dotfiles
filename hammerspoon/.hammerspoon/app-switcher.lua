@@ -19,7 +19,7 @@ local charToApps = {
   {'v', 'Obsidian'},
   {'b', 'Todoist'},
   {'n', 'Notion'},
-  {'m', 'Gmail'},
+  {'m', 'Shift'},
   {',', 'Fantastical'},
   {'.', 'Finder'},
 }
