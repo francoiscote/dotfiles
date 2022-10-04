@@ -11,7 +11,7 @@ local hyper = {"cmd", "alt", "ctrl"}
 hs.hotkey.bind(hyper, "s", function()
   local currentDeviceName = hs.audiodevice.defaultOutputDevice():name()
   local nextDevice
-  if string.find(currentDeviceName, 'Vanatoo T0') or string.find(currentDeviceName, 'USB audio CODEC') then
+  if string.find(currentDeviceName, 'Vanatoo T0') or string.find(currentDeviceName, 'Studio Display Speakers') then
     nextDevice = hs.audiodevice.findOutputByName('EVO4')
     if (nextDevice == nil) then
       nextDevice = hs.audiodevice.findOutputByName('External Headphones')
@@ -19,7 +19,7 @@ hs.hotkey.bind(hyper, "s", function()
   else
     nextDevice = hs.audiodevice.findOutputByName('Vanatoo T0')
     if (nextDevice == nil) then
-      nextDevice = hs.audiodevice.findOutputByName('USB audio CODEC')
+      nextDevice = hs.audiodevice.findOutputByName('Studio Display Speakers')
     end
   end
 
