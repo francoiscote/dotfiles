@@ -32,17 +32,15 @@ hs.hotkey.bind(hyperShift, "e", function()
   grid.setDefaultMargins()
 end)
 
-hs.hotkey.bind(hyper, "r", layouts.workMax)
-hs.hotkey.bind(hyperShift, "r", function() 
+hs.hotkey.bind(hyper, "r", layouts.workTriple)
+
+hs.hotkey.bind(hyper, "t", layouts.workMax)
+hs.hotkey.bind(hyperShift, "t", function() 
   grid.setLargeMargins()
   layouts.workMax()
   grid.setDefaultMargins()
 end)
 
-hs.hotkey.bind(hyper, "t", layouts.workTriple)
--- hs.hotkey.bind(hyperShift, "e", function() 
---   layouts.workTriple()
--- end)
 
 -- Quick Sizes
 -------------------------------------------------------------------------------

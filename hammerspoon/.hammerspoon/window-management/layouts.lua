@@ -42,11 +42,11 @@ function export.workBrowse(tight)
   
   if #w_videos:getWindows() > 0 then
     -- LEFT
+    grid.setFilteredWindowsToCell(w_videos, split.secondaryTop)
+    grid.setFilteredWindowsToCell(w_editors, split.secondaryBottom)
     grid.setFilteredWindowsToCell(w_terminals, split.secondaryBottom)
     grid.setFilteredWindowsToCell(w_notes, split.secondaryBottom)
     grid.setFilteredWindowsToCell(w_chats, split.secondaryBottom)
-    grid.setFilteredWindowsToCell(w_editors, split.secondaryBottom)
-    grid.setFilteredWindowsToCell(w_videos, split.secondaryTop)
   else
     -- LEFT
     grid.setFilteredWindowsToCell(w_terminals, split.secondaryFull)
