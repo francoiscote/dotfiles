@@ -1,0 +1,13 @@
+session_name: OffType
+start_directory: $HOME/Code/
+windows:
+  - window_name: Offtype
+    start_directory: offtype
+    panes:
+      -
+      -
+  - window_name: Pangram
+    start_directory: pangrampangram
+    panes:
+      -
+      -

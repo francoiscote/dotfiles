@@ -1,0 +1,8 @@
+session_name: Commons
+start_directory: $HOME/Code/
+windows:
+  - window_name: Commons
+    start_directory: commons
+    panes:
+      -
+      -

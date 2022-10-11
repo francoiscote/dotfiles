@@ -1,0 +1,8 @@
+session_name: Goodee
+start_directory: $HOME/Code/
+windows:
+  - window_name: Goodee
+    start_directory: goodee
+    panes:
+      -
+      -

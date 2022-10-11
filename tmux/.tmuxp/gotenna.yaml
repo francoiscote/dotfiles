@@ -1,0 +1,18 @@
+session_name: goTenna
+start_directory: $HOME/Code/
+windows:
+  - window_name: goTenna
+    start_directory: goTenna-v2
+    panes:
+      -
+      -
+  - window_name: goTennaPro
+    start_directory: goTennaPro-v2
+    panes:
+      -
+      -
+  - window_name: goTennaMesh
+    start_directory: goTennaMesh-v2
+    panes:
+      -
+      -

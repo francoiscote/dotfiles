@@ -1,0 +1,38 @@
+session_name: Studs
+start_directory: $HOME/Code/
+windows:
+  - window_name: Studs
+    start_directory: Studs
+    panes:
+      -
+      -
+  - window_name: Acuity Global Worker
+    start_directory: studs-Acuity-global-worker
+    panes:
+      -
+      -
+  - window_name: Acuity Worked
+    start_directory: Studs-Acuity-Worker
+    panes:
+      -
+      -
+  - window_name: Algolia
+    start_directory: Studs-algolia
+    panes:
+      -
+      -
+  - window_name: Booking
+    start_directory: studs-booking
+    panes:
+      -
+      -
+  - window_name: Booking Admin
+    start_directory: studs-booking-admin
+    panes:
+      -
+      -
+  - window_name: Fulfillments Dispatcher
+    start_directory: studs-fulfillments-dispatcher
+    panes:
+      -
+      -
