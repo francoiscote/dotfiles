@@ -16,3 +16,8 @@ windows:
     panes:
       -
       -
+  - window_name: goTennaMesh Legacy
+    start_directory: gotennamesh.com
+    panes:
+      -
+      -

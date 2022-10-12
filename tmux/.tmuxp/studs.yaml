@@ -11,7 +11,7 @@ windows:
     panes:
       -
       -
-  - window_name: Acuity Worked
+  - window_name: Acuity Worker
     start_directory: Studs-Acuity-Worker
     panes:
       -
