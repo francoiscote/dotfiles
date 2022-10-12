@@ -6,3 +6,6 @@ windows:
     panes:
       -
       -
+  - window_name: exit
+    panes:
+      - exit
