@@ -14,9 +14,9 @@ export PATH=$N_PREFIX/bin:$PATH
 # -----------------------------------------
 # PYENV
 # -----------------------------------------
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
 
 # tcl-tk
 # I don't remember why I had that, but running brew prefix is slow. Temporary disabling this
