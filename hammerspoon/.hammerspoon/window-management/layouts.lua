@@ -19,7 +19,7 @@ w_figma = wf.new{'Figma'}
 w_browsers = wf.new{['Firefox Developer Edition'] = true, ['Google Chrome'] = { rejectTitles = 'Picture in Picture' } }
 w_editors = wf.new{'Code'}
 w_terminals = wf.new{'iTerm2', 'A lacritty'}
-w_videos = wf.new{['YouTube'] = true, ['Twitch'] = true, ['Google Meet'] = true, ['zoom.us'] = true, ['Google Chrome'] = {allowTitles = 'Picture in Picture'}, ['Slack'] = {allowTitles = '(.*)screen share$'}}
+w_videos = wf.new{['YouTube'] = true, ['Twitch'] = true, ['Google Meet'] = true, ['zoom.us'] = true, ['Google Chrome'] = {allowTitles = 'Picture in Picture'}, ['Slack'] = {allowTitles = '(.*)screen share$'}}:setCurrentSpace(true)
 w_notes = wf.new{'Notion', 'Obsidian'}:setCurrentSpace(true)
 w_todos = wf.new{'Asana', 'Todoist'}:setCurrentSpace(true)
 w_chats = wf.new{'Slack', 'Ferdi', 'Discord', 'Messages'}:setCurrentSpace(true)
