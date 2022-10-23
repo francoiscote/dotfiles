@@ -8,14 +8,13 @@ are managed by [GNU Stow](https://www.gnu.org/software/stow/).
 - Zsh Shell
   - `zsh-autosuggestions` and `zsh-syntax-highlighting` plugins
   - [Spaceship prompt](https://github.com/denysdovhan/spaceship-prompt)
-  - [tmux](https://github.com/tmux/tmux) & [tmuxinator](https://github.com/tmuxinator/tmuxinator)
-- [Alacritty](https://github.com/jwilm/alacritty) terminal
+  - [tmux](https://github.com/tmux/tmux)
+  - [tmuxp](https://tmuxp.git-pull.com/)
 - [Hammerspoon](https://www.hammerspoon.org/)
 - [Karabiner Elements](https://pqrs.org/osx/karabiner/)
 - Git Configs
 - macOS defaults
-- homebrew bundle
-- VSCode Settings
+- homebrew bundles
 
 ## Installation
 
