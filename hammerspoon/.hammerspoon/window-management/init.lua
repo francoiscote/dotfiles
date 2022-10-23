@@ -19,10 +19,10 @@ hs.hotkey.bind(hyper, "q", function()
 end)
 hs.hotkey.bind(hyperShift, "q", layouts.workBrowse)
 
-hs.hotkey.bind(hyper, "w", function() 
+hs.hotkey.bind(hyper, "w", layouts.workCode)
+hs.hotkey.bind(hyperShift, "w", function() 
   layouts.workCode(true)
 end)
-hs.hotkey.bind(hyperShift, "w", layouts.workCode)
 
 
 hs.hotkey.bind(hyper, "e", layouts.workEven)
