@@ -13,14 +13,13 @@ local charToApps = {
   -- Middle Row: Main Apps
   {'h', 'Figma'},
   {'j', 'Google Chrome'},
-  {'j', 'Firefox Developer Edition', 'shift'},
   {'k', 'Visual Studio Code'},
   {'l', 'iTerm'},
-  --{';', ''},
+  {';', 'Firefox Developer Edition'},
   
   -- Bottom Row: Email, Calendar and ToDos
-  {'v', 'Notion'},
-  {'b', 'Asana'},
+  {'b', 'Google Meet'},
+  {'b', 'zoom.us', 'shift'},
   {'n', 'Obsidian'},
   {'m', 'Mailplane'},
   {',', 'Fantastical'},
