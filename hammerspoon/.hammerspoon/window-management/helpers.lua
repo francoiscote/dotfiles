@@ -1,4 +1,6 @@
 local export = {}
+local spaces = hs.spaces
+local window = require "hs.window"
 
 -- HELPER FUNCTIONS
 -------------------------------------------------------------------------------
@@ -21,30 +23,65 @@ function export.getDynamicMargins(h, v)
   return hs.geometry.size(hPad,vPad)
 end
 
-function export.moveWindowOneSpace(direction)
-  local keyCode = direction == "left" and 123 or 124
+function getGoodFocusedWindow(nofull)
+  local win = window.focusedWindow()
+  if not win or not win:isStandard() then return end
+  if nofull and win:isFullScreen() then return end
+  return win
+end 
 
-  -- get current window
-  local focusedWindow = hs.window.focusedWindow()
-  -- log.d("Window TopLeft:", focusedWindow:topLeft())
-  
-  -- click at {+64,+4} and hold
-  local clickPos = focusedWindow:topLeft():move({64,4})
-  -- log.d("Click Pos:", clickPos)
-  hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftMouseDown, clickPos):post()
-  
-  -- execute keyboard shortcut
-  hs.timer.usleep(1000)
-  -- log.d("Key Stroke")
-  hs.osascript.applescript([[
-    tell application "System Events" 
-        keystroke (key code ]] .. keyCode .. [[ using control down)
-    end tell
-  ]])
+function flashScreen(screen)
+  local flash=hs.canvas.new(screen:fullFrame()):appendElements({
+  action = "fill",
+  fillColor = { alpha = 0.25, red=1},
+  type = "rectangle"})
+  flash:show()
+  hs.timer.doAfter(.15,function () flash:delete() end)
+end 
 
-  -- -- MouseUp
-  hs.timer.usleep(1000)
-  hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftMouseUp, clickPos):post()
+function switchSpace(skip,dir)
+  for i=1,skip do
+     hs.eventtap.keyStroke({"ctrl","fn"},dir,0) -- "fn" is a bugfix!
+  end 
+end
+
+function export.moveWindowOneSpace(dir, follow)
+  local win = getGoodFocusedWindow(true)
+  if not win then return end
+  local screen=win:screen()
+  local uuid=screen:getUUID()
+  local userSpaces=nil
+  for k,v in pairs(spaces.allSpaces()) do
+    userSpaces=v
+    if k==uuid then break end
+  end
+  if not userSpaces then return end
+  local thisSpace=spaces.windowSpaces(win) -- first space win appears on
+  if not thisSpace then return else thisSpace=thisSpace[1] end
+  local last=nil
+  local skipSpaces=0
+  for _, spc in ipairs(userSpaces) do
+    if spaces.spaceType(spc)~="user" then -- skippable space
+      skipSpaces=skipSpaces+1
+    else
+      print(last, dir, spc, thisSpace)
+      if last and
+      ((dir=="left" and spc==thisSpace) or
+      (dir=="right" and last==thisSpace)) then
+        local newSpace=(dir=="left" and last or spc)
+        spaces.moveWindowToSpace(win,newSpace)
+        if follow then
+          -- spaces.gotoSpace(newSpace) -- also possible, but invokes MC
+          switchSpace(skipSpaces+1,dir)
+        end
+        return
+      end
+      last=spc	 -- Haven't found it yet...
+      skipSpaces=0
+    end
+  end
+
+  flashScreen(screen)   -- Shouldn't get here, so no space found
 end
 
 return export
