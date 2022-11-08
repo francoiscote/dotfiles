@@ -21,10 +21,10 @@ alias gfa='git fetch --all --prune'
 
 alias gl='git pull'
 
-alias glog='git log --oneline --decorate --graph'
+alias glog='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
 alias gloga='git log --oneline --decorate --graph --all'
 
 alias gp='git push'
 
 alias gs='git status -sb'
-alias wtf='git-wtf'
+alias wtf='git-wt'
