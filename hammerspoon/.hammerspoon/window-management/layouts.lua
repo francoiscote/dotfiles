@@ -21,7 +21,7 @@ w_editors = wf.new{'Code'}:setCurrentSpace(true):setScreens(mainScreenName)
 w_terminals = wf.new{'iTerm2', 'Alacritty'}:setCurrentSpace(true):setScreens(mainScreenName)
 w_videos = wf.new{['YouTube'] = true, ['Twitch'] = true, ['Google Meet'] = true, ['zoom.us'] = true, ['Google Chrome'] = {allowTitles = 'Picture in Picture'}, ['Slack'] = {allowTitles = '(.*)Huddle$'}, ['Oryx'] = true}:setCurrentSpace(true):setScreens(mainScreenName)
 w_notes = wf.new{'Notion', 'Obsidian'}:setCurrentSpace(true):setScreens(mainScreenName)
-w_todos = wf.new{'Asana', 'Todoist'}:setCurrentSpace(true):setScreens(mainScreenName)
+w_todos = wf.new{'Asana', 'Todoist', 'Things3'}:setCurrentSpace(true):setScreens(mainScreenName)
 w_chats = wf.new{'Slack', 'Ferdi', 'Discord', 'Messages'}:setCurrentSpace(true):setScreens(mainScreenName)
 
 -- LAYOUTS

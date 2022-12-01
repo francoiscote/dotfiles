@@ -21,6 +21,7 @@ local charToApps = {
   {'b', 'Google Meet'},
   {'b', 'zoom.us', 'shift'},
   {'n', 'Obsidian'},
+  {'n', 'Things3', 'shift'},
   {'m', 'Mailplane'},
   {',', 'Fantastical'},
   {'.', 'Finder'},
