@@ -28,3 +28,7 @@ alias gp='git push'
 
 alias gs='git status -sb'
 alias wtf='git-wt'
+
+alias gwa='git worktree add'
+alias gwl='git worktree list'
+alias gwr='git worktree remove'
