@@ -1,20 +1,18 @@
 local hyper = {"cmd", "alt", "ctrl"}
 
 -- Swap between a Main audio output and a series of ranked secondary outputs
--- Main Output: Vanatoo T0
+-- Main Output: Vanatoo T0 or Studio Display Speakers
 -- Ranked Secondary Outputs:x
---   1) JDS Labs DAC
---   2) Yeti DAC
---   3) Elgato DAC
---   4) Laptop Speakers
+--   1) EVO4
+--   2) External Headphones
 -------------------------------------------------------------------------------
 hs.hotkey.bind(hyper, "s", function()
   local currentDeviceName = hs.audiodevice.defaultOutputDevice():name()
   local nextDevice
   if string.find(currentDeviceName, 'Vanatoo T0') or string.find(currentDeviceName, 'Studio Display Speakers') then
-    nextDevice = hs.audiodevice.findOutputByName('EVO4')
+    nextDevice = hs.audiodevice.findOutputByName('External Headphones')
     if (nextDevice == nil) then
-      nextDevice = hs.audiodevice.findOutputByName('External Headphones')
+      nextDevice = hs.audiodevice.findOutputByName('EVO4')
     end
   else
     nextDevice = hs.audiodevice.findOutputByName('Vanatoo T0')
