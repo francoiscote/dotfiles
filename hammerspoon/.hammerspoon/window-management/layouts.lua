@@ -153,9 +153,9 @@ workMax:
 ]]
 
 function export.workMax() 
-  helpers.maximiseFilteredWindows(w_browsers)
   helpers.maximiseFilteredWindows(w_editors)
   helpers.maximiseFilteredWindows(w_figma)
+  grid.setFilteredWindowsToCell(w_browsers, areas.custom.browser)
   grid.setFilteredWindowsToCell(w_terminals, areas.custom.center)
   grid.setFilteredWindowsToCell(w_notes, areas.custom.center)
   grid.setFilteredWindowsToCell(w_todos, areas.custom.center)
