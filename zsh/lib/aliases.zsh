@@ -25,6 +25,7 @@ alias dockerprune="docker image prune -af && docker volume prune -f"
 # -----------------------------------------
 alias lg="lazygit"
 
-# Yarn
+# NPM / Yarn
 # -----------------------------------------
+alias ns="npm run start"
 alias ys="yarn start"
