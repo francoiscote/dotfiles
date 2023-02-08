@@ -20,7 +20,7 @@ local charToApps = {
   -- Bottom Row: Email, Calendar and ToDos
   {'b', 'Google Meet'},
   {'b', 'zoom.us', 'shift'},
-  {'n', 'Obsidian'},
+  {'n', 'Notion'},
   {'n', 'Things3', 'shift'},
   {'m', 'Mimestream'},
   {',', 'Fantastical'},
