@@ -56,9 +56,9 @@ local areas = {
   custom = {
     smallLeft = '0,0 4x12',
     largeLeft = '0,0 8x12',
-    finder = '4,3 4x6',
+    finder = '3,2 6x8',
     center = '2,1 8x10',
-    browser = '2,0 8x12',
+    browser = '3,0 6x12',
     largeRight = '4,0 8x12',
     smallRight = '8,0 4x12'
   },
