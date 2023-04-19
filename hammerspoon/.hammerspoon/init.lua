@@ -20,7 +20,7 @@ hs.alert.show("HS ✔︎")
 hs.hotkey.bind(hyper, "z", reload_config)
 
 -- Hyper+Shift+I - Shortcut to inspect a window
-hs.hotkey.bind(hyperShift, "i", function()
+hs.hotkey.bind(hyperShift, "z", function()
   local w = hs.window.focusedWindow()
   log.d("Application Name:", w:application():name())
   log.d("Id:", w:id())

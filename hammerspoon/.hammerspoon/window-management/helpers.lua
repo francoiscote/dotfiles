@@ -4,6 +4,13 @@ local window = require "hs.window"
 
 -- HELPER FUNCTIONS
 -------------------------------------------------------------------------------
+function export.unhideAllApps()
+  local apps = hs.application.runningApplications()
+  for i,app in pairs(apps) do
+    app:unhide()
+  end
+end
+
 function export.maximiseWindows(windows)
   for i,w in pairs(windows) do
     w:maximize()

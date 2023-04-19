@@ -11,16 +11,18 @@ local charToApps = {
   {'p', 'Spotify'},
 
   -- Middle Row: Main Apps
-  {'h', 'Figma'},
+  {'h', 'com.culturedcode.ThingsMac'},
   {'j', 'Google Chrome'},
+  {'j', 'Firefox Developer Edition', 'shift'},
   {'k', 'Visual Studio Code'},
   {'l', 'iTerm'},
-  {';', 'Firefox Developer Edition'},
+  {';', 'Figma'},
   
   -- Bottom Row: Email, Calendar and ToDos
   {'b', 'Google Meet'},
   {'b', 'zoom.us', 'shift'},
-  {'n', 'Notion'},
+  {'n', 'Obsidian'},
+  {'n', 'Notion', 'shift'},
   {'m', 'Mimestream'},
   {',', 'Fantastical'},
   {'.', 'Finder'},

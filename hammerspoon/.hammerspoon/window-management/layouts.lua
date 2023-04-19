@@ -21,8 +21,8 @@ w_editors = wf.new{'Code'}:setCurrentSpace(true):setScreens(mainScreenName)
 w_terminals = wf.new{'iTerm2', 'Alacritty'}:setCurrentSpace(true):setScreens(mainScreenName)
 w_videos = wf.new{['YouTube'] = true, ['Twitch'] = true, ['Google Meet'] = true, ['zoom.us'] = true, ['Google Chrome'] = {allowTitles = 'Picture in Picture'}, ['Slack'] = {allowTitles = '(.*)Huddle$'}, ['Oryx'] = true}:setCurrentSpace(true):setScreens(mainScreenName)
 w_notes = wf.new{'Notion', 'Obsidian'}:setCurrentSpace(true):setScreens(mainScreenName)
-w_todos = wf.new{'Asana', 'Todoist', 'Things3'}:setCurrentSpace(true):setScreens(mainScreenName)
-w_chats = wf.new{'Slack', 'Ferdi', 'Discord', 'Messages'}:setCurrentSpace(true):setScreens(mainScreenName)
+w_todos = wf.new{'Todoist', 'Things'}:setCurrentSpace(true):setScreens(mainScreenName)
+w_chats = wf.new{'Slack', 'WhatsApp', 'Discord', 'Messages', 'Messenger'}:setCurrentSpace(true):setScreens(mainScreenName)
 
 -- LAYOUTS
 -------------------------------------------------------------------------------
@@ -32,26 +32,25 @@ workBrowse:
   MAIN: Browser and Code, 
   SECONDARY: everything else
 ]]
-function export.workBrowse(tight)
-  tight = tight or false
-  local split = tight and areas.smallSplit or areas.mediumSplit
+function export.workBrowse()
   --RIGHT
-  grid.setFilteredWindowsToCell(w_browsers, split.main)
-  grid.setFilteredWindowsToCell(w_editors, split.main)
-  grid.setFilteredWindowsToCell(w_figma, split.main)
-  grid.setFilteredWindowsToCell(w_todos, split.main)
+  grid.setFilteredWindowsToCell(w_browsers, areas.smallSplit.main)
+  grid.setFilteredWindowsToCell(w_editors, areas.smallSplit.main)
+  grid.setFilteredWindowsToCell(w_figma, areas.smallSplit.main)
   
   if #w_videos:getWindows() > 0 then
     -- LEFT
-    grid.setFilteredWindowsToCell(w_terminals, split.secondaryBottom)
-    grid.setFilteredWindowsToCell(w_notes, split.secondaryBottom)
-    grid.setFilteredWindowsToCell(w_chats, split.secondaryBottom)
-    grid.setFilteredWindowsToCell(w_videos, split.secondaryTop)
+    grid.setFilteredWindowsToCell(w_terminals, areas.smallSplit.secondaryBottom)
+    grid.setFilteredWindowsToCell(w_notes, areas.smallSplit.secondaryBottom)
+    grid.setFilteredWindowsToCell(w_todos, areas.smallSplit.secondaryBottom)
+    grid.setFilteredWindowsToCell(w_chats, areas.smallSplit.secondaryBottom)
+    grid.setFilteredWindowsToCell(w_videos, areas.smallSplit.secondaryTop)
   else
     -- LEFT
-    grid.setFilteredWindowsToCell(w_terminals, split.secondaryFull)
-    grid.setFilteredWindowsToCell(w_notes, split.secondaryFull)
-    grid.setFilteredWindowsToCell(w_chats, split.secondaryFull)
+    grid.setFilteredWindowsToCell(w_terminals, areas.smallSplit.secondaryFull)
+    grid.setFilteredWindowsToCell(w_notes, areas.smallSplit.secondaryFull)
+    grid.setFilteredWindowsToCell(w_todos, areas.smallSplit.secondaryFull)
+    grid.setFilteredWindowsToCell(w_chats, areas.smallSplit.secondaryFull)
   end
 end
 
@@ -61,26 +60,25 @@ workCode:
   SECONDARY: everything else
 ]] 
 function export.workCode(tight)
-  tight = tight or false
-  local split = tight and areas.smallSplit or areas.mediumSplit
    -- RIGHT
-  grid.setFilteredWindowsToCell(w_editors, split.main)
-  grid.setFilteredWindowsToCell(w_figma, split.main)
-  grid.setFilteredWindowsToCell(w_todos, split.main)
+  grid.setFilteredWindowsToCell(w_editors, areas.mediumSplit.main)
+  grid.setFilteredWindowsToCell(w_figma, areas.mediumSplit.main)
   
   if #w_videos:getWindows() > 0 then
     -- LEFT
-    grid.setFilteredWindowsToCell(w_browsers, split.secondaryBottom)
-    grid.setFilteredWindowsToCell(w_terminals, split.secondaryBottom)
-    grid.setFilteredWindowsToCell(w_notes, split.secondaryBottom)
-    grid.setFilteredWindowsToCell(w_chats, split.secondaryBottom)
-    grid.setFilteredWindowsToCell(w_videos, split.secondaryTop)
+    grid.setFilteredWindowsToCell(w_browsers, areas.mediumSplit.secondaryBottom)
+    grid.setFilteredWindowsToCell(w_terminals, areas.mediumSplit.secondaryBottom)
+    grid.setFilteredWindowsToCell(w_notes, areas.mediumSplit.secondaryBottom)
+    grid.setFilteredWindowsToCell(w_todos, areas.mediumSplit.secondaryBottom)
+    grid.setFilteredWindowsToCell(w_chats, areas.mediumSplit.secondaryBottom)
+    grid.setFilteredWindowsToCell(w_videos, areas.mediumSplit.secondaryTop)
   else 
     -- LEFT
-    grid.setFilteredWindowsToCell(w_browsers, split.secondaryFull)
-    grid.setFilteredWindowsToCell(w_terminals, split.secondaryFull)
-    grid.setFilteredWindowsToCell(w_notes, split.secondaryFull)
-    grid.setFilteredWindowsToCell(w_chats, split.secondaryFull)
+    grid.setFilteredWindowsToCell(w_browsers, areas.mediumSplit.secondaryFull)
+    grid.setFilteredWindowsToCell(w_terminals, areas.mediumSplit.secondaryFull)
+    grid.setFilteredWindowsToCell(w_notes, areas.mediumSplit.secondaryFull)
+    grid.setFilteredWindowsToCell(w_todos, areas.mediumSplit.secondaryFull)
+    grid.setFilteredWindowsToCell(w_chats, areas.mediumSplit.secondaryFull)
   end
 end
 

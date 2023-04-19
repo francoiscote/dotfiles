@@ -14,14 +14,18 @@ local hyperShift = {"cmd", "alt", "ctrl", "shift"}
 local areas = grid.areas
 
 -- Layouts
-hs.hotkey.bind(hyper, "q", function() 
-  layouts.workBrowse(true)
+hs.hotkey.bind(hyper, "q", layouts.workBrowse)
+hs.hotkey.bind(hyperShift, "q", function()
+  grid.setLargeMargins()
+  layouts.workBrowse()
+  grid.setDefaultMargins()
 end)
-hs.hotkey.bind(hyperShift, "q", layouts.workBrowse)
 
 hs.hotkey.bind(hyper, "w", layouts.workCode)
 hs.hotkey.bind(hyperShift, "w", function() 
-  layouts.workCode(true)
+  grid.setLargeMargins()
+  layouts.workCode()
+  grid.setDefaultMargins()
 end)
 
 
@@ -111,6 +115,7 @@ hs.hotkey.bind(hyperShift, "8", function()
   grid.setDefaultMargins()
 end)
 
+
 hs.hotkey.bind(hyper, "9", function()
   grid.setFocusedWindowToCell(areas.custom.smallRight)
 end)
@@ -121,7 +126,7 @@ hs.hotkey.bind(hyperShift, "9", function()
 end)
 
 hs.hotkey.bind(hyper, "0", function()
-  local win = hs.window.focusedWindow()
+  localwin = hs.window.focusedWindow()
     win:maximize()
 end)
 hs.hotkey.bind(hyperShift, "0", function()
@@ -137,6 +142,18 @@ hs.hotkey.bind(hyper, "c", function()
     local win = hs.window.focusedWindow()
     win:centerOnScreen(nil, true)
     hyper.triggered = true
+end)
+
+-- Hyper+Shift+C - Center the focused Window and Hide Others
+hs.hotkey.bind(hyperShift, "c", function()
+  grid.setFocusedWindowToCell(areas.custom.center);
+  
+  local focusedWin = hs.window.focusedWindow();
+  local otherWins = focusedWin:otherWindowsSameScreen();
+  for i, win in ipairs(otherWins) do
+    win:application():hide()
+  end
+  hyper.triggered = true
 end)
 
 -- Hyper+- - Hide everything else and Center
@@ -164,16 +181,18 @@ hs.hotkey.bind(hyper, "=", function()
   focusedWindow:setFrame(windowFrame)
 end)
 
+-- Hyper+[left, right] - Send and follow window to next/previous space
+-- Holding shift prevents the follow.
 hs.hotkey.bind(hyper, "right", nil, function()
-  helpers.moveWindowOneSpace('right', false)
+  helpers.moveWindowOneSpace('right', true)
 end)
 hs.hotkey.bind(hyperShift, "right", nil, function()
-  helpers.moveWindowOneSpace('right', true)
+  helpers.moveWindowOneSpace('right', false)
 end)
 
 hs.hotkey.bind(hyper, "left", nil, function()
-  helpers.moveWindowOneSpace('left', false)
+  helpers.moveWindowOneSpace('left', true)
 end)
 hs.hotkey.bind(hyperShift, "left", nil, function()
-  helpers.moveWindowOneSpace('left', true)
+  helpers.moveWindowOneSpace('left', false)
 end)
