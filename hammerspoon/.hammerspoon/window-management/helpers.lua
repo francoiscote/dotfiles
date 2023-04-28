@@ -48,7 +48,7 @@ end
 
 function switchSpace(skip,dir)
   for i=1,skip do
-     hs.eventtap.keyStroke({"ctrl","fn"},dir,0) -- "fn" is a bugfix!
+     hs.eventtap.keyStroke({"cmd", "alt", "ctrl", "fn"},dir,0) -- "fn" is a bugfix!
   end 
 end
 
