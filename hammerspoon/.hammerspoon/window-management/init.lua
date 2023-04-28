@@ -126,9 +126,10 @@ hs.hotkey.bind(hyperShift, "9", function()
 end)
 
 hs.hotkey.bind(hyper, "0", function()
-  localwin = hs.window.focusedWindow()
-    win:maximize()
+  local win = hs.window.focusedWindow()
+  win:maximize()
 end)
+
 hs.hotkey.bind(hyperShift, "0", function()
   -- Full Size for Twitch
   local win = hs.window.focusedWindow()
@@ -181,18 +182,10 @@ hs.hotkey.bind(hyper, "=", function()
   focusedWindow:setFrame(windowFrame)
 end)
 
--- Hyper+[left, right] - Send and follow window to next/previous space
--- Holding shift prevents the follow.
-hs.hotkey.bind(hyper, "right", nil, function()
+-- HyperShift+[left, right] - Send and follow window to next/previous space
+hs.hotkey.bind(hyperShift, "right", nil, function()
   helpers.moveWindowOneSpace('right', true)
 end)
-hs.hotkey.bind(hyperShift, "right", nil, function()
-  helpers.moveWindowOneSpace('right', false)
-end)
-
-hs.hotkey.bind(hyper, "left", nil, function()
-  helpers.moveWindowOneSpace('left', true)
-end)
 hs.hotkey.bind(hyperShift, "left", nil, function()
-  helpers.moveWindowOneSpace('left', false)
+  helpers.moveWindowOneSpace('left', true)
 end)
