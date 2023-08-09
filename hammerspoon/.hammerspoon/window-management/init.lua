@@ -16,34 +16,33 @@ local areas = grid.areas
 -- Layouts
 hs.hotkey.bind(hyper, "q", layouts.workBrowse)
 hs.hotkey.bind(hyperShift, "q", function()
-  grid.setLargeMargins()
-  layouts.workBrowse()
-  grid.setDefaultMargins()
+  layouts.workBrowse(true)
 end)
 
 hs.hotkey.bind(hyper, "w", layouts.workCode)
-hs.hotkey.bind(hyperShift, "w", function() 
-  grid.setLargeMargins()
-  layouts.workCode()
-  grid.setDefaultMargins()
+hs.hotkey.bind(hyperShift, "w", function()
+  layouts.workCode(true)
 end)
 
-
 hs.hotkey.bind(hyper, "e", layouts.workEven)
-hs.hotkey.bind(hyperShift, "e", function() 
+hs.hotkey.bind(hyperShift, "e", function()
+  layouts.workEven(true)
+end)
+
+hs.hotkey.bind(hyper, "r", function() 
   grid.setLargeMargins()
   layouts.workEven()
   grid.setDefaultMargins()
 end)
-
-hs.hotkey.bind(hyper, "r", layouts.workTriple)
-
-hs.hotkey.bind(hyper, "t", layouts.workMax)
-hs.hotkey.bind(hyperShift, "t", function() 
+hs.hotkey.bind(hyperShift, "r", function() 
   grid.setLargeMargins()
-  layouts.workMax()
+  layouts.workEven(true)
   grid.setDefaultMargins()
 end)
+
+hs.hotkey.bind(hyper, "t", layouts.workMax)
+-- hs.hotkey.bind(hyperShift, "t", function() 
+-- end)
 
 
 -- Quick Sizes
@@ -136,6 +135,49 @@ hs.hotkey.bind(hyperShift, "0", function()
   grid.hsGrid.set(win, '0,0 7x8')
 end)
 
+-- Focus Mode
+-------------------------------------------------------------------------------
+-- Hyper+A - Focus Mode
+-- Center the focused Window and Hide Others
+-- the key act as a toggle between focus mode and the previously used layout
+local focusMode = false;
+local focusedWindow;
+local savedFrame;
+hs.hotkey.bind(hyper, "a", function()
+  if (focusMode == true) then
+    -- Restore Window's position
+    focusedWindow:setFrame(savedFrame)
+    
+    -- Show All Windows
+    focusedWindow:application():selectMenuItem("Show All");
+    
+    focusMode = false;
+    hyper.triggered = true
+  else 
+    -- Save focused window and its position
+    focusedWindow = hs.window.focusedWindow()
+    savedFrame = focusedWindow:frame()
+
+    -- Center Window
+    -- Different layouts for different apps
+    if (focusedWindow:application():name() == "Google Chrome") then
+      grid.setFocusedWindowToCell(areas.custom.browser);
+    elseif (focusedWindow:application():name() == "Things") or (focusedWindow:application():name() == "Obsidian") then
+      grid.setFocusedWindowToCell(areas.custom.finder);
+    else 
+      grid.setFocusedWindowToCell(areas.custom.center);
+    end
+    
+    -- Hide all other windows
+    local activeApp = hs.application.frontmostApplication();
+    activeApp:selectMenuItem("Hide Others");
+
+    focusMode = true;
+    hyper.triggered = true
+  end
+end)
+
+
 -- Move Windows
 -------------------------------------------------------------------------------
 -- C - Center
@@ -145,41 +187,30 @@ hs.hotkey.bind(hyper, "c", function()
     hyper.triggered = true
 end)
 
--- Hyper+Shift+C - Center the focused Window and Hide Others
-hs.hotkey.bind(hyperShift, "c", function()
-  grid.setFocusedWindowToCell(areas.custom.center);
-  
-  local focusedWin = hs.window.focusedWindow();
-  local otherWins = focusedWin:otherWindowsSameScreen();
-  for i, win in ipairs(otherWins) do
-    win:application():hide()
-  end
-  hyper.triggered = true
-end)
 
--- Hyper+- - Hide everything else and Center
--- TBD
+-- Hyper+- - TBD
 hs.hotkey.bind(hyper, "-", function()
 end)
 
--- Hyper+equal - Send window to next screen
+-- Hyper+equal - Send window to next screen. 
+-- If sending to 4k screen, center the window in it. 
+-- If sending to the laptop screen, maximize it.
 hs.hotkey.bind(hyper, "=", function()
   -- Get the focused window, its window frame dimensions, its screen frame dimensions,
   -- and the next screen's frame dimensions.
   local focusedWindow = hs.window.focusedWindow()
-  local windowFrame = focusedWindow:frame()
-  local focusedScreenFrame = focusedWindow:screen():frame()
-  local nextScreenFrame = focusedWindow:screen():next():frame()
-  local windowFrame = focusedWindow:frame()
+  local nextScreen = focusedWindow:screen():next()
+  
+  focusedWindow:moveToScreen(nextScreen)
 
-  -- Calculate the coordinates of the window frame in the next screen and retain aspect ratio
-  windowFrame.x = ((((windowFrame.x - focusedScreenFrame.x) / focusedScreenFrame.w) * nextScreenFrame.w) + nextScreenFrame.x)
-  windowFrame.y = ((((windowFrame.y - focusedScreenFrame.y) / focusedScreenFrame.h) * nextScreenFrame.h) + nextScreenFrame.y)
-  windowFrame.h = ((windowFrame.h / focusedScreenFrame.h) * nextScreenFrame.h)
-  windowFrame.w = ((windowFrame.w / focusedScreenFrame.w) * nextScreenFrame.w)
-
-  -- Set the focused window's new frame dimensions
-  focusedWindow:setFrame(windowFrame)
+  log.d(nextScreen:name());
+  if string.find(nextScreen:name(), "BenQ") then
+    log.d("CENTER")
+    grid.setFocusedWindowToCell(areas.custom.center)
+  else
+    log.d("MAXIMISE")
+    focusedWindow:maximize()
+  end
 end)
 
 -- HyperShift+[left, right] - Send and follow window to next/previous space
