@@ -28,11 +28,23 @@ local areas = {
     secondaryBottom = '0,4.3 4x7.7',
     main = '4,0 8x12',
   }, 
+  smallSplitInverted = {
+    secondaryFull = '8,0 4x12',
+    secondaryTop = '8,0 4x4.3',
+    secondaryBottom = '8,4.3 4x7.7',
+    main = '0,0 8x12',
+  }, 
   mediumSplit = {
     secondaryFull = '0,0 5x12',
     secondaryTop = '0,0 5x5.35',
     secondaryBottom = '0,5.35 5x6.65',
     main = '5,0 7x12',
+  },
+  mediumSplitInverted = {
+    secondaryFull = '7,0 5x12',
+    secondaryTop = '7,0 5x5.35',
+    secondaryBottom = '7,5.35 5x6.65',
+    main = '0,0 7x12',
   },
   evenSplit = {
     leftFull = '0,0 6x12',
@@ -41,17 +53,6 @@ local areas = {
     rightFull = '6,0 6x12',
     rightTop = '6,0 6x5',
     rightBottom = '6,6 6x5',
-  },
-  tripleSplit = {
-    leftFull = '0,0 4x12',
-    leftTop = '0,0 4x6',
-    leftBottom = '0,6 4x6',
-    mainFull = '4,0 4x12',
-    mainTop = '4,0 4x4.3',
-    mainBottom = '4,4.3 4x7.7',
-    rightFull = '8,0 4x12',
-    rightTop = '8,0 4x6',
-    rightBottom = '8,6 4x6',
   },
   custom = {
     smallLeft = '0,0 4x12',
@@ -64,7 +65,7 @@ local areas = {
   },
   customTwitch = {
     finder = '2,1.5 3x4',
-    spotify = '0.5,0.5 6x7',
+    spotify = '0.e5,0.5 6x7',
     browser = '1,0 5x8'
   }
 }
