@@ -4,17 +4,16 @@ local hyperShift = {"cmd", "alt", "ctrl", "shift"}
 local charToApps = {
   -- Top Row: IM + Spotify
   {'u', 'Slack'},
-  {'i', 'Messenger'},
-  {'i', 'Messages', 'shift'},
-  {'o', 'WhatsApp'},
+  {'i', 'Messages'},
+  {'i', 'WhatsApp', 'shift'},
+  {'o', 'Messenger'},
   {'o', 'Discord', 'shift'},
   {'p', 'Spotify'},
 
   -- Middle Row: Main Apps
   {'h', 'com.culturedcode.ThingsMac'},
-  {'h', 'Todoist', 'shift'},
   {'j', 'Google Chrome'},
-  {'j', 'Firefox Developer Edition', 'shift'},
+  {'j', 'Safari', 'shift'},
   {'k', 'Visual Studio Code'},
   {'l', 'iTerm'},
   {';', 'Figma'},
@@ -24,7 +23,7 @@ local charToApps = {
   {'b', 'zoom.us', 'shift'},
   {'n', 'Obsidian'},
   {'n', 'Notion', 'shift'},
-  {'m', 'Mimestream'},
+  {'m', 'Gmail'},
   {',', 'Fantastical'},
   {'.', 'Finder'},
 }
