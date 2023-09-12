@@ -32,8 +32,6 @@ setopt multios
 setopt prompt_subst
 setopt interactivecomments
 
-autoload -Uz compinit
-
 autoload -U promptinit; promptinit
 
 # -----------------------------------------
@@ -73,7 +71,7 @@ for config_file ($DOTFILES/zsh/lib/*.zsh); do
 done
 
 # compinit must be done after sourcing all libs
-compinit
+autoload -Uz compinit;compinit
 
 # source private stuff in a .localrc file
 if [[ -f $HOME/.localrc ]]; then
