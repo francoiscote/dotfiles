@@ -2,8 +2,6 @@
 # SHORTCUT COMMANDS
 # -----------------------------------------
 
-autoload -U compdef
-
 # c -> ~/Code/
 c() { cd ~/Code/$1; }
 _c() { _files -W ~/Code -/; }

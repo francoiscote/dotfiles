@@ -6,8 +6,8 @@
 DOTFILES=$HOME/.dotfiles
 GREP_EXCLUDE_DIR="{.git,.sass-cache,artwork,node_modules}"
 OS=`uname`
-path=($DOTFILES/bin $path)
-fpath=($HOME/.zsh-completions $fpath)
+PATH=$DOTFILES/bin:$PATH
+FPATH=$HOME/.zsh-completions:$FPATH
 
 # Brew completion paths
 if type brew &>/dev/null; then
@@ -33,6 +33,7 @@ setopt prompt_subst
 setopt interactivecomments
 
 autoload -U promptinit; promptinit
+autoload -Uz compinit;compinit
 
 # -----------------------------------------
 # PATHS
@@ -70,8 +71,6 @@ for config_file ($DOTFILES/zsh/lib/*.zsh); do
   source $config_file
 done
 
-# compinit must be done after sourcing all libs
-autoload -Uz compinit;compinit
 
 # source private stuff in a .localrc file
 if [[ -f $HOME/.localrc ]]; then
