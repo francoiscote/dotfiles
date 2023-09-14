@@ -91,4 +91,32 @@ function export.moveWindowOneSpace(dir, follow)
   flashScreen(screen)   -- Shouldn't get here, so no space found
 end
 
+-- Workaround fix for the Grammarly bug that causes the window to be animated
+-- https://github.com/Hammerspoon/hammerspoon/issues/3224#issuecomment-1294971600
+function axHotfix(win)
+  if not win then win = hs.window.frontmostWindow() end
+
+  local axApp = hs.axuielement.applicationElement(win:application())
+  local wasEnhanced = axApp.AXEnhancedUserInterface
+  if wasEnhanced then
+    axApp.AXEnhancedUserInterface = false
+  end
+
+  return function()
+    if wasEnhanced then
+      axApp.AXEnhancedUserInterface = true
+    end
+  end
+end
+
+function export.withAxHotfix(fn, position)
+  if not position then position = 1 end
+  return function(...)
+    local args = {...}
+    local revert = axHotfix(args[position])
+    fn(...)
+    revert()
+  end
+end
+
 return export

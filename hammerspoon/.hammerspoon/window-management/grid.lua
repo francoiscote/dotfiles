@@ -20,6 +20,7 @@ local largeMargins = helpers.getDynamicMargins(0.02, 0.04)
 local extraLargeMargins = helpers.getDynamicMargins(0.03, 0.07)
 
 local hsGrid = hs.grid.setGrid('12x12', mainScreen, frame).setMargins(defaultMargins)
+local patchedGridSet = helpers.withAxHotfix(hsGrid.set)
 
 local areas = {
   smallSplit = {
@@ -86,7 +87,7 @@ end
 
 function setWindowsToCell(windows, cell)
   for i,w in pairs(windows) do
-    hsGrid.set(w, cell)
+    patchedGridSet(w, cell)
   end
 end
 
@@ -97,7 +98,7 @@ end
 
 function setFocusedWindowToCell(cell)
   local win = hs.window.focusedWindow()
-  hsGrid.set(win, cell)
+  patchedGridSet(win, cell)
 end
 
 -- EXPORT
