@@ -125,14 +125,12 @@ hs.hotkey.bind(hyperShift, "9", function()
 end)
 
 hs.hotkey.bind(hyper, "0", function()
-  local win = hs.window.focusedWindow()
-  win:maximize()
+  grid.setFocusedWindowToCell(areas.custom.maximize)
 end)
 
 hs.hotkey.bind(hyperShift, "0", function()
   -- Full Size for Twitch
-  local win = hs.window.focusedWindow()
-  grid.hsGrid.set(win, '0,0 7x8')
+  grid.setFocusedWindowToCell(areas.custom.twitchCenter)
 end)
 
 -- Focus Mode
