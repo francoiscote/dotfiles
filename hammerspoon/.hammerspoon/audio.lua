@@ -8,7 +8,10 @@ hs.hotkey.bind(hyper, "s", function()
   local currentDeviceName = hs.audiodevice.defaultOutputDevice():name()
   local nextDevice
   if string.find(currentDeviceName, 'Vanatoo T0') or string.find(currentDeviceName, 'Studio Display Speakers') or string.find(currentDeviceName, 'AUKEY') then
-    nextDevice = hs.audiodevice.findOutputByName('External Headphones')
+    nextDevice = hs.audiodevice.findOutputByName('François’s AirPods Pro')
+    if (nextDevice == nil) then
+      nextDevice = hs.audiodevice.findOutputByName('External Headphones')
+    end
     if (nextDevice == nil) then
       nextDevice = hs.audiodevice.findOutputByName('EVO4')
     end
