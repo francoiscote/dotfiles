@@ -31,12 +31,12 @@ end)
 
 hs.hotkey.bind(hyper, "r", function() 
   grid.setLargeMargins()
-  layouts.workEven()
+  layouts.notesEven()
   grid.setDefaultMargins()
 end)
 hs.hotkey.bind(hyperShift, "r", function() 
   grid.setLargeMargins()
-  layouts.workEven(true)
+  layouts.notesEven(true)
   grid.setDefaultMargins()
 end)
 
@@ -125,7 +125,9 @@ hs.hotkey.bind(hyperShift, "9", function()
 end)
 
 hs.hotkey.bind(hyper, "0", function()
-  grid.setFocusedWindowToCell(areas.custom.maximize)
+  -- grid.setFocusedWindowToCell(areas.custom.maximize)
+  local win = hs.window.focusedWindow()
+  win:maximize();
 end)
 
 hs.hotkey.bind(hyperShift, "0", function()
@@ -201,12 +203,9 @@ hs.hotkey.bind(hyper, "=", function()
   
   focusedWindow:moveToScreen(nextScreen)
 
-  log.d(nextScreen:name());
   if string.find(nextScreen:name(), "BenQ") then
-    log.d("CENTER")
     grid.setFocusedWindowToCell(areas.custom.center)
   else
-    log.d("MAXIMISE")
     focusedWindow:maximize()
   end
 end)
