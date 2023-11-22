@@ -3,6 +3,7 @@ local hyperShift = {"cmd", "alt", "ctrl", "shift"}
 
 local charToApps = {
   -- Top Row: IM + Spotify
+  {'t', 'Toggl Track'},
   {'u', 'Slack'},
   {'i', 'Messages'},
   {'i', 'WhatsApp', 'shift'},

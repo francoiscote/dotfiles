@@ -13,6 +13,11 @@ local hyper = {"cmd", "alt", "ctrl"}
 local hyperShift = {"cmd", "alt", "ctrl", "shift"}
 local areas = grid.areas
 
+
+-- Margins
+hs.hotkey.bind(hyper, "x", grid.toggleLargeMargins)
+--hs.hotkey.bind(hyperShift, "x", layouts.workBrowse)
+
 -- Layouts
 hs.hotkey.bind(hyper, "q", layouts.workBrowse)
 hs.hotkey.bind(hyperShift, "q", function()
@@ -24,24 +29,14 @@ hs.hotkey.bind(hyperShift, "w", function()
   layouts.workCode(true)
 end)
 
-hs.hotkey.bind(hyper, "e", layouts.workEven)
-hs.hotkey.bind(hyperShift, "e", function()
+hs.hotkey.bind(hyper, "e", function()
   layouts.workEven(true)
 end)
+hs.hotkey.bind(hyperShift, "e", layouts.workEven)
 
-hs.hotkey.bind(hyper, "r", function() 
-  grid.setLargeMargins()
-  layouts.notesEven()
-  grid.setDefaultMargins()
-end)
-hs.hotkey.bind(hyperShift, "r", function() 
-  grid.setLargeMargins()
-  layouts.notesEven(true)
-  grid.setDefaultMargins()
-end)
-
-hs.hotkey.bind(hyper, "t", layouts.workMax)
--- hs.hotkey.bind(hyperShift, "t", function() 
+hs.hotkey.bind(hyper, "r", layouts.workMax)
+-- hs.hotkey.bind(hyperShift, "r", function()
+--   layouts.workMax(true)
 -- end)
 
 
@@ -143,6 +138,20 @@ end)
 local focusMode = false;
 local focusedWindow;
 local savedFrame;
+
+focusedMenuBar = hs.menubar.new()
+function setFocusMode(state)
+  if state then
+    focusMode = true;
+    focusedMenuBar:setTitle(hs.styledtext.new("FOCUSED", { backgroundColor = { red = 1, blue = 0, green = 0 }, color = { red = 1, blue = 1, green = 1 }}))
+    -- focusedMenuBar:setTitle("FOCUSED");
+  else
+    focusMode = false;
+    focusedMenuBar:setTitle();
+  end
+end
+
+
 hs.hotkey.bind(hyper, "a", function()
   if (focusMode == true) then
     -- Restore Window's position
@@ -151,7 +160,7 @@ hs.hotkey.bind(hyper, "a", function()
     -- Show All Windows
     focusedWindow:application():selectMenuItem("Show All");
     
-    focusMode = false;
+    setFocusMode(false);
     hyper.triggered = true
   else 
     -- Save focused window and its position
@@ -172,7 +181,7 @@ hs.hotkey.bind(hyper, "a", function()
     local activeApp = hs.application.frontmostApplication();
     activeApp:selectMenuItem("Hide Others");
 
-    focusMode = true;
+    setFocusMode(true);
     hyper.triggered = true
   end
 end)

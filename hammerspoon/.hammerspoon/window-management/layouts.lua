@@ -156,27 +156,27 @@ end
 notesEven: 
   notes on the right, everything else on the left
 ]]
-function export.notesEven(inverted)
-  if(inverted == true) then
+function export.workEven(mainNotes)
+  if(mainNotes == true) then
     -- LEFT
-    grid.setFilteredWindowsToCell(w_notes, areas.evenSplit.leftFull)
-    -- RIGHT
-    grid.setFilteredWindowsToCell(w_browsers, areas.evenSplit.rightFull)
-    grid.setFilteredWindowsToCell(w_todos, areas.evenSplit.rightFull)
-    grid.setFilteredWindowsToCell(w_chats, areas.evenSplit.rightFull)
-    grid.setFilteredWindowsToCell(w_terminals, areas.evenSplit.rightFull)
-    grid.setFilteredWindowsToCell(w_figma, areas.evenSplit.rightFull)
-    grid.setFilteredWindowsToCell(w_editors, areas.evenSplit.rightFull)
-  else
-    -- RIGHT
-    grid.setFilteredWindowsToCell(w_notes, areas.evenSplit.rightFull)
-    -- LEFT
+    grid.setFilteredWindowsToCell(w_editors, areas.evenSplit.leftFull)
     grid.setFilteredWindowsToCell(w_browsers, areas.evenSplit.leftFull)
     grid.setFilteredWindowsToCell(w_todos, areas.evenSplit.leftFull)
     grid.setFilteredWindowsToCell(w_chats, areas.evenSplit.leftFull)
     grid.setFilteredWindowsToCell(w_terminals, areas.evenSplit.leftFull)
     grid.setFilteredWindowsToCell(w_figma, areas.evenSplit.leftFull)
-    grid.setFilteredWindowsToCell(w_editors, areas.evenSplit.leftFull)
+    -- RIGHT
+    grid.setFilteredWindowsToCell(w_notes, areas.evenSplit.rightFull)
+  else
+    -- LEFT
+    grid.setFilteredWindowsToCell(w_notes, areas.evenSplit.leftFull)
+    grid.setFilteredWindowsToCell(w_browsers, areas.evenSplit.leftFull)
+    grid.setFilteredWindowsToCell(w_todos, areas.evenSplit.leftFull)
+    grid.setFilteredWindowsToCell(w_chats, areas.evenSplit.leftFull)
+    grid.setFilteredWindowsToCell(w_terminals, areas.evenSplit.leftFull)
+    grid.setFilteredWindowsToCell(w_figma, areas.evenSplit.leftFull)
+    -- RIGHT
+    grid.setFilteredWindowsToCell(w_editors, areas.evenSplit.rightFull)
   end
 end
 

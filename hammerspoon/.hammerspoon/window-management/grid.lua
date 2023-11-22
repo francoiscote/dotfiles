@@ -15,9 +15,9 @@ if menuGapSize > 0 then
   frame = hs.geometry(0, menuGapSize, max.w, max.h - menuGapSize)
 end
 
+local isLargeMargins = false;
 local defaultMargins = gapSize .. 'x' .. gapSize
 local largeMargins = helpers.getDynamicMargins(0.02, 0.04)
-local extraLargeMargins = helpers.getDynamicMargins(0.03, 0.07)
 
 local hsGrid = hs.grid.setGrid('12x12', mainScreen, frame).setMargins(defaultMargins)
 local patchedGridSet = helpers.withAxHotfix(hsGrid.set)
@@ -73,18 +73,20 @@ local areas = {
   }
 }
 
+
 -- FUNCTIONS
 -----------------------------------------------------------------------------
-function setDefaultMargins() 
-  hsGrid.setMargins(defaultMargins)
-end
-
-function setLargeMargins() 
-  hsGrid.setMargins(largeMargins)
-end
-
-function setExtraLargeMargins() 
-  hsGrid.setMargins(extraLargeMargins)
+marginsMenuBar = hs.menubar.new()
+function toggleLargeMargins() 
+  if isLargeMargins then
+    isLargeMargins = false;
+    hsGrid.setMargins(defaultMargins)
+    marginsMenuBar:setTitle();
+  else
+    isLargeMargins = true;
+    hsGrid.setMargins(largeMargins)
+    marginsMenuBar:setTitle(hs.styledtext.new("LARGE", { backgroundColor = { red = 0.1, blue = 0, green = 0.7 }, color = { red = 1, blue = 1, green = 1 }}))
+  end
 end
 
 function setWindowsToCell(windows, cell)
@@ -109,9 +111,7 @@ end
 local export = {
   hsGrid = hsGrid,
   areas = areas,
-  setDefaultMargins = setDefaultMargins,
-  setLargeMargins = setLargeMargins,
-  setExtraLargeMargins = setExtraLargeMargins,
+  toggleLargeMargins = toggleLargeMargins,
   setWindowsToCell = setWindowsToCell,
   setFilteredWindowsToCell = setFilteredWindowsToCell,
   setFocusedWindowToCell = setFocusedWindowToCell
