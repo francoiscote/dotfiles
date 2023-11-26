@@ -29,10 +29,10 @@ hs.hotkey.bind(hyperShift, "w", function()
   layouts.workCode(true)
 end)
 
-hs.hotkey.bind(hyper, "e", function()
-  layouts.workEven(true)
+hs.hotkey.bind(hyper, "e", layouts.workEven)
+hs.hotkey.bind(hyperShift, "e", function()
+  layouts.workEven(true) -- with focus on Notes
 end)
-hs.hotkey.bind(hyperShift, "e", layouts.workEven)
 
 hs.hotkey.bind(hyper, "r", layouts.workMax)
 -- hs.hotkey.bind(hyperShift, "r", function()
