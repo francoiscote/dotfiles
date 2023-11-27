@@ -76,6 +76,14 @@ local areas = {
 
 -- FUNCTIONS
 -----------------------------------------------------------------------------
+function setDefaultMargins()
+  hsGrid.setMargins(defaultMargins)
+end
+
+function setLargeMargins()
+  hsGrid.setMargins(largeMargins)
+end
+
 marginsMenuBar = hs.menubar.new()
 function toggleLargeMargins() 
   if isLargeMargins then
@@ -111,6 +119,8 @@ end
 local export = {
   hsGrid = hsGrid,
   areas = areas,
+  setDefaultMargins = setDefaultMargins,
+  setLargeMargins = setLargeMargins,
   toggleLargeMargins = toggleLargeMargins,
   setWindowsToCell = setWindowsToCell,
   setFilteredWindowsToCell = setFilteredWindowsToCell,
