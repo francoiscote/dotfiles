@@ -21,9 +21,10 @@ w_browsers = wf.new{['Arc'] = true, ['Safari'] = true, ['Firefox Developer Editi
 w_editors = wf.new{'Code'}:setCurrentSpace(true):setScreens(mainScreenName)
 w_terminals = wf.new{'iTerm2', 'Alacritty'}:setCurrentSpace(true):setScreens(mainScreenName)
 w_videos = wf.new{['YouTube'] = true, ['Twitch'] = true, ['Google Meet'] = true, ['zoom.us'] = true, ['VLC'] = true, ['Google Chrome'] = {allowTitles = 'Picture in Picture'}, ['Arc'] = {allowRoles = 'AXSystemDialog'}, ['Slack'] = {allowTitles = '(.*)Huddle$'}, ['Oryx'] = true}:setCurrentSpace(true):setScreens(mainScreenName)
-w_notes = wf.new{'Notion', 'Obsidian'}:setCurrentSpace(true):setScreens(mainScreenName)
+w_notes = wf.new{'Notion', 'Obsidian', 'Bear'}:setCurrentSpace(true):setScreens(mainScreenName)
 w_todos = wf.new{'Todoist', 'Things'}:setCurrentSpace(true):setScreens(mainScreenName)
 w_chats = wf.new{'Slack', 'WhatsApp', 'Discord', 'Messages', 'Messenger'}:setCurrentSpace(true):setScreens(mainScreenName)
+w_obs = wf.new{'OBS Studio'}:setCurrentSpace(true):setScreens(mainScreenName)
 
 -- LAYOUTS
 -------------------------------------------------------------------------------
@@ -52,6 +53,7 @@ function export.workBrowse(inverted)
     grid.setFilteredWindowsToCell(w_notes, layout.secondaryBottom)
     grid.setFilteredWindowsToCell(w_todos, layout.secondaryBottom)
     grid.setFilteredWindowsToCell(w_chats, layout.secondaryBottom)
+    grid.setFilteredWindowsToCell(w_obs, layout.secondaryBottom)
     grid.setFilteredWindowsToCell(w_videos, layout.secondaryTop)
   else
     -- SECONDARY
@@ -59,6 +61,7 @@ function export.workBrowse(inverted)
     grid.setFilteredWindowsToCell(w_notes, layout.secondaryFull)
     grid.setFilteredWindowsToCell(w_todos, layout.secondaryFull)
     grid.setFilteredWindowsToCell(w_chats, layout.secondaryFull)
+    grid.setFilteredWindowsToCell(w_obs, layout.secondaryFull)
   end
 end
 
@@ -86,6 +89,7 @@ function export.workCode(inverted)
     grid.setFilteredWindowsToCell(w_notes, layout.secondaryBottom)
     grid.setFilteredWindowsToCell(w_todos, layout.secondaryBottom)
     grid.setFilteredWindowsToCell(w_chats, layout.secondaryBottom)
+    grid.setFilteredWindowsToCell(w_obs, layout.secondaryBottom)
     grid.setFilteredWindowsToCell(w_videos, layout.secondaryTop)
   else 
     -- SECONDARY
@@ -94,6 +98,7 @@ function export.workCode(inverted)
     grid.setFilteredWindowsToCell(w_notes, layout.secondaryFull)
     grid.setFilteredWindowsToCell(w_todos, layout.secondaryFull)
     grid.setFilteredWindowsToCell(w_chats, layout.secondaryFull)
+    grid.setFilteredWindowsToCell(w_obs, layout.secondaryFull)
   end
 end
 
@@ -196,5 +201,76 @@ function export.workMax()
   grid.setFilteredWindowsToCell(w_chats, areas.custom.center)
   grid.setFilteredWindowsToCell(w_videos, areas.custom.center)
 end
+
+function export.twitchSplit()
+  -- Hidden
+  grid.setFilteredWindowsToCell(w_obs, areas.twitch.hiddenFull)
+  
+  --MAIN
+  grid.setFilteredWindowsToCell(w_browsers, areas.twitch.mainMain)
+  grid.setFilteredWindowsToCell(w_editors, areas.twitch.mainMain)
+  grid.setFilteredWindowsToCell(w_figma, areas.twitch.mainMain)
+  
+  
+  grid.setFilteredWindowsToCell(w_terminals, areas.twitch.mainSecondary)
+  grid.setFilteredWindowsToCell(w_notes, areas.twitch.mainSecondary)
+  grid.setFilteredWindowsToCell(w_todos, areas.twitch.mainSecondary)
+  grid.setFilteredWindowsToCell(w_chats, areas.twitch.mainSecondary)
+end
+
+function export.twitchVerticalSplit()
+  -- Hidden
+  grid.setFilteredWindowsToCell(w_obs, areas.twitch.hiddenFull)
+  
+  --MAIN
+  grid.setFilteredWindowsToCell(w_browsers, areas.twitch.mainvMain)
+  grid.setFilteredWindowsToCell(w_editors, areas.twitch.mainvMain)
+  grid.setFilteredWindowsToCell(w_figma, areas.twitch.mainvMain)
+  grid.setFilteredWindowsToCell(w_notes, areas.twitch.mainvMain)
+  grid.setFilteredWindowsToCell(w_todos, areas.twitch.mainvMain)
+  grid.setFilteredWindowsToCell(w_chats, areas.twitch.mainvMain)
+  
+  -- SECONDARY
+  grid.setFilteredWindowsToCell(w_terminals, areas.twitch.mainvSecondary)
+end
+
+function export.twitchEvenSplit(inverted)
+  if(inverted == true) then
+    -- LEFT
+    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.mainLeft)
+    grid.setFilteredWindowsToCell(w_todos, areas.twitch.mainLeft)
+    grid.setFilteredWindowsToCell(w_chats, areas.twitch.mainLeft)
+    -- RIGHT
+    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.mainRight)
+    grid.setFilteredWindowsToCell(w_notes, areas.twitch.mainRight)
+    grid.setFilteredWindowsToCell(w_figma, areas.twitch.mainRight)
+    grid.setFilteredWindowsToCell(w_editors, areas.twitch.mainRight)
+  else 
+    -- LEFT
+    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.mainLeft)
+    grid.setFilteredWindowsToCell(w_notes, areas.twitch.mainLeft)
+    grid.setFilteredWindowsToCell(w_figma, areas.twitch.mainLeft)
+    grid.setFilteredWindowsToCell(w_editors, areas.twitch.mainLeft)
+    -- RIGHT
+    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.mainRight)
+    grid.setFilteredWindowsToCell(w_todos, areas.twitch.mainRight)
+    grid.setFilteredWindowsToCell(w_chats, areas.twitch.mainRight)
+  end
+end
+
+function export.twitchMax()
+  -- Hidden
+  grid.setFilteredWindowsToCell(w_obs, areas.twitch.hiddenFull)
+  
+  grid.setFilteredWindowsToCell(w_editors, areas.twitch.mainFull)
+  grid.setFilteredWindowsToCell(w_figma, areas.twitch.mainFull)
+  grid.setFilteredWindowsToCell(w_browsers, areas.twitch.mainFull)
+  
+  grid.setFilteredWindowsToCell(w_terminals, areas.twitch.mainCenter)
+  grid.setFilteredWindowsToCell(w_notes, areas.twitch.mainCenter)
+  grid.setFilteredWindowsToCell(w_todos, areas.twitch.mainCenter)
+  grid.setFilteredWindowsToCell(w_chats, areas.twitch.mainCenter)
+  grid.setFilteredWindowsToCell(w_videos, areas.twitch.mainCenter)
+end 
 
 return export

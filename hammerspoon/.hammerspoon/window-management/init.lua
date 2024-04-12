@@ -12,32 +12,61 @@ hs.window.setShadows(false)
 local hyper = {"cmd", "alt", "ctrl"}
 local hyperShift = {"cmd", "alt", "ctrl", "shift"}
 local areas = grid.areas
-
+local twitchMode = false;
 
 -- Margins
 hs.hotkey.bind(hyper, "x", grid.toggleLargeMargins)
 --hs.hotkey.bind(hyperShift, "x", layouts.workBrowse)
 
 -- Layouts
-hs.hotkey.bind(hyper, "q", layouts.workBrowse)
+hs.hotkey.bind(hyper, "q", function()
+  if (twitchMode == true) then
+    layouts.twitchSplit()
+  else
+    layouts.workBrowse()
+  end
+end)
 hs.hotkey.bind(hyperShift, "q", function()
-  layouts.workBrowse(true)
+    layouts.workBrowse(true)
 end)
 
-hs.hotkey.bind(hyper, "w", layouts.workCode)
+hs.hotkey.bind(hyper, "w", function()
+  if (twitchMode == true) then
+    layouts.twitchVerticalSplit()
+  else 
+    layouts.workCode()
+  end
+end)
 hs.hotkey.bind(hyperShift, "w", function()
   layouts.workCode(true)
 end)
 
-hs.hotkey.bind(hyper, "e", layouts.workEven)
+hs.hotkey.bind(hyper, "e", function()
+  if (twitchMode == true) then
+    layouts.twitchEvenSplit()
+  else
+    layouts.workEven()
+  end
+end)
 hs.hotkey.bind(hyperShift, "e", function()
-  layouts.workEven(true) -- with focus on Notes
+  if (twitchMode == true) then
+    layouts.twitchEvenSplit(true)
+  else
+    layouts.workEven(true) -- with focus on Notes
+  end
 end)
 
-hs.hotkey.bind(hyper, "r", layouts.workMax)
--- hs.hotkey.bind(hyperShift, "r", function()
---   layouts.workMax(true)
--- end)
+hs.hotkey.bind(hyper, "r", function()
+  if (twitchMode == true) then
+    layouts.twitchMax()
+  else
+    layouts.workMax()
+  end
+end)
+
+hs.hotkey.bind(hyperShift, "r", function()
+  layouts.stream()
+end)
 
 
 -- Quick Sizes
@@ -52,7 +81,11 @@ hs.hotkey.bind(hyperShift, "1", function()
 end)
 
 hs.hotkey.bind(hyper, "2", function()
-  grid.setFocusedWindowToCell(areas.evenSplit.leftFull)
+  if (twitchMode == true) then
+    grid.setFocusedWindowToCell(areas.twitch.mainLeft)
+  else
+    grid.setFocusedWindowToCell(areas.evenSplit.leftFull)
+  end
 end)
 hs.hotkey.bind(hyperShift, "2", function()
   grid.setLargeMargins()
@@ -74,14 +107,14 @@ hs.hotkey.bind(hyper, "4", function()
   grid.setFocusedWindowToCell(areas.custom.finder)
 end)
 hs.hotkey.bind(hyperShift, "4", function()
-  grid.setFocusedWindowToCell(areas.customTwitch.finder)
+    
 end)
 
 hs.hotkey.bind(hyper, "5", function()
   grid.setFocusedWindowToCell(areas.custom.center)
 end)
 hs.hotkey.bind(hyperShift, "5", function()
-  grid.setFocusedWindowToCell(areas.customTwitch.center)
+
 end)
 
 hs.hotkey.bind(hyper, "6", function()
@@ -101,7 +134,11 @@ hs.hotkey.bind(hyperShift, "7", function()
 end)
 
 hs.hotkey.bind(hyper, "8", function()
-  grid.setFocusedWindowToCell(areas.evenSplit.rightFull)
+  if (twitchMode == true) then
+    grid.setFocusedWindowToCell(areas.twitch.mainRight)
+  else
+    grid.setFocusedWindowToCell(areas.evenSplit.rightFull)
+  end
 end)
 hs.hotkey.bind(hyperShift, "8", function()
   grid.setLargeMargins()
@@ -122,12 +159,15 @@ end)
 hs.hotkey.bind(hyper, "0", function()
   -- grid.setFocusedWindowToCell(areas.custom.maximize)
   local win = hs.window.focusedWindow()
-  win:maximize();
+  if (twitchMode == true) then
+      grid.setFocusedWindowToCell(areas.twitch.mainFull)
+  else
+    win:maximize();
+  end
 end)
 
 hs.hotkey.bind(hyperShift, "0", function()
-  -- Full Size for Twitch
-  grid.setFocusedWindowToCell(areas.custom.twitchCenter)
+  
 end)
 
 -- Focus Mode
@@ -185,6 +225,33 @@ hs.hotkey.bind(hyper, "a", function()
     hyper.triggered = true
   end
 end)
+
+-- Twitch Mode
+-------------------------------------------------------------------------------
+-- HyperShift+T - Twitch Mode
+
+TwitchMenuBar = hs.menubar.new()
+function setTwitchMode(state)
+  if state then
+    twitchMode = true;
+    TwitchMenuBar:setTitle(hs.styledtext.new("TWITCH", { backgroundColor = { red = 1, blue = 0, green = 0 }, color = { red = 1, blue = 1, green = 1 }}))
+  else
+    twitchMode = false;
+    TwitchMenuBar:setTitle();
+  end
+end
+
+
+hs.hotkey.bind(hyperShift, "t", function()
+  if (twitchMode == true) then
+    setTwitchMode(false);
+    hyper.triggered = true
+  else 
+    setTwitchMode(true);
+    hyper.triggered = true
+  end
+end)
+
 
 
 -- Move Windows

@@ -66,11 +66,19 @@ local areas = {
     smallRight = '8,0 4x12',
     maximize = '0,0 12x12'
   },
-  customTwitch = {
-    finder = '2,1.5 3x4',
-    spotify = '0.e5,0.5 6x7',
-    browser = '1,0 5x8'
-  }
+  twitch = {
+    hiddenFull = '0,0 3x12',
+    hiddenTop = '0,0 3x4.3',
+    hiddenBottom = '0,4.3 3x7.7',
+    mainFull = '3,0 9x12',
+    mainSecondary = '9,0 3x12',
+    mainMain = '3,0 6x12',
+    mainCenter = '4,2 7x8',
+    mainLeft = '3,0 4.5x12',
+    mainRight = '7.5,0 4.5x12',
+    mainvMain = '3,0 9x7',
+    mainvSecondary = '3,7 9x5',
+  }, 
 }
 
 
