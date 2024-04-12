@@ -7,16 +7,16 @@ export N_PREFIX="$HOME/.n"
 export PATH=$N_PREFIX/bin:$PATH
 
 # -----------------------------------------
+# pyenv
+# -----------------------------------------
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# -----------------------------------------
 # PHPBREW
 # -----------------------------------------
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
-
-# -----------------------------------------
-# PYENV
-# -----------------------------------------
-# export PYENV_ROOT="$HOME/.pyenv"
-# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init -)"
 
 # tcl-tk
 # I don't remember why I had that, but running brew prefix is slow. Temporary disabling this
