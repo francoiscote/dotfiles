@@ -276,7 +276,11 @@ hs.hotkey.bind(hyper, "=", function()
   -- and the next screen's frame dimensions.
   local focusedWindow = hs.window.focusedWindow()
   local nextScreen = focusedWindow:screen():next()
-  
+
+  if nextScreen == hs.screen.mainScreen() then
+    return
+  end
+
   focusedWindow:moveToScreen(nextScreen)
 
   if string.find(nextScreen:name(), "BenQ") then
