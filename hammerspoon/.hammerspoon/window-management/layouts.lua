@@ -25,6 +25,7 @@ w_notes = wf.new{'Notion', 'Obsidian', 'Bear'}:setCurrentSpace(true):setScreens(
 w_todos = wf.new{'Todoist', 'Things'}:setCurrentSpace(true):setScreens(mainScreenName)
 w_chats = wf.new{'Slack', 'WhatsApp', 'Discord', 'Messages', 'Messenger'}:setCurrentSpace(true):setScreens(mainScreenName)
 w_obs = wf.new{'OBS Studio'}:setCurrentSpace(true):setScreens(mainScreenName)
+w_twitch = wf.new{'Twitch Dashboard'}:setCurrentSpace(true):setScreens(mainScreenName)
 
 -- LAYOUTS
 -------------------------------------------------------------------------------
@@ -202,75 +203,112 @@ function export.workMax()
   grid.setFilteredWindowsToCell(w_videos, areas.custom.center)
 end
 
-function export.twitchSplit()
+function export.twitchBrowse(inverted)
   -- Hidden
-  grid.setFilteredWindowsToCell(w_obs, areas.twitch.hiddenFull)
+  grid.setFilteredWindowsToCell(w_twitch, areas.twitch.hiddenLeft)
+  grid.setFilteredWindowsToCell(w_obs, areas.twitch.hiddenBottom)
   
-  --MAIN
-  grid.setFilteredWindowsToCell(w_browsers, areas.twitch.mainMain)
-  grid.setFilteredWindowsToCell(w_editors, areas.twitch.mainMain)
-  grid.setFilteredWindowsToCell(w_figma, areas.twitch.mainMain)
+  if (inverted) then
+    --Left
+    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.leftSecondaryMini)
+    grid.setFilteredWindowsToCell(w_notes, areas.twitch.leftSecondaryMini)
+    grid.setFilteredWindowsToCell(w_todos, areas.twitch.leftSecondaryMini)
+    grid.setFilteredWindowsToCell(w_chats, areas.twitch.leftSecondaryMini)
+    
+    --Right
+    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.rightMainBig)
+    grid.setFilteredWindowsToCell(w_editors, areas.twitch.rightMainBig)
+    grid.setFilteredWindowsToCell(w_figma, areas.twitch.rightMainBig)
+  else
+    --Left
+    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.leftMainBig)
+    grid.setFilteredWindowsToCell(w_editors, areas.twitch.leftMainBig)
+    grid.setFilteredWindowsToCell(w_figma, areas.twitch.leftMainBig)
+    
+    --Right
+    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.rightSecondaryMini)
+    grid.setFilteredWindowsToCell(w_notes, areas.twitch.rightSecondaryMini)
+    grid.setFilteredWindowsToCell(w_todos, areas.twitch.rightSecondaryMini)
+    grid.setFilteredWindowsToCell(w_chats, areas.twitch.rightSecondaryMini)
+  end
   
-  
-  grid.setFilteredWindowsToCell(w_terminals, areas.twitch.mainSecondary)
-  grid.setFilteredWindowsToCell(w_notes, areas.twitch.mainSecondary)
-  grid.setFilteredWindowsToCell(w_todos, areas.twitch.mainSecondary)
-  grid.setFilteredWindowsToCell(w_chats, areas.twitch.mainSecondary)
 end
 
-function export.twitchVerticalSplit()
+function export.twitchCode(inverted)
   -- Hidden
-  grid.setFilteredWindowsToCell(w_obs, areas.twitch.hiddenFull)
+  grid.setFilteredWindowsToCell(w_twitch, areas.twitch.hiddenLeft)
+  grid.setFilteredWindowsToCell(w_obs, areas.twitch.hiddenBottom)
   
-  --MAIN
-  grid.setFilteredWindowsToCell(w_browsers, areas.twitch.mainvMain)
-  grid.setFilteredWindowsToCell(w_editors, areas.twitch.mainvMain)
-  grid.setFilteredWindowsToCell(w_figma, areas.twitch.mainvMain)
-  grid.setFilteredWindowsToCell(w_notes, areas.twitch.mainvMain)
-  grid.setFilteredWindowsToCell(w_todos, areas.twitch.mainvMain)
-  grid.setFilteredWindowsToCell(w_chats, areas.twitch.mainvMain)
-  
-  -- SECONDARY
-  grid.setFilteredWindowsToCell(w_terminals, areas.twitch.mainvSecondary)
-end
-
-function export.twitchEvenSplit(inverted)
-  if(inverted == true) then
-    -- LEFT
-    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.mainLeft)
-    grid.setFilteredWindowsToCell(w_todos, areas.twitch.mainLeft)
-    grid.setFilteredWindowsToCell(w_chats, areas.twitch.mainLeft)
-    -- RIGHT
-    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.mainRight)
-    grid.setFilteredWindowsToCell(w_notes, areas.twitch.mainRight)
-    grid.setFilteredWindowsToCell(w_figma, areas.twitch.mainRight)
-    grid.setFilteredWindowsToCell(w_editors, areas.twitch.mainRight)
-  else 
-    -- LEFT
-    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.mainLeft)
-    grid.setFilteredWindowsToCell(w_notes, areas.twitch.mainLeft)
-    grid.setFilteredWindowsToCell(w_figma, areas.twitch.mainLeft)
-    grid.setFilteredWindowsToCell(w_editors, areas.twitch.mainLeft)
-    -- RIGHT
-    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.mainRight)
-    grid.setFilteredWindowsToCell(w_todos, areas.twitch.mainRight)
-    grid.setFilteredWindowsToCell(w_chats, areas.twitch.mainRight)
+  if (inverted) then
+    --Left
+    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.leftSecondary)
+    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.leftSecondary)
+    
+    --Right
+    grid.setFilteredWindowsToCell(w_editors, areas.twitch.rightMain)
+    grid.setFilteredWindowsToCell(w_figma, areas.twitch.rightMain)
+    grid.setFilteredWindowsToCell(w_notes, areas.twitch.rightMain)
+    grid.setFilteredWindowsToCell(w_todos, areas.twitch.rightMain)
+    grid.setFilteredWindowsToCell(w_chats, areas.twitch.rightMain)
+  else
+    --Left
+    grid.setFilteredWindowsToCell(w_editors, areas.twitch.leftMain)
+    grid.setFilteredWindowsToCell(w_figma, areas.twitch.leftMain)
+    grid.setFilteredWindowsToCell(w_notes, areas.twitch.leftMain)
+    grid.setFilteredWindowsToCell(w_todos, areas.twitch.leftMain)
+    grid.setFilteredWindowsToCell(w_chats, areas.twitch.leftMain)
+    
+    --Right
+    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.rightSecondary)
+    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.rightSecondary)
   end
 end
 
+function export.twitchSplitEven(inverted)
+  -- Hidden
+  grid.setFilteredWindowsToCell(w_twitch, areas.twitch.hiddenLeft)
+  grid.setFilteredWindowsToCell(w_obs, areas.twitch.hiddenBottom)
+  
+  if (inverted) then
+    --LEFT
+    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.evenLeft)
+    grid.setFilteredWindowsToCell(w_notes, areas.twitch.evenLeft)
+    grid.setFilteredWindowsToCell(w_todos, areas.twitch.evenLeft)
+    grid.setFilteredWindowsToCell(w_chats, areas.twitch.evenLeft)
+    grid.setFilteredWindowsToCell(w_editors, areas.twitch.evenLeft)
+    grid.setFilteredWindowsToCell(w_figma, areas.twitch.evenLeft)
+    
+    --RIGHT
+    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.evenRight)
+  else
+    --LEFT
+    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.evenLeft)
+    
+    --RIGHT
+    grid.setFilteredWindowsToCell(w_figma, areas.twitch.evenRight)
+    grid.setFilteredWindowsToCell(w_editors, areas.twitch.evenRight)
+    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.evenRight)
+    grid.setFilteredWindowsToCell(w_notes, areas.twitch.evenRight)
+    grid.setFilteredWindowsToCell(w_todos, areas.twitch.evenRight)
+    grid.setFilteredWindowsToCell(w_chats, areas.twitch.evenRight)
+  end
+end
+
+
 function export.twitchMax()
   -- Hidden
-  grid.setFilteredWindowsToCell(w_obs, areas.twitch.hiddenFull)
+  grid.setFilteredWindowsToCell(w_twitch, areas.twitch.hiddenLeft)
+  grid.setFilteredWindowsToCell(w_obs, areas.twitch.hiddenBottom)
   
-  grid.setFilteredWindowsToCell(w_editors, areas.twitch.mainFull)
-  grid.setFilteredWindowsToCell(w_figma, areas.twitch.mainFull)
-  grid.setFilteredWindowsToCell(w_browsers, areas.twitch.mainFull)
+  grid.setFilteredWindowsToCell(w_editors, areas.twitch.maximize)
+  grid.setFilteredWindowsToCell(w_figma, areas.twitch.maximize)
+  grid.setFilteredWindowsToCell(w_browsers, areas.twitch.maximize)
   
-  grid.setFilteredWindowsToCell(w_terminals, areas.twitch.mainCenter)
-  grid.setFilteredWindowsToCell(w_notes, areas.twitch.mainCenter)
-  grid.setFilteredWindowsToCell(w_todos, areas.twitch.mainCenter)
-  grid.setFilteredWindowsToCell(w_chats, areas.twitch.mainCenter)
-  grid.setFilteredWindowsToCell(w_videos, areas.twitch.mainCenter)
+  grid.setFilteredWindowsToCell(w_terminals, areas.twitch.center)
+  grid.setFilteredWindowsToCell(w_notes, areas.twitch.center)
+  grid.setFilteredWindowsToCell(w_todos, areas.twitch.center)
+  grid.setFilteredWindowsToCell(w_chats, areas.twitch.center)
+  grid.setFilteredWindowsToCell(w_videos, areas.twitch.center)
 end 
 
 return export
