@@ -91,6 +91,10 @@ local areas = {
 
 -- FUNCTIONS
 -----------------------------------------------------------------------------
+function setNoMargins()
+  hsGrid.setMargins('0x0')
+end
+
 function setDefaultMargins()
   hsGrid.setMargins(defaultMargins)
 end
@@ -134,6 +138,7 @@ end
 local export = {
   hsGrid = hsGrid,
   areas = areas,
+  setNoMargins = setNoMargins,
   setDefaultMargins = setDefaultMargins,
   setLargeMargins = setLargeMargins,
   toggleLargeMargins = toggleLargeMargins,

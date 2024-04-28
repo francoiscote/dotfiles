@@ -243,12 +243,14 @@ hs.hotkey.bind(hyperShift, "9", function()
 end)
 
 hs.hotkey.bind(hyper, "0", function()
+  grid.setNoMargins()
   local win = hs.window.focusedWindow()
   if (twitchMode == true) then
     grid.setFocusedWindowToCell(areas.twitch.maximize)
   else
     grid.setFocusedWindowToCell(areas.custom.maximize)
   end
+  grid.setDefaultMargins()
 end)
 
 hs.hotkey.bind(hyperShift, "0", function()
