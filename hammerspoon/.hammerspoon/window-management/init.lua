@@ -2,6 +2,8 @@ grid = require("window-management/grid")
 layouts = require("window-management/layouts")
 helpers = require("window-management/helpers")
 
+log = hs.logger.new('WM', 'debug')
+
 -- SETTINGS
 -------------------------------------------------------------------------------
 hs.window.animationDuration = 0
@@ -9,8 +11,8 @@ hs.window.setShadows(false)
 
 -- MAPPINGS
 -------------------------------------------------------------------------------
-local hyper = {"cmd", "alt", "ctrl"}
-local hyperShift = {"cmd", "alt", "ctrl", "shift"}
+local hyper = { "cmd", "alt", "ctrl" }
+local hyperShift = { "cmd", "alt", "ctrl", "shift" }
 local areas = grid.areas
 local twitchMode = false;
 
@@ -37,28 +39,28 @@ end)
 hs.hotkey.bind(hyper, "w", function()
   if (twitchMode == true) then
     layouts.twitchCode()
-  else 
+  else
     layouts.workCode()
   end
 end)
 hs.hotkey.bind(hyperShift, "w", function()
   if (twitchMode == true) then
     layouts.twitchCode(true)
-  else 
+  else
     layouts.workCode(true)
   end
 end)
 
 hs.hotkey.bind(hyper, "e", function()
   if (twitchMode == true) then
-    layouts.twitchSplitEven()
+    layouts.twitchCodeSmall()
   else
     layouts.workEven()
   end
 end)
 hs.hotkey.bind(hyperShift, "e", function()
   if (twitchMode == true) then
-    layouts.twitchSplitEven(true)
+    layouts.twitchCodeSmall(true)
   else
     layouts.workEven(true) -- with focus on Notes
   end
@@ -84,19 +86,19 @@ TwitchMenuBar = hs.menubar.new()
 function setTwitchMode(state)
   if state then
     twitchMode = true;
-    TwitchMenuBar:setTitle(hs.styledtext.new("TWITCH", { backgroundColor = { red = 1, blue = 0, green = 0 }, color = { red = 1, blue = 1, green = 1 }}))
+    TwitchMenuBar:setTitle(hs.styledtext.new("TWITCH",
+      { backgroundColor = { red = 1, blue = 0, green = 0 }, color = { red = 1, blue = 1, green = 1 } }))
   else
     twitchMode = false;
     TwitchMenuBar:setTitle();
   end
 end
 
-
-hs.hotkey.bind(hyper, "t", function()
+hs.hotkey.bind(hyperShift, "t", function()
   if (twitchMode == true) then
     setTwitchMode(false);
     hyper.triggered = true
-  else 
+  else
     setTwitchMode(true);
     hyper.triggered = true
   end
@@ -141,7 +143,7 @@ end)
 hs.hotkey.bind(hyper, "3", function()
   if (twitchMode == true) then
     grid.setFocusedWindowToCell(areas.twitch.leftMainBig)
-  else 
+  else
     grid.setFocusedWindowToCell(areas.custom.largeLeft)
   end
 end)
@@ -149,7 +151,7 @@ hs.hotkey.bind(hyperShift, "3", function()
   grid.setLargeMargins()
   if (twitchMode == true) then
     grid.setFocusedWindowToCell(areas.twitch.leftMainBig)
-  else 
+  else
     grid.setFocusedWindowToCell(areas.custom.largeLeft)
   end
   grid.setDefaultMargins()
@@ -159,19 +161,18 @@ end)
 hs.hotkey.bind(hyper, "4", function()
   if (twitchMode == true) then
     grid.setFocusedWindowToCell(areas.twitch.finder)
-  else 
+  else
     grid.setFocusedWindowToCell(areas.custom.finder)
-  end 
-
+  end
 end)
 hs.hotkey.bind(hyperShift, "4", function()
-    
+
 end)
 
 hs.hotkey.bind(hyper, "5", function()
   if (twitchMode == true) then
     grid.setFocusedWindowToCell(areas.twitch.center)
-  else 
+  else
     grid.setFocusedWindowToCell(areas.custom.center)
   end
 end)
@@ -228,7 +229,7 @@ end)
 hs.hotkey.bind(hyper, "9", function()
   if (twitchMode == true) then
     grid.setFocusedWindowToCell(areas.twitch.rightSecondaryMini)
-  else 
+  else
     grid.setFocusedWindowToCell(areas.custom.smallRight)
   end
 end)
@@ -236,7 +237,7 @@ hs.hotkey.bind(hyperShift, "9", function()
   grid.setLargeMargins()
   if (twitchMode == true) then
     grid.setFocusedWindowToCell(areas.twitch.rightSecondaryMini)
-  else 
+  else
     grid.setFocusedWindowToCell(areas.custom.smallRight)
   end
   grid.setDefaultMargins()
@@ -254,7 +255,7 @@ hs.hotkey.bind(hyper, "0", function()
 end)
 
 hs.hotkey.bind(hyperShift, "0", function()
-  
+
 end)
 
 -- Focus Mode
@@ -270,7 +271,8 @@ focusedMenuBar = hs.menubar.new()
 function setFocusMode(state)
   if state then
     focusMode = true;
-    focusedMenuBar:setTitle(hs.styledtext.new("FOCUSED", { backgroundColor = { red = 1, blue = 0, green = 0 }, color = { red = 1, blue = 1, green = 1 }}))
+    focusedMenuBar:setTitle(hs.styledtext.new("FOCUSED",
+      { backgroundColor = { red = 0, blue = 0, green = 0.7 }, color = { red = 1, blue = 1, green = 1 } }))
     -- focusedMenuBar:setTitle("FOCUSED");
   else
     focusMode = false;
@@ -278,47 +280,57 @@ function setFocusMode(state)
   end
 end
 
-
 hs.hotkey.bind(hyper, "a", function()
+  local focusedWindow = hs.window.focusedWindow()
+  local focusedApp = focusedWindow:application()
+
   if (focusMode == true) then
     -- Restore Window's position
     focusedWindow:setFrame(savedFrame)
-    
+
     -- Show All Windows
     focusedWindow:application():selectMenuItem("Show All");
-    
+
     setFocusMode(false);
     hyper.triggered = true
-  else 
+  else
     -- Save focused window and its position
-    focusedWindow = hs.window.focusedWindow()
     savedFrame = focusedWindow:frame()
 
     -- Center Window
     -- Different layouts for different apps
     if (focusedWindow:application():name() == "Google Chrome") then
       if (twitchMode == true) then
-        grid.setFocusedWindowToCell(areas.twitch.browser);
-      else 
+        grid.setFocusedWindowToCell(areas.twitch.center);
+      else
         grid.setFocusedWindowToCell(areas.custom.browser);
       end
-      elseif (focusedWindow:application():name() == "Things") or (focusedWindow:application():name() == "Obsidian") then
-        if (twitchMode == true) then
-          grid.setFocusedWindowToCell(areas.twitch.finder);
-        else 
-          grid.setFocusedWindowToCell(areas.custom.finder);
-        end
-    else 
-        if (twitchMode == true) then
-          grid.setFocusedWindowToCell(areas.twitch.center);
-        else 
-          grid.setFocusedWindowToCell(areas.custom.center);
-        end
+    elseif (focusedWindow:application():name() == "Things") or (focusedWindow:application():name() == "Obsidian") then
+      if (twitchMode == true) then
+        grid.setFocusedWindowToCell(areas.twitch.center);
+      else
+        grid.setFocusedWindowToCell(areas.custom.finder);
+      end
+    else
+      if (twitchMode == true) then
+        grid.setFocusedWindowToCell(areas.twitch.center);
+      else
+        grid.setFocusedWindowToCell(areas.custom.center);
+      end
     end
-    
-    -- Hide all other windows
-    local activeApp = hs.application.frontmostApplication();
-    activeApp:selectMenuItem("Hide Others");
+
+    -- Hide all other apps.
+    local allWindows = hs.window.filter.new():setCurrentSpace(true):getWindows()
+    for i, w in pairs(allWindows) do
+      local winApp = w:application()
+      if (winApp ~= focusedApp) then
+        log.d("Maybe Hiding: ", winApp:name())
+        if (winApp:name() ~= "OBS Studio" and winApp:name() ~= "Twitch Dashboard") then
+          log.d("Really Hiding: ", winApp:name())
+          winApp:hide()
+        end
+      end
+    end
 
     setFocusMode(true);
     hyper.triggered = true
@@ -330,9 +342,9 @@ end)
 -------------------------------------------------------------------------------
 -- C - Center
 hs.hotkey.bind(hyper, "c", function()
-    local win = hs.window.focusedWindow()
-    win:centerOnScreen(nil, true)
-    hyper.triggered = true
+  local win = hs.window.focusedWindow()
+  win:centerOnScreen(nil, true)
+  hyper.triggered = true
 end)
 
 
@@ -340,8 +352,8 @@ end)
 hs.hotkey.bind(hyper, "-", function()
 end)
 
--- Hyper+equal - Send window to next screen. 
--- If sending to 4k screen, center the window in it. 
+-- Hyper+equal - Send window to next screen.
+-- If sending to 4k screen, center the window in it.
 -- If sending to the laptop screen, maximize it.
 hs.hotkey.bind(hyper, "=", function()
   -- Get the focused window, its window frame dimensions, its screen frame dimensions,
