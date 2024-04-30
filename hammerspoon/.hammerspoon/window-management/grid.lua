@@ -28,13 +28,13 @@ local areas = {
     secondaryTop = '0,0 4x4.3',
     secondaryBottom = '0,4.3 4x7.7',
     main = '4,0 8x12',
-  }, 
+  },
   smallSplitInverted = {
     secondaryFull = '8,0 4x12',
     secondaryTop = '8,0 4x4.3',
     secondaryBottom = '8,4.3 4x7.7',
     main = '0,0 8x12',
-  }, 
+  },
   mediumSplit = {
     secondaryFull = '0,0 5x12',
     secondaryTop = '0,0 5x5.35',
@@ -83,9 +83,9 @@ local areas = {
     evenRight = '7.5,0 4.5x9',
     maximize = '3,0 9x9',
     finder = '5.5,2 4x5',
-    center = '4.5,1 6x7',
+    center = '4,0.5 7x8',
     browser = '4.5,0 6x9',
-  }, 
+  },
 }
 
 
@@ -103,8 +103,8 @@ function setLargeMargins()
   hsGrid.setMargins(largeMargins)
 end
 
-marginsMenuBar = hs.menubar.new()
-function toggleLargeMargins() 
+local marginsMenuBar = hs.menubar.new()
+function toggleLargeMargins()
   if isLargeMargins then
     isLargeMargins = false;
     hsGrid.setMargins(defaultMargins)
@@ -112,12 +112,13 @@ function toggleLargeMargins()
   else
     isLargeMargins = true;
     hsGrid.setMargins(largeMargins)
-    marginsMenuBar:setTitle(hs.styledtext.new("LARGE", { backgroundColor = { red = 0.1, blue = 0, green = 0.7 }, color = { red = 1, blue = 1, green = 1 }}))
+    marginsMenuBar:setTitle(hs.styledtext.new("LARGE",
+      { backgroundColor = { red = 0.1, blue = 0, green = 0.7 }, color = { red = 1, blue = 1, green = 1 } }))
   end
 end
 
 function setWindowsToCell(windows, cell)
-  for i,w in pairs(windows) do
+  for i, w in pairs(windows) do
     patchedGridSet(w, cell)
   end
 end
