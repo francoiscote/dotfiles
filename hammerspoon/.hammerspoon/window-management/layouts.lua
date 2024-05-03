@@ -282,15 +282,15 @@ function export.twitchCodeSmall(inverted)
     grid.setFilteredWindowsToCell(w_chats, areas.twitch.rightMainBig)
   else
     --LEFT
-    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.leftSecondary)
-    grid.setFilteredWindowsToCell(w_notes, areas.twitch.leftSecondary)
-    grid.setFilteredWindowsToCell(w_todos, areas.twitch.leftSecondary)
-    grid.setFilteredWindowsToCell(w_chats, areas.twitch.leftSecondary)
-    grid.setFilteredWindowsToCell(w_editors, areas.twitch.leftSecondary)
+    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.leftSecondaryMini)
+    grid.setFilteredWindowsToCell(w_notes, areas.twitch.leftSecondaryMini)
+    grid.setFilteredWindowsToCell(w_todos, areas.twitch.leftSecondaryMini)
+    grid.setFilteredWindowsToCell(w_chats, areas.twitch.leftSecondaryMini)
+    grid.setFilteredWindowsToCell(w_editors, areas.twitch.leftSecondaryMini)
 
     --RIGHT
-    grid.setFilteredWindowsToCell(w_figma, areas.twitch.leftSecondary)
-    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.leftSecondary)
+    grid.setFilteredWindowsToCell(w_figma, areas.twitch.rightMainBig)
+    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.rightMainBig)
   end
 end
 
