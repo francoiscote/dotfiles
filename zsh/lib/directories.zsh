@@ -31,8 +31,8 @@ alias rd=rmdir
 alias d='dirs -v | head -10'
 
 # List directory contents
-EXA_ICON_SPACING=2
-alias l='exa -l --icons'
-alias ll='exa -l -a -g --git --icons'
-alias lt='exa -T --icons'
-alias llt='exa -T -a --icons'
+EZA_ICON_SPACING=2
+alias l='eza -l --icons'
+alias ll='eza -l -a -g --git --icons'
+alias lt='eza -T --icons'
+alias llt='eza -T -a --icons'
