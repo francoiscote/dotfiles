@@ -324,9 +324,7 @@ hs.hotkey.bind(hyper, "a", function()
     for i, w in pairs(allWindows) do
       local winApp = w:application()
       if (winApp ~= focusedApp) then
-        log.d("Maybe Hiding: ", winApp:name())
         if (winApp:name() ~= "OBS Studio" and winApp:name() ~= "Twitch Dashboard") then
-          log.d("Really Hiding: ", winApp:name())
           winApp:hide()
         end
       end
@@ -367,11 +365,11 @@ hs.hotkey.bind(hyper, "=", function()
 
   focusedWindow:moveToScreen(nextScreen)
 
-  -- if string.find(nextScreen:name(), "BenQ") then
-  --   grid.setFocusedWindowToCell(areas.custom.center)
-  -- else
-  --   focusedWindow:maximize()
-  -- end
+  if string.find(nextScreen:name(), "BenQ") then
+    grid.setFocusedWindowToCell(areas.custom.center)
+  else
+    focusedWindow:maximize()
+  end
 end)
 
 -- HyperShift+[left, right] - Send and follow window to next/previous space

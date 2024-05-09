@@ -10,25 +10,25 @@ local hsGrid = grid.hsGrid
 local wf = hs.window.filter
 local mainScreenName = hs.screen.mainScreen():name()
 -- Single Apps
-w_arc = wf.new { 'Arc' }:setCurrentSpace(true)
-w_chrome = wf.new { 'Google Chrome' }:setCurrentSpace(true)
-w_firefox = wf.new { 'Firefox Developer Edition' }:setCurrentSpace(true)
-w_obs = wf.new { 'OBS' }:setCurrentSpace(true)
-w_figma = wf.new { 'Figma' }:setCurrentSpace(true)
+local w_arc = wf.new { 'Arc' }:setCurrentSpace(true)
+local w_chrome = wf.new { 'Google Chrome' }:setCurrentSpace(true)
+local w_firefox = wf.new { 'Firefox Developer Edition' }:setCurrentSpace(true)
+local w_obs = wf.new { 'OBS' }:setCurrentSpace(true)
+local w_figma = wf.new { 'Figma' }:setCurrentSpace(true)
 
 -- Groups of Apps
-w_browsers = wf.new { ['Arc'] = true, ['Safari'] = true, ['Firefox Developer Edition'] = true, ['Google Chrome'] = { rejectTitles = 'Picture in Picture' } }
+local w_browsers = wf.new { ['Arc'] = true, ['Safari'] = true, ['Firefox Developer Edition'] = true, ['Google Chrome'] = { rejectTitles = 'Picture in Picture' } }
     :setCurrentSpace(true):setScreens(mainScreenName)
-w_editors = wf.new { 'Code' }:setCurrentSpace(true):setScreens(mainScreenName)
-w_terminals = wf.new { 'iTerm2', 'Alacritty' }:setCurrentSpace(true):setScreens(mainScreenName)
-w_videos = wf.new { ['YouTube'] = true, ['Twitch'] = true, ['Google Meet'] = true, ['zoom.us'] = true, ['VLC'] = true, ['Google Chrome'] = { allowTitles = 'Picture in Picture' }, ['Arc'] = { allowRoles = 'AXSystemDialog' }, ['Slack'] = { allowTitles = '(.*)Huddle$' }, ['Oryx'] = true }
+local w_editors = wf.new { 'Code' }:setCurrentSpace(true):setScreens(mainScreenName)
+local w_terminals = wf.new { 'iTerm2', 'kitty' }:setCurrentSpace(true):setScreens(mainScreenName)
+local w_videos = wf.new { ['YouTube'] = true, ['Twitch'] = true, ['Google Meet'] = true, ['zoom.us'] = true, ['VLC'] = true, ['Google Chrome'] = { allowTitles = 'Picture in Picture' }, ['Arc'] = { allowRoles = 'AXSystemDialog' }, ['Slack'] = { allowTitles = '(.*)Huddle$' }, ['Oryx'] = true }
     :setCurrentSpace(true):setScreens(mainScreenName)
-w_notes = wf.new { 'Notion', 'Obsidian', 'Bear' }:setCurrentSpace(true):setScreens(mainScreenName)
-w_todos = wf.new { 'Todoist', 'Things' }:setCurrentSpace(true):setScreens(mainScreenName)
-w_chats = wf.new { 'Slack', 'WhatsApp', 'Discord', 'Messages', 'Messenger' }:setCurrentSpace(true):setScreens(
+local w_notes = wf.new { 'Notion', 'Obsidian', 'Bear' }:setCurrentSpace(true):setScreens(mainScreenName)
+local w_todos = wf.new { 'Todoist', 'Things' }:setCurrentSpace(true):setScreens(mainScreenName)
+local w_chats = wf.new { 'Slack', 'WhatsApp', 'Discord', 'Messages', 'Messenger' }:setCurrentSpace(true):setScreens(
   mainScreenName)
-w_obs = wf.new { 'OBS Studio' }:setCurrentSpace(true):setScreens(mainScreenName)
-w_twitch = wf.new { 'Twitch Dashboard' }:setCurrentSpace(true):setScreens(mainScreenName)
+local w_obs = wf.new { 'OBS Studio' }:setCurrentSpace(true):setScreens(mainScreenName)
+local w_twitch = wf.new { 'Twitch Dashboard' }:setCurrentSpace(true):setScreens(mainScreenName)
 
 -- LAYOUTS
 -------------------------------------------------------------------------------
