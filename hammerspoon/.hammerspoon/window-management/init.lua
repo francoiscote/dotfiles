@@ -16,6 +16,12 @@ local hyperShift = { "cmd", "alt", "ctrl", "shift" }
 local areas = grid.areas
 local twitchMode = false;
 
+-- Patch some hs.window functions for the bug with Chrome Windows
+-- https://github.com/Hammerspoon/hammerspoon/issues/3224
+local hsWindow = hs.getObjectMetatable("hs.window")
+hsWindow.maximize = helpers.withAxHotfix(hsWindow.maximize)
+hsWindow.centerOnScreen = helpers.withAxHotfix(hsWindow.centerOnScreen)
+
 -- Margins
 hs.hotkey.bind(hyper, "x", grid.toggleLargeMargins)
 --hs.hotkey.bind(hyperShift, "x", layouts.workBrowse)
@@ -75,7 +81,6 @@ hs.hotkey.bind(hyper, "r", function()
 end)
 
 hs.hotkey.bind(hyperShift, "r", function()
-  layouts.stream()
 end)
 
 -- Twitch Mode
@@ -244,14 +249,11 @@ hs.hotkey.bind(hyperShift, "9", function()
 end)
 
 hs.hotkey.bind(hyper, "0", function()
-  grid.setNoMargins()
-  local win = hs.window.focusedWindow()
   if (twitchMode == true) then
     grid.setFocusedWindowToCell(areas.twitch.maximize)
   else
-    grid.setFocusedWindowToCell(areas.custom.maximize)
+    hsWindow.maximize(hs.window.focusedWindow())
   end
-  grid.setDefaultMargins()
 end)
 
 hs.hotkey.bind(hyperShift, "0", function()
@@ -363,6 +365,7 @@ hs.hotkey.bind(hyper, "=", function()
     return
   end
 
+  local revert = axHotfix(focusedWindow)
   focusedWindow:moveToScreen(nextScreen)
 
   if string.find(nextScreen:name(), "BenQ") then
@@ -370,6 +373,7 @@ hs.hotkey.bind(hyper, "=", function()
   else
     focusedWindow:maximize()
   end
+  revert()
 end)
 
 -- HyperShift+[left, right] - Send and follow window to next/previous space

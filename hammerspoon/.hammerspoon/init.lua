@@ -11,9 +11,6 @@ Log = hs.logger.new('WM', 'debug')
 -- Tools
 -------------------------------------------------------------------------------
 
--- CONFIG AUTO RELOAD
-local configWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", hs.reload):start()
-
 -- Hyper+Z - Shortcut to reload config
 hs.hotkey.bind(hyper, "z", hs.reload)
 

@@ -21,7 +21,7 @@ local w_browsers = wf.new { ['Arc'] = true, ['Safari'] = true, ['Firefox Develop
     :setCurrentSpace(true):setScreens(mainScreenName)
 local w_editors = wf.new { 'Code' }:setCurrentSpace(true):setScreens(mainScreenName)
 local w_terminals = wf.new { 'iTerm2', 'kitty' }:setCurrentSpace(true):setScreens(mainScreenName)
-local w_videos = wf.new { ['YouTube'] = true, ['Twitch'] = true, ['Google Meet'] = true, ['zoom.us'] = true, ['VLC'] = true, ['Google Chrome'] = { allowTitles = 'Picture in Picture' }, ['Arc'] = { allowRoles = 'AXSystemDialog' }, ['Slack'] = { allowTitles = '(.*)Huddle$' }, ['Oryx'] = true }
+local w_videos = wf.new { ['YouTube'] = true, ['Twitch'] = true, ['Google Meet'] = true, ['zoom.us'] = true, ['VLC'] = true, ['Google Chrome'] = { allowTitles = 'Picture in Picture' }, ['OBS Studio'] = { allowTitles = '(.*)Windowed Projector(.*)' }, ['Arc'] = { allowRoles = 'AXSystemDialog' }, ['Slack'] = { allowTitles = '(.*)Huddle$' }, ['Oryx'] = true }
     :setCurrentSpace(true):setScreens(mainScreenName)
 local w_notes = wf.new { 'Notion', 'Obsidian', 'Bear' }:setCurrentSpace(true):setScreens(mainScreenName)
 local w_todos = wf.new { 'Todoist', 'Things' }:setCurrentSpace(true):setScreens(mainScreenName)
@@ -206,10 +206,20 @@ function export.workMax()
   grid.setFilteredWindowsToCell(w_videos, areas.custom.center)
 end
 
+local function twitchHiddenWindows()
+  grid.setFilteredWindowsToCell(w_obs, areas.twitch.hiddenBottom)
+
+  if #w_videos:getWindows() > 0 then
+    grid.setFilteredWindowsToCell(w_videos, areas.twitch.hiddenLeftTop)
+    grid.setFilteredWindowsToCell(w_twitch, areas.twitch.hiddenLeftBottom)
+  else
+    grid.setFilteredWindowsToCell(w_twitch, areas.twitch.hiddenLeft)
+  end
+end
+
 function export.twitchBrowse(inverted)
   -- Hidden
-  grid.setFilteredWindowsToCell(w_twitch, areas.twitch.hiddenLeft)
-  grid.setFilteredWindowsToCell(w_obs, areas.twitch.hiddenBottom)
+  twitchHiddenWindows()
 
   if (inverted) then
     --Left
@@ -238,8 +248,8 @@ end
 
 function export.twitchCode(inverted)
   -- Hidden
-  grid.setFilteredWindowsToCell(w_twitch, areas.twitch.hiddenLeft)
-  grid.setFilteredWindowsToCell(w_obs, areas.twitch.hiddenBottom)
+  twitchHiddenWindows()
+
   if (inverted) then
     --Left
     grid.setFilteredWindowsToCell(w_browsers, areas.twitch.leftSecondary)
@@ -267,19 +277,19 @@ end
 
 function export.twitchCodeSmall(inverted)
   -- Hidden
-  grid.setFilteredWindowsToCell(w_twitch, areas.twitch.hiddenLeft)
-  grid.setFilteredWindowsToCell(w_obs, areas.twitch.hiddenBottom)
+  twitchHiddenWindows()
+
   if (inverted) then
     --LEFT
-    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.evenLeft)
+    grid.setFilteredWindowsToCell(w_figma, areas.twitch.leftMainBig)
+    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.leftMainBig)
 
     --RIGHT
-    grid.setFilteredWindowsToCell(w_figma, areas.twitch.rightMainBig)
-    grid.setFilteredWindowsToCell(w_editors, areas.twitch.rightMainBig)
-    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.rightMainBig)
-    grid.setFilteredWindowsToCell(w_notes, areas.twitch.rightMainBig)
-    grid.setFilteredWindowsToCell(w_todos, areas.twitch.rightMainBig)
-    grid.setFilteredWindowsToCell(w_chats, areas.twitch.rightMainBig)
+    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.rightSecondaryMini)
+    grid.setFilteredWindowsToCell(w_notes, areas.twitch.rightSecondaryMini)
+    grid.setFilteredWindowsToCell(w_todos, areas.twitch.rightSecondaryMini)
+    grid.setFilteredWindowsToCell(w_chats, areas.twitch.rightSecondaryMini)
+    grid.setFilteredWindowsToCell(w_editors, areas.twitch.rightSecondaryMini)
   else
     --LEFT
     grid.setFilteredWindowsToCell(w_terminals, areas.twitch.leftSecondaryMini)
@@ -296,8 +306,7 @@ end
 
 function export.twitchMax()
   -- Hidden
-  grid.setFilteredWindowsToCell(w_twitch, areas.twitch.hiddenLeft)
-  grid.setFilteredWindowsToCell(w_obs, areas.twitch.hiddenBottom)
+  twitchHiddenWindows()
 
   grid.setFilteredWindowsToCell(w_editors, areas.twitch.maximize)
   grid.setFilteredWindowsToCell(w_figma, areas.twitch.maximize)
@@ -307,7 +316,6 @@ function export.twitchMax()
   grid.setFilteredWindowsToCell(w_notes, areas.twitch.center)
   grid.setFilteredWindowsToCell(w_todos, areas.twitch.center)
   grid.setFilteredWindowsToCell(w_chats, areas.twitch.center)
-  grid.setFilteredWindowsToCell(w_videos, areas.twitch.center)
 end
 
 return export

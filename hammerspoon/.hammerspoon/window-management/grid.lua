@@ -68,8 +68,8 @@ local areas = {
   },
   twitch = {
     hiddenLeft = '0,0 3x12',
-    hiddenLeftTop = '0,0 3x6',
-    hiddenLeftBottom = '0,6 3x6',
+    hiddenLeftTop = '0,0 3x3.3',
+    hiddenLeftBottom = '0,3.3 3x8.7',
     hiddenBottom = '3,9 9x3',
     leftSecondaryMini = '3,0 3x9',
     leftSecondary = '3,0 4x9',
