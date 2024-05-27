@@ -16,7 +16,7 @@ local charToApps = {
   { 'j', 'Google Chrome' },
   { 'j', 'Firefox Developer Edition', 'shift' },
   { 'k', 'Visual Studio Code' },
-  { 'l', 'kitty' },
+  { 'l', 'iTerm' },
   { ';', 'Figma' },
 
   -- Bottom Row: Email, Calendar and ToDos
@@ -24,7 +24,7 @@ local charToApps = {
   { 'b', 'zoom.us',                   'shift' },
   { 'n', 'Obsidian' },
   { 'n', 'Notion',                    'shift' },
-  { 'm', 'Mail' },
+  { 'm', 'Gmail' },
   { ',', 'Fantastical' },
   { '.', 'Finder' },
 }
