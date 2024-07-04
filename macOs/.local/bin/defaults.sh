@@ -107,6 +107,9 @@ defaults write com.apple.dock mru-spaces -bool false
 # TODO: Dock don't show recent apps
 # TODO: Dock size and magnification
 
+# Show app switcher on all displays
+defaults write com.apple.dock appswitcher-all-displays -bool true
+
 ###############################################################################
 # Time Machine                                                                #
 ###############################################################################
