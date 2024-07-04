@@ -41,9 +41,9 @@ workBrowse:
 function export.workBrowse(inverted)
   local layout
   if inverted then
-    layout = areas.smallSplitInverted
-  else
     layout = areas.smallSplit
+  else
+    layout = areas.smallSplitInverted
   end
 
   --MAIN
@@ -77,9 +77,9 @@ workCode:
 function export.workCode(inverted)
   local layout
   if inverted then
-    layout = areas.mediumSplitInverted
-  else
     layout = areas.mediumSplit
+  else
+    layout = areas.mediumSplitInverted
   end
 
   -- MAIN
@@ -210,29 +210,18 @@ local function twitchHiddenWindows()
   grid.setFilteredWindowsToCell(w_obs, areas.twitch.hiddenBottom)
 
   if #w_videos:getWindows() > 0 then
-    grid.setFilteredWindowsToCell(w_videos, areas.twitch.hiddenLeftTop)
-    grid.setFilteredWindowsToCell(w_twitch, areas.twitch.hiddenLeftBottom)
+    grid.setFilteredWindowsToCell(w_videos, areas.twitch.hiddenRightTop)
+    grid.setFilteredWindowsToCell(w_twitch, areas.twitch.hiddenRightBottom)
   else
-    grid.setFilteredWindowsToCell(w_twitch, areas.twitch.hiddenLeft)
+    grid.setFilteredWindowsToCell(w_twitch, areas.twitch.hiddenRight)
   end
 end
 
-function export.twitchBrowse(inverted)
+function export.twitchBrowseAndCode(inverted)
   -- Hidden
   twitchHiddenWindows()
 
   if (inverted) then
-    --Left
-    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.leftSecondaryMini)
-    grid.setFilteredWindowsToCell(w_notes, areas.twitch.leftSecondaryMini)
-    grid.setFilteredWindowsToCell(w_todos, areas.twitch.leftSecondaryMini)
-    grid.setFilteredWindowsToCell(w_chats, areas.twitch.leftSecondaryMini)
-
-    --Right
-    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.rightMainBig)
-    grid.setFilteredWindowsToCell(w_editors, areas.twitch.rightMainBig)
-    grid.setFilteredWindowsToCell(w_figma, areas.twitch.rightMainBig)
-  else
     --Left
     grid.setFilteredWindowsToCell(w_browsers, areas.twitch.leftMainBig)
     grid.setFilteredWindowsToCell(w_editors, areas.twitch.leftMainBig)
@@ -243,35 +232,46 @@ function export.twitchBrowse(inverted)
     grid.setFilteredWindowsToCell(w_notes, areas.twitch.rightSecondaryMini)
     grid.setFilteredWindowsToCell(w_todos, areas.twitch.rightSecondaryMini)
     grid.setFilteredWindowsToCell(w_chats, areas.twitch.rightSecondaryMini)
+  else
+    --Left
+    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.leftSecondaryMini)
+    grid.setFilteredWindowsToCell(w_notes, areas.twitch.leftSecondaryMini)
+    grid.setFilteredWindowsToCell(w_todos, areas.twitch.leftSecondaryMini)
+    grid.setFilteredWindowsToCell(w_chats, areas.twitch.leftSecondaryMini)
+
+    --Right
+    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.rightMainBig)
+    grid.setFilteredWindowsToCell(w_editors, areas.twitch.rightMainBig)
+    grid.setFilteredWindowsToCell(w_figma, areas.twitch.rightMainBig)
   end
 end
 
-function export.twitchCode(inverted)
+function export.twitchCodeEven(inverted)
   -- Hidden
   twitchHiddenWindows()
 
   if (inverted) then
-    --Left
-    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.leftSecondary)
-    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.leftSecondary)
+    --LEFT
+    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.evenLeft)
+    grid.setFilteredWindowsToCell(w_notes, areas.twitch.evenLeft)
+    grid.setFilteredWindowsToCell(w_todos, areas.twitch.evenLeft)
+    grid.setFilteredWindowsToCell(w_chats, areas.twitch.evenLeft)
+    grid.setFilteredWindowsToCell(w_editors, areas.twitch.evenLeft)
 
-    --Right
-    grid.setFilteredWindowsToCell(w_editors, areas.twitch.rightMain)
-    grid.setFilteredWindowsToCell(w_figma, areas.twitch.rightMain)
-    grid.setFilteredWindowsToCell(w_notes, areas.twitch.rightMain)
-    grid.setFilteredWindowsToCell(w_todos, areas.twitch.rightMain)
-    grid.setFilteredWindowsToCell(w_chats, areas.twitch.rightMain)
+    --RIGHT
+    grid.setFilteredWindowsToCell(w_figma, areas.twitch.evenRight)
+    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.evenRight)
   else
-    --Left
-    grid.setFilteredWindowsToCell(w_editors, areas.twitch.leftMain)
-    grid.setFilteredWindowsToCell(w_figma, areas.twitch.leftMain)
-    grid.setFilteredWindowsToCell(w_notes, areas.twitch.leftMain)
-    grid.setFilteredWindowsToCell(w_todos, areas.twitch.leftMain)
-    grid.setFilteredWindowsToCell(w_chats, areas.twitch.leftMain)
+    --LEFT
+    grid.setFilteredWindowsToCell(w_figma, areas.twitch.evenLeft)
+    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.evenLeft)
 
-    --Right
-    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.rightSecondary)
-    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.rightSecondary)
+    --RIGHT
+    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.evenRight)
+    grid.setFilteredWindowsToCell(w_notes, areas.twitch.evenRight)
+    grid.setFilteredWindowsToCell(w_todos, areas.twitch.evenRight)
+    grid.setFilteredWindowsToCell(w_chats, areas.twitch.evenRight)
+    grid.setFilteredWindowsToCell(w_editors, areas.twitch.evenRight)
   end
 end
 
@@ -280,17 +280,6 @@ function export.twitchCodeSmall(inverted)
   twitchHiddenWindows()
 
   if (inverted) then
-    --LEFT
-    grid.setFilteredWindowsToCell(w_figma, areas.twitch.leftMainBig)
-    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.leftMainBig)
-
-    --RIGHT
-    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.rightSecondaryMini)
-    grid.setFilteredWindowsToCell(w_notes, areas.twitch.rightSecondaryMini)
-    grid.setFilteredWindowsToCell(w_todos, areas.twitch.rightSecondaryMini)
-    grid.setFilteredWindowsToCell(w_chats, areas.twitch.rightSecondaryMini)
-    grid.setFilteredWindowsToCell(w_editors, areas.twitch.rightSecondaryMini)
-  else
     --LEFT
     grid.setFilteredWindowsToCell(w_terminals, areas.twitch.leftSecondaryMini)
     grid.setFilteredWindowsToCell(w_notes, areas.twitch.leftSecondaryMini)
@@ -301,6 +290,17 @@ function export.twitchCodeSmall(inverted)
     --RIGHT
     grid.setFilteredWindowsToCell(w_figma, areas.twitch.rightMainBig)
     grid.setFilteredWindowsToCell(w_browsers, areas.twitch.rightMainBig)
+  else
+    --LEFT
+    grid.setFilteredWindowsToCell(w_figma, areas.twitch.leftMainBig)
+    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.leftMainBig)
+
+    --RIGHT
+    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.rightSecondaryMini)
+    grid.setFilteredWindowsToCell(w_notes, areas.twitch.rightSecondaryMini)
+    grid.setFilteredWindowsToCell(w_todos, areas.twitch.rightSecondaryMini)
+    grid.setFilteredWindowsToCell(w_chats, areas.twitch.rightSecondaryMini)
+    grid.setFilteredWindowsToCell(w_editors, areas.twitch.rightSecondaryMini)
   end
 end
 
