@@ -5,25 +5,26 @@ local charToApps = {
   -- Top Row: IM + Spotify
   { 't', 'Toggl Track' },
   { 'u', 'Slack' },
-  { 'u', 'Discord',                   'shift' },
+  { 'u', 'Discord',                             'shift' },
   { 'i', 'Messages' },
-  { 'i', 'WhatsApp',                  'shift' },
+  { 'i', 'WhatsApp',                            'shift' },
   { 'o', 'Messenger' },
   { 'p', 'Spotify' },
 
   -- Middle Row: Main Apps
+  { 'g', 'Google Meet' },
+  { 'g', 'zoom.us',                             'shift' },
   { 'h', 'com.culturedcode.ThingsMac' },
   { 'j', 'Google Chrome' },
-  { 'j', 'Firefox Developer Edition', 'shift' },
+  { 'j', 'Firefox Developer Edition',           'shift' },
   { 'k', 'Visual Studio Code' },
   { 'l', 'iTerm' },
   { ';', 'Figma' },
 
   -- Bottom Row: Email, Calendar and ToDos
-  { 'b', 'Google Meet' },
-  { 'b', 'zoom.us',                   'shift' },
+  { 'b', 'Inoreader - Build your own newsfeed', },
   { 'n', 'Obsidian' },
-  { 'n', 'Notion',                    'shift' },
+  { 'n', 'Notion',                              'shift' },
   { 'm', 'Gmail' },
   { ',', 'Fantastical' },
   { '.', 'Finder' },
