@@ -29,14 +29,14 @@ hs.hotkey.bind(hyper, "x", grid.toggleLargeMargins)
 -- Layouts
 hs.hotkey.bind(hyper, "q", function()
   if (twitchMode == true) then
-    layouts.twitchBrowse()
+    layouts.twitchBrowseAndCode()
   else
     layouts.workBrowse()
   end
 end)
 hs.hotkey.bind(hyperShift, "q", function()
   if (twitchMode == true) then
-    layouts.twitchBrowse(true)
+    layouts.twitchBrowseAndCode(true)
   else
     layouts.workBrowse(true)
   end
@@ -44,14 +44,14 @@ end)
 
 hs.hotkey.bind(hyper, "w", function()
   if (twitchMode == true) then
-    layouts.twitchCode()
+    layouts.twitchCodeEven()
   else
     layouts.workCode()
   end
 end)
 hs.hotkey.bind(hyperShift, "w", function()
   if (twitchMode == true) then
-    layouts.twitchCode(true)
+    layouts.twitchCodeEven(true)
   else
     layouts.workCode(true)
   end
