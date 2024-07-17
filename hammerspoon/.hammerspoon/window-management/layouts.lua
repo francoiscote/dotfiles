@@ -162,10 +162,10 @@ local function twitchHiddenWindows()
   grid.setFilteredWindowsToCell(w_obs, areas.twitch.hiddenBottom)
 
   if #w_videos:getWindows() > 0 then
-    grid.setFilteredWindowsToCell(w_videos, areas.twitch.hiddenRightTop)
-    grid.setFilteredWindowsToCell(w_twitch, areas.twitch.hiddenRightBottom)
+    grid.setFilteredWindowsToCell(w_videos, areas.twitch.hiddenLeftTop)
+    grid.setFilteredWindowsToCell(w_twitch, areas.twitch.hiddenLeftBottom)
   else
-    grid.setFilteredWindowsToCell(w_twitch, areas.twitch.hiddenRight)
+    grid.setFilteredWindowsToCell(w_twitch, areas.twitch.hiddenLeft)
   end
 end
 
