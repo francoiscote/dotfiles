@@ -17,7 +17,7 @@ local w_terminals = wf.new { 'iTerm2', 'kitty' }:setCurrentSpace(true):setScreen
 local w_videos = wf.new { ['YouTube'] = true, ['Twitch'] = true, ['Google Meet'] = true, ['zoom.us'] = true, ['VLC'] = true, ['Google Chrome'] = { allowTitles = 'Picture in Picture' }, ['OBS Studio'] = { allowTitles = '(.*)Windowed Projector(.*)' }, ['Arc'] = { allowRoles = 'AXSystemDialog' }, ['Slack'] = { allowTitles = '(.*)Huddle$' }, ['Oryx'] = true }
     :setCurrentSpace(true):setScreens(mainScreenName)
 local w_cam = wf.new { ['Google Meet'] = true, ['zoom.us'] = true, ['OBS Studio'] = { allowTitles = '(.*)Windowed Projector(.*)' }, ['Slack'] = { allowTitles = '(.*)Huddle$' } }
-local w_notes = wf.new { 'Notion', 'Obsdian', 'Bear' }:setCurrentSpace(true):setScreens(mainScreenName)
+local w_notes = wf.new { 'Notion', 'Obsidian', 'Bear' }:setCurrentSpace(true):setScreens(mainScreenName)
 local w_todos = wf.new { 'Todoist', 'Things' }:setCurrentSpace(true):setScreens(mainScreenName)
 local w_chats = wf.new { 'Slack', 'WhatsApp', 'Discord', 'Messages', 'Messenger' }:setCurrentSpace(true):setScreens(
   mainScreenName)
