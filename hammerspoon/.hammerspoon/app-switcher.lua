@@ -12,6 +12,7 @@ local charToApps = {
   { 'p', 'Spotify' },
 
   -- Middle Row: Main Apps
+  { 'd', 'DevDocs' },
   { 'g', 'Google Meet' },
   { 'g', 'zoom.us',                             'shift' },
   { 'h', 'com.culturedcode.ThingsMac' },
