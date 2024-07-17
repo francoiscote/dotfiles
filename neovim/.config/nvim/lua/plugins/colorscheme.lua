@@ -9,7 +9,7 @@ return {
 			end,
 			set_light_mode = function()
 				vim.api.nvim_set_option("background", "light")
-				vim.cmd
+				vim.cmd('colorscheme github_light')
 			end,
 		},
 	},
@@ -25,15 +25,12 @@ return {
 			})
     end,
   },
+	{	
 		'projekt0n/github-nvim-theme', name = 'github',
     lazy = false,
     priority = 1000,
-    config = function()
-			require('rose-pine').setup({
-				variant = "auto",
-				dark_variant = "moon",	
-				dim_inactive_windows = true
-			})
-    end,
+		config = function ()
+			require('github-theme').setup()
+		end,
   },
 }
