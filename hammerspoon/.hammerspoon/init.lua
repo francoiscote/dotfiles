@@ -5,7 +5,7 @@ local hyperShift = { "cmd", "alt", "ctrl", "shift" }
 
 
 hs.logger.defaultLogLevel = 'info'
-Log = hs.logger.new('WM', 'debug')
+local log = hs.logger.new('WM', 'debug')
 
 
 -- Tools
@@ -17,15 +17,15 @@ hs.hotkey.bind(hyper, "z", hs.reload)
 -- Hyper+Shift+Z - Shortcut to inspect a window
 hs.hotkey.bind(hyperShift, "z", function()
   local w = hs.window.focusedWindow()
-  Log.d("Application Name:", w:application():name())
-  Log.d("Id:", w:id())
-  Log.d("Title:", w:title())
-  Log.d("TopLeft:", w:topLeft())
-  Log.d("Size:", w:size())
-  Log.d("isFullScreen:", w:isFullScreen())
-  Log.d("Frame:", w:frame())
-  Log.d("Role:", w:role())
-  Log.d("Subrole:", w:subrole())
+  log.d("Application Name:", w:application():name())
+  log.d("Id:", w:id())
+  log.d("Title:", w:title())
+  log.d("TopLeft:", w:topLeft())
+  log.d("Size:", w:size())
+  log.d("isFullScreen:", w:isFullScreen())
+  log.d("Frame:", w:frame())
+  log.d("Role:", w:role())
+  log.d("Subrole:", w:subrole())
 end)
 
 require('app-switcher')

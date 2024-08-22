@@ -1,4 +1,4 @@
-helpers = require("window-management/helpers")
+local helpers = require("window-management/helpers")
 
 -- SETTINGS
 -------------------------------------------------------------------------------
@@ -29,8 +29,8 @@ local areas = {
     secondaryBottom = '0,4.3 4x7.7',
     main = '4,0 8x12',
   },
+  secondaryFull = '8,0 4x12',
   smallSplitInverted = {
-    secondaryFull = '8,0 4x12',
     secondaryTop = '8,0 4x4.3',
     secondaryBottom = '8,4.3 4x7.7',
     main = '0,0 8x12',
@@ -58,33 +58,32 @@ local areas = {
   custom = {
     smallLeft = '0,0 4x12',
     largeLeft = '0,0 8x12',
-    finder = '3,2 6x8',
-    center = '2,1 8x10',
-    twitchCenter = '0,0 7x8',
+    finder = '4,3 4x6',
+    center = '3,2 6x8',
     browser = '3,0 6x12',
     largeRight = '4,0 8x12',
     smallRight = '8,0 4x12',
     maximize = '0,0 12x12'
   },
   twitch = {
-    hiddenLeft = '0,0 3x12',
-    hiddenLeftTop = '0,0 3x3.3',
-    hiddenLeftBottom = '0,3.3 3x8.7',
-    hiddenBottom = '3,9 9x3',
-    leftSecondaryMini = '3,0 3x9',
-    leftSecondary = '3,0 4x9',
-    leftMainBig = '3,0 6x9',
-    leftMain = '3,0 5x9',
-    rightMain = '7,0 5x9',
-    rightMainBig = '6,0 6x9',
-    rightSecondary = '8,0 4x9',
-    rightSecondaryMini = '9,0 3x9',
-    evenLeft = '3,0 4.5x9',
-    evenRight = '7.5,0 4.5x9',
-    maximize = '3,0 9x9',
-    finder = '5.5,2 4x5',
-    center = '4,0.5 7x8',
-    browser = '4.5,0 6x9',
+    hiddenSide = '9,0 3x12',
+    hiddenSideTop = '9,0 3x3.3',
+    hiddenSideBottom = '9,3.3 3x8.7',
+    hiddenBottom = '0,9 9x3',
+    leftSecondaryMini = '0,0 3x9',
+    leftSecondary = '0,0 4x9',
+    leftMainBig = '0,0 6x9',
+    leftMain = '0,0 5x9',
+    rightMain = '4,0 5x9',
+    rightMainBig = '3,0 6x9',
+    rightSecondary = '5,0 4x9',
+    rightSecondaryMini = '6,0 3x9',
+    evenLeft = '0,0 4.5x9',
+    evenRight = '4.5,0 4.5x9',
+    maximize = '0,0 9x9',
+    finder = '2.5,2 4x5',
+    center = '1,0.5 7x8',
+    browser = '1.5,0 6x9',
   },
 }
 
