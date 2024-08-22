@@ -29,6 +29,7 @@ hs.hotkey.bind(hyperShift, "z", function()
 end)
 
 require('app-switcher')
+require('app-watchers');
 require('audio')
 require('window-management')
 

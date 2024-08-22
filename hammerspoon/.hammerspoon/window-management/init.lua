@@ -1,20 +1,37 @@
-grid = require("window-management/grid")
-layouts = require("window-management/layouts")
-helpers = require("window-management/helpers")
-
-log = hs.logger.new('WM', 'debug')
+local grid = require("window-management/grid")
+local layouts = require("window-management/layouts")
+local helpers = require("window-management/helpers")
+local twitchMode = require("window-management/twitchMode")
+local appWatchers = require("app-watchers")
+local log = hs.logger.new('WM', 'debug')
 
 -- SETTINGS
 -------------------------------------------------------------------------------
 hs.window.animationDuration = 0
 hs.window.setShadows(false)
 
+-- WINDOW WATCHERS
+-------------------------------------------------------------------------------
+-- Watch for new Google Chrome Apps and auto resize them
+local chromeApp = hs.application.find("Google Chrome")
+if chromeApp then
+  appWatchers.newWindow(chromeApp, function(app, window)
+    if (window:isStandard()) then
+      if (twitchMode.isActive() == true) then
+        grid.setFocusedWindowToCell(grid.areas.twitch.center)
+      else
+        grid.setFocusedWindowToCell(grid.areas.custom.center)
+      end
+    end
+  end)
+end
+
+
 -- MAPPINGS
 -------------------------------------------------------------------------------
 local hyper = { "cmd", "alt", "ctrl" }
 local hyperShift = { "cmd", "alt", "ctrl", "shift" }
 local areas = grid.areas
-local twitchMode = false;
 
 -- Patch some hs.window functions for the bug with Chrome Windows
 -- https://github.com/Hammerspoon/hammerspoon/issues/3224
@@ -28,14 +45,14 @@ hs.hotkey.bind(hyper, "x", grid.toggleLargeMargins)
 
 -- Layouts
 hs.hotkey.bind(hyper, "q", function()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     layouts.twitchBrowseAndCode()
   else
     layouts.workBrowse()
   end
 end)
 hs.hotkey.bind(hyperShift, "q", function()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     layouts.twitchBrowseAndCode(true)
   else
     layouts.workBrowse(true)
@@ -43,14 +60,14 @@ hs.hotkey.bind(hyperShift, "q", function()
 end)
 
 hs.hotkey.bind(hyper, "w", function()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     layouts.twitchCodeEven()
   else
     layouts.workCode()
   end
 end)
 hs.hotkey.bind(hyperShift, "w", function()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     layouts.twitchCodeEven(true)
   else
     layouts.workCode(true)
@@ -58,14 +75,14 @@ hs.hotkey.bind(hyperShift, "w", function()
 end)
 
 hs.hotkey.bind(hyper, "e", function()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     layouts.twitchCodeSmall()
   else
     layouts.workEven()
   end
 end)
 hs.hotkey.bind(hyperShift, "e", function()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     layouts.twitchCodeSmall(true)
   else
     layouts.workEven(true) -- with focus on Notes
@@ -73,7 +90,7 @@ hs.hotkey.bind(hyperShift, "e", function()
 end)
 
 hs.hotkey.bind(hyper, "r", function()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     layouts.twitchMax()
   else
     layouts.workMax()
@@ -86,25 +103,12 @@ end)
 -- Twitch Mode
 -------------------------------------------------------------------------------
 -- HyperShift+T - Twitch Mode
-
-TwitchMenuBar = hs.menubar.new()
-function setTwitchMode(state)
-  if state then
-    twitchMode = true;
-    TwitchMenuBar:setTitle(hs.styledtext.new("TWITCH",
-      { backgroundColor = { red = 1, blue = 0, green = 0 }, color = { red = 1, blue = 1, green = 1 } }))
-  else
-    twitchMode = false;
-    TwitchMenuBar:setTitle();
-  end
-end
-
 hs.hotkey.bind(hyperShift, "t", function()
-  if (twitchMode == true) then
-    setTwitchMode(false);
+  if (twitchMode.isActive() == true) then
+    twitchMode.set(false);
     hyper.triggered = true
   else
-    setTwitchMode(true);
+    twitchMode.set(true);
     hyper.triggered = true
   end
 end)
@@ -112,7 +116,7 @@ end)
 -- Quick Sizes
 -------------------------------------------------------------------------------
 hs.hotkey.bind(hyper, "1", function()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     grid.setFocusedWindowToCell(areas.twitch.leftSecondaryMini)
   else
     grid.setFocusedWindowToCell(areas.custom.smallLeft)
@@ -120,7 +124,7 @@ hs.hotkey.bind(hyper, "1", function()
 end)
 hs.hotkey.bind(hyperShift, "1", function()
   grid.setLargeMargins()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     grid.setFocusedWindowToCell(areas.twitch.leftSecondaryMini)
   else
     grid.setFocusedWindowToCell(areas.custom.smallLeft)
@@ -129,7 +133,7 @@ hs.hotkey.bind(hyperShift, "1", function()
 end)
 
 hs.hotkey.bind(hyper, "2", function()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     grid.setFocusedWindowToCell(areas.twitch.evenLeft)
   else
     grid.setFocusedWindowToCell(areas.evenSplit.leftFull)
@@ -137,7 +141,7 @@ hs.hotkey.bind(hyper, "2", function()
 end)
 hs.hotkey.bind(hyperShift, "2", function()
   grid.setLargeMargins()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     grid.setFocusedWindowToCell(areas.twitch.evenLeft)
   else
     grid.setFocusedWindowToCell(areas.evenSplit.leftFull)
@@ -146,7 +150,7 @@ hs.hotkey.bind(hyperShift, "2", function()
 end)
 
 hs.hotkey.bind(hyper, "3", function()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     grid.setFocusedWindowToCell(areas.twitch.leftMainBig)
   else
     grid.setFocusedWindowToCell(areas.custom.largeLeft)
@@ -154,7 +158,7 @@ hs.hotkey.bind(hyper, "3", function()
 end)
 hs.hotkey.bind(hyperShift, "3", function()
   grid.setLargeMargins()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     grid.setFocusedWindowToCell(areas.twitch.leftMainBig)
   else
     grid.setFocusedWindowToCell(areas.custom.largeLeft)
@@ -164,7 +168,7 @@ end)
 
 
 hs.hotkey.bind(hyper, "4", function()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     grid.setFocusedWindowToCell(areas.twitch.finder)
   else
     grid.setFocusedWindowToCell(areas.custom.finder)
@@ -175,7 +179,7 @@ hs.hotkey.bind(hyperShift, "4", function()
 end)
 
 hs.hotkey.bind(hyper, "5", function()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     grid.setFocusedWindowToCell(areas.twitch.center)
   else
     grid.setFocusedWindowToCell(areas.custom.center)
@@ -186,7 +190,7 @@ hs.hotkey.bind(hyperShift, "5", function()
 end)
 
 hs.hotkey.bind(hyper, "6", function()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     grid.setFocusedWindowToCell(areas.twitch.browser)
   else
     grid.setFocusedWindowToCell(areas.custom.browser)
@@ -197,7 +201,7 @@ hs.hotkey.bind(hyperShift, "6", function()
 end)
 
 hs.hotkey.bind(hyper, "7", function()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     grid.setFocusedWindowToCell(areas.twitch.rightMainBig)
   else
     grid.setFocusedWindowToCell(areas.custom.largeRight)
@@ -205,7 +209,7 @@ hs.hotkey.bind(hyper, "7", function()
 end)
 hs.hotkey.bind(hyperShift, "7", function()
   grid.setLargeMargins()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     grid.setFocusedWindowToCell(areas.twitch.rightMainBig)
   else
     grid.setFocusedWindowToCell(areas.custom.largeRight)
@@ -214,7 +218,7 @@ hs.hotkey.bind(hyperShift, "7", function()
 end)
 
 hs.hotkey.bind(hyper, "8", function()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     grid.setFocusedWindowToCell(areas.twitch.evenRight)
   else
     grid.setFocusedWindowToCell(areas.evenSplit.rightFull)
@@ -222,7 +226,7 @@ hs.hotkey.bind(hyper, "8", function()
 end)
 hs.hotkey.bind(hyperShift, "8", function()
   grid.setLargeMargins()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     grid.setFocusedWindowToCell(areas.twitch.evenRight)
   else
     grid.setFocusedWindowToCell(areas.evenSplit.rightFull)
@@ -232,7 +236,7 @@ end)
 
 
 hs.hotkey.bind(hyper, "9", function()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     grid.setFocusedWindowToCell(areas.twitch.rightSecondaryMini)
   else
     grid.setFocusedWindowToCell(areas.custom.smallRight)
@@ -240,7 +244,7 @@ hs.hotkey.bind(hyper, "9", function()
 end)
 hs.hotkey.bind(hyperShift, "9", function()
   grid.setLargeMargins()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     grid.setFocusedWindowToCell(areas.twitch.rightSecondaryMini)
   else
     grid.setFocusedWindowToCell(areas.custom.smallRight)
@@ -249,7 +253,7 @@ hs.hotkey.bind(hyperShift, "9", function()
 end)
 
 hs.hotkey.bind(hyper, "0", function()
-  if (twitchMode == true) then
+  if (twitchMode.isActive() == true) then
     grid.setFocusedWindowToCell(areas.twitch.maximize)
   else
     hsWindow.maximize(hs.window.focusedWindow())
@@ -302,19 +306,19 @@ hs.hotkey.bind(hyper, "a", function()
     -- Center Window
     -- Different layouts for different apps
     if (focusedWindow:application():name() == "Google Chrome") then
-      if (twitchMode == true) then
+      if (twitchMode.isActive() == true) then
         grid.setFocusedWindowToCell(areas.twitch.center);
       else
         grid.setFocusedWindowToCell(areas.custom.browser);
       end
     elseif (focusedWindow:application():name() == "Things") or (focusedWindow:application():name() == "Obsidian") then
-      if (twitchMode == true) then
+      if (twitchMode.isActive() == true) then
         grid.setFocusedWindowToCell(areas.twitch.center);
       else
         grid.setFocusedWindowToCell(areas.custom.finder);
       end
     else
-      if (twitchMode == true) then
+      if (twitchMode.isActive() == true) then
         grid.setFocusedWindowToCell(areas.twitch.center);
       else
         grid.setFocusedWindowToCell(areas.custom.center);
