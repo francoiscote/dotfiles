@@ -1,4 +1,4 @@
-local hyper = {"cmd", "alt", "ctrl"}
+local hyper = { "cmd", "alt", "ctrl" }
 
 -- Swap between a Speaker output and a series of ranked secondary outputs (headphones)
 -- Main Output: Vanatoo T0 or Studio Display Speakers or Bluetooth connected Stereo system
@@ -7,7 +7,7 @@ local hyper = {"cmd", "alt", "ctrl"}
 hs.hotkey.bind(hyper, "s", function()
   local currentDeviceName = hs.audiodevice.defaultOutputDevice():name()
   local nextDevice
-  if string.find(currentDeviceName, 'Vanatoo T0') or string.find(currentDeviceName, 'Studio Display Speakers') or string.find(currentDeviceName, 'AUKEY') then
+  if string.find(currentDeviceName, 'Vanatoo T0') or string.find(currentDeviceName, 'Studio Display Speakers') or string.find(currentDeviceName, 'USB audio CODEC') then
     nextDevice = hs.audiodevice.findOutputByName('François’s AirPods Pro')
     if (nextDevice == nil) then
       nextDevice = hs.audiodevice.findOutputByName('External Headphones')
@@ -19,7 +19,7 @@ hs.hotkey.bind(hyper, "s", function()
       nextDevice = hs.audiodevice.findOutputByName('MacBook Pro Speakers')
     end
   else
-    nextDevice = hs.audiodevice.findOutputByName('AUKEY BR-C1')
+    nextDevice = hs.audiodevice.findOutputByName('USB audio CODEC')
     if (nextDevice == nil) then
       nextDevice = hs.audiodevice.findOutputByName('Vanatoo T0')
     end
@@ -39,7 +39,13 @@ hs.hotkey.bind(hyper, "s", function()
 
   if (didChange == true) then
     hs.alert.closeAll()
-    hs.alert.show(nextDevice:name())
+    local name
+    if string.find(nextDevice:name(), 'USB audio CODEC') then
+      name = "DENON"
+    else
+      name = nextDevice:name()
+    end
+    hs.alert.show(name)
   end
 
   hyper.triggered = true
