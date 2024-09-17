@@ -18,9 +18,9 @@ if chromeApp then
   appWatchers.newWindow(chromeApp, function(app, window)
     if (window:isStandard()) then
       if (twitchMode.isActive() == true) then
-        grid.setFocusedWindowToCell(grid.areas.twitch.center)
+        grid.setFocusedWindowToCell(grid.areas.twitch.finder)
       else
-        grid.setFocusedWindowToCell(grid.areas.custom.center)
+        grid.setFocusedWindowToCell(grid.areas.custom.finder)
       end
     end
   end)
@@ -175,7 +175,7 @@ hs.hotkey.bind(hyper, "4", function()
   end
 end)
 hs.hotkey.bind(hyperShift, "4", function()
-
+  grid.setFocusedWindowToCell(areas.custom.mini)
 end)
 
 hs.hotkey.bind(hyper, "5", function()

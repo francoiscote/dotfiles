@@ -1,6 +1,6 @@
 local export = {}
 local grid = require("window-management/grid")
-localhelpers = require("window-management/helpers")
+local helpers = require("window-management/helpers")
 
 local areas = grid.areas
 local hsGrid = grid.hsGrid
@@ -155,7 +155,7 @@ workMax:
 function export.workMax()
   helpers.maximiseFilteredWindows(w_editors)
   helpers.maximiseFilteredWindows(w_figma)
-  helpers.maximiseFilteredWindows(w_terminals)
+  grid.setFilteredWindowsToCell(w_terminals, areas.custom.center)
   grid.setFilteredWindowsToCell(w_browsers, areas.custom.browser)
   grid.setFilteredWindowsToCell(w_notes, areas.custom.finder)
   grid.setFilteredWindowsToCell(w_todos, areas.custom.finder)
@@ -239,7 +239,7 @@ function export.twitchCodeSmall(inverted) -- Hidden
     --LEFT
     grid.setFilteredWindowsToCell(w_figma, areas.twitch.leftMainBig)
     grid.setFilteredWindowsToCell(w_browsers, areas.twitch.leftMainBig)
-  
+
     --RIGHT
     grid.setFilteredWindowsToCell(w_terminals, areas.twitch.rightSecondaryMini)
     grid.setFilteredWindowsToCell(w_notes, areas.twitch.rightSecondaryMini)

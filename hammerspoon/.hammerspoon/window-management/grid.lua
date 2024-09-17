@@ -58,13 +58,15 @@ local areas = {
   custom = {
     smallLeft = '0,0 4x12',
     largeLeft = '0,0 8x12',
-    finder = '4,3 4x6',
-    center = '3,2 6x8',
+    mini = '4,3 4x6',
+    finder = '3,2 6x8',
+    center = '2,1 8x10',
     browser = '3,0 6x12',
     largeRight = '4,0 8x12',
     smallRight = '8,0 4x12',
     maximize = '0,0 12x12'
   },
+
   twitch = {
     hiddenSide = '9,0 3x12',
     hiddenSideTop = '9,0 3x3.3',
