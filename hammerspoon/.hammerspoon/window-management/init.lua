@@ -261,7 +261,7 @@ hs.hotkey.bind(hyper, "0", function()
 end)
 
 hs.hotkey.bind(hyperShift, "0", function()
-
+  grid.setFocusedWindowToCell(areas.custom.maximizeAlmost)
 end)
 
 -- Focus Mode
@@ -273,8 +273,8 @@ local focusMode = false;
 local focusedWindow;
 local savedFrame;
 
-focusedMenuBar = hs.menubar.new()
-function setFocusMode(state)
+local focusedMenuBar = hs.menubar.new()
+local function setFocusMode(state)
   if state then
     focusMode = true;
     focusedMenuBar:setTitle(hs.styledtext.new("FOCUSED",
