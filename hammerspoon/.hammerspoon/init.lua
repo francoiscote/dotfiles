@@ -3,14 +3,16 @@
 local hyper = { "cmd", "alt", "ctrl" }
 local hyperShift = { "cmd", "alt", "ctrl", "shift" }
 
-
 hs.logger.defaultLogLevel = 'info'
 local log = hs.logger.new('WM', 'debug')
 
+-- Spoons
+-------------------------------------------------------------------------------
+hs.loadSpoon("SpotifyMediaKeysFix");
+spoon.SpotifyMediaKeysFix:start();
 
 -- Tools
 -------------------------------------------------------------------------------
-
 -- Hyper+Z - Shortcut to reload config
 hs.hotkey.bind(hyper, "z", hs.reload)
 
@@ -28,9 +30,13 @@ hs.hotkey.bind(hyperShift, "z", function()
   log.d("Subrole:", w:subrole())
 end)
 
+-- Requires
+-------------------------------------------------------------------------------
 require('app-switcher')
 require('app-watchers');
 require('audio')
 require('window-management')
 
+-- DONE!
+-------------------------------------------------------------------------------
 hs.alert("HS ✔︎")

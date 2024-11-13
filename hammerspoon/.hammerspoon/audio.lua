@@ -19,13 +19,12 @@ hs.hotkey.bind(hyper, "s", function()
       nextDevice = hs.audiodevice.findOutputByName('MacBook Pro Speakers')
     end
   else
-    nextDevice = hs.audiodevice.findOutputByName('Studio Display Speakers')
-
+    nextDevice = hs.audiodevice.findOutputByName('USB audio CODEC')
     if (nextDevice == nil) then
-      nextDevice = hs.audiodevice.findOutputByName('Vanatoo T0')
+      nextDevice = hs.audiodevice.findOutputByName('Studio Display Speakers')
     end
     if (nextDevice == nil) then
-      nextDevice = hs.audiodevice.findOutputByName('USB audio CODEC')
+      nextDevice = hs.audiodevice.findOutputByName('Vanatoo T0')
     end
   end
 
