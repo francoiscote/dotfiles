@@ -27,6 +27,14 @@
   whitespace = "red reverse"
 [core]
 	excludesfile = ~/.gitignore_global
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true  # use n and N to move between diff sections
+  dark = true      # or light = true, or omit for auto-detection
+[merge]
+    conflictstyle = zdiff3
 [apply]
 	whitespace = nowarn
 [help]
@@ -37,8 +45,6 @@
   rebase = false
 [push]
 	default = simple
-[pager]
-  diff = "diff-so-fancy | less --tabs=4 -RFX"
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
@@ -52,6 +58,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-
 [include]
   path = "~/.gitconfig-private"
