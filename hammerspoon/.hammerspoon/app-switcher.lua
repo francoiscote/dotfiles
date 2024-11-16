@@ -22,7 +22,8 @@ local charToApps = {
   { 'h', 'com.culturedcode.ThingsMac' },
   { 'j', 'Google Chrome' },
   { 'j', 'Firefox Developer Edition', 'shift' },
-  { 'k', 'Visual Studio Code' },
+  -- { 'k', 'Visual Studio Code' },
+  { 'k', 'Zed' },
   { 'l', 'iTerm' },
   { ';', 'Figma' },
 

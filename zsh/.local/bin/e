@@ -17,10 +17,14 @@
 if [[ -n $SSH_CONNECTION ]]; then
     export CODEEDITOR='vim'
 else
-    if [ -x $(brew --prefix)/bin/code ]; then
-       export CODEEDITOR='code'
+    if [ -x $(brew --prefix)/bin/zed ]; then
+        export CODEEDITOR='zed'
     else
-        export CODEEDITOR="nvim '+Telescope find_files'"
+        if [ -x $(brew --prefix)/bin/code ]; then
+            export CODEEDITOR='code'
+        else
+            export CODEEDITOR="nvim '+Telescope find_files'"
+        fi
     fi
 fi
 
