@@ -3,8 +3,11 @@
 	email = francois@francoiscote.net
 	useConfigOnly = true
 [alias]
-	co = checkout
+  l = !. ~/.githelpers && pretty_git_log
+  la = !git l --all
 	count = !git shortlog -sn
+	ruf = !. ~/.githelpers && remove_untracked_files
+	tree = log --oneline --decorate --graph
 	banane = fetch --prune
 [color]
 	status = auto
@@ -38,7 +41,7 @@
   diff = "diff-so-fancy | less --tabs=4 -RFX"
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
