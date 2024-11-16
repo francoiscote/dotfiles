@@ -15,9 +15,11 @@ if type brew &>/dev/null; then
 fi
 
 export CLICOLOR=1
-export VISUAL=nvim
+export VISUAL=zed
 export EDITOR="$VISUAL"
 export QUOTING_STYLE=literal
+
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # -----------------------------------------
 # Default GPG Key
