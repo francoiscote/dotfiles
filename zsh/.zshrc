@@ -35,6 +35,13 @@ setopt interactivecomments
 autoload -U promptinit; promptinit
 autoload -Uz compinit;compinit
 
+# Move by word with alt+arrow
+bindkey "[D" backward-word
+bindkey "[C" forward-word
+# Move and begining and end of line with cmd+arrow
+bindkey "^[a" beginning-of-line
+bindkey "^[e" end-of-line
+
 # -----------------------------------------
 # PATHS
 # -----------------------------------------
