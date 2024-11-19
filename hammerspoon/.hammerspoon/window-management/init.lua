@@ -359,34 +359,12 @@ hs.hotkey.bind(hyper, "c", function()
   hyper.triggered = true
 end)
 
-
--- Hyper+- - Switch Primary Screen Resolution between 1440p or 2880p
-hs.hotkey.bind(hyper, "-", function()
-  local mainFullMode = {
-    width = 3200,
-    height = 1800,
-    scale = 2,
-    frequency = 60,
-    depth = 8,
-  };
-  local mainTwitchMode = {
-    width = 2560,
-    height = 1440,
-    scale = 2,
-    frequency = 60,
-    depth = 8,
-  };
-
-  local currentMode = hs.screen.primaryScreen():currentMode();
-  local mainNextMode
-  if currentMode.w == mainFullMode.width then
-    mainNextMode = mainTwitchMode;
-  else
-    mainNextMode = mainFullMode;
-  end
-
-  hs.screen.primaryScreen():setMode(mainNextMode.width, mainNextMode.height, mainNextMode.scale, mainNextMode.frequency,
-    mainNextMode.depth);
+-- HyperShift+[left, right] - Send and follow window to next/previous space
+hs.hotkey.bind(hyperShift, "right", nil, function()
+  helpers.moveWindowOneSpace('right', true)
+end)
+hs.hotkey.bind(hyperShift, "left", nil, function()
+  helpers.moveWindowOneSpace('left', true)
 end)
 
 -- Hyper+equal - Send window to next screen.
@@ -413,10 +391,32 @@ hs.hotkey.bind(hyper, "=", function()
   revert()
 end)
 
--- HyperShift+[left, right] - Send and follow window to next/previous space
-hs.hotkey.bind(hyperShift, "right", nil, function()
-  helpers.moveWindowOneSpace('right', true)
-end)
-hs.hotkey.bind(hyperShift, "left", nil, function()
-  helpers.moveWindowOneSpace('left', true)
+
+-- Hyper+minus - Switch Primary Screen Resolution between 1440p or 2880p
+hs.hotkey.bind(hyper, "-", function()
+  local mainFullMode = {
+    width = 3200,
+    height = 1800,
+    scale = 2,
+    frequency = 60,
+    depth = 8,
+  };
+  local mainTwitchMode = {
+    width = 2560,
+    height = 1440,
+    scale = 2,
+    frequency = 60,
+    depth = 8,
+  };
+
+  local currentMode = hs.screen.primaryScreen():currentMode();
+  local mainNextMode
+  if currentMode.w == mainFullMode.width then
+    mainNextMode = mainTwitchMode;
+  else
+    mainNextMode = mainFullMode;
+  end
+
+  hs.screen.primaryScreen():setMode(mainNextMode.width, mainNextMode.height, mainNextMode.scale, mainNextMode.frequency,
+    mainNextMode.depth);
 end)

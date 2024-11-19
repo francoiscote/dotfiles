@@ -53,7 +53,7 @@ function switchSpace(skip, dir)
   end
 end
 
-function export.moveWindowOneSpace(dir, follow)
+function export.moveWindowOneSpace(dir, switch)
   local win = getGoodFocusedWindow(true)
   if not win then return end
   local screen = win:screen()
@@ -64,32 +64,33 @@ function export.moveWindowOneSpace(dir, follow)
     if k == uuid then break end
   end
   if not userSpaces then return end
-  local thisSpace = spaces.windowSpaces(win) -- first space win appears on
-  if not thisSpace then return else thisSpace = thisSpace[1] end
-  local last = nil
-  local skipSpaces = 0
-  for _, spc in ipairs(userSpaces) do
+
+  for i, spc in ipairs(userSpaces) do
     if spaces.spaceType(spc) ~= "user" then -- skippable space
-      skipSpaces = skipSpaces + 1
-    else
-      print(last, dir, spc, thisSpace)
-      if last and
-          ((dir == "left" and spc == thisSpace) or
-            (dir == "right" and last == thisSpace)) then
-        local newSpace = (dir == "left" and last or spc)
-        spaces.moveWindowToSpace(win, newSpace)
-        if follow then
-          -- spaces.gotoSpace(newSpace) -- also possible, but invokes MC
-          switchSpace(skipSpaces + 1, dir)
-        end
-        return
-      end
-      last = spc -- Haven't found it yet...
-      skipSpaces = 0
+      table.remove(userSpaces, i)
     end
   end
+  if not userSpaces then return end
 
-  flashScreen(screen) -- Shouldn't get here, so no space found
+  local initialSpace = spaces.windowSpaces(win)
+  if not initialSpace then return else initialSpace = initialSpace[1] end
+  local currentCursor = hs.mouse.getRelativePosition()
+
+  if (dir == "right" and initialSpace == userSpaces[#userSpaces]) or
+      (dir == "left" and initialSpace == userSpaces[1]) then
+    flashScreen(screen) -- End of Valid Spaces
+  else
+    local zoomPoint = hs.geometry(win:zoomButtonRect())
+    local safePoint = zoomPoint:move({ -1, -1 }).topleft
+    hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftMouseDown, safePoint):post()
+    switchSpace(1, dir)
+    hs.timer.waitUntil(
+      function() return spaces.windowSpaces(win)[1] ~= initialSpace end,
+      function()
+        hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftMouseUp, safePoint):post()
+        hs.mouse.setRelativePosition(currentCursor)
+      end, 0.05)
+  end
 end
 
 -- Workaround fix for the Grammarly bug that causes the window to be animated
