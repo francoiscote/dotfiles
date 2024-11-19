@@ -21,11 +21,11 @@ alias gt='git tree'
 alias gf='git fetch'
 alias gfa='git fetch --all --prune'
 
-alias gl='git l'
-alias gla='git la'
+alias glog='git l'
+alias gloga='git la'
 
 alias gp='git push'
-alias gpl='git pull'
+alias gl='git pull'
 
 alias gs='git status -sb'
 alias wtf='git-wt'
