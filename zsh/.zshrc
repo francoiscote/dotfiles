@@ -13,6 +13,7 @@ FPATH=$HOME/.zsh-completions:$FPATH
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 export CLICOLOR=1
 export VISUAL=zed
@@ -58,6 +59,8 @@ export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 export PATH="$HOME/Library/Python/2.7/bin:$PATH"
 # ruby
 export PATH="$HOME/.gem/ruby/2.4.0/bin:$PATH"
+# rust
+export PATH="$HOME/.cargo/bin:$PATH"
 # OpenSSL fix for macOS
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 # The next line updates PATH for the Google Cloud SDK.

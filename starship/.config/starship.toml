@@ -52,6 +52,7 @@ symbol = " "
 
 [package]
 symbol = "📦 "
+style = "bold yellow"
 
 [perl]
 symbol = " "
