@@ -1,0 +1,7 @@
+theme = dark:rose-pine-moon,light:github-light
+font-family = "0xProto Nerd Font Mono"
+font-thicken = true
+font-size = 16
+
+shell-integration-features = no-cursor
+cursor-style = block
