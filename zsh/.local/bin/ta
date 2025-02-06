@@ -2,22 +2,8 @@
 #
 # Attach or create tmux session
 
- not_in_tmux() {
-   [ -z "$TMUX" ]
- }
-
-DIR=$1
-
- 
-create_if_needed() {
-    if not_in_tmux; then
-        tmux new-session -As "fcote" -c $HOME
-    fi
-}
-
- attach_to_first_session() {
-     tmux attach -t $(tmux list-sessions -F "${session_name}" | head -n 1)
-     tmux choose-tree -Za
-}
- 
-create_if_needed || attach_to_first_session
+if tmux has-session 2>/dev/null; then
+    tmux attach -t $(tmux list-sessions -F "#{session_name}" | head -n 1)\; display-popup -E -w 100% -h 100% "tmux-fzf-all-sessions"
+else
+    tmux new-session -As "fcote" -c $HOME
+fi
