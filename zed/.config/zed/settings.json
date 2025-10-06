@@ -7,16 +7,43 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "ssh_connections": [
+    {
+      "host": "piserver",
+      "projects": [
+        {
+          "paths": ["/home/fcote"]
+        }
+      ]
+    }
+  ],
   "vim_mode": false,
   "icon_theme": "Catppuccin Latte",
   "features": {
     "edit_prediction_provider": "zed"
   },
   "agent": {
+    "default_profile": "ask",
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+      "provider": "anthropic",
+      "model": "claude-opus-4-1-latest"
     }
+  },
+  // Remove the < > buttons from the tab bar
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": false
+  },
+  // Show file type icons in the tab bar. Also color them according to the
+  // git status.
+  "tabs": {
+    "file_icons": true,
+    "git_status": true
+  },
+  // Decrease the horizontal indent size of files & folders in the project
+  // panel to avoid horizontal scrolling
+  "project_panel": {
+    "indent_size": 16
   },
   "ui_font_size": 16,
   "buffer_font_size": 16,
