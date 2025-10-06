@@ -1,4 +1,4 @@
-theme = dark:github-dark-dimmed,light:github-light
+theme = dark:Github Dark Dimmed,light:Github Light Default
 font-family = "0xProto Nerd Font Mono"
 font-thicken = true
 font-size = 16
