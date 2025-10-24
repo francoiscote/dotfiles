@@ -57,6 +57,9 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 # python2.7 execs
 export PATH="$HOME/Library/Python/2.7/bin:$PATH"
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
 # ruby
 export PATH="$HOME/.gem/ruby/2.4.0/bin:$PATH"
 # rust
