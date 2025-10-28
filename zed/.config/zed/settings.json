@@ -31,6 +31,7 @@
     "modal_max_width": "medium"
   },
   "git": {
+    "hunk_style": "unstaged_hollow",
     "blame": {
       "show_avatar": true
     },
@@ -43,14 +44,14 @@
   },
   "icon_theme": "Catppuccin Latte",
   "inlay_hints": {
-    "enabled": false
+    "enabled": false,
+    "show_background": true
   },
   "minimum_contrast_for_highlights": 60,
   "project_panel": {
     "default_width": 280,
     "indent_size": 16
   },
-  "relative_line_numbers": true,
   "rounded_selection": true,
   "search": {
     "button": true
@@ -58,10 +59,13 @@
   "selection_highlight": true,
   "ssh_connections": [
     {
-      "host": "piserver",
+      "host": "piserver.local",
+      "args": [],
       "projects": [
         {
-          "paths": ["/home/fcote"]
+          "paths": [
+            "/home/fcote"
+          ]
         }
       ]
     }
