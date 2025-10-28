@@ -16,8 +16,8 @@ fi
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 export CLICOLOR=1
-export VISUAL=nvim
-export EDITOR="$VISUAL"
+export VISUAL=zed
+# export EDITOR=vim
 export QUOTING_STYLE=literal
 
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -60,6 +60,9 @@ export PATH="$HOME/Library/Python/2.7/bin:$PATH"
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 # ruby
 export PATH="$HOME/.gem/ruby/2.4.0/bin:$PATH"
 # rust

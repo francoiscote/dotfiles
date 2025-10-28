@@ -40,3 +40,6 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 
 # ... unless we really want to.
 zstyle '*' single-ignored show
+
+# bun completions
+[ -s "/Users/fcote/.bun/_bun" ] && source "/Users/fcote/.bun/_bun"
