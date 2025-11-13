@@ -7,102 +7,116 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "agent": {
-    "dock": "right",
-    "inline_assistant_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-5-mini"
-    },
-    "use_modifier_to_send": true,
-    "play_sound_when_agent_done": true,
-    "default_profile": "ask",
-    "default_model": {
-      "provider": "anthropic",
-      "model": "claude-opus-4-1-latest"
-    }
-  },
-  "buffer_font_family": "0xProto Nerd Font",
-  "buffer_font_size": 16,
-  "cursor_blink": true,
-  "features": {
-    "edit_prediction_provider": "zed"
-  },
-  "file_finder": {
-    "modal_max_width": "medium"
-  },
-  "git": {
-    "hunk_style": "unstaged_hollow",
-    "blame": {
-      "show_avatar": true
-    },
-    "inline_blame": {
-      "enabled": false,
-      "min_column": 0,
-      "padding": 7,
-      "show_commit_summary": true
-    }
-  },
-  "icon_theme": "Catppuccin Latte",
-  "inlay_hints": {
-    "enabled": false,
-    "show_background": true
-  },
-  "minimum_contrast_for_highlights": 60,
-  "project_panel": {
-    "default_width": 280,
-    "indent_size": 16
-  },
-  "rounded_selection": true,
-  "search": {
-    "button": true
-  },
-  "selection_highlight": true,
-  "ssh_connections": [
-    {
-      "host": "piserver.local",
-      "args": [],
-      "projects": [
-        {
-          "paths": [
-            "/home/fcote"
-          ]
-        }
-      ]
-    }
-  ],
-  "tab_bar": {
-    "show_nav_history_buttons": false,
-    "show": true
-  },
-  "tab_size": 2,
-  "tabs": {
-    "file_icons": true,
-    "git_status": true
-  },
-  "theme": {
-    "mode": "system",
-    "light": "Github Plus Light",
-    "dark": "Github Plus Dark"
-  },
-  "theme_overrides": {
-    "Github Plus Light": {
-      "search.match_background": "#ffd00040",
-      "editor.active_line.background": "#f8f9fa",
-      "editor.document_highlight.bracket_background": "#FFd00040",
-      "editor.document_highlight.read_background": "#33CCFF22",
-      "editor.document_highlight.write_background": "#FFd00040",
-      "players": [
-        {
-          "cursor": "#74ade8ff",
-          "background": "#74ade8ff",
-          "selection": "#ffd00040"
-        }
-      ]
-    }
-  },
-  "toolbar": {
-    "breadcrumbs": true,
-    "quick_actions": false
-  },
-  "vim_mode": false
+	"agent": {
+		"dock": "right",
+		"inline_assistant_model": {
+			"provider": "copilot_chat",
+			"model": "gpt-5-mini"
+		},
+		"use_modifier_to_send": true,
+		"play_sound_when_agent_done": true,
+		"default_profile": "ask",
+		"default_model": {
+			"provider": "anthropic",
+			"model": "claude-opus-4-1-latest"
+		}
+	},
+	"buffer_font_family": "0xProto Nerd Font",
+	"buffer_font_size": 16,
+	"cursor_blink": true,
+	"features": {
+		"edit_prediction_provider": "zed"
+	},
+	"file_finder": {
+		"modal_max_width": "medium"
+	},
+	"git": {
+		"hunk_style": "unstaged_hollow",
+		"blame": {
+			"show_avatar": true
+		},
+		"inline_blame": {
+			"enabled": false,
+			"min_column": 0,
+			"padding": 7,
+			"show_commit_summary": true
+		}
+	},
+	"icon_theme": "Catppuccin Latte",
+	"inlay_hints": {
+		"enabled": false,
+		"show_background": true
+	},
+	"languages": {
+		"JavaScript": { "formatter": { "language_server": { "name": "biome" } } },
+		"TypeScript": { "formatter": { "language_server": { "name": "biome" } } },
+		"TSX": { "formatter": { "language_server": { "name": "biome" } } },
+		"JSON": { "formatter": { "language_server": { "name": "biome" } } },
+		"JSONC": { "formatter": { "language_server": { "name": "biome" } } },
+		"CSS": { "formatter": { "language_server": { "name": "biome" } } },
+	},
+	"lsp": {
+		"biome": {
+			"settings": {
+				"require_config_file": true
+			}
+		}
+	},
+	"minimum_contrast_for_highlights": 60,
+	"project_panel": {
+		"hide_hidden": false,
+		"default_width": 280,
+		"indent_size": 16
+	},
+	"rounded_selection": true,
+	"search": {
+		"button": true
+	},
+	"selection_highlight": true,
+	"ssh_connections": [
+		{
+			"host": "piserver.local",
+			"args": [],
+			"projects": [
+				{
+					"paths": ["/home/fcote"]
+				}
+			]
+		}
+	],
+	"tab_bar": {
+		"show_nav_history_buttons": false,
+		"show": true
+	},
+	"tab_size": 2,
+	"tabs": {
+		"file_icons": true,
+		"git_status": true
+	},
+	"theme": {
+		"mode": "system",
+		"light": "Github Plus Light",
+		"dark": "Github Plus Dark"
+	},
+	"theme_overrides": {
+		"Github Plus Light": {
+			"search.match_background": "#ffd00040",
+			"editor.active_line.background": "#f8f9fa",
+			"editor.document_highlight.bracket_background": "#FFd00040",
+			"editor.document_highlight.read_background": "#33CCFF22",
+			"editor.document_highlight.write_background": "#FFd00040",
+			"players": [
+				{
+					"cursor": "#74ade8ff",
+					"background": "#74ade8ff",
+					"selection": "#ffd00040"
+				}
+			]
+		}
+	},
+	"toolbar": {
+		"breadcrumbs": true,
+		"quick_actions": false
+	},
+	"vim_mode": false
 }
