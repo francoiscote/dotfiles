@@ -10,7 +10,9 @@
 .tags
 .tern-project
 .vscode
+.zed
 *.code-workspace
+.claude/settings.local.json
 
 
 # Modules and Temporary files
