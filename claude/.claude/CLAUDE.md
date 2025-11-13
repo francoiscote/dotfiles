@@ -3,6 +3,11 @@
 ## PR Comments
 - When tagging Claude in GitHub issues, use '@claude'
 
+## Tooling choices
+- package managers: prefer `pnpm` over `npm`
+- languages:prefer `typescript` over `javascript`
+- linters and formatters: prefer `biome` over `eslint` and `prettier`
+
 ## GitHub
 - Your primary method for interactions with GitHub should be the GitHub CLI.
 
