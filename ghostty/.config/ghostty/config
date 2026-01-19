@@ -1,6 +1,5 @@
-theme = dark:Github Dark Dimmed,light:github-light
-# theme = dark:Github Dark Dimmed,light:Github Light Default
-# theme = Github Dark Dimmed
+theme = dark:GitHub Dark Default,light:GitHub Light Default
+# theme = Catppuccin Macchiato
 font-family = "0xProto Nerd Font Mono"
 font-thicken = true
 font-size = 16
@@ -9,7 +8,7 @@ macos-titlebar-style = "tabs"
 window-padding-x = 6
 window-padding-y = 2,8
 split-divider-color = #0969da
-shell-integration-features = no-cursor
+shell-integration-features = no-cursor,ssh-terminfo,ssh-env
 confirm-close-surface = false
 cursor-style = underline
 cursor-opacity = 1
