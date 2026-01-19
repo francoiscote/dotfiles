@@ -13,3 +13,4 @@
 
 ## Plans
 - At the end of each plan, give me a list of unresolved questions to answer, if any. Make the questions extremely concise. Sacrifice grammer for the sake of concision.
+- when running wrangler commands, use pnpx like so: `pnpx wrangler ...`

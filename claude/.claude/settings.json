@@ -1,4 +1,21 @@
 {
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:developers.google.com)",
+      "WebFetch(domain:docs.cloud.google.com)",
+      "Bash(pnpm pnpm install)",
+      "Bash(pnpm cf-typegen:*)",
+      "WebFetch(domain:developers.cloudflare.com)",
+      "Bash(wrangler d1 create:*)",
+      "Bash(wrangler queues create:*)",
+      "Bash(npx wrangler:*)",
+      "Bash(pnpm install)"
+    ],
+    "deny": [],
+    "ask": [],
+    "defaultMode": "default"
+  },
   "statusLine": {
     "type": "command",
     "command": "bunx -y ccstatusline@latest",
