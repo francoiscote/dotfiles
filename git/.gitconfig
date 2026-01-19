@@ -1,5 +1,5 @@
 [user]
-	name = François Côté
+	name = François Côté
 	email = francois@francoiscote.net
 	useConfigOnly = true
 [alias]
@@ -26,6 +26,7 @@
   new        = "green bold"
   whitespace = "red reverse"
 [core]
+  editor ="zed -w"
 	excludesfile = ~/.gitignore_global
   pager = delta
 [interactive]

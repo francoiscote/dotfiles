@@ -3,7 +3,7 @@ gui:
   skipDiscardChangeWarning: true
   theme:
     selectedLineBgColor:
-      - default
+      - reverse
   nerdFontsVersion: "3"
 git:
   paging:
