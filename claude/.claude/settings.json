@@ -1,4 +1,7 @@
 {
+  "env": {
+    "EDITOR": "code"
+  },
   "permissions": {
     "allow": [
       "WebSearch",

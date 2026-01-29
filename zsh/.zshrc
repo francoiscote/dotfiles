@@ -16,7 +16,6 @@ fi
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 export CLICOLOR=1
-export VISUAL=zed
 # export EDITOR=vim
 export QUOTING_STYLE=literal
 

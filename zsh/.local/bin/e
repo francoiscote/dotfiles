@@ -14,26 +14,8 @@
 #   $ e /usr/local
 #   # => opens the specified directory in your code editor
 
-if [[ -n $SSH_CONNECTION ]]; then
-    export CODEEDITOR='vim'
-else
-    if [ -x $(brew --prefix)/bin/zed ]; then
-        export CODEEDITOR='zed'
-    else
-        if [ -x $(brew --prefix)/bin/code-insiders ]; then
-            export CODEEDITOR='code-insiders'
-        else
-            if [ -x $(brew --prefix)/bin/code ]; then
-                export CODEEDITOR='code'
-            else
-                export CODEEDITOR="nvim"
-            fi
-        fi
-    fi
-fi
-
 if [ "$1" = "" ] ; then
-  exec $CODEEDITOR .
+  exec $EDITOR .
 else
-  exec $CODEEDITOR "$1"
+  exec $EDITOR "$1"
 fi

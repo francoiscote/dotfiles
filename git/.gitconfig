@@ -26,7 +26,6 @@
   new        = "green bold"
   whitespace = "red reverse"
 [core]
-  editor ="zed -w"
 	excludesfile = ~/.gitignore_global
   pager = delta
 [interactive]
