@@ -1,8 +1,7 @@
-theme = dark:GitHub Dark Default,light:GitHub Light Default
-# theme = Catppuccin Macchiato
+theme = dark:Catppuccin Macchiato,light:GitHub Light Default
 font-family = "0xProto Nerd Font Mono"
 font-thicken = true
-font-size = 16
+font-size = 14
 
 macos-titlebar-style = "tabs"
 window-padding-x = 6
@@ -14,16 +13,32 @@ cursor-style = underline
 cursor-opacity = 1
 adjust-cursor-thickness = 3
 
+window-inherit-working-directory = false
+tab-inherit-working-directory = true
+split-inherit-working-directory = true
+
 # unfocused-split-opacity = 0.8
 
 
 # Keybinds
 # shift+arrow to move focus between splits
-keybind = shift+left=goto_split:left
-keybind = shift+right=goto_split:right
-keybind = shift+up=goto_split:up
-keybind = shift+down=goto_split:down
+# keybind = shift+left=goto_split:left
+# keybind = shift+right=goto_split:right
+# keybind = shift+up=goto_split:up
+# keybind = shift+down=goto_split:down
 
 # alt+cmd+arrow to move focus between tabs
 keybind = alt+super+left=previous_tab
 keybind = alt+super+right=next_tab
+keybind = shift+enter=text:\x1b\r
+
+
+# Unbind keybinds for tmux/herdr
+keybind = shift+left=unbind
+keybind = shift+right=unbind
+keybind = shift+up=unbind
+keybind = shift+down=unbind
+keybind = ctrl+left=unbind
+keybind = ctrl+right=unbind
+keybind = ctrl+up=unbind
+keybind = ctrl+down=unbind

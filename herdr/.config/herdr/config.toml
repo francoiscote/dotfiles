@@ -1,0 +1,40 @@
+onboarding = false
+
+[ui.toast]
+delivery = "terminal"
+
+[ui]
+show_agent_labels_on_pane_borders = true
+
+agent_panel_scope = "all"
+[ui.sound]
+enabled = true
+
+[theme]
+name = "catppuccin-latte"
+
+[experimental]
+pane_history = true
+
+[keys]
+prefix = "ctrl+a"
+split_vertical = "prefix+|"
+focus_pane_left = "shift+left"
+focus_pane_down = "shift+down"
+focus_pane_up = "shift+up"
+focus_pane_right = "shift+right"
+
+rename_tab = "prefix+comma"
+
+previous_tab = "ctrl+left"
+next_tab = "ctrl+right"
+previous_workspace = "ctrl+up"
+next_workspace = "ctrl+down"
+
+previous_agent = "ctrl+shift+up"
+next_agent = "ctrl+shift+down"
+
+[[keys.command]]
+key = "prefix+alt+g"
+type = "pane"
+command = "lazygit"
