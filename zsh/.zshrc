@@ -99,3 +99,6 @@ eval "$(starship init zsh)"
 
 # Start or attach default tmux session
 # ~/.local/bin/ta
+
+# bun completions
+[ -s "/Users/fcote/.bun/_bun" ] && source "/Users/fcote/.bun/_bun"
