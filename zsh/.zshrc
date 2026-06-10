@@ -58,7 +58,10 @@ export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 export PATH="$HOME/Library/Python/2.7/bin:$PATH"
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
@@ -99,6 +102,3 @@ eval "$(starship init zsh)"
 
 # Start or attach default tmux session
 # ~/.local/bin/ta
-
-# bun completions
-[ -s "/Users/fcote/.bun/_bun" ] && source "/Users/fcote/.bun/_bun"
