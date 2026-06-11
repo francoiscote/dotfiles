@@ -1,7 +1,8 @@
 theme = dark:Catppuccin Macchiato,light:GitHub Light Default
-font-family = "0xProto Nerd Font Mono"
+font-family = "0xProto"
 font-thicken = true
 font-size = 16
+adjust-cell-height = -15%
 
 macos-titlebar-style = "tabs"
 window-padding-x = 6
