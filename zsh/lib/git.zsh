@@ -38,4 +38,5 @@ alias gwr='git worktree remove'
 # -----------------------------------------
 # LAZYGIT
 # -----------------------------------------
+alias lg="lazygit"
 alias lgl='lazygit log --screen-mode full'

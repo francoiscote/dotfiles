@@ -5,6 +5,7 @@ gui:
     selectedLineBgColor:
       - reverse
   nerdFontsVersion: "3"
+  commitAuthorLongLength: 2
 git:
   pagers:
     - colorArg: always
