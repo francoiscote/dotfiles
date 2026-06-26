@@ -1,7 +1,7 @@
 theme = dark:Catppuccin Macchiato,light:GitHub Light Default
 font-family = "0xProto"
 font-thicken = true
-font-size = 16
+font-size = 14
 adjust-cell-height = -15%
 
 macos-titlebar-style = "tabs"
