@@ -1,20 +1,24 @@
 onboarding = false
 
-[ui.toast]
-delivery = "terminal"
-
 [ui]
 show_agent_labels_on_pane_borders = true
+copy_on_select = false
 
-agent_panel_scope = "all"
+agent_panel_sort = "spaces"
+[ui.sidebar.spaces]
+row_gap = 1
+
+[ui.sidebar.agents]
+row_gap = 1
+
 [ui.sound]
 enabled = true
 
+[ui.toast]
+delivery = "terminal"
+
 [theme]
 name = "catppuccin-latte"
-
-[experimental]
-pane_history = true
 
 [keys]
 prefix = "ctrl+a"
@@ -35,6 +39,25 @@ previous_agent = "ctrl+shift+up"
 next_agent = "ctrl+shift+down"
 
 [[keys.command]]
-key = "prefix+alt+g"
-type = "pane"
+key = "prefix+g"
+type = "popup"
 command = "lazygit"
+description = "run lazygit"
+width = "90%"
+height = "90%"
+
+[[keys.command]]
+key = "prefix+l"
+type = "popup"
+command = "lazygit log --screen-mode full"
+description = "run lazygit log"
+width = "90%"
+height = "90%"
+
+[[keys.command]]
+key = "prefix+i"
+type = "popup"
+command = "exec \"${SHELL:-sh}\""
+description = "open scratch terminal"
+width = "90%"
+height = "90%"
