@@ -5,16 +5,18 @@ are managed by [GNU Stow](https://www.gnu.org/software/stow/).
 
 ## Features
 
-- Zsh Shell
-  - `zsh-autosuggestions` and `zsh-syntax-highlighting` plugins
-  - [Spaceship prompt](https://github.com/denysdovhan/spaceship-prompt)
-  - [tmux](https://github.com/tmux/tmux)
-  - [tmuxp](https://tmuxp.git-pull.com/)
-- [Hammerspoon](https://www.hammerspoon.org/)
-- [Karabiner Elements](https://pqrs.org/osx/karabiner/)
-- Git Configs
-- macOS defaults
-- homebrew bundles
+| | |
+|---|---|
+| **Shell** | Zsh w/ `zsh-autosuggestions`, `zsh-syntax-highlighting`, [Starship](https://starship.rs) prompt |
+| **Terminal** | [Ghostty](https://ghostty.org) — Catppuccin Macchiato / GitHub Light |
+| **Multiplexer** | [herdr](https://github.com/manaflow-ai/herdr) (prefix `^A`) |
+| **Editor** | Neovim, VS Code, Zed |
+| **Git** | `delta` diff, `lazygit`, `gh` |
+| **CLI** | `eza`, `ripgrep`, `fd`, `fzf`, `bat`, `btop`, `jq` |
+| **Languages** | Node (`n`), Python (`pyenv`), Ruby (`rbenv`), PHP (`phpbrew`), Rust (Cargo), Java 8 |
+| **AI** | Claude Code, OpenCode, Sourcegraph Amp |
+| **macOS** | Homebrew bundles, system defaults |
+| **Other** | 1Password, Raycast, Obsidian, Linear, CleanShot X |
 
 ## Installation
 
