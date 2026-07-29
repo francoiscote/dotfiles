@@ -6,10 +6,10 @@ copy_on_select = false
 
 agent_panel_sort = "spaces"
 [ui.sidebar.spaces]
-row_gap = 1
+row_gap = 0
 
 [ui.sidebar.agents]
-row_gap = 1
+row_gap = 0
 
 [ui.sound]
 enabled = true
