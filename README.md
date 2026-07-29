@@ -40,6 +40,22 @@ Make the content of `~/.scripts` executable
 $ sudo chmod +x ~/.scripts/\*
 ```
 
+### Adopting new config files
+
+```shell
+$ stow-adopt <package> [source-dir]
+```
+
+Interactively adopt config files into a stow package. Uses fzf to pick which files to bring in — unselected files are left untouched.
+
+- `package` — name of the stow package (e.g. `git`, `zsh`)
+- `source-dir` — defaults to `~/.config/<package>`
+
+Controls:
+- `Enter` — adopt selected files
+- `^D` — dig into a directory to pick individual files
+- `^Q` — quit, leaving remaining files unmanaged
+
 ## TO DO
 
 ### Installation script
