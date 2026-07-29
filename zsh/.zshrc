@@ -77,6 +77,9 @@ if [ -f "$HOME/.google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/.google-cloud-sd
 if [ -f "$HOME/.google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/.google-cloud-sdk/completion.zsh.inc"; fi
 # Man Paths
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
+# opencode
+export PATH=/Users/fcote/.opencode/bin:$PATH
+
 
 # -----------------------------------------
 # SOURCE ZSH PLUGINS
