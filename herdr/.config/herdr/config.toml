@@ -2,7 +2,6 @@ onboarding = false
 
 [ui]
 show_agent_labels_on_pane_borders = true
-copy_on_select = false
 
 agent_panel_sort = "spaces"
 [ui.sidebar.spaces]
