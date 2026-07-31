@@ -21,7 +21,9 @@ name = "catppuccin-latte"
 
 [keys]
 prefix = "ctrl+a"
+
 split_vertical = "prefix+|"
+
 focus_pane_left = "shift+left"
 focus_pane_down = "shift+down"
 focus_pane_up = "shift+up"
@@ -38,7 +40,7 @@ previous_agent = "ctrl+shift+up"
 next_agent = "ctrl+shift+down"
 
 [[keys.command]]
-key = "prefix+g"
+key = "prefix+shift+g"
 type = "popup"
 command = "lazygit"
 description = "run lazygit"
@@ -46,7 +48,7 @@ width = "90%"
 height = "90%"
 
 [[keys.command]]
-key = "prefix+l"
+key = "prefix+shift+l"
 type = "popup"
 command = "lazygit log --screen-mode full"
 description = "run lazygit log"
