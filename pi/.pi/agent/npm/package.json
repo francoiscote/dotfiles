@@ -1,0 +1,9 @@
+{
+	"name": "pi-extensions",
+	"private": true,
+	"dependencies": {
+		"@benvargas/pi-themes": "^1.0.0",
+		"@gotgenes/pi-permission-system": "^24.0.0",
+		"@juicesharp/rpiv-ask-user-question": "^2.2.0"
+	}
+}

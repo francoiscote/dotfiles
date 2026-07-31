@@ -1,7 +1,12 @@
 {
   "lastChangelogVersion": "0.83.0",
-  "theme": "light",
+  "theme": "github-light-default",
+  "packages": [
+    "npm:@benvargas/pi-themes",
+    "npm:@gotgenes/pi-permission-system",
+    "npm:@juicesharp/rpiv-ask-user-question"
+  ],
   "defaultProvider": "opencode",
-  "defaultModel": "kimi-k2.6",
-  "defaultThinkingLevel": "medium"
+  "defaultModel": "glm-5.2",
+  "defaultThinkingLevel": "high"
 }
