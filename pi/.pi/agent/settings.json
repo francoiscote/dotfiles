@@ -1,0 +1,12 @@
+{
+  "lastChangelogVersion": "0.83.0",
+  "theme": "github-light-default",
+  "packages": [
+    "npm:@benvargas/pi-themes",
+    "npm:@gotgenes/pi-permission-system",
+    "npm:@juicesharp/rpiv-ask-user-question"
+  ],
+  "defaultProvider": "opencode",
+  "defaultModel": "glm-5.2",
+  "defaultThinkingLevel": "high"
+}
