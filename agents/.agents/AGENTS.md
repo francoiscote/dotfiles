@@ -1,8 +1,5 @@
 - In all interactions and commit messages, be extremely concise and sacrifice grammer for the sake of concision.
 
-## PR Comments
-- When tagging Claude in GitHub issues, use '@claude'
-
 ## Tooling choices
 - package managers: prefer `pnpm` over `npm`
 - languages:prefer `typescript` over `javascript`
