@@ -39,8 +39,10 @@ next_workspace = "ctrl+down"
 previous_agent = "ctrl+shift+up"
 next_agent = "ctrl+shift+down"
 
+goto = "prefix+/"
+
 [[keys.command]]
-key = "prefix+shift+g"
+key = "prefix+g"
 type = "popup"
 command = "lazygit"
 description = "run lazygit"
@@ -48,7 +50,7 @@ width = "90%"
 height = "90%"
 
 [[keys.command]]
-key = "prefix+shift+l"
+key = "prefix+l"
 type = "popup"
 command = "lazygit log --screen-mode full"
 description = "run lazygit log"
