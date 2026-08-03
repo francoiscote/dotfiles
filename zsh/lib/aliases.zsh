@@ -15,3 +15,7 @@ alias vim="nvim"
 # Docker
 # -----------------------------------------
 alias dockerprune="docker image prune -af && docker volume prune -f"
+
+# Herdr
+# -----------------------------------------
+alias tri="herdr-trifecta"
