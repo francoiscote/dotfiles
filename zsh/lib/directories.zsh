@@ -33,9 +33,9 @@ alias d='dirs -v | head -10'
 # List directory contents
 EZA_ICON_SPACING=2
 EZA_ICONS_AUTO=1
-alias l='eza -l'
+alias l='eza -la --git'
+alias ll='eza -l'
 alias lss='l --total-size --sort=size --reverse'
-alias ll='eza -l -a --git'
 alias llss='ll --total-size --sort=size --reverse'
 alias lt='eza -T'
 alias llt='eza -T -a'
