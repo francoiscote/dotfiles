@@ -45,18 +45,22 @@ $ sudo chmod +x ~/.scripts/\*
 ### Adopting new config files
 
 ```shell
-$ stow-adopt <package> [source-dir]
+$ stow-adopt ~/.config/btop
+$ stow-adopt -p git ~/.config/lazygit
 ```
 
-Interactively adopt config files into a stow package. Uses fzf to pick which files to bring in — unselected files are left untouched.
+Interactively adopt config files into a stow package. Lists every file under
+the given path in fzf (with a content/size preview) — pick the ones worth
+keeping with `Space`, confirm with `Enter`. Selected files are moved into the
+package (mirroring their path relative to `$HOME`) and symlinked back;
+unselected files are left untouched.
 
-- `package` — name of the stow package (e.g. `git`, `zsh`)
-- `source-dir` — defaults to `~/.config/<package>`
-
-Controls:
-- `Enter` — adopt selected files
-- `^D` — dig into a directory to pick individual files
-- `^Q` — quit, leaving remaining files unmanaged
+- the path must live under `$HOME`; the package name is derived from its
+  basename, or set explicitly with `-p <package>`
+- files already symlinked into the dotfiles are shown tagged `[stowed]` and
+  ignored if selected
+- if a selected file diverged from an existing repo copy, the home version wins
+- nothing is committed — review with `git status` afterwards
 
 ## TO DO
 

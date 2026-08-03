@@ -1,0 +1,144 @@
+#!/bin/bash
+#
+# Interactively adopt config files into a stow package.
+#
+# Usage: stow-adopt [-p package] <path>
+#
+#   path        a file or directory under $HOME (e.g. ~/.config/btop)
+#   -p package  stow package name (default: basename of path, leading dot stripped)
+#
+# Pick files with fzf (space to toggle, enter to confirm). Selected files are
+# moved into $DOTFILES/<package>/ mirroring their path relative to $HOME, then
+# stow symlinks them back. Unselected files are left untouched.
+
+set -euo pipefail
+
+DOTFILES="${DOTFILES:-$HOME/.dotfiles}"
+STOWED_TAG="[stowed]"
+
+usage() {
+    sed -n '2,12s/^# \{0,1\}//p' "$0"
+    exit 1
+}
+
+err() { printf 'stow-adopt: %s\n' "$1" >&2; exit 1; }
+
+# Internal: fzf preview of a candidate line
+if [ "${1:-}" = "--_preview" ]; then
+    entry="${2:-}"
+    entry="${entry#"$STOWED_TAG" }"
+    f="$HOME/$entry"
+    stat -f '%z bytes  modified %Sm' "$f" 2>/dev/null || stat -c '%s bytes  modified %y' "$f" 2>/dev/null
+    echo
+    if command -v bat >/dev/null; then
+        bat --color=always --style=plain --line-range=:200 "$f" 2>/dev/null
+    else
+        head -100 "$f" 2>/dev/null
+    fi
+    exit 0
+fi
+
+pkg=""
+src=""
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -p|--package) pkg="${2:-}"; [ -n "$pkg" ] || err "-p requires a value"; shift 2 ;;
+        -h|--help) usage ;;
+        -*) err "unknown option: $1" ;;
+        *) [ -z "$src" ] || err "unexpected argument: $1"; src="$1"; shift ;;
+    esac
+done
+[ -n "$src" ] || usage
+
+command -v stow >/dev/null || err "stow is not installed"
+command -v fzf >/dev/null || err "fzf is not installed"
+
+# Resolve source path and validate it lives under $HOME
+src_dir=$(cd "$(dirname "$src")" 2>/dev/null && pwd) || err "no such path: $src"
+src="$src_dir/$(basename "$src")"
+[ -e "$src" ] || err "no such path: $src"
+case "$src" in
+    "$HOME"/*) ;;
+    *) err "path must be under \$HOME: $src" ;;
+esac
+case "$src" in
+    "$DOTFILES"/*) err "path is inside your dotfiles repo: $src" ;;
+esac
+
+if [ -z "$pkg" ]; then
+    pkg=$(basename "$src")
+    pkg="${pkg#.}"
+fi
+
+# List candidate files (relative to $HOME), tagging ones already stowed
+list_candidates() {
+    local f rel target
+    while IFS= read -r f; do
+        rel="${f#"$HOME"/}"
+        if [ -L "$f" ]; then
+            target=$(readlink -f "$f" 2>/dev/null || true)
+            case "$target" in
+                "$DOTFILES"/*) printf '%s %s\n' "$STOWED_TAG" "$rel"; continue ;;
+            esac
+        fi
+        printf '%s\n' "$rel"
+    done < <(find "$src" \( -type f -o -type l \) | sort)
+}
+
+candidates=$(list_candidates)
+[ -n "$candidates" ] || err "no files found under $src"
+
+selection=$(printf '%s\n' "$candidates" | fzf \
+    --multi \
+    --bind 'space:toggle' \
+    --header "adopt into package '$pkg' — space: select, enter: confirm" \
+    --preview "'$0' --_preview {}" --preview-window=right:60%) \
+    || { echo "Nothing selected, aborting."; exit 0; }
+
+[ -n "$selection" ] || { echo "Nothing selected, aborting."; exit 0; }
+
+adopted=()
+overwritten=()
+skipped=()
+
+while IFS= read -r entry; do
+    case "$entry" in
+        "$STOWED_TAG "*) skipped+=("${entry#"$STOWED_TAG" } (already stowed)"); continue ;;
+    esac
+    home_file="$HOME/$entry"
+    if [ -L "$home_file" ] || [ ! -f "$home_file" ]; then
+        skipped+=("$entry (not a regular file)")
+        continue
+    fi
+    pkg_file="$DOTFILES/$pkg/$entry"
+    [ -e "$pkg_file" ] && overwritten+=("$entry")
+    mkdir -p "$(dirname "$pkg_file")"
+    mv -f "$home_file" "$pkg_file"
+    adopted+=("$entry")
+done <<< "$selection"
+
+if [ ${#adopted[@]} -eq 0 ]; then
+    echo "Nothing to adopt."
+    exit 0
+fi
+
+if ! stow -d "$DOTFILES" -t "$HOME" -R "$pkg"; then
+    echo >&2
+    echo "stow failed — your files are safe in $DOTFILES/$pkg/." >&2
+    echo "Resolve the conflict above, then run: stow -d $DOTFILES -t \$HOME -R $pkg" >&2
+    exit 1
+fi
+
+echo
+echo "Adopted into '$pkg' ($DOTFILES/$pkg):"
+printf '  %s\n' "${adopted[@]}"
+if [ ${#overwritten[@]} -gt 0 ]; then
+    echo "Overwritten in repo (home version won):"
+    printf '  %s\n' "${overwritten[@]}"
+fi
+if [ ${#skipped[@]} -gt 0 ]; then
+    echo "Skipped:"
+    printf '  %s\n' "${skipped[@]}"
+fi
+echo
+echo "Nothing was committed — review with: git -C $DOTFILES status"
