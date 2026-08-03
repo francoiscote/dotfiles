@@ -1,0 +1,42 @@
+{
+	"version": 3,
+	"skills": {
+		"linear-cli": {
+			"source": "schpet/linear-cli",
+			"sourceType": "github",
+			"sourceUrl": "https://github.com/schpet/linear-cli.git",
+			"skillPath": "skills/linear-cli/SKILL.md",
+			"skillFolderHash": "9498a678c738a19b81e2583d7745464539208d20",
+			"pluginName": "linear-cli",
+			"installedAt": "2026-08-03T18:07:02.882Z",
+			"updatedAt": "2026-08-03T18:07:02.882Z"
+		},
+		"find-skills": {
+			"source": "vercel-labs/skills",
+			"sourceType": "github",
+			"sourceUrl": "https://github.com/vercel-labs/skills.git",
+			"skillPath": "skills/find-skills/SKILL.md",
+			"skillFolderHash": "76a98a285cb0434f3d39e1a873823556330e398b",
+			"installedAt": "2026-08-03T18:07:11.401Z",
+			"updatedAt": "2026-08-03T18:07:11.401Z"
+		}
+	},
+	"dismissed": {
+		"findSkillsPrompt": true
+	},
+	"lastSelectedAgents": [
+		"amp",
+		"antigravity",
+		"antigravity-cli",
+		"cline",
+		"codex",
+		"cursor",
+		"deepagents",
+		"gemini-cli",
+		"github-copilot",
+		"kimi-code-cli",
+		"opencode",
+		"warp",
+		"zed"
+	]
+}
