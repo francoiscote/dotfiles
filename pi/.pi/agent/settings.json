@@ -3,7 +3,6 @@
   "theme": "github-light-default",
   "packages": [
     "npm:@benvargas/pi-themes",
-    "npm:@gotgenes/pi-permission-system",
     "npm:@juicesharp/rpiv-ask-user-question",
     "npm:pi-mcp-adapter",
     "npm:pi-open-tui"
