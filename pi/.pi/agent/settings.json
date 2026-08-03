@@ -5,10 +5,15 @@
     "npm:@benvargas/pi-themes",
     "npm:@gotgenes/pi-permission-system",
     "npm:@juicesharp/rpiv-ask-user-question",
-    "npm:pi-mcp-adapter"
+    "npm:pi-mcp-adapter",
+    "npm:pi-open-tui"
   ],
   "defaultProvider": "opencode",
   "defaultModel": "glm-5.2",
   "defaultThinkingLevel": "high",
-  "hideThinkingBlock": true
+  "hideThinkingBlock": true,
+  "showCacheMissNotices": true,
+  "warnings": {
+    "anthropicExtraUsage": true
+  }
 }
