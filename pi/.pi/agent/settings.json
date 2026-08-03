@@ -1,0 +1,7 @@
+{
+  "lastChangelogVersion": "0.83.0",
+  "theme": "light",
+  "defaultProvider": "opencode",
+  "defaultModel": "kimi-k2.6",
+  "defaultThinkingLevel": "medium"
+}

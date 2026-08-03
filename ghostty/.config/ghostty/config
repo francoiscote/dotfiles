@@ -31,7 +31,7 @@ split-inherit-working-directory = true
 # alt+cmd+arrow to move focus between tabs
 keybind = alt+super+left=previous_tab
 keybind = alt+super+right=next_tab
-keybind = shift+enter=text:\x1b\r
+keybind = alt+backspace=text:\x1b\x7f
 
 
 # Unbind keybinds for tmux/herdr
