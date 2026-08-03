@@ -4,9 +4,11 @@
   "packages": [
     "npm:@benvargas/pi-themes",
     "npm:@gotgenes/pi-permission-system",
-    "npm:@juicesharp/rpiv-ask-user-question"
+    "npm:@juicesharp/rpiv-ask-user-question",
+    "npm:pi-mcp-adapter"
   ],
   "defaultProvider": "opencode",
   "defaultModel": "glm-5.2",
-  "defaultThinkingLevel": "high"
+  "defaultThinkingLevel": "high",
+  "hideThinkingBlock": true
 }
