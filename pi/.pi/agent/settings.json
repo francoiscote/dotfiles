@@ -8,7 +8,7 @@
     "npm:pi-open-tui"
   ],
   "defaultProvider": "opencode",
-  "defaultModel": "glm-5.2",
+  "defaultModel": "deepseek-v4-flash",
   "defaultThinkingLevel": "high",
   "hideThinkingBlock": true,
   "showCacheMissNotices": true,
