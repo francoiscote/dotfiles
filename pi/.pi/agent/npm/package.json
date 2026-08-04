@@ -4,7 +4,6 @@
 	"dependencies": {
 		"@benvargas/pi-themes": "^1.0.0",
 		"@juicesharp/rpiv-ask-user-question": "^2.4.0",
-		"pi-mcp-adapter": "^2.20.0",
 		"pi-open-tui": "^0.2.10"
 	}
 }

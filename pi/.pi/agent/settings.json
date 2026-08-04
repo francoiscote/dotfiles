@@ -4,7 +4,6 @@
   "packages": [
     "npm:@benvargas/pi-themes",
     "npm:@juicesharp/rpiv-ask-user-question",
-    "npm:pi-mcp-adapter",
     "npm:pi-open-tui"
   ],
   "defaultProvider": "opencode",
