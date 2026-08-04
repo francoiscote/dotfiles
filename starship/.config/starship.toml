@@ -25,6 +25,9 @@ symbol = " "
 [elm]
 symbol = " "
 
+[gcloud]
+disabled = true
+
 [git_branch]
 style = "bold blue"
 symbol = " "
