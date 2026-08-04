@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 # herdr-trifecta — open a 3-tab layout for a project in the current Herdr workspace.
 #
-#   tab 1 "AI" : the caller's tab, relabeled, with a `pi` coding agent started
-#                in the caller's pane (pi launches after this script exits)
-#   tab 2 "git": a plain shell for git work
-#   tab 3 "CLI": two panes side-by-side (horizontal split), both empty shells
+#   tab 1 "CLI": the caller's tab, relabeled, with a split (two panes side-by-side)
+#   tab 2 "AI" : new tab with a `pi` coding agent started in its pane
+#   tab 3 "git": a plain shell for git work
 #
-# The caller's tab becomes the AI tab; the git and CLI tabs are created without
-# stealing focus, so the user lands on the AI tab. Run this from the pane you
-# want pi to take over.
+# The caller's tab becomes the CLI tab (split into two shells); the AI and git
+# tabs are created to the right without stealing focus. Run this from the pane
+# you want to use as the left-half of the CLI split.
 #
 # Requires: HERDR_ENV=1, herdr in PATH, jq in PATH.
 
@@ -31,12 +30,24 @@ jget() { jq -r "$1 // empty" <<<"$RESP"; }
 
 echo "› workspace: $WORKSPACE   cwd: $CWD"
 
-# --- tab 1: AI (relabel the caller's tab) -----------------------------------
-# The caller's tab becomes the AI tab — relabel it instead of creating a new
-# one, so the pane the user is already in becomes the agent pane.
-herdr tab rename "$ORIG_TAB" "AI" >/dev/null \
-  || die "failed to relabel AI tab ($ORIG_TAB)"
-echo "› AI tab: $ORIG_TAB  pane: $ORIG_PANE"
+# --- tab 1: CLI (relabel caller's tab + split) ------------------------------
+# The caller's tab becomes CLI — relabel and split it side-by-side.
+herdr tab rename "$ORIG_TAB" "CLI" >/dev/null \
+  || die "failed to relabel CLI tab ($ORIG_TAB)"
+
+RESP=$(herdr pane split --pane "$ORIG_PANE" --direction down --cwd "$CWD")
+CLI_PANE2=$(jget .result.pane.pane_id)
+[ -n "$CLI_PANE2" ] || die "failed to split CLI pane: $RESP"
+echo "› CLI tab: $ORIG_TAB  panes: $ORIG_PANE | $CLI_PANE2"
+
+# --- tab 2: AI --------------------------------------------------------------
+# Fresh tab — pi starts here. Since the pane is new and already at a shell
+# prompt, the polling loop below should complete almost instantly.
+RESP=$(herdr tab create --workspace "$WORKSPACE" --cwd "$CWD" --label "AI" --no-focus)
+AI_TAB=$(jget .result.tab.tab_id)
+AI_PANE=$(jget .result.root_pane.pane_id)
+[ -n "$AI_TAB" ] && [ -n "$AI_PANE" ] || die "failed to create AI tab: $RESP"
+echo "› AI tab: $AI_TAB  pane: $AI_PANE"
 
 # `agent start` requires the pane to already be at an interactive shell prompt,
 # but this pane is busy running this very script, so it is NOT at a prompt yet.
@@ -47,36 +58,24 @@ echo "› AI tab: $ORIG_TAB  pane: $ORIG_PANE"
 # for pi to be detected and ready for input. A poll timeout guards against
 # spinning forever if the shell never returns.
 ( deadline=$(( $(date +%s) + 60 ))
-  until [ "$(herdr pane process-info --pane "$ORIG_PANE" 2>/dev/null \
+  until [ "$(herdr pane process-info --pane "$AI_PANE" 2>/dev/null \
               | jq -r '.result.process_info
                        | ((.foreground_processes[0].pid // 0) == .shell_pid)')" = "true" ]; do
     [ "$(date +%s)" -ge "$deadline" ] && exit 1
     sleep 0.3
   done
-  herdr agent start pi-agent --kind pi --pane "$ORIG_PANE" ) </dev/null >/dev/null 2>&1 &
+  herdr agent start pi-agent --kind pi --pane "$AI_PANE" ) </dev/null >/dev/null 2>&1 &
 disown 2>/dev/null || true
-echo "› AI tab shell busy with this script — pi will start after exit"
+echo "› AI tab will start pi momentarily"
 
-# --- tab 2: git -------------------------------------------------------------
+# --- tab 3: git -------------------------------------------------------------
 RESP=$(herdr tab create --workspace "$WORKSPACE" --cwd "$CWD" --label "git" --no-focus)
 GIT_TAB=$(jget .result.tab.tab_id)
-[ -n "$GIT_TAB" ] || die "failed to create git tab: $RESP"
-echo "› git tab: $GIT_TAB  (empty shell at $CWD)"
+GIT_PANE=$(jget .result.root_pane.pane_id)
+[ -n "$GIT_TAB" ] && [ -n "$GIT_PANE" ] || die "failed to create git tab: $RESP"
+herdr pane run "$GIT_PANE" lazygit
+echo "› git tab: $GIT_TAB  (lazygit starting at $CWD)"
 
-# --- tab 3: CLI (two panes side-by-side) ------------------------------------
-RESP=$(herdr tab create --workspace "$WORKSPACE" --cwd "$CWD" --label "CLI" --no-focus)
-CLI_TAB=$(jget .result.tab.tab_id)
-CLI_PANE=$(jget .result.root_pane.pane_id)
-[ -n "$CLI_TAB" ] && [ -n "$CLI_PANE" ] || die "failed to create CLI tab: $RESP"
-
-# Split to the right = panes arranged horizontally (left | right).
-RESP=$(herdr pane split --pane "$CLI_PANE" --direction right --cwd "$CWD" --no-focus)
-CLI_PANE2=$(jget .result.pane.pane_id)
-[ -n "$CLI_PANE2" ] || die "failed to split pane in CLI tab: $RESP"
-echo "› CLI tab: $CLI_TAB  panes: $CLI_PANE | $CLI_PANE2"
-
-# Keep focus on the AI tab (the caller's tab) so the user lands on pi.
-herdr tab focus "$ORIG_TAB" >/dev/null
-
-echo "✓ trifecta ready — AI ($ORIG_TAB) · git ($GIT_TAB) · CLI ($CLI_TAB)"
-echo "  pi is starting in this pane; it will appear momentarily."
+# Focus stays on CLI (the caller's tab) since no focus-stealing occurred.
+echo "✓ trifecta ready — CLI ($ORIG_TAB) · AI ($AI_TAB) · git ($GIT_TAB)"
+echo "  pi is starting in the AI tab."
