@@ -8,7 +8,7 @@
     "npm:pi-ketch"
   ],
   "defaultProvider": "opencode",
-  "defaultModel": "minimax-m3",
+  "defaultModel": "deepseek-v4-flash",
   "defaultThinkingLevel": "high",
   "hideThinkingBlock": true,
   "showCacheMissNotices": true,
