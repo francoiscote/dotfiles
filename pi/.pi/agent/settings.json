@@ -7,11 +7,24 @@
     "npm:pi-open-tui"
   ],
   "defaultProvider": "opencode",
-  "defaultModel": "deepseek-v4-flash",
+  "defaultModel": "minimax-m3",
   "defaultThinkingLevel": "high",
   "hideThinkingBlock": true,
   "showCacheMissNotices": true,
   "warnings": {
     "anthropicExtraUsage": true
-  }
+  },
+  "enabledModels": [
+    "anthropic/claude-fable-5",
+    "anthropic/claude-opus-5",
+    "anthropic/claude-sonnet-5",
+    "anthropic/claude-haiku-4-5",
+    "opencode/qwen3.6-plus",
+    "opencode/big-pickle",
+    "opencode/deepseek-v4-flash",
+    "opencode/deepseek-v4-pro",
+    "opencode/glm-5.2",
+    "opencode/kimi-k3",
+    "opencode/minimax-m3"
+  ]
 }
