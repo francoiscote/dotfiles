@@ -80,6 +80,11 @@ export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 # opencode
 export PATH=/Users/fcote/.opencode/bin:$PATH
 
+# -----------------------------------------
+# SOURCE KETCH SETUP
+# -----------------------------------------
+source $DOTFILES/ketch/setup.zsh
+
 
 # -----------------------------------------
 # SOURCE ZSH PLUGINS

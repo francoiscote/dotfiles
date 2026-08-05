@@ -1,0 +1,11 @@
+{
+  "backend": "brave",
+  "searxng_url": "http://localhost:8081",
+  "limit": 5,
+  "cache_ttl": "72h",
+  "browser": "/Users/fcote/Library/Caches/ketch/browser/chromium-1321438/Chromium.app/Contents/MacOS/Chromium",
+  "code_backend": "grepapp",
+  "docs_backend": "context7",
+  "sourcegraph_url": "https://sourcegraph.com",
+  "external_pdf_to_md_converter_timeout_sec": 300
+}
