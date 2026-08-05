@@ -1,6 +1,5 @@
 continuation_prompt = "▶▶"
 
-
 [aws]
 symbol = "  "
 
