@@ -4,7 +4,8 @@
   "packages": [
     "npm:@benvargas/pi-themes",
     "npm:@juicesharp/rpiv-ask-user-question",
-    "npm:pi-open-tui"
+    "npm:pi-open-tui",
+    "npm:pi-ketch"
   ],
   "defaultProvider": "opencode",
   "defaultModel": "minimax-m3",
