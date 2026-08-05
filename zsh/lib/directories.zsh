@@ -39,3 +39,12 @@ alias lss='l --total-size --sort=size --reverse'
 alias llss='ll --total-size --sort=size --reverse'
 alias lt='eza -T'
 alias llt='eza -T -a'
+
+# Yazi Shell Wrapper
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	command rm -f -- "$tmp"
+}
