@@ -27,5 +27,6 @@
     "opencode/glm-5.2",
     "opencode/kimi-k3",
     "opencode/minimax-m3"
-  ]
+  ],
+  "tuiMode": "fullscreen"
 }
