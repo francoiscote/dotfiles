@@ -19,3 +19,8 @@ alias dockerprune="docker image prune -af && docker volume prune -f"
 # Herdr
 # -----------------------------------------
 alias tri="herdr-trifecta"
+
+# Pi General — isolated agent profile at ~/.pi/general-agent
+# (symlink → ~/Code/pi-general/.pigen: SYSTEM.md, settings.json, extensions)
+# -----------------------------------------
+alias pigen='PI_CODING_AGENT_DIR="$HOME/.pi/general-agent" pi'
