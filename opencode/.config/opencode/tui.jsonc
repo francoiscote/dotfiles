@@ -10,5 +10,6 @@
 		"sounds": {
 			"error": "./sounds/error.mp3"
 		}
-	}
+	},
+	"plugin": ["./herdr-tui-session.js"]
 }
