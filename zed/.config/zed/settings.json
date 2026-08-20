@@ -93,8 +93,8 @@
 	},
 	"theme": {
 		"mode": "system",
-		"light": "Github Plus Light",
-		"dark": "Github Plus Dark"
+		"light": "GitHub Light",
+		"dark": "Rosé Pine Moon"
 	},
 	"theme_overrides": {
 		"Github Plus Light": {
