@@ -10,7 +10,7 @@
     "npm:pi-context-view"
   ],
   "defaultProvider": "opencode",
-  "defaultModel": "qwen3.6-plus",
+  "defaultModel": "deepseek-v4-flash",
   "defaultThinkingLevel": "high",
   "hideThinkingBlock": true,
   "showCacheMissNotices": true,
