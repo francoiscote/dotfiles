@@ -1,14 +1,16 @@
 {
-  "lastChangelogVersion": "0.84.1",
-  "theme": "github-light-default",
+  "lastChangelogVersion": "0.84.2",
+  "theme": "github-light-default/rose-pine-moon",
   "packages": [
     "npm:@benvargas/pi-themes",
     "npm:@juicesharp/rpiv-ask-user-question",
     "npm:pi-open-tui",
-    "npm:pi-ketch"
+    "npm:pi-ketch",
+    "npm:pi-rose-pine",
+    "npm:pi-context-view"
   ],
   "defaultProvider": "opencode",
-  "defaultModel": "deepseek-v4-flash",
+  "defaultModel": "qwen3.6-plus",
   "defaultThinkingLevel": "high",
   "hideThinkingBlock": true,
   "showCacheMissNotices": true,

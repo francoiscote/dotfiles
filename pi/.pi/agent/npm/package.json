@@ -2,9 +2,11 @@
 	"name": "pi-extensions",
 	"private": true,
 	"dependencies": {
-		"@benvargas/pi-themes": "^1.1.0",
-		"@juicesharp/rpiv-ask-user-question": "^2.4.0",
+		"@benvargas/pi-themes": "^1.2.0",
+		"@juicesharp/rpiv-ask-user-question": "^2.6.2",
+		"pi-context-view": "^0.4.3",
 		"pi-ketch": "^0.1.6",
-		"pi-open-tui": "^0.2.11"
+		"pi-open-tui": "^0.2.14",
+		"pi-rose-pine": "^0.1.0-next.13-next.13"
 	}
 }
