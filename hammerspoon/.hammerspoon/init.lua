@@ -1,25 +1,40 @@
+-- LOAD DEPS
+-------------------------------------------------------------------------------
+hs.loadSpoon('Hyper')
+
 -- SETTINGS
 -------------------------------------------------------------------------------
-local hyper = { "cmd", "alt", "ctrl" }
-local hyperShift = { "cmd", "alt", "ctrl", "shift" }
-
 hs.logger.defaultLogLevel = 'info'
-local log = hs.logger.new('WM', 'debug')
+hs.window.animationDuration = 0
 
--- Spoons
--------------------------------------------------------------------------------
-hs.loadSpoon("SpotifyMediaKeysFix");
-spoon.SpotifyMediaKeysFix:start();
+Hyper = spoon.Hyper
+Hyper:bindHotKeys({ hyperKey = { {}, 'F19' } })
+
+local log = hs.logger.new('WM', 'debug')
 
 -- Tools
 -------------------------------------------------------------------------------
+function dump(o)
+  if type(o) == 'table' then
+    local s = '{ '
+    for k, v in pairs(o) do
+      if type(k) ~= 'number' then k = '"' .. k .. '"' end
+      s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
+    end
+    return s .. '} '
+  else
+    return tostring(o)
+  end
+end
+
 -- Hyper+Z - Shortcut to reload config
-hs.hotkey.bind(hyper, "z", hs.reload)
+Hyper:bind({}, 'z', nil, hs.reload)
 
 -- Hyper+Shift+Z - Shortcut to inspect a window
-hs.hotkey.bind(hyperShift, "z", function()
+Hyper:bind({ 'shift' }, 'z', nil, function()
   local w = hs.window.focusedWindow()
   log.d("Application Name:", w:application():name())
+  log.d("Bundle Id:", w:application():bundleID())
   log.d("Id:", w:id())
   log.d("Title:", w:title())
   log.d("TopLeft:", w:topLeft())
@@ -29,6 +44,7 @@ hs.hotkey.bind(hyperShift, "z", function()
   log.d("Role:", w:role())
   log.d("Subrole:", w:subrole())
 end)
+
 
 -- Requires
 -------------------------------------------------------------------------------

@@ -13,7 +13,7 @@ local mainScreenName = hs.screen.mainScreen():name()
 local w_browsers = wf.new { ['Arc'] = true, ['Safari'] = true, ['Firefox Developer Edition'] = true, ['Google Chrome'] = { rejectTitles = 'Picture in Picture' } }
     :setCurrentSpace(true):setScreens(mainScreenName)
 local w_editors = wf.new { ['Code'] = true, ['Zed'] = true }:setCurrentSpace(true):setScreens(mainScreenName)
-local w_terminals = wf.new { 'iTerm2', 'kitty' }:setCurrentSpace(true):setScreens(mainScreenName)
+local w_terminals = wf.new { 'iTerm2', 'Ghostty' }:setCurrentSpace(true):setScreens(mainScreenName)
 local w_videos = wf.new { ['YouTube'] = true, ['Twitch'] = true, ['Google Meet'] = true, ['zoom.us'] = true, ['VLC'] = true, ['Vial'] = true, ['Google Chrome'] = { allowTitles = 'Picture in Picture' }, ['OBS Studio'] = { allowTitles = '(.*)Windowed Projector(.*)' }, ['Arc'] = { allowRoles = 'AXSystemDialog' }, ['Slack'] = { allowTitles = '(.*)Huddle$' }, ['Oryx'] = true }
     :setCurrentSpace(true):setScreens(mainScreenName)
 local w_cam = wf.new { ['Google Meet'] = true, ['zoom.us'] = true, ['OBS Studio'] = { allowTitles = '(.*)Windowed Projector(.*)' }, ['Slack'] = { allowTitles = '(.*)Huddle$' } }
