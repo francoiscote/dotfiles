@@ -80,17 +80,19 @@ export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 # opencode
 export PATH=/Users/fcote/.opencode/bin:$PATH
 
-# -----------------------------------------
-# SOURCE KETCH SETUP
-# -----------------------------------------
-source $DOTFILES/ketch/setup.zsh
-
 
 # -----------------------------------------
 # SOURCE ZSH PLUGINS
 # -----------------------------------------
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# -----------------------------------------
+# SOURCE packages setup.zsh scripts
+# -----------------------------------------
+for config_file ($DOTFILES/*/setup.zsh); do
+  source $config_file
+done
 
 # -----------------------------------------
 # SOURCE LIB/*.ZSH FILES

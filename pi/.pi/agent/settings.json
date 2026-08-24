@@ -10,7 +10,7 @@
     "npm:pi-context-view"
   ],
   "defaultProvider": "opencode",
-  "defaultModel": "deepseek-v4-flash",
+  "defaultModel": "gpt-5.6-sol",
   "defaultThinkingLevel": "high",
   "hideThinkingBlock": true,
   "showCacheMissNotices": true,
@@ -28,7 +28,11 @@
     "opencode/deepseek-v4-pro",
     "opencode/glm-5.2",
     "opencode/kimi-k3",
-    "opencode/minimax-m3"
+    "opencode/minimax-m3",
+    "openai/gpt-5.6-luna",
+    "openai/gpt-5.6-terra",
+    "openai/gpt-5.6-sol",
+    "opencode/gpt-5.6-sol"
   ],
   "tuiMode": "fullscreen"
 }
