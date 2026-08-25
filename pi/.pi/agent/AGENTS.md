@@ -1,4 +1,5 @@
 - In all interactions and commit messages, be extremely concise and sacrifice grammer for the sake of concision.
+- When searching for answer, prefer using ketch skill and regrain from searching directly in the node_modules folders.
 
 ## Tooling choices
 - package managers: prefer `pnpm` over `npm`
