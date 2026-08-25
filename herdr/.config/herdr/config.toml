@@ -34,6 +34,7 @@ focus_pane_up = "shift+up"
 focus_pane_right = "shift+right"
 
 rename_tab = "prefix+comma"
+rename_workspace = "prefix+period"
 
 previous_tab = "ctrl+left"
 next_tab = "ctrl+right"
