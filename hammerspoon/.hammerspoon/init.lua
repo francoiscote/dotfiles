@@ -1,14 +1,14 @@
 -- LOAD DEPS
 -------------------------------------------------------------------------------
-hs.loadSpoon('Hyper')
+
 
 -- SETTINGS
 -------------------------------------------------------------------------------
 hs.logger.defaultLogLevel = 'info'
 hs.window.animationDuration = 0
 
-Hyper = spoon.Hyper
-Hyper:bindHotKeys({ hyperKey = { {}, 'F19' } })
+Hyper = { "cmd", "alt", "ctrl" }
+HyperShift = { "cmd", "alt", "ctrl", "shift" }
 
 local log = hs.logger.new('WM', 'debug')
 
@@ -28,10 +28,10 @@ function dump(o)
 end
 
 -- Hyper+Z - Shortcut to reload config
-Hyper:bind({}, 'z', nil, hs.reload)
+hs.hotkey.bind(Hyper, 'z', nil, hs.reload)
 
 -- Hyper+Shift+Z - Shortcut to inspect a window
-Hyper:bind({ 'shift' }, 'z', nil, function()
+hs.hotkey.bind(HyperShift, 'z', nil, function()
   local w = hs.window.focusedWindow()
   log.d("Application Name:", w:application():name())
   log.d("Bundle Id:", w:application():bundleID())

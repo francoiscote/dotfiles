@@ -2,7 +2,7 @@
 -- Main Output: Vanatoo T0 or Studio Display Speakers or Bluetooth connected Stereo system
 -- Ranked Secondary Headphones: EVO4 or External Headphones or Macbook Pro Speakers
 -------------------------------------------------------------------------------
-Hyper:bind({}, 's', nil, function()
+hs.hotkey.bind(Hyper, 's', nil, function()
   local currentDeviceName = hs.audiodevice.defaultOutputDevice():name()
   local nextDevice
   if string.find(currentDeviceName, 'Vanatoo T0') or string.find(currentDeviceName, 'Studio Display Speakers') then
