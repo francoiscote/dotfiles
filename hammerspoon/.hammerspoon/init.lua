@@ -7,14 +7,14 @@
 hs.logger.defaultLogLevel = 'info'
 hs.window.animationDuration = 0
 
-Hyper = { "cmd", "alt", "ctrl" }
-HyperShift = { "cmd", "alt", "ctrl", "shift" }
+hs.loadSpoon("Hyper")
+local hyper = spoon.Hyper
 
 local log = hs.logger.new('WM', 'debug')
 
 -- Tools
 -------------------------------------------------------------------------------
-function dump(o)
+Dump = function(o)
   if type(o) == 'table' then
     local s = '{ '
     for k, v in pairs(o) do
@@ -27,11 +27,7 @@ function dump(o)
   end
 end
 
--- Hyper+Z - Shortcut to reload config
-hs.hotkey.bind(Hyper, 'z', nil, hs.reload)
-
--- Hyper+Shift+Z - Shortcut to inspect a window
-hs.hotkey.bind(HyperShift, 'z', nil, function()
+local function inspectFocusedWindow()
   local w = hs.window.focusedWindow()
   log.d("Application Name:", w:application():name())
   log.d("Bundle Id:", w:application():bundleID())
@@ -43,7 +39,16 @@ hs.hotkey.bind(HyperShift, 'z', nil, function()
   log.d("Frame:", w:frame())
   log.d("Role:", w:role())
   log.d("Subrole:", w:subrole())
-end)
+end
+
+local hyperBindings = {
+  { {},          "z", nil, hs.reload },
+  { { "shift" }, "z", nil, inspectFocusedWindow },
+}
+
+for _, binding in ipairs(hyperBindings) do
+  hyper:bind(binding[1], binding[2], binding[3], binding[4], binding[5])
+end
 
 
 -- Requires
@@ -53,6 +58,10 @@ require('app-watchers');
 require('audio')
 require('window-management')
 
+hyper:start()
+
 -- DONE!
 -------------------------------------------------------------------------------
 hs.alert("HS ✔︎")
+
+hs.loadSpoon('EmmyLua')

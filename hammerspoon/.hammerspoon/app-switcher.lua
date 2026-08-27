@@ -1,48 +1,46 @@
-local hyper = { "cmd", "alt", "ctrl" }
-local hyperShift = { "cmd", "alt", "ctrl", "shift" }
+local hyper = spoon.Hyper
 
-local log = hs.logger.new('WM', 'debug')
-
-local charToApps = {
+local hyperBindings = {
   -- Top Row: IM + Spotify
-  { Hyper,      't', 'Twitch' },
-  { HyperShift, 't', 'Twitch - Dashboard', },
-  { Hyper,      'y', 'YouTube' },
-  { Hyper,      'u', 'Slack' },
-  { HyperShift, 'u', 'Facebook', },
-  { Hyper,      'i', 'Messages' },
-  { HyperShift, 'i', 'Discord', },
-  { Hyper,      'o', 'WhatsApp' },
-  { HyperShift, 'o', 'OBS', },
-  { Hyper,      'p', 'Spotify' },
+  { {}, "t", "Twitch" },
+  { { "shift" }, "t", "Twitch - Dashboard" },
+  { {}, "y", "YouTube" },
+  { {}, "u", "Slack" },
+  { { "shift" }, "u", "Facebook" },
+  { {}, "i", "Messages" },
+  { { "shift" }, "i", "Discord" },
+  { {}, "o", "WhatsApp" },
+  { { "shift" }, "o", "OBS" },
+  { {}, "p", "Spotify" },
 
 
   -- Middle Row: Main Apps
-  { Hyper,      'd', 'DevDocs' },
-  { HyperShift, 'd', 'BoltAI', },
-  { Hyper,      'g', 'Google Meet' },
-  { HyperShift, 'g', 'zoom.us', },
-  { Hyper,      'h', 'com.culturedcode.ThingsMac' },
-  { HyperShift, 'h', 'Linear' },
-  { Hyper,      'j', 'Google Chrome' },
-  { HyperShift, 'j', 'Firefox Developer Edition', },
-  { Hyper,      'k', 'Visual Studio Code' },
-  { Hyper,      'l', 'Ghostty' },
-  { Hyper,      ';', 'Figma' },
+  { {}, "d", "DevDocs" },
+  { { "shift" }, "d", "BoltAI" },
+  { {}, "g", "Google Meet" },
+  { { "shift" }, "g", "zoom.us" },
+  { {}, "h", "com.culturedcode.ThingsMac" },
+  { { "shift" }, "h", "Linear" },
+  { {}, "j", "Google Chrome" },
+  { { "shift" }, "j", "Firefox Developer Edition" },
+  { {}, "k", "Visual Studio Code" },
+  { {}, "l", "Ghostty" },
+  { {}, ";", "Figma" },
 
   -- Bottom Row: Email, Calendar and ToDos
-  { Hyper,      'b', 'Claude' },
-  { Hyper,      'n', 'Obsidian' },
-  { HyperShift, 'n', 'Notion', },
-  { Hyper,      'm', 'Mimestream' },
-  { Hyper,      ',', 'Calendar' },
-  { Hyper,      '.', 'Finder' },
+  { {}, "b", "Claude" },
+  { {}, "n", "Obsidian" },
+  { { "shift" }, "n", "Notion" },
+  { {}, "m", "Mimestream" },
+  { {}, ",", "Calendar" },
+  { {}, ".", "Finder" },
 }
 
-hs.fnutils.each(charToApps, function(entry)
-  hs.hotkey.bind(entry[1], entry[2], nil, function()
-    if not hs.application.launchOrFocus(entry[3]) then
-      hs.application.launchOrFocusByBundleID(entry[3])
+for _, binding in ipairs(hyperBindings) do
+  local app = binding[3]
+  hyper:bind(binding[1], binding[2], nil, function()
+    if not hs.application.launchOrFocus(app) then
+      hs.application.launchOrFocusByBundleID(app)
     end
   end)
-end)
+end

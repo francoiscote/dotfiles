@@ -3,6 +3,108 @@ local layouts = require("window-management/layouts")
 local helpers = require("window-management/helpers")
 local appWatchers = require("app-watchers")
 
+local hyper = spoon.Hyper
+local areas = grid.areas
+local hsWindow = hs.getObjectMetatable("hs.window")
+
+local toggleFocusMode
+local centerFocusedWindow
+local moveFocusedWindowToNextScreen
+local togglePrimaryScreenResolution
+
+local function setFocusedWindowToArea(area)
+  return function()
+    grid.setFocusedWindowToCell(area)
+  end
+end
+
+local function setFocusedWindowToAreaWithLargeMargins(area)
+  return function()
+    grid.setLargeMargins()
+    grid.setFocusedWindowToCell(area)
+    grid.setDefaultMargins()
+  end
+end
+
+local hyperBindings = {
+  { {}, "x", grid.toggleLargeMargins },
+  { {}, "q", layouts.workBrowse },
+  { { "shift" }, "q", function()
+    layouts
+        .workBrowse(true)
+  end },
+  { {}, "w", layouts.workCode },
+  { { "shift" }, "w", function()
+    layouts
+        .workCode(true)
+  end },
+  { {}, "e", layouts.workEven },
+  { { "shift" }, "e", function()
+    layouts
+        .workEven(true)
+  end },
+  { {},          "r", layouts.workMax },
+
+  { {},          "1", setFocusedWindowToArea(areas.custom.smallLeft) },
+  { { "shift" }, "1", setFocusedWindowToAreaWithLargeMargins(areas.custom.smallLeft) },
+  { {},          "2", setFocusedWindowToArea(areas.evenSplit.leftFull) },
+  { { "shift" }, "2", setFocusedWindowToAreaWithLargeMargins(areas.evenSplit.leftFull) },
+  { {},          "3", setFocusedWindowToArea(areas.custom.largeLeft) },
+  { { "shift" }, "3", setFocusedWindowToAreaWithLargeMargins(areas.custom.largeLeft) },
+  {
+    {}, "4", {
+    setFocusedWindowToArea(areas.custom.small),
+    setFocusedWindowToArea(areas.custom.mini),
+  },
+  },
+  {
+    {}, "5", {
+    setFocusedWindowToArea(areas.custom.medium),
+    setFocusedWindowToArea(areas.custom.mediumTall),
+  },
+  },
+  {
+    {}, "6", {
+    setFocusedWindowToArea(areas.custom.large),
+    setFocusedWindowToArea(areas.custom.largeTall),
+  },
+  },
+  { {},          "7", setFocusedWindowToArea(areas.custom.largeRight) },
+  { { "shift" }, "7", setFocusedWindowToAreaWithLargeMargins(areas.custom.largeRight) },
+  { {},          "8", setFocusedWindowToArea(areas.evenSplit.rightFull) },
+  { { "shift" }, "8", setFocusedWindowToAreaWithLargeMargins(areas.evenSplit.rightFull) },
+  { {},          "9", setFocusedWindowToArea(areas.custom.smallRight) },
+  { { "shift" }, "9", setFocusedWindowToAreaWithLargeMargins(areas.custom.smallRight) },
+  { {},          "0", function() hsWindow.maximize(hs.window.focusedWindow()) end },
+  { { "shift" }, "0", setFocusedWindowToArea(areas.custom.maximizeAlmost) },
+
+  { {},          "a", function() toggleFocusMode() end },
+  { {},          "c", function() centerFocusedWindow() end },
+
+  -- Mission Control
+  { {}, "up", function()
+    hs.spaces.toggleMissionControl()
+  end
+  },
+  { {}, "down", function()
+    hs.spaces.toggleShowDesktop()
+  end
+  },
+
+  -- {
+  --   { "shift" }, "right", nil, function()
+  --   helpers.moveWindowOneSpace("right", true)
+  -- end
+  -- },
+  -- {
+  --   { "shift" }, "left", nil, function()
+  --   helpers.moveWindowOneSpace("left", true)
+  -- end
+  -- },
+  { {}, "=", function() moveFocusedWindowToNextScreen() end },
+  { {}, "-", function() togglePrimaryScreenResolution() end },
+}
+
 -- SETTINGS
 -------------------------------------------------------------------------------
 hs.window.animationDuration = 0
@@ -23,136 +125,10 @@ end
 
 -- MAPPINGS
 -------------------------------------------------------------------------------
-local areas = grid.areas
-
 -- Patch some hs.window functions for the bug with Chrome Windows
 -- https://github.com/Hammerspoon/hammerspoon/issues/3224
-local hsWindow = hs.getObjectMetatable("hs.window")
 hsWindow.maximize = helpers.withAxHotfix(hsWindow.maximize)
 hsWindow.centerOnScreen = helpers.withAxHotfix(hsWindow.centerOnScreen)
-
--- Margins
-hs.hotkey.bind(Hyper, "x", grid.toggleLargeMargins)
---hs.hotkey.bind(hyperShift, "x", layouts.workBrowse)
-
--- Layouts
-hs.hotkey.bind(Hyper, "q", function()
-  layouts.workBrowse()
-end)
-hs.hotkey.bind(HyperShift, "q", function()
-  layouts.workBrowse(true)
-end)
-
-hs.hotkey.bind(Hyper, "w", function()
-  layouts.workCode()
-end)
-hs.hotkey.bind(HyperShift, "w", function()
-  layouts.workCode(true)
-end)
-
-hs.hotkey.bind(Hyper, "e", function()
-  layouts.workEven()
-end)
-hs.hotkey.bind(HyperShift, "e", function()
-  layouts.workEven(true) -- with focus on Notes
-end)
-
-hs.hotkey.bind(Hyper, "r", function()
-  layouts.workMax()
-end)
-
-hs.hotkey.bind(HyperShift, "r", function()
-end)
-
-
--- Quick Sizes
--------------------------------------------------------------------------------
-hs.hotkey.bind(Hyper, "1", function()
-  grid.setFocusedWindowToCell(areas.custom.smallLeft)
-end)
-hs.hotkey.bind(HyperShift, "1", function()
-  grid.setLargeMargins()
-  grid.setFocusedWindowToCell(areas.custom.smallLeft)
-  grid.setDefaultMargins()
-end)
-
-hs.hotkey.bind(Hyper, "2", function()
-  grid.setFocusedWindowToCell(areas.evenSplit.leftFull)
-end)
-hs.hotkey.bind(HyperShift, "2", function()
-  grid.setLargeMargins()
-
-  grid.setFocusedWindowToCell(areas.evenSplit.leftFull)
-  grid.setDefaultMargins()
-end)
-
-hs.hotkey.bind(Hyper, "3", function()
-  grid.setFocusedWindowToCell(areas.custom.largeLeft)
-end)
-hs.hotkey.bind(HyperShift, "3", function()
-  grid.setLargeMargins()
-
-  grid.setFocusedWindowToCell(areas.custom.largeLeft)
-
-  grid.setDefaultMargins()
-end)
-
-
-hs.hotkey.bind(Hyper, "4", function()
-  grid.setFocusedWindowToCell(areas.custom.small)
-end)
-hs.hotkey.bind(HyperShift, "4", function()
-  grid.setFocusedWindowToCell(areas.custom.mini)
-end)
-
-hs.hotkey.bind(Hyper, "5", function()
-  grid.setFocusedWindowToCell(areas.custom.medium)
-end)
-
-hs.hotkey.bind(HyperShift, "5", function()
-end)
-
-hs.hotkey.bind(Hyper, "6", function()
-  grid.setFocusedWindowToCell(areas.custom.large)
-end)
-hs.hotkey.bind(HyperShift, "6", function()
-end)
-
-hs.hotkey.bind(Hyper, "7", function()
-  grid.setFocusedWindowToCell(areas.custom.largeRight)
-end)
-hs.hotkey.bind(HyperShift, "7", function()
-  grid.setLargeMargins()
-  grid.setFocusedWindowToCell(areas.custom.largeRight)
-  grid.setDefaultMargins()
-end)
-
-hs.hotkey.bind(Hyper, "8", function()
-  grid.setFocusedWindowToCell(areas.evenSplit.rightFull)
-end)
-hs.hotkey.bind(HyperShift, "8", function()
-  grid.setLargeMargins()
-  grid.setFocusedWindowToCell(areas.evenSplit.rightFull)
-  grid.setDefaultMargins()
-end)
-
-
-hs.hotkey.bind(Hyper, "9", function()
-  grid.setFocusedWindowToCell(areas.custom.smallRight)
-end)
-hs.hotkey.bind(HyperShift, "9", function()
-  grid.setLargeMargins()
-  grid.setFocusedWindowToCell(areas.custom.smallRight)
-  grid.setDefaultMargins()
-end)
-
-hs.hotkey.bind(Hyper, "0", function()
-  hsWindow.maximize(hs.window.focusedWindow())
-end)
-
-hs.hotkey.bind(HyperShift, "0", function()
-  grid.setFocusedWindowToCell(areas.custom.maximizeAlmost)
-end)
 
 -- Focus Mode
 -------------------------------------------------------------------------------
@@ -160,7 +136,6 @@ end)
 -- Center the focused Window and Hide Others
 -- the key act as a toggle between focus mode and the previously used layout
 local focusMode = false;
-local focusedWindow;
 local savedFrame;
 
 local focusedMenuBar = hs.menubar.new()
@@ -176,7 +151,7 @@ local function setFocusMode(state)
   end
 end
 
-hs.hotkey.bind(Hyper, "a", function()
+toggleFocusMode = function()
   local focusedWindow = hs.window.focusedWindow()
   local focusedApp = focusedWindow:application()
 
@@ -188,7 +163,6 @@ hs.hotkey.bind(Hyper, "a", function()
     focusedWindow:application():selectMenuItem("Show All");
 
     setFocusMode(false);
-    hyper.triggered = true
   else
     -- Save focused window and its position
     savedFrame = focusedWindow:frame()
@@ -215,32 +189,22 @@ hs.hotkey.bind(Hyper, "a", function()
     end
 
     setFocusMode(true);
-    hyper.triggered = true
   end
-end)
+end
 
 
 -- Move Windows
 -------------------------------------------------------------------------------
 -- C - Center
-hs.hotkey.bind(Hyper, "c", function()
+centerFocusedWindow = function()
   local win = hs.window.focusedWindow()
   win:centerOnScreen(nil, true)
-  hyper.triggered = true
-end)
-
--- HyperShift+[left, right] - Send and follow window to next/previous space
-hs.hotkey.bind(HyperShift, "right", nil, function()
-  helpers.moveWindowOneSpace('right', true)
-end)
-hs.hotkey.bind(HyperShift, "left", nil, function()
-  helpers.moveWindowOneSpace('left', true)
-end)
+end
 
 -- Hyper+equal - Send window to next screen.
 -- If sending to 4k screen, center the window in it.
 -- If sending to the laptop screen, maximize it.
-hs.hotkey.bind(Hyper, "=", function()
+moveFocusedWindowToNextScreen = function()
   -- Get the focused window, its window frame dimensions, its screen frame dimensions,
   -- and the next screen's frame dimensions.
   local focusedWindow = hs.window.focusedWindow()
@@ -259,11 +223,11 @@ hs.hotkey.bind(Hyper, "=", function()
     focusedWindow:maximize()
   end
   revert()
-end)
+end
 
 
 -- Hyper+minus - Switch Primary Screen Resolution between 1440p or 2880p
-hs.hotkey.bind(Hyper, "-", function()
+togglePrimaryScreenResolution = function()
   local mainFullMode = {
     width = 2880,
     height = 1620,
@@ -289,4 +253,12 @@ hs.hotkey.bind(Hyper, "-", function()
 
   hs.screen.primaryScreen():setMode(mainNextMode.width, mainNextMode.height, mainNextMode.scale, mainNextMode.frequency,
     mainNextMode.depth);
-end)
+end
+
+for _, binding in ipairs(hyperBindings) do
+  if type(binding[3]) == "table" then
+    hyper:bindSequence(binding[1], binding[2], binding[3])
+  else
+    hyper:bind(binding[1], binding[2], binding[3], binding[4], binding[5])
+  end
+end

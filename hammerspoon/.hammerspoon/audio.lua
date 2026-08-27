@@ -1,8 +1,15 @@
+local hyper = spoon.Hyper
+local toggleOutput
+
+local hyperBindings = {
+  { {}, "s", nil, function() toggleOutput() end },
+}
+
 -- Swap between a Speaker output and a series of ranked secondary outputs (headphones)
 -- Main Output: Vanatoo T0 or Studio Display Speakers or Bluetooth connected Stereo system
 -- Ranked Secondary Headphones: EVO4 or External Headphones or Macbook Pro Speakers
 -------------------------------------------------------------------------------
-hs.hotkey.bind(Hyper, 's', nil, function()
+toggleOutput = function()
   local currentDeviceName = hs.audiodevice.defaultOutputDevice():name()
   local nextDevice
   if string.find(currentDeviceName, 'Vanatoo T0') or string.find(currentDeviceName, 'Studio Display Speakers') then
@@ -33,4 +40,8 @@ hs.hotkey.bind(Hyper, 's', nil, function()
     hs.alert.closeAll()
     hs.alert.show(nextDevice:name())
   end
-end)
+end
+
+for _, binding in ipairs(hyperBindings) do
+  hyper:bind(binding[1], binding[2], binding[3], binding[4], binding[5])
+end
