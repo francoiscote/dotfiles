@@ -158,12 +158,12 @@ workMax:
 function export.workMax()
   helpers.maximiseFilteredWindows(w_editors)
   helpers.maximiseFilteredWindows(w_figma)
-  grid.setFilteredWindowsToCell(w_terminals, areas.custom.center)
-  grid.setFilteredWindowsToCell(w_browsers, areas.custom.browser)
-  grid.setFilteredWindowsToCell(w_notes, areas.custom.finder)
-  grid.setFilteredWindowsToCell(w_todos, areas.custom.finder)
-  grid.setFilteredWindowsToCell(w_chats, areas.custom.center)
-  grid.setFilteredWindowsToCell(w_videos, areas.custom.center)
+  grid.setFilteredWindowsToCell(w_terminals, areas.custom.medium)
+  grid.setFilteredWindowsToCell(w_browsers, areas.custom.large)
+  grid.setFilteredWindowsToCell(w_notes, areas.custom.small)
+  grid.setFilteredWindowsToCell(w_todos, areas.custom.small)
+  grid.setFilteredWindowsToCell(w_chats, areas.custom.medium)
+  grid.setFilteredWindowsToCell(w_videos, areas.custom.medium)
 end
 
 local function twitchHiddenWindows()
@@ -265,10 +265,10 @@ function export.twitchMax()
   grid.setFilteredWindowsToCell(w_figma, areas.twitch.maximize)
   grid.setFilteredWindowsToCell(w_browsers, areas.twitch.maximize)
 
-  grid.setFilteredWindowsToCell(w_terminals, areas.twitch.center)
-  -- grid.setFilteredWindowsToCell(w_notes, areas.twitch.center)
-  grid.setFilteredWindowsToCell(w_todos, areas.twitch.center)
-  grid.setFilteredWindowsToCell(w_chats, areas.twitch.center)
+  grid.setFilteredWindowsToCell(w_terminals, areas.twitch.medium)
+  -- grid.setFilteredWindowsToCell(w_notes, areas.twitch.medium)
+  grid.setFilteredWindowsToCell(w_todos, areas.twitch.medium)
+  grid.setFilteredWindowsToCell(w_chats, areas.twitch.medium)
 end
 
 return export

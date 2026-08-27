@@ -15,7 +15,7 @@ local chromeApp = hs.application.find("Google Chrome")
 if chromeApp then
   appWatchers.newWindow(chromeApp, function(app, window)
     if (window:isStandard()) then
-      grid.setFocusedWindowToCell(grid.areas.custom.center)
+      grid.setFocusedWindowToCell(grid.areas.custom.medium)
     end
   end)
 end
@@ -99,24 +99,23 @@ end)
 
 
 hs.hotkey.bind(Hyper, "4", function()
-  grid.setFocusedWindowToCell(areas.custom.finder)
+  grid.setFocusedWindowToCell(areas.custom.small)
 end)
 hs.hotkey.bind(HyperShift, "4", function()
   grid.setFocusedWindowToCell(areas.custom.mini)
 end)
 
 hs.hotkey.bind(Hyper, "5", function()
-  grid.setFocusedWindowToCell(areas.custom.center)
+  grid.setFocusedWindowToCell(areas.custom.medium)
 end)
-hs.hotkey.bind(HyperShift, "5", function()
 
+hs.hotkey.bind(HyperShift, "5", function()
 end)
 
 hs.hotkey.bind(Hyper, "6", function()
-  grid.setFocusedWindowToCell(areas.custom.browser)
+  grid.setFocusedWindowToCell(areas.custom.large)
 end)
 hs.hotkey.bind(HyperShift, "6", function()
-  grid.setFocusedWindowToCell(areas.customTwitch.browser)
 end)
 
 hs.hotkey.bind(Hyper, "7", function()
@@ -197,11 +196,11 @@ hs.hotkey.bind(Hyper, "a", function()
     -- Center Window
     -- Different layouts for different apps
     if (focusedWindow:application():name() == "Google Chrome") then
-      grid.setFocusedWindowToCell(areas.custom.browser);
-    elseif (focusedWindow:application():name() == "Things") or (focusedWindow:application():name() == "Obsidian") then
-      grid.setFocusedWindowToCell(areas.custom.finder);
+      grid.setFocusedWindowToCell(areas.custom.large);
+    elseif (focusedWindow:application():name() == "Things") or (focusedWindow:application():name() == "Finder") then
+      grid.setFocusedWindowToCell(areas.custom.small);
     else
-      grid.setFocusedWindowToCell(areas.custom.center);
+      grid.setFocusedWindowToCell(areas.custom.medium);
     end
 
     -- Hide all other apps.
@@ -255,7 +254,7 @@ hs.hotkey.bind(Hyper, "=", function()
   focusedWindow:moveToScreen(nextScreen)
 
   if string.find(nextScreen:name(), "BenQ") then
-    grid.setFocusedWindowToCell(areas.custom.center)
+    grid.setFocusedWindowToCell(areas.custom.medium)
   else
     focusedWindow:maximize()
   end
