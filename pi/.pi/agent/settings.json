@@ -29,10 +29,11 @@
     "opencode/glm-5.2",
     "opencode/kimi-k3",
     "opencode/minimax-m3",
-    "openai/gpt-5.6-luna",
-    "openai/gpt-5.6-terra",
-    "openai/gpt-5.6-sol",
-    "opencode/gpt-5.6-sol"
+    "opencode/gpt-5.6-sol",
+    "openai-codex/gpt-5.5",
+    "openai-codex/gpt-5.6-luna",
+    "openai-codex/gpt-5.6-sol",
+    "openai-codex/gpt-5.6-terra"
   ],
   "tuiMode": "fullscreen"
 }
