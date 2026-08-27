@@ -23,7 +23,7 @@ function export.maximiseFilteredWindows(wf)
 end
 
 function export.getDynamicMargins(h, v)
-  local max = hs.window.focusedWindow():screen():frame()
+  local max = hs.screen.mainScreen():frame()
   local hPad = math.floor(max.w * h)
   local vPad = math.floor(max.h * v)
 
