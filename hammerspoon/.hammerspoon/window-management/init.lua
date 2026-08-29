@@ -90,17 +90,6 @@ local hyperBindings = {
     hs.spaces.toggleShowDesktop()
   end
   },
-
-  -- {
-  --   { "shift" }, "right", nil, function()
-  --   helpers.moveWindowOneSpace("right", true)
-  -- end
-  -- },
-  -- {
-  --   { "shift" }, "left", nil, function()
-  --   helpers.moveWindowOneSpace("left", true)
-  -- end
-  -- },
   { {}, "=", function() moveFocusedWindowToNextScreen() end },
   { {}, "-", function() togglePrimaryScreenResolution() end },
 }
@@ -214,10 +203,11 @@ moveFocusedWindowToNextScreen = function()
     return
   end
 
-  local revert = axHotfix(focusedWindow)
+  local revert = helpers.axHotfix(focusedWindow)
   focusedWindow:moveToScreen(nextScreen)
+  local nextScreenName = nextScreen:name()
 
-  if string.find(nextScreen:name(), "BenQ") then
+  if nextScreenName and string.find(nextScreenName, "Studio Display") then
     grid.setFocusedWindowToCell(areas.custom.medium)
   else
     focusedWindow:maximize()
@@ -245,7 +235,7 @@ togglePrimaryScreenResolution = function()
 
   local currentMode = hs.screen.primaryScreen():currentMode();
   local mainNextMode
-  if currentMode.w == mainFullMode.width then
+  if currentMode and currentMode.w == mainFullMode.width then
     mainNextMode = mainTwitchMode;
   else
     mainNextMode = mainFullMode;

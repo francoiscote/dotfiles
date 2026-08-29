@@ -32,7 +32,7 @@ end
 
 -- Workaround fix for the Grammarly bug that causes the window to be animated
 -- https://github.com/Hammerspoon/hammerspoon/issues/3224#issuecomment-1294971600
-local function axHotfix(win)
+function export.axHotfix(win)
   if not win then win = hs.window.frontmostWindow() end
 
   local axApp = hs.axuielement.applicationElement(win:application())
@@ -52,7 +52,7 @@ function export.withAxHotfix(fn, position)
   if not position then position = 1 end
   return function(...)
     local args = { ... }
-    local revert = axHotfix(args[position])
+    local revert = export.axHotfix(args[position])
     fn(...)
     revert()
   end
