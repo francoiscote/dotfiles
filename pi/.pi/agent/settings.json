@@ -7,9 +7,10 @@
     "npm:pi-open-tui",
     "npm:pi-ketch",
     "npm:pi-rose-pine",
-    "npm:pi-context-view"
+    "npm:pi-context-view",
+    "npm:pi-x-ide"
   ],
-  "defaultProvider": "opencode",
+  "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.6-sol",
   "defaultThinkingLevel": "high",
   "hideThinkingBlock": true,

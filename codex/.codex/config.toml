@@ -1,5 +1,5 @@
-model = "gpt-5.6-sol"
-model_reasoning_effort = "high"
+model = "gpt-5.6-terra"
+model_reasoning_effort = "medium"
 personality = "pragmatic"
 
 [projects."/Users/fcote/Code/pp-cf"]
@@ -12,6 +12,9 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/Users/fcote/.dotfiles"]
+trust_level = "trusted"
+
+[projects."/Users/fcote"]
 trust_level = "trusted"
 
 [tui]

@@ -6,7 +6,8 @@
 		"@juicesharp/rpiv-ask-user-question": "^2.7.1",
 		"pi-context-view": "^0.4.3",
 		"pi-ketch": "^0.1.6",
-		"pi-open-tui": "^0.2.15",
-		"pi-rose-pine": "^0.1.0-next.13-next.13"
+		"pi-open-tui": "^0.3.0",
+		"pi-rose-pine": "^0.1.0-next.13-next.13",
+		"pi-x-ide": "^1.19.5"
 	}
 }
