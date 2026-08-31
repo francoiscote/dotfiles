@@ -53,8 +53,8 @@ local hyperBindings = {
   { { "shift" }, "3", setFocusedWindowToAreaWithLargeMargins(areas.custom.largeLeft) },
   {
     {}, "4", {
-    setFocusedWindowToArea(areas.custom.small),
     setFocusedWindowToArea(areas.custom.mini),
+    setFocusedWindowToArea(areas.custom.small),
   },
   },
   {
