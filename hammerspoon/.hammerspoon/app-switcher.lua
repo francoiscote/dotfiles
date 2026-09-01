@@ -2,38 +2,38 @@ local hyper = spoon.Hyper
 
 local hyperBindings = {
   -- Top Row: IM + Spotify
-  { {}, "t", "Twitch" },
+  { {},          "t", "Twitch" },
   { { "shift" }, "t", "Twitch - Dashboard" },
-  { {}, "y", "YouTube" },
-  { {}, "u", "Slack" },
+  { {},          "y", "YouTube" },
+  { {},          "u", "Slack" },
   { { "shift" }, "u", "Facebook" },
-  { {}, "i", "Messages" },
+  { {},          "i", "Messages" },
   { { "shift" }, "i", "Discord" },
-  { {}, "o", "WhatsApp" },
+  { {},          "o", "WhatsApp" },
   { { "shift" }, "o", "OBS" },
-  { {}, "p", "Spotify" },
+  { {},          "p", "Spotify" },
 
 
   -- Middle Row: Main Apps
-  { {}, "d", "DevDocs" },
+  { {},          "d", "DevDocs" },
   { { "shift" }, "d", "BoltAI" },
-  { {}, "g", "Google Meet" },
+  { {},          "g", "Google Meet" },
   { { "shift" }, "g", "zoom.us" },
-  { {}, "h", "com.culturedcode.ThingsMac" },
+  { {},          "h", "com.culturedcode.ThingsMac" },
   { { "shift" }, "h", "Linear" },
-  { {}, "j", "Google Chrome" },
+  { {},          "j", "Google Chrome" },
   { { "shift" }, "j", "Firefox Developer Edition" },
-  { {}, "k", "Visual Studio Code" },
-  { {}, "l", "Ghostty" },
-  { {}, ";", "Figma" },
+  { {},          "k", "Visual Studio Code" },
+  { {},          "l", "Ghostty" },
+  { {},          ";", "Figma" },
 
   -- Bottom Row: Email, Calendar and ToDos
-  { {}, "b", "Claude" },
-  { {}, "n", "Obsidian" },
+  { {},          "b", "ChatGPT" },
+  { {},          "n", "Obsidian" },
   { { "shift" }, "n", "Notion" },
-  { {}, "m", "Mimestream" },
-  { {}, ",", "Calendar" },
-  { {}, ".", "Finder" },
+  { {},          "m", "Mimestream" },
+  { {},          ",", "Calendar" },
+  { {},          ".", "Finder" },
 }
 
 for _, binding in ipairs(hyperBindings) do
