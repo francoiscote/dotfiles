@@ -7,19 +7,11 @@ local menuGapSize = 0
 
 -- GRID
 -------------------------------------------------------------------------------
-local mainScreen = hs.screen.mainScreen()
-local frame = nil
-
-if menuGapSize > 0 then
-  local max = mainScreen:frame()
-  frame = hs.geometry(0, menuGapSize, max.w, max.h - menuGapSize)
-end
-
 local isLargeMargins = false;
 local defaultMargins = gapSize .. 'x' .. gapSize
-local largeMargins = helpers.getDynamicMargins(0.02, 0.04)
+local largeMargins
 
-local hsGrid = hs.grid.setGrid('12x12', mainScreen, frame).setMargins(defaultMargins)
+local hsGrid = hs.grid
 local patchedGridSet = helpers.withAxHotfix(hsGrid.set)
 
 local areas = {
@@ -95,6 +87,20 @@ local areas = {
 
 -- FUNCTIONS
 -----------------------------------------------------------------------------
+local function build(screen)
+  screen = screen or hs.screen.primaryScreen()
+  local frame = nil
+
+  if menuGapSize > 0 then
+    local max = screen:frame()
+    frame = hs.geometry(0, menuGapSize, max.w, max.h - menuGapSize)
+  end
+
+  largeMargins = helpers.getDynamicMargins(0.02, 0.04, screen)
+  hsGrid.setGrid('12x12', screen, frame)
+  hsGrid.setMargins(isLargeMargins and largeMargins or defaultMargins)
+end
+
 function setNoMargins()
   hsGrid.setMargins('0x0')
 end
@@ -143,6 +149,7 @@ end
 local export = {
   hsGrid = hsGrid,
   areas = areas,
+  build = build,
   setNoMargins = setNoMargins,
   setDefaultMargins = setDefaultMargins,
   setLargeMargins = setLargeMargins,

@@ -12,6 +12,23 @@ local centerFocusedWindow
 local moveFocusedWindowToNextScreen
 local togglePrimaryScreenResolution
 
+local rebuildTimer
+local function rebuild()
+  local primaryScreen = hs.screen.primaryScreen()
+  grid.build(primaryScreen)
+  layouts.build(primaryScreen)
+end
+
+local function scheduleRebuild()
+  if rebuildTimer then
+    rebuildTimer:stop()
+  end
+  rebuildTimer = hs.timer.doAfter(0.5, rebuild)
+end
+
+local screenWatcher = hs.screen.watcher.new(scheduleRebuild):start()
+rebuild()
+
 local function setFocusedWindowToArea(area)
   return function()
     grid.setFocusedWindowToCell(area)
@@ -252,3 +269,8 @@ for _, binding in ipairs(hyperBindings) do
     hyper:bind(binding[1], binding[2], binding[3], binding[4], binding[5])
   end
 end
+
+return {
+  rebuild = rebuild,
+  screenWatcher = screenWatcher,
+}

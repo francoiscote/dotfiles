@@ -3,28 +3,44 @@ local grid = require("window-management/grid")
 local helpers = require("window-management/helpers")
 
 local areas = grid.areas
-local hsGrid = grid.hsGrid
 
 -- FILTERS
 -------------------------------------------------------------------------------
 local wf = hs.window.filter
-local mainScreenName = hs.screen.mainScreen():name()
 -- Groups of Apps
 local w_browsers = wf.new { ['Arc'] = true, ['Safari'] = true, ['Firefox Developer Edition'] = true, ['Google Chrome'] = { rejectTitles = 'Picture in Picture' } }
-    :setCurrentSpace(true):setScreens(mainScreenName)
-local w_editors = wf.new { ['Code'] = true, ['Zed'] = true }:setCurrentSpace(true):setScreens(mainScreenName)
-local w_terminals = wf.new { 'iTerm2', 'Ghostty' }:setCurrentSpace(true):setScreens(mainScreenName)
+    :setCurrentSpace(true)
+local w_editors = wf.new { ['Code'] = true, ['Zed'] = true }:setCurrentSpace(true)
+local w_terminals = wf.new { 'iTerm2', 'Ghostty' }:setCurrentSpace(true)
 local w_videos = wf.new { ['YouTube'] = true, ['Twitch'] = true, ['Google Meet'] = true, ['zoom.us'] = true, ['VLC'] = true, ['Vial'] = true, ['Google Chrome'] = { allowTitles = 'Picture in Picture' }, ['OBS Studio'] = { allowTitles = '(.*)Windowed Projector(.*)' }, ['Arc'] = { allowRoles = 'AXSystemDialog' }, ['Slack'] = { allowTitles = '(.*)Huddle$' }, ['Oryx'] = true }
-    :setCurrentSpace(true):setScreens(mainScreenName)
+    :setCurrentSpace(true)
 local w_cam = wf.new { ['Google Meet'] = true, ['zoom.us'] = true, ['OBS Studio'] = { allowTitles = '(.*)Windowed Projector(.*)' }, ['Slack'] = { allowTitles = '(.*)Huddle$' } }
-local w_notes = wf.new { 'Notion', 'Obsidian', 'Bear' }:setCurrentSpace(true):setScreens(mainScreenName)
-local w_todos = wf.new { 'Todoist', 'Things' }:setCurrentSpace(true):setScreens(mainScreenName)
-local w_chats = wf.new { 'Slack', 'WhatsApp', 'Discord', 'Messages', 'Messenger' }:setCurrentSpace(true):setScreens(
-  mainScreenName)
+local w_notes = wf.new { 'Notion', 'Obsidian', 'Bear' }:setCurrentSpace(true)
+local w_todos = wf.new { 'Todoist', 'Things' }:setCurrentSpace(true)
+local w_chats = wf.new { 'Slack', 'WhatsApp', 'Discord', 'Messages', 'Messenger' }:setCurrentSpace(true)
 -- Single Apps
 local w_figma = wf.new { 'Figma' }:setCurrentSpace(true)
-local w_obs = wf.new { 'OBS Studio' }:setCurrentSpace(true):setScreens(mainScreenName)
-local w_twitch = wf.new { 'Twitch Dashboard' }:setCurrentSpace(true):setScreens(mainScreenName)
+local w_obs = wf.new { 'OBS Studio' }:setCurrentSpace(true)
+local w_twitch = wf.new { 'Twitch Dashboard' }:setCurrentSpace(true)
+
+local primaryScreenFilters = {
+  w_browsers,
+  w_editors,
+  w_terminals,
+  w_videos,
+  w_notes,
+  w_todos,
+  w_chats,
+  w_obs,
+  w_twitch,
+}
+
+function export.build(screen)
+  local screenName = (screen or hs.screen.primaryScreen()):name()
+  for _, filter in ipairs(primaryScreenFilters) do
+    filter:setScreens(screenName)
+  end
+end
 
 local function hasVideo()
   return #w_videos:getWindows() > 0
