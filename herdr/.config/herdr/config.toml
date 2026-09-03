@@ -21,8 +21,10 @@ delivery = "terminal"
 
 [theme]
 name = "catppuccin-latte"
+auto_switch = true
+light_name = "catppuccin-latte"
+dark_name = "catppuccin"
 
-auto_switch = false
 [keys]
 prefix = "ctrl+a"
 
