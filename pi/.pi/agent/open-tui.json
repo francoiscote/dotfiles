@@ -1,11 +1,16 @@
 {
   "enabled": true,
   "settingsLanguage": "en",
+  "cursorStyle": "underline",
+  "fullscreen": {
+    "wheelScrollLines": 4
+  },
   "icons": {
     "mode": "nerd"
   },
   "footerSegments": {
     "cwd": true,
+    "sessionName": false,
     "gitBranch": true,
     "gitStatus": true,
     "gitCommit": false,
@@ -23,5 +28,8 @@
     "tokens": true,
     "stalls": true,
     "cost": true
+  },
+  "thinkingPeek": {
+    "lines": 1
   }
 }
