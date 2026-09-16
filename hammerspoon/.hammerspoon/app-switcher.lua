@@ -31,7 +31,7 @@ local hyperBindings = {
   { {},          "b", "ChatGPT" },
   { {},          "n", "Obsidian" },
   { { "shift" }, "n", "Notion" },
-  { {},          "m", "Mimestream" },
+  { {},          "m", "Gmail" },
   { {},          ",", "Calendar" },
   { {},          ".", "Finder" },
 }
