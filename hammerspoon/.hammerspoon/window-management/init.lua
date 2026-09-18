@@ -104,7 +104,7 @@ local hyperBindings = {
   end
   },
   { {}, "down", function()
-    hs.spaces.toggleShowDesktop()
+    hs.spaces.toggleAppExpose()
   end
   },
   { {}, "=", function() moveFocusedWindowToNextScreen() end },
@@ -119,7 +119,9 @@ hs.window.setShadows(false)
 -- WINDOW WATCHERS
 -------------------------------------------------------------------------------
 -- Resize new Google Chrome windows, including windows created after Chrome launches.
-local chromeWindowFilter = hs.window.filter.new({ ["Google Chrome"] = true })
+local chromeWindowFilter = hs.window.filter.new({
+  ["Google Chrome"] = { rejectTitles = "Picture in Picture" },
+})
 chromeWindowFilter:subscribe(hs.window.filter.windowCreated, function(window)
   if window:isStandard() then
     grid.setWindowToCell(window, areas.custom.medium)
