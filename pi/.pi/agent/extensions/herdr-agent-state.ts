@@ -2,10 +2,11 @@
 // managed by herdr; reinstalling or updating the integration overwrites this file.
 // add custom hooks/plugins beside this file instead of editing it.
 // HERDR_INTEGRATION_ID=pi
-// HERDR_INTEGRATION_VERSION=8
+// HERDR_INTEGRATION_VERSION=9
 // @ts-nocheck
 
 import net from "node:net";
+import path from "node:path";
 
 const HERDR_ENV = process.env.HERDR_ENV;
 const socketPath = process.env.HERDR_SOCKET_PATH;
@@ -74,7 +75,10 @@ function updateSessionRef(ctx: any): void {
   try {
     const file = ctx?.sessionManager?.getSessionFile?.();
     currentAgentSessionPath =
-      typeof file === "string" && file.startsWith("/") ? file : undefined;
+      typeof file === "string" &&
+      (path.posix.isAbsolute(file) || path.win32.isAbsolute(file))
+        ? file
+        : undefined;
   } catch {
     currentAgentSessionPath = undefined;
   }
@@ -204,7 +208,7 @@ export default function (pi) {
     queueState(next.state, next.message);
   }
 
-  function onBlocked(data: { active?: boolean; label?: string } | undefined) {
+  pi.events.on("herdr:blocked", (data) => {
     if (!rootSession) {
       return;
     }
@@ -220,15 +224,6 @@ export default function (pi) {
     blockedCount += 1;
     blockedMessage = data.label;
     publishState();
-  }
-
-  pi.events.on("herdr:blocked", (data) => {
-    onBlocked(data);
-  });
-
-  // rpiv-ask-user-question emits this when ask_user_question tool blocks waiting for input
-  pi.events.on("rpiv:ask-user:blocked", (data) => {
-    onBlocked({ active: data?.active });
   });
 
   pi.on("session_start", async (event, ctx) => {
