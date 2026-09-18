@@ -6,10 +6,10 @@ local hyperBindings = {
   { { "shift" }, "t", "Twitch - Dashboard" },
   { {},          "y", "YouTube" },
   { {},          "u", "Slack" },
-  { { "shift" }, "u", "Facebook" },
+  { { "shift" }, "u", "WhatsApp" },
   { {},          "i", "Messages" },
   { { "shift" }, "i", "Discord" },
-  { {},          "o", "WhatsApp" },
+  { {},          "o", "Messenger" },
   { { "shift" }, "o", "OBS" },
   { {},          "p", "Spotify" },
 

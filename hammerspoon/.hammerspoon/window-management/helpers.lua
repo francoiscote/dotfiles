@@ -1,41 +1,47 @@
 local export = {}
-local spaces = hs.spaces
-local window = require "hs.window"
+local unpackValues = table.unpack or unpack
+
+local function pack(...)
+  return { n = select("#", ...), ... }
+end
 
 -- HELPER FUNCTIONS
 -------------------------------------------------------------------------------
 function export.unhideAllApps()
-  local apps = hs.application.runningApplications()
-  for i, app in pairs(apps) do
+  for _, app in ipairs(hs.application.runningApplications()) do
     app:unhide()
   end
 end
 
 function export.maximiseWindows(windows)
-  for i, w in pairs(windows) do
-    w:maximize()
+  for _, window in ipairs(windows) do
+    window:maximize()
   end
 end
 
-function export.maximiseFilteredWindows(wf)
-  local windows = wf:getWindows()
-  export.maximiseWindows(windows)
+function export.maximiseFilteredWindows(windowFilter)
+  export.maximiseWindows(windowFilter:getWindows())
 end
 
-function export.getDynamicMargins(h, v, screen)
-  local max = (screen or hs.screen.primaryScreen()):frame()
-  local hPad = math.floor(max.w * h)
-  local vPad = math.floor(max.h * v)
+function export.getDynamicMargins(horizontal, vertical, screen)
+  local frame = (screen or hs.screen.primaryScreen()):frame()
+  local horizontalPadding = math.floor(frame.w * horizontal)
+  local verticalPadding = math.floor(frame.h * vertical)
 
-  return hs.geometry.size(hPad, vPad)
+  return hs.geometry.size(horizontalPadding, verticalPadding)
 end
 
--- Workaround fix for the Grammarly bug that causes the window to be animated
+-- Workaround for Chrome windows animated by AXEnhancedUserInterface.
 -- https://github.com/Hammerspoon/hammerspoon/issues/3224#issuecomment-1294971600
-function export.axHotfix(win)
-  if not win then win = hs.window.frontmostWindow() end
+function export.axHotfix(window)
+  window = window or hs.window.frontmostWindow()
+  local app = window and window:application()
+  local axApp = app and hs.axuielement.applicationElement(app)
 
-  local axApp = hs.axuielement.applicationElement(win:application())
+  if not axApp then
+    return function() end
+  end
+
   local wasEnhanced = axApp.AXEnhancedUserInterface
   if wasEnhanced then
     axApp.AXEnhancedUserInterface = false
@@ -49,12 +55,22 @@ function export.axHotfix(win)
 end
 
 function export.withAxHotfix(fn, position)
-  if not position then position = 1 end
+  position = position or 1
+
   return function(...)
-    local args = { ... }
+    local args = pack(...)
     local revert = export.axHotfix(args[position])
-    fn(...)
+    local results = pack(xpcall(function()
+      return fn(unpackValues(args, 1, args.n))
+    end, debug.traceback))
+
     revert()
+
+    if not results[1] then
+      error(results[2], 0)
+    end
+
+    return unpackValues(results, 2, results.n)
   end
 end
 

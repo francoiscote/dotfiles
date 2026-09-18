@@ -19,7 +19,7 @@ Dump = function(o)
     local s = '{ '
     for k, v in pairs(o) do
       if type(k) ~= 'number' then k = '"' .. k .. '"' end
-      s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
+      s = s .. '[' .. k .. '] = ' .. Dump(v) .. ','
     end
     return s .. '} '
   else
@@ -29,8 +29,14 @@ end
 
 local function inspectFocusedWindow()
   local w = hs.window.focusedWindow()
-  log.d("Application Name:", w:application():name())
-  log.d("Bundle Id:", w:application():bundleID())
+  if not w then
+    log.w("No focused window")
+    return
+  end
+
+  local app = w:application()
+  log.d("Application Name:", app and app:name())
+  log.d("Bundle Id:", app and app:bundleID())
   log.d("Id:", w:id())
   log.d("Title:", w:title())
   log.d("TopLeft:", w:topLeft())
@@ -54,7 +60,6 @@ end
 -- Requires
 -------------------------------------------------------------------------------
 require('app-switcher')
-require('app-watchers');
 require('audio')
 require('window-management')
 

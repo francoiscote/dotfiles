@@ -1,47 +1,58 @@
 local hyper = spoon.Hyper
-local toggleOutput
 
-local hyperBindings = {
-  { {}, "s", nil, function() toggleOutput() end },
+local primaryOutputs = {
+  "Vanatoo T0",
+  "Studio Display Speakers",
 }
 
--- Swap between a Speaker output and a series of ranked secondary outputs (headphones)
--- Main Output: Vanatoo T0 or Studio Display Speakers or Bluetooth connected Stereo system
--- Ranked Secondary Headphones: EVO4 or External Headphones or Macbook Pro Speakers
--------------------------------------------------------------------------------
-toggleOutput = function()
-  local currentDeviceName = hs.audiodevice.defaultOutputDevice():name()
-  local nextDevice
-  if string.find(currentDeviceName, 'Vanatoo T0') or string.find(currentDeviceName, 'Studio Display Speakers') then
-    nextDevice = hs.audiodevice.findOutputByName('François’s AirPods Pro')
-    if (nextDevice == nil) then
-      nextDevice = hs.audiodevice.findOutputByName('External Headphones')
-    end
-    if (nextDevice == nil) then
-      nextDevice = hs.audiodevice.findOutputByName('MacBook Pro Speakers')
-    end
-  else
-    nextDevice = hs.audiodevice.findOutputByName('Vanatoo T0')
-    if (nextDevice == nil) then
-      nextDevice = hs.audiodevice.findOutputByName('Studio Display Speakers')
-    end
-  end
+local secondaryOutputs = {
+  "François’s AirPods Pro",
+  "External Headphones",
+  "MacBook Pro Speakers",
+}
 
-  local didChange = false
-  if (nextDevice ~= nil) then
-    didChange = nextDevice:setDefaultOutputDevice()
-    -- Also set the default Effect device because of a bug where it would change to something random when using setDefaultOutputDevice()
-    -- it can't keep the "Selected Sound Output Device" setting.
-    -- nextDevice:setDefaultEffectDevice()
-    didChange = true;
-  end
-
-  if (didChange == true) then
-    hs.alert.closeAll()
-    hs.alert.show(nextDevice:name())
+local function findFirstAvailable(names)
+  for _, name in ipairs(names) do
+    local device = hs.audiodevice.findOutputByName(name)
+    if device then
+      return device
+    end
   end
 end
 
-for _, binding in ipairs(hyperBindings) do
-  hyper:bind(binding[1], binding[2], binding[3], binding[4], binding[5])
+local function contains(names, value)
+  for _, name in ipairs(names) do
+    if name == value then
+      return true
+    end
+  end
+
+  return false
 end
+
+local function showAlert(message)
+  hs.alert.closeAll()
+  hs.alert.show(message)
+end
+
+-- Swap between ranked primary outputs and secondary/headphone outputs.
+local function toggleOutput()
+  local currentDevice = hs.audiodevice.defaultOutputDevice()
+  local currentDeviceName = currentDevice and currentDevice:name()
+  local candidates = contains(primaryOutputs, currentDeviceName) and secondaryOutputs or primaryOutputs
+  local nextDevice = findFirstAvailable(candidates)
+
+  if not nextDevice then
+    showAlert("No alternate audio output")
+    return
+  end
+
+  if not nextDevice:setDefaultOutputDevice() then
+    showAlert("Audio output switch failed")
+    return
+  end
+
+  showAlert(nextDevice:name() or "Audio output changed")
+end
+
+hyper:bind({}, "s", nil, toggleOutput)

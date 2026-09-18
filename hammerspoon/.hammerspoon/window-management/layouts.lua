@@ -6,25 +6,26 @@ local areas = grid.areas
 
 -- FILTERS
 -------------------------------------------------------------------------------
-local wf = hs.window.filter
--- Groups of Apps
-local w_browsers = wf.new { ['Arc'] = true, ['Safari'] = true, ['Firefox Developer Edition'] = true, ['Google Chrome'] = { rejectTitles = 'Picture in Picture' } }
-    :setCurrentSpace(true)
-local w_editors = wf.new { ['Code'] = true, ['Zed'] = true }:setCurrentSpace(true)
-local w_terminals = wf.new { 'iTerm2', 'Ghostty' }:setCurrentSpace(true)
-local w_notes = wf.new { 'Notion', 'Obsidian', 'Bear' }:setCurrentSpace(true)
--- Single Apps
-local w_figma = wf.new { 'Figma' }:setCurrentSpace(true)
-local w_obs = wf.new { 'OBS Studio' }:setCurrentSpace(true)
-local w_twitch = wf.new { 'Twitch Dashboard' }:setCurrentSpace(true)
+local windowFilter = hs.window.filter
+local browsers = windowFilter.new({
+  Arc = true,
+  Safari = true,
+  ["Firefox Developer Edition"] = true,
+  ["Google Chrome"] = { rejectTitles = "Picture in Picture" },
+}):setCurrentSpace(true)
+local editors = windowFilter.new({ Code = true, Zed = true }):setCurrentSpace(true)
+local terminals = windowFilter.new({ "iTerm2", "Ghostty" }):setCurrentSpace(true)
+local notes = windowFilter.new({ "Notion", "Obsidian", "Bear" }):setCurrentSpace(true)
+local figma = windowFilter.new({ "Figma" }):setCurrentSpace(true)
+local obs = windowFilter.new({ "OBS Studio" }):setCurrentSpace(true)
 
 local primaryScreenFilters = {
-  w_browsers,
-  w_editors,
-  w_terminals,
-  w_notes,
-  w_obs,
-  w_twitch,
+  browsers,
+  editors,
+  terminals,
+  notes,
+  figma,
+  obs,
 }
 
 function export.build(screen)
@@ -36,192 +37,50 @@ end
 
 -- LAYOUTS
 -------------------------------------------------------------------------------
-
---[[
-workBrowse:
-  MAIN: Browser and Code,
-  SECONDARY: everything else
-]]
 function export.workBrowse(inverted)
-  local layout
+  local layout = inverted and areas.smallSplitInverted or areas.smallSplit
 
-  -- Force inverted if camera is on
-  -- if #w_cam:getWindows() > 0 then
-  --   inverted = true
-  -- end
-
-  if inverted then
-    layout = areas.smallSplitInverted
-  else
-    layout = areas.smallSplit
-  end
-
-  --MAIN
-  grid.setFilteredWindowsToCell(w_browsers, layout.main)
-  grid.setFilteredWindowsToCell(w_editors, layout.main)
-  grid.setFilteredWindowsToCell(w_figma, layout.main)
-  -- SECONDARY
-  grid.setFilteredWindowsToCell(w_terminals, layout.secondaryFull)
-  grid.setFilteredWindowsToCell(w_notes, layout.secondaryFull)
-  grid.setFilteredWindowsToCell(w_obs, layout.secondaryFull)
+  grid.setFilteredWindowsToCell(browsers, layout.main)
+  grid.setFilteredWindowsToCell(editors, layout.main)
+  grid.setFilteredWindowsToCell(figma, layout.main)
+  grid.setFilteredWindowsToCell(terminals, layout.secondaryFull)
+  grid.setFilteredWindowsToCell(notes, layout.secondaryFull)
+  grid.setFilteredWindowsToCell(obs, layout.secondaryFull)
 end
 
---[[
-workCode:
-  MAIN: Code,
-  SECONDARY: everything else
-]]
 function export.workCode(inverted)
-  local layout
+  local layout = inverted and areas.mediumSplitInverted or areas.mediumSplit
 
-  -- Force inverted if camera is on
-  -- if #w_cam:getWindows() > 0 then
-  --   inverted = true
-  -- end
-
-  if inverted then
-    layout = areas.mediumSplitInverted
-  else
-    layout = areas.mediumSplit
-  end
-
-  -- MAIN
-  grid.setFilteredWindowsToCell(w_editors, layout.main)
-  grid.setFilteredWindowsToCell(w_figma, layout.main)
-  grid.setFilteredWindowsToCell(w_terminals, layout.main)
-  -- SECONDARY
-  grid.setFilteredWindowsToCell(w_browsers, layout.secondaryFull)
-  grid.setFilteredWindowsToCell(w_notes, layout.secondaryFull)
-  grid.setFilteredWindowsToCell(w_obs, layout.secondaryFull)
+  grid.setFilteredWindowsToCell(editors, layout.main)
+  grid.setFilteredWindowsToCell(figma, layout.main)
+  grid.setFilteredWindowsToCell(terminals, layout.main)
+  grid.setFilteredWindowsToCell(browsers, layout.secondaryFull)
+  grid.setFilteredWindowsToCell(notes, layout.secondaryFull)
+  grid.setFilteredWindowsToCell(obs, layout.secondaryFull)
 end
 
---[[
-workEven:
-notes on the right, everything else on the left
-  ]]
 function export.workEven(mainNotes)
-  if (mainNotes == true) then
-    -- LEFT
-    grid.setFilteredWindowsToCell(w_browsers, areas.evenSplit.leftFull)
-    grid.setFilteredWindowsToCell(w_terminals, areas.evenSplit.leftFull)
-    grid.setFilteredWindowsToCell(w_editors, areas.evenSplit.leftFull)
-    grid.setFilteredWindowsToCell(w_figma, areas.evenSplit.leftFull)
-    -- RIGHT
-    grid.setFilteredWindowsToCell(w_notes, areas.evenSplit.rightFull)
+  if mainNotes then
+    grid.setFilteredWindowsToCell(browsers, areas.evenSplit.leftFull)
+    grid.setFilteredWindowsToCell(terminals, areas.evenSplit.leftFull)
+    grid.setFilteredWindowsToCell(editors, areas.evenSplit.leftFull)
+    grid.setFilteredWindowsToCell(figma, areas.evenSplit.leftFull)
+    grid.setFilteredWindowsToCell(notes, areas.evenSplit.rightFull)
   else
-    -- LEFT
-    grid.setFilteredWindowsToCell(w_notes, areas.evenSplit.leftFull)
-    grid.setFilteredWindowsToCell(w_browsers, areas.evenSplit.leftFull)
-    grid.setFilteredWindowsToCell(w_terminals, areas.evenSplit.leftFull)
-    -- RIGHT
-    grid.setFilteredWindowsToCell(w_figma, areas.evenSplit.rightFull)
-    grid.setFilteredWindowsToCell(w_editors, areas.evenSplit.rightFull)
+    grid.setFilteredWindowsToCell(notes, areas.evenSplit.leftFull)
+    grid.setFilteredWindowsToCell(browsers, areas.evenSplit.leftFull)
+    grid.setFilteredWindowsToCell(terminals, areas.evenSplit.leftFull)
+    grid.setFilteredWindowsToCell(figma, areas.evenSplit.rightFull)
+    grid.setFilteredWindowsToCell(editors, areas.evenSplit.rightFull)
   end
 end
-
---[[
-workMax:
-  MAIN: Browser/Code Maximized,
-  SECONDARY: Terminal and Notes centered
-]]
 
 function export.workMax()
-  helpers.maximiseFilteredWindows(w_editors)
-  helpers.maximiseFilteredWindows(w_figma)
-  grid.setFilteredWindowsToCell(w_terminals, areas.custom.medium)
-  grid.setFilteredWindowsToCell(w_browsers, areas.custom.large)
-  grid.setFilteredWindowsToCell(w_notes, areas.custom.small)
-end
-
-local function twitchHiddenWindows()
-  grid.setFilteredWindowsToCell(w_twitch, areas.twitch.hiddenSideTop)
-  grid.setFilteredWindowsToCell(w_notes, areas.twitch.hiddenSideTop)
-  grid.setFilteredWindowsToCell(w_obs, areas.twitch.hiddenSideBottom)
-end
-
-function export.twitchBrowseAndCode(inverted)
-  -- Hidden
-  twitchHiddenWindows()
-
-  if (inverted) then
-    --Left
-    -- grid.setFilteredWindowsToCell(w_notes, areas.twitch.leftSecondaryMini)
-    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.leftSecondaryMini)
-    --Right
-    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.rightMainBig)
-    grid.setFilteredWindowsToCell(w_editors, areas.twitch.rightMainBig)
-    grid.setFilteredWindowsToCell(w_figma, areas.twitch.rightMainBig)
-  else
-    --Left
-    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.leftMainBig)
-    grid.setFilteredWindowsToCell(w_editors, areas.twitch.leftMainBig)
-    grid.setFilteredWindowsToCell(w_figma, areas.twitch.leftMainBig)
-
-    --Right
-    grid.setFilteredWindowsToCell(w_notes, areas.twitch.rightSecondaryMini)
-    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.rightSecondaryMini)
-  end
-end
-
-function export.twitchCodeEven(inverted)
-  -- Hidden
-  twitchHiddenWindows()
-
-  if (inverted) then
-    --LEFT
-    grid.setFilteredWindowsToCell(w_figma, areas.twitch.evenLeft)
-    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.evenLeft)
-
-    --RIGHT
-    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.evenRight)
-    grid.setFilteredWindowsToCell(w_notes, areas.twitch.evenRight)
-    grid.setFilteredWindowsToCell(w_editors, areas.twitch.evenRight)
-  else
-    --LEFT
-    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.evenLeft)
-    grid.setFilteredWindowsToCell(w_notes, areas.twitch.evenLeft)
-    grid.setFilteredWindowsToCell(w_editors, areas.twitch.evenLeft)
-
-    --RIGHT
-    grid.setFilteredWindowsToCell(w_figma, areas.twitch.evenRight)
-    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.evenRight)
-  end
-end
-
-function export.twitchCodeSmall(inverted) -- Hidden
-  twitchHiddenWindows()
-
-  if (inverted) then
-    --LEFT
-    grid.setFilteredWindowsToCell(w_figma, areas.twitch.leftMainBig)
-    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.leftMainBig)
-
-    --RIGHT
-    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.rightSecondaryMini)
-    grid.setFilteredWindowsToCell(w_notes, areas.twitch.rightSecondaryMini)
-    grid.setFilteredWindowsToCell(w_editors, areas.twitch.rightSecondaryMini)
-  else
-    --LEFT
-    grid.setFilteredWindowsToCell(w_terminals, areas.twitch.leftSecondaryMini)
-    grid.setFilteredWindowsToCell(w_notes, areas.twitch.leftSecondaryMini)
-    grid.setFilteredWindowsToCell(w_editors, areas.twitch.leftSecondaryMini)
-
-    --RIGHT
-    grid.setFilteredWindowsToCell(w_figma, areas.twitch.rightMainBig)
-    grid.setFilteredWindowsToCell(w_browsers, areas.twitch.rightMainBig)
-  end
-end
-
-function export.twitchMax()
-  -- Hidden
-  twitchHiddenWindows()
-
-  grid.setFilteredWindowsToCell(w_editors, areas.twitch.maximize)
-  grid.setFilteredWindowsToCell(w_figma, areas.twitch.maximize)
-  grid.setFilteredWindowsToCell(w_browsers, areas.twitch.maximize)
-
-  grid.setFilteredWindowsToCell(w_terminals, areas.twitch.medium)
-  grid.setFilteredWindowsToCell(w_notes, areas.twitch.medium)
+  helpers.maximiseFilteredWindows(editors)
+  helpers.maximiseFilteredWindows(figma)
+  grid.setFilteredWindowsToCell(terminals, areas.custom.medium)
+  grid.setFilteredWindowsToCell(browsers, areas.custom.large)
+  grid.setFilteredWindowsToCell(notes, areas.custom.small)
 end
 
 return export

@@ -1,7 +1,6 @@
 local grid = require("window-management/grid")
 local layouts = require("window-management/layouts")
 local helpers = require("window-management/helpers")
-local appWatchers = require("app-watchers")
 
 local hyper = spoon.Hyper
 local areas = grid.areas
@@ -9,6 +8,7 @@ local hsWindow = hs.getObjectMetatable("hs.window")
 
 local toggleFocusMode
 local centerFocusedWindow
+local maximizeFocusedWindow
 local moveFocusedWindowToNextScreen
 local togglePrimaryScreenResolution
 
@@ -37,9 +37,9 @@ end
 
 local function setFocusedWindowToAreaWithLargeMargins(area)
   return function()
-    grid.setLargeMargins()
-    grid.setFocusedWindowToCell(area)
-    grid.setDefaultMargins()
+    grid.withLargeMargins(function()
+      grid.setFocusedWindowToCell(area)
+    end)
   end
 end
 
@@ -92,7 +92,7 @@ local hyperBindings = {
   { { "shift" }, "8", setFocusedWindowToAreaWithLargeMargins(areas.evenSplit.rightFull) },
   { {},          "9", setFocusedWindowToArea(areas.custom.smallRight) },
   { { "shift" }, "9", setFocusedWindowToAreaWithLargeMargins(areas.custom.smallRight) },
-  { {},          "0", function() hsWindow.maximize(hs.window.focusedWindow()) end },
+  { {},          "0", function() maximizeFocusedWindow() end },
   { { "shift" }, "0", setFocusedWindowToArea(areas.custom.maximizeAlmost) },
 
   { {},          "a", function() toggleFocusMode() end },
@@ -118,15 +118,13 @@ hs.window.setShadows(false)
 
 -- WINDOW WATCHERS
 -------------------------------------------------------------------------------
--- Watch for new Google Chrome Apps and auto resize them
-local chromeApp = hs.application.find("Google Chrome")
-if chromeApp then
-  appWatchers.newWindow(chromeApp, function(app, window)
-    if (window:isStandard()) then
-      grid.setFocusedWindowToCell(grid.areas.custom.medium)
-    end
-  end)
-end
+-- Resize new Google Chrome windows, including windows created after Chrome launches.
+local chromeWindowFilter = hs.window.filter.new({ ["Google Chrome"] = true })
+chromeWindowFilter:subscribe(hs.window.filter.windowCreated, function(window)
+  if window:isStandard() then
+    grid.setWindowToCell(window, areas.custom.medium)
+  end
+end)
 
 
 -- MAPPINGS
@@ -141,61 +139,67 @@ hsWindow.centerOnScreen = helpers.withAxHotfix(hsWindow.centerOnScreen)
 -- Hyper+A - Focus Mode
 -- Center the focused Window and Hide Others
 -- the key act as a toggle between focus mode and the previously used layout
-local focusMode = false;
-local savedFrame;
+local focusMode = false
+local focusModeWindow
+local savedFrame
 
 local focusedMenuBar = hs.menubar.new()
 local function setFocusMode(state)
+  focusMode = state
+
   if state then
-    focusMode = true;
-    focusedMenuBar:setTitle(hs.styledtext.new("FOCUSED",
-      { backgroundColor = { red = 0, blue = 0, green = 0.7 }, color = { red = 1, blue = 1, green = 1 } }))
-    -- focusedMenuBar:setTitle("FOCUSED");
+    focusedMenuBar:setTitle(hs.styledtext.new("FOCUSED", {
+      backgroundColor = { red = 0, blue = 0, green = 0.7 },
+      color = { red = 1, blue = 1, green = 1 },
+    }))
   else
-    focusMode = false;
-    focusedMenuBar:setTitle();
+    focusedMenuBar:setTitle()
   end
 end
 
 toggleFocusMode = function()
-  local focusedWindow = hs.window.focusedWindow()
-  local focusedApp = focusedWindow:application()
-
-  if (focusMode == true) then
-    -- Restore Window's position
-    focusedWindow:setFrame(savedFrame)
-
-    -- Show All Windows
-    focusedWindow:application():selectMenuItem("Show All");
-
-    setFocusMode(false);
-  else
-    -- Save focused window and its position
-    savedFrame = focusedWindow:frame()
-
-    -- Center Window
-    -- Different layouts for different apps
-    if (focusedWindow:application():name() == "Google Chrome") then
-      grid.setFocusedWindowToCell(areas.custom.large);
-    elseif (focusedWindow:application():name() == "Things") or (focusedWindow:application():name() == "Finder") then
-      grid.setFocusedWindowToCell(areas.custom.small);
-    else
-      grid.setFocusedWindowToCell(areas.custom.medium);
+  if focusMode then
+    if focusModeWindow and savedFrame then
+      pcall(function()
+        focusModeWindow:setFrame(savedFrame)
+      end)
     end
 
-    -- Hide all other apps.
-    local allWindows = hs.window.filter.new():setCurrentSpace(true):getWindows()
-    for i, w in pairs(allWindows) do
-      local winApp = w:application()
-      if (winApp ~= focusedApp) then
-        if (winApp:name() ~= "OBS Studio" and winApp:name() ~= "Twitch Dashboard") then
-          winApp:hide()
-        end
-      end
-    end
-
-    setFocusMode(true);
+    helpers.unhideAllApps()
+    focusModeWindow = nil
+    savedFrame = nil
+    setFocusMode(false)
+    return
   end
+
+  local focusedWindow = hs.window.focusedWindow()
+  local focusedApp = focusedWindow and focusedWindow:application()
+  if not focusedWindow or not focusedApp then
+    return
+  end
+
+  focusModeWindow = focusedWindow
+  savedFrame = focusedWindow:frame()
+
+  local appName = focusedApp:name()
+  if appName == "Google Chrome" then
+    grid.setWindowToCell(focusedWindow, areas.custom.large)
+  elseif appName == "Things" or appName == "Finder" then
+    grid.setWindowToCell(focusedWindow, areas.custom.small)
+  else
+    grid.setWindowToCell(focusedWindow, areas.custom.medium)
+  end
+
+  local allWindows = hs.window.filter.new():setCurrentSpace(true):getWindows()
+  for _, window in ipairs(allWindows) do
+    local app = window:application()
+    local name = app and app:name()
+    if app and app ~= focusedApp and name ~= "OBS Studio" and name ~= "Twitch Dashboard" then
+      app:hide()
+    end
+  end
+
+  setFocusMode(true)
 end
 
 
@@ -203,33 +207,42 @@ end
 -------------------------------------------------------------------------------
 -- C - Center
 centerFocusedWindow = function()
-  local win = hs.window.focusedWindow()
-  win:centerOnScreen(nil, true)
+  local window = hs.window.focusedWindow()
+  if window then
+    window:centerOnScreen(nil, true)
+  end
+end
+
+maximizeFocusedWindow = function()
+  local window = hs.window.focusedWindow()
+  if window then
+    window:maximize()
+  end
 end
 
 -- Hyper+equal - Send window to next screen.
 -- If sending to 4k screen, center the window in it.
 -- If sending to the laptop screen, maximize it.
-moveFocusedWindowToNextScreen = function()
-  -- Get the focused window, its window frame dimensions, its screen frame dimensions,
-  -- and the next screen's frame dimensions.
-  local focusedWindow = hs.window.focusedWindow()
-  local nextScreen = focusedWindow:screen():next()
+local moveWindowToScreen = helpers.withAxHotfix(function(window, screen)
+  window:moveToScreen(screen)
 
-  if nextScreen == hs.screen.mainScreen() then
+  local screenName = screen:name()
+  if not screenName or not string.find(screenName, "Studio Display")
+      or not grid.setWindowToCell(window, areas.custom.medium) then
+    window:maximize()
+  end
+end)
+
+moveFocusedWindowToNextScreen = function()
+  local window = hs.window.focusedWindow()
+  local currentScreen = window and window:screen()
+  local nextScreen = currentScreen and currentScreen:next()
+
+  if not window or not nextScreen or nextScreen == currentScreen then
     return
   end
 
-  local revert = helpers.axHotfix(focusedWindow)
-  focusedWindow:moveToScreen(nextScreen)
-  local nextScreenName = nextScreen:name()
-
-  if nextScreenName and string.find(nextScreenName, "Studio Display") then
-    grid.setFocusedWindowToCell(areas.custom.medium)
-  else
-    focusedWindow:maximize()
-  end
-  revert()
+  moveWindowToScreen(window, nextScreen)
 end
 
 
@@ -241,25 +254,20 @@ togglePrimaryScreenResolution = function()
     scale = 2,
     frequency = 60,
     depth = 8,
-  };
-  local mainTwitchMode = {
+  }
+  local mainCompactMode = {
     width = 2560,
     height = 1440,
     scale = 2,
     frequency = 60,
     depth = 8,
-  };
+  }
 
-  local currentMode = hs.screen.primaryScreen():currentMode();
-  local mainNextMode
-  if currentMode and currentMode.w == mainFullMode.width then
-    mainNextMode = mainTwitchMode;
-  else
-    mainNextMode = mainFullMode;
-  end
+  local primaryScreen = hs.screen.primaryScreen()
+  local currentMode = primaryScreen:currentMode()
+  local nextMode = currentMode and currentMode.w == mainFullMode.width and mainCompactMode or mainFullMode
 
-  hs.screen.primaryScreen():setMode(mainNextMode.width, mainNextMode.height, mainNextMode.scale, mainNextMode.frequency,
-    mainNextMode.depth);
+  primaryScreen:setMode(nextMode.width, nextMode.height, nextMode.scale, nextMode.frequency, nextMode.depth)
 end
 
 for _, binding in ipairs(hyperBindings) do
@@ -273,4 +281,5 @@ end
 return {
   rebuild = rebuild,
   screenWatcher = screenWatcher,
+  chromeWindowFilter = chromeWindowFilter,
 }
