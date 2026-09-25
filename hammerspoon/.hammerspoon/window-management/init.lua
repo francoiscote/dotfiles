@@ -128,6 +128,22 @@ chromeWindowFilter:subscribe(hs.window.filter.windowCreated, function(window)
   end
 end)
 
+-- Refresh Chrome tracking after wake, once its accessibility tree is ready.
+local chromeRefreshTimer
+local chromeWakeWatcher = hs.caffeinate.watcher.new(function(event)
+  if event ~= hs.caffeinate.watcher.systemDidWake
+      and event ~= hs.caffeinate.watcher.screensDidUnlock then
+    return
+  end
+
+  if chromeRefreshTimer then
+    chromeRefreshTimer:stop()
+  end
+  chromeRefreshTimer = hs.timer.doAfter(1, function()
+    chromeWindowFilter:pause():resume()
+  end)
+end):start()
+
 
 -- MAPPINGS
 -------------------------------------------------------------------------------
@@ -284,4 +300,5 @@ return {
   rebuild = rebuild,
   screenWatcher = screenWatcher,
   chromeWindowFilter = chromeWindowFilter,
+  chromeWakeWatcher = chromeWakeWatcher,
 }
