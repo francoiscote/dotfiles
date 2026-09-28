@@ -13,6 +13,20 @@ local moveFocusedWindowToNextScreen
 local togglePrimaryScreenResolution
 
 local rebuildTimer
+local chromeRefreshTimer
+local chromeWindowFilter
+
+local function scheduleChromeRefresh()
+  if chromeRefreshTimer then
+    chromeRefreshTimer:stop()
+  end
+  chromeRefreshTimer = hs.timer.doAfter(1, function()
+    if chromeWindowFilter then
+      chromeWindowFilter:pause():resume()
+    end
+  end)
+end
+
 local function rebuild()
   local primaryScreen = hs.screen.primaryScreen()
   grid.build(primaryScreen)
@@ -23,7 +37,10 @@ local function scheduleRebuild()
   if rebuildTimer then
     rebuildTimer:stop()
   end
-  rebuildTimer = hs.timer.doAfter(0.5, rebuild)
+  rebuildTimer = hs.timer.doAfter(0.5, function()
+    rebuild()
+    scheduleChromeRefresh()
+  end)
 end
 
 local screenWatcher = hs.screen.watcher.new(scheduleRebuild):start()
@@ -119,7 +136,7 @@ hs.window.setShadows(false)
 -- WINDOW WATCHERS
 -------------------------------------------------------------------------------
 -- Resize new Google Chrome windows, including windows created after Chrome launches.
-local chromeWindowFilter = hs.window.filter.new({
+chromeWindowFilter = hs.window.filter.new({
   ["Google Chrome"] = { rejectTitles = "Picture in Picture" },
 })
 chromeWindowFilter:subscribe(hs.window.filter.windowCreated, function(window)
@@ -129,19 +146,11 @@ chromeWindowFilter:subscribe(hs.window.filter.windowCreated, function(window)
 end)
 
 -- Refresh Chrome tracking after wake, once its accessibility tree is ready.
-local chromeRefreshTimer
 local chromeWakeWatcher = hs.caffeinate.watcher.new(function(event)
-  if event ~= hs.caffeinate.watcher.systemDidWake
-      and event ~= hs.caffeinate.watcher.screensDidUnlock then
-    return
+  if event == hs.caffeinate.watcher.systemDidWake
+      or event == hs.caffeinate.watcher.screensDidUnlock then
+    scheduleChromeRefresh()
   end
-
-  if chromeRefreshTimer then
-    chromeRefreshTimer:stop()
-  end
-  chromeRefreshTimer = hs.timer.doAfter(1, function()
-    chromeWindowFilter:pause():resume()
-  end)
 end):start()
 
 
