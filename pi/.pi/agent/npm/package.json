@@ -7,7 +7,7 @@
 		"@latentminds/pi-quotas": "^0.5.0",
 		"pi-context-view": "^0.6.0",
 		"pi-ketch": "^0.1.6",
-		"pi-open-tui": "^0.3.8",
+		"pi-open-tui": "^0.3.9",
 		"pi-rose-pine": "^0.1.0-next.13-next.13",
 		"pi-x-ide": "^1.20.1"
 	}
