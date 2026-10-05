@@ -2,7 +2,8 @@ local grid = require("window-management/grid")
 local layouts = require("window-management/layouts")
 local helpers = require("window-management/helpers")
 
-local hyper = spoon.Hyper
+local hyper = { "cmd", "ctrl", "alt" }
+local hyperShift = { "cmd", "ctrl", "alt", "shift" }
 local areas = grid.areas
 local hsWindow = hs.getObjectMetatable("hs.window")
 
@@ -61,71 +62,59 @@ local function setFocusedWindowToAreaWithLargeMargins(area)
 end
 
 local hyperBindings = {
-  { {}, "x", grid.toggleLargeMargins },
-  { {}, "q", layouts.workBrowse },
-  { { "shift" }, "q", function()
+  { hyper, "x", grid.toggleLargeMargins },
+  { hyper, "q", layouts.workBrowse },
+  { hyperShift, "q", function()
     layouts
         .workBrowse(true)
   end },
-  { {}, "w", layouts.workCode },
-  { { "shift" }, "w", function()
+  { hyper, "w", layouts.workCode },
+  { hyperShift, "w", function()
     layouts
         .workCode(true)
   end },
-  { {}, "e", layouts.workEven },
-  { { "shift" }, "e", function()
+  { hyper, "e", layouts.workEven },
+  { hyperShift, "e", function()
     layouts
         .workEven(true)
   end },
-  { {},          "r", layouts.workMax },
+  { hyper,      "r", layouts.workMax },
 
-  { {},          "1", setFocusedWindowToArea(areas.custom.smallLeft) },
-  { { "shift" }, "1", setFocusedWindowToAreaWithLargeMargins(areas.custom.smallLeft) },
-  { {},          "2", setFocusedWindowToArea(areas.evenSplit.leftFull) },
-  { { "shift" }, "2", setFocusedWindowToAreaWithLargeMargins(areas.evenSplit.leftFull) },
-  { {},          "3", setFocusedWindowToArea(areas.custom.largeLeft) },
-  { { "shift" }, "3", setFocusedWindowToAreaWithLargeMargins(areas.custom.largeLeft) },
-  {
-    {}, "4", {
-    setFocusedWindowToArea(areas.custom.mini),
-    setFocusedWindowToArea(areas.custom.small),
-  },
-  },
-  {
-    {}, "5", {
-    setFocusedWindowToArea(areas.custom.medium),
-    setFocusedWindowToArea(areas.custom.mediumTall),
-  },
-  },
-  {
-    {}, "6", {
-    setFocusedWindowToArea(areas.custom.large),
-    setFocusedWindowToArea(areas.custom.largeTall),
-  },
-  },
-  { {},          "7", setFocusedWindowToArea(areas.custom.largeRight) },
-  { { "shift" }, "7", setFocusedWindowToAreaWithLargeMargins(areas.custom.largeRight) },
-  { {},          "8", setFocusedWindowToArea(areas.evenSplit.rightFull) },
-  { { "shift" }, "8", setFocusedWindowToAreaWithLargeMargins(areas.evenSplit.rightFull) },
-  { {},          "9", setFocusedWindowToArea(areas.custom.smallRight) },
-  { { "shift" }, "9", setFocusedWindowToAreaWithLargeMargins(areas.custom.smallRight) },
-  { {},          "0", function() maximizeFocusedWindow() end },
-  { { "shift" }, "0", setFocusedWindowToArea(areas.custom.maximizeAlmost) },
+  { hyper,      "1", setFocusedWindowToArea(areas.custom.smallLeft) },
+  { hyperShift, "1", setFocusedWindowToAreaWithLargeMargins(areas.custom.smallLeft) },
+  { hyper,      "2", setFocusedWindowToArea(areas.evenSplit.leftFull) },
+  { hyperShift, "2", setFocusedWindowToAreaWithLargeMargins(areas.evenSplit.leftFull) },
+  { hyper,      "3", setFocusedWindowToArea(areas.custom.largeLeft) },
+  { hyperShift, "3", setFocusedWindowToAreaWithLargeMargins(areas.custom.largeLeft) },
+  { hyper,      "4", setFocusedWindowToArea(areas.custom.mini) },
+  { hyperShift, "4", setFocusedWindowToArea(areas.custom.small) },
+  { hyper,      "5", setFocusedWindowToArea(areas.custom.medium) },
+  { hyperShift, "5", setFocusedWindowToArea(areas.custom.mediumTall) },
+  { hyper,      "6", setFocusedWindowToArea(areas.custom.large) },
+  { hyperShift, "6", setFocusedWindowToArea(areas.custom.largeTall) },
+  { hyper,      "7", setFocusedWindowToArea(areas.custom.largeRight) },
+  { hyperShift, "7", setFocusedWindowToAreaWithLargeMargins(areas.custom.largeRight) },
+  { hyper,      "8", setFocusedWindowToArea(areas.evenSplit.rightFull) },
+  { hyperShift, "8", setFocusedWindowToAreaWithLargeMargins(areas.evenSplit.rightFull) },
+  { hyper,      "9", setFocusedWindowToArea(areas.custom.smallRight) },
+  { hyperShift, "9", setFocusedWindowToAreaWithLargeMargins(areas.custom.smallRight) },
+  { hyper,      "0", function() maximizeFocusedWindow() end },
+  { hyperShift, "0", setFocusedWindowToArea(areas.custom.maximizeAlmost) },
 
-  { {},          "a", function() toggleFocusMode() end },
-  { {},          "c", function() centerFocusedWindow() end },
+  { hyper,      "a", function() toggleFocusMode() end },
+  { hyper,      "c", function() centerFocusedWindow() end },
 
   -- Mission Control
-  { {}, "up", function()
+  { hyper, "up", function()
     hs.spaces.toggleMissionControl()
   end
   },
-  { {}, "down", function()
+  { hyper, "down", function()
     hs.spaces.toggleAppExpose()
   end
   },
-  { {}, "=", function() moveFocusedWindowToNextScreen() end },
-  { {}, "-", function() togglePrimaryScreenResolution() end },
+  { hyper, "=", function() moveFocusedWindowToNextScreen() end },
+  { hyper, "-", function() togglePrimaryScreenResolution() end },
 }
 
 -- SETTINGS
@@ -298,11 +287,7 @@ togglePrimaryScreenResolution = function()
 end
 
 for _, binding in ipairs(hyperBindings) do
-  if type(binding[3]) == "table" then
-    hyper:bindSequence(binding[1], binding[2], binding[3])
-  else
-    hyper:bind(binding[1], binding[2], binding[3], binding[4], binding[5])
-  end
+  hs.hotkey.bind(binding[1], binding[2], binding[3], binding[4], binding[5])
 end
 
 return {

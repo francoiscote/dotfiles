@@ -1,4 +1,4 @@
-local hyper = spoon.Hyper
+local hyper = { "cmd", "ctrl", "alt" }
 
 local primaryOutputs = {
   "Vanatoo T0",
@@ -55,4 +55,4 @@ local function toggleOutput()
   showAlert(nextDevice:name() or "Audio output changed")
 end
 
-hyper:bind({}, "s", nil, toggleOutput)
+hs.hotkey.bind(hyper, "s", nil, toggleOutput)

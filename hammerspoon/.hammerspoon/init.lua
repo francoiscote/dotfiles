@@ -7,8 +7,8 @@
 hs.logger.defaultLogLevel = 'info'
 hs.window.animationDuration = 0
 
-hs.loadSpoon("Hyper")
-local hyper = spoon.Hyper
+local hyper = { "cmd", "ctrl", "alt" }
+local hyperShift = { "cmd", "ctrl", "alt", "shift" }
 
 local log = hs.logger.new('WM', 'debug')
 
@@ -48,12 +48,12 @@ local function inspectFocusedWindow()
 end
 
 local hyperBindings = {
-  { {},          "z", nil, hs.reload },
-  { { "shift" }, "z", nil, inspectFocusedWindow },
+  { hyper,      "z", nil, hs.reload },
+  { hyperShift, "z", nil, inspectFocusedWindow },
 }
 
 for _, binding in ipairs(hyperBindings) do
-  hyper:bind(binding[1], binding[2], binding[3], binding[4], binding[5])
+  hs.hotkey.bind(binding[1], binding[2], binding[3], binding[4], binding[5])
 end
 
 
@@ -63,7 +63,6 @@ require('app-switcher')
 require('audio')
 require('window-management')
 
-hyper:start()
 
 -- DONE!
 -------------------------------------------------------------------------------
