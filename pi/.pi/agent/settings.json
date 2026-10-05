@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.87.1",
+  "lastChangelogVersion": "1.0.3",
   "theme": "github-light-default/rose-pine-moon",
   "packages": [
     "npm:@benvargas/pi-themes",
@@ -12,18 +12,17 @@
     "npm:@latentminds/pi-quotas"
   ],
   "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.6-sol",
-  "defaultThinkingLevel": "high",
+  "defaultModel": "gpt-6.1-sol",
+  "defaultThinkingLevel": "medium",
   "hideThinkingBlock": true,
   "showCacheMissNotices": true,
   "warnings": {
     "anthropicExtraUsage": true
   },
   "enabledModels": [
-    "anthropic/claude-fable-5",
-    "anthropic/claude-opus-5",
-    "anthropic/claude-sonnet-5",
-    "anthropic/claude-haiku-4-5",
+    "openrouter/anthropic/claude-fable-5",
+    "openrouter/anthropic/claude-opus-5",
+    "openrouter/anthropic/claude-sonnet-5",
     "opencode/qwen3.6-plus",
     "opencode/big-pickle",
     "opencode/deepseek-v4-flash",
@@ -31,11 +30,9 @@
     "opencode/glm-5.2",
     "opencode/kimi-k3",
     "opencode/minimax-m3",
-    "opencode/gpt-5.6-sol",
-    "openai-codex/gpt-5.5",
-    "openai-codex/gpt-5.6-luna",
-    "openai-codex/gpt-5.6-sol",
-    "openai-codex/gpt-5.6-terra"
+    "openai-codex/gpt-6-astra",
+    "openai-codex/gpt-6-luna",
+    "openai-codex/gpt-6.1-sol"
   ],
   "tuiMode": "fullscreen"
 }
