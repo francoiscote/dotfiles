@@ -78,9 +78,12 @@ end
 function export.workMax()
   helpers.maximiseFilteredWindows(editors)
   helpers.maximiseFilteredWindows(figma)
-  grid.setFilteredWindowsToCell(terminals, areas.custom.medium)
-  grid.setFilteredWindowsToCell(browsers, areas.custom.large)
-  grid.setFilteredWindowsToCell(notes, areas.custom.small)
+  helpers.maximiseFilteredWindows(terminals)
+  helpers.maximiseFilteredWindows(browsers)
+  helpers.maximiseFilteredWindows(notes)
+  -- grid.setFilteredWindowsToCell(terminals, areas.custom.medium)
+  -- grid.setFilteredWindowsToCell(browsers, areas.custom.large)
+  -- grid.setFilteredWindowsToCell(notes, areas.custom.small)
 end
 
 return export
