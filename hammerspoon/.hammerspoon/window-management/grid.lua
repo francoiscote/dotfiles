@@ -1,4 +1,6 @@
 local helpers = require("window-management/helpers")
+local twitchMode = require("twitch-mode")
+local twitchAreas = require("window-management/twitch-areas")
 
 -- SETTINGS
 -------------------------------------------------------------------------------
@@ -14,11 +16,16 @@ local gridScreenID
 
 local hsGrid = hs.grid
 local patchedGridSet = helpers.withAxHotfix(hsGrid.set)
+local patchedSetFrame = helpers.withAxHotfix(function(window, frame)
+  window:setFrame(frame, 0)
+end)
 
 local areas = {
   smallSplit = {
-    main = "4,0 8x12",
-    secondaryFull = "0,0 4x12",
+    main = "5,0 7x12",
+    secondaryFull = "0,0 5x12",
+    secondaryTop = "0,0 5x5.5",
+    secondaryBottom = "0,5.5 5x6.5",
   },
   smallSplitInverted = {
     main = "0,0 8x12",
@@ -38,14 +45,14 @@ local areas = {
   },
   custom = {
     smallLeft = "0,0 4x12",
-    largeLeft = "0,0 8x12",
+    largeLeft = "0,0 7x12",
     mini = "3,2 6x8",
     small = "2.5,1.5 7x9",
     medium = "2,1 8x10",
     mediumTall = "2,0 8x12",
     large = "1,0.5 10x11",
     largeTall = "1,0 10x12",
-    largeRight = "4,0 8x12",
+    largeRight = "5,0 7x12",
     smallRight = "8,0 4x12",
     maximizeAlmost = "2,0 10x12",
   },
@@ -98,28 +105,41 @@ local function withLargeMargins(callback)
   end
 end
 
-local function setWindowToCell(window, cell)
+local function setWindowToCell(window, cell, area)
   local screen = window and window:screen()
   if not screen or screen:id() ~= gridScreenID then
     return false
   end
 
-  patchedGridSet(window, cell)
+  if area then
+    local x, y, w, h = cell:match("^([%d%.]+),([%d%.]+) ([%d%.]+)x([%d%.]+)$")
+    assert(x, "Invalid grid cell: " .. tostring(cell))
+    local origin = screen:frame()
+    patchedSetFrame(window, hs.geometry.rect(
+      origin.x + area.x + tonumber(x) * area.w / 12,
+      origin.y + area.y + tonumber(y) * area.h / 12,
+      tonumber(w) * area.w / 12,
+      tonumber(h) * area.h / 12
+    ))
+  else
+    patchedGridSet(window, cell)
+  end
   return true
 end
 
-local function setWindowsToCell(windows, cell)
+local function setWindowsToCell(windows, cell, area)
   for _, window in ipairs(windows) do
-    setWindowToCell(window, cell)
+    setWindowToCell(window, cell, area)
   end
 end
 
-local function setFilteredWindowsToCell(windowFilter, cell)
-  setWindowsToCell(windowFilter:getWindows(), cell)
+local function setFilteredWindowsToCell(windowFilter, cell, area)
+  setWindowsToCell(windowFilter:getWindows(), cell, area)
 end
 
 local function setFocusedWindowToCell(cell)
-  return setWindowToCell(hs.window.focusedWindow(), cell)
+  local area = twitchMode.isEnabled() and twitchAreas.main or nil
+  return setWindowToCell(hs.window.focusedWindow(), cell, area)
 end
 
 return {

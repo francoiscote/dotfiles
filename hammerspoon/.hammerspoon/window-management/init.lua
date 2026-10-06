@@ -1,6 +1,7 @@
 local grid = require("window-management/grid")
 local layouts = require("window-management/layouts")
 local helpers = require("window-management/helpers")
+local twitchMode = require("twitch-mode")
 
 local hyper = { "cmd", "ctrl", "alt" }
 local hyperShift = { "cmd", "ctrl", "alt", "shift" }
@@ -55,6 +56,10 @@ end
 
 local function setFocusedWindowToAreaWithLargeMargins(area)
   return function()
+    if twitchMode.isEnabled() then
+      grid.setFocusedWindowToCell(area)
+      return
+    end
     grid.withLargeMargins(function()
       grid.setFocusedWindowToCell(area)
     end)
@@ -63,10 +68,10 @@ end
 
 local hyperBindings = {
   { hyper, "x", grid.toggleLargeMargins },
-  { hyper, "q", layouts.workBrowse },
+  { hyper, "q", layouts.workVideo },
   { hyperShift, "q", function()
     layouts
-        .workBrowse(true)
+        .workVideo(true)
   end },
   { hyper, "w", layouts.workCode },
   { hyperShift, "w", function()
@@ -230,6 +235,10 @@ centerFocusedWindow = function()
 end
 
 maximizeFocusedWindow = function()
+  if twitchMode.isEnabled() then
+    grid.setFocusedWindowToCell("0,0 12x12")
+    return
+  end
   local window = hs.window.focusedWindow()
   if window then
     window:maximize()

@@ -1,5 +1,6 @@
 -- LOAD DEPS
 -------------------------------------------------------------------------------
+local twitchMode = require('twitch-mode')
 
 
 -- SETTINGS
@@ -50,6 +51,7 @@ end
 local hyperBindings = {
   { hyper,      "z", nil, hs.reload },
   { hyperShift, "z", nil, inspectFocusedWindow },
+  { hyperShift, "t", twitchMode.toggle },
 }
 
 for _, binding in ipairs(hyperBindings) do
