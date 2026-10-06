@@ -3,6 +3,32 @@ local grid = require("window-management/grid")
 local helpers = require("window-management/helpers")
 
 local areas = grid.areas
+local layoutScreen
+
+-- Fixed sizes in Hammerspoon screen coordinates (points on Retina displays).
+-- Origins are relative to the usable screen's top-left. No grid or margins.
+export.twitchAreas = {
+  main = { x = 640, y = 0, w = 1280, h = 1080 },
+  secondaryTop = { x = 0, y = 0, w = 640, h = 540 },
+  secondaryBottom = { x = 0, y = 540, w = 640, h = 540 },
+}
+
+local setFrame = helpers.withAxHotfix(function(window, frame)
+  window:setFrame(frame, 0)
+end)
+
+local function setFilteredWindowsToPixelArea(windowFilter, area)
+  local screen = layoutScreen or hs.screen.primaryScreen()
+  local origin = screen:frame()
+  local frame = hs.geometry.rect(origin.x + area.x, origin.y + area.y, area.w, area.h)
+
+  for _, window in ipairs(windowFilter:getWindows()) do
+    local windowScreen = window:screen()
+    if windowScreen and windowScreen:id() == screen:id() then
+      setFrame(window, frame)
+    end
+  end
+end
 
 -- FILTERS
 -------------------------------------------------------------------------------
@@ -29,7 +55,8 @@ local primaryScreenFilters = {
 }
 
 function export.build(screen)
-  local screenName = (screen or hs.screen.primaryScreen()):name()
+  layoutScreen = screen or hs.screen.primaryScreen()
+  local screenName = layoutScreen:name()
   for _, filter in ipairs(primaryScreenFilters) do
     filter:setScreens(screenName)
   end
@@ -73,6 +100,16 @@ function export.workEven(mainNotes)
     grid.setFilteredWindowsToCell(figma, areas.evenSplit.rightFull)
     grid.setFilteredWindowsToCell(editors, areas.evenSplit.rightFull)
   end
+end
+
+function export.twitch()
+  setFilteredWindowsToPixelArea(editors, export.twitchAreas.main)
+  setFilteredWindowsToPixelArea(figma, export.twitchAreas.main)
+  setFilteredWindowsToPixelArea(browsers, export.twitchAreas.secondaryTop)
+  setFilteredWindowsToPixelArea(terminals, export.twitchAreas.secondaryBottom)
+  setFilteredWindowsToPixelArea(notes, export.twitchAreas.secondaryBottom)
+  setFilteredWindowsToPixelArea(obs, export.twitchAreas.secondaryBottom)
+  setFilteredWindowsToPixelArea(obs, export.twitchAreas.secondaryBottom)
 end
 
 function export.workMax()

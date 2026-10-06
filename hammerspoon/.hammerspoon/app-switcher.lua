@@ -4,7 +4,6 @@ local hyperShift = { "cmd", "ctrl", "alt", "shift" }
 local hyperBindings = {
   -- Top Row: IM + Spotify
   { hyper,      "t", "Twitch" },
-  { hyperShift, "t", "Twitch - Dashboard" },
   { hyper,      "y", "YouTube" },
   { hyper,      "u", "Slack" },
   { hyperShift, "u", "WhatsApp" },
