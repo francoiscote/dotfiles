@@ -28,8 +28,10 @@ local areas = {
     secondaryBottom = "0,5.5 5x6.5",
   },
   smallSplitInverted = {
-    main = "0,0 8x12",
-    secondaryFull = "8,0 4x12",
+    main = "0,0 7x12",
+    secondaryFull = "7,0 5x12",
+    secondaryTop = "7,0 5x5.5",
+    secondaryBottom = "7,5.5 5x6.5",
   },
   mediumSplit = {
     secondaryFull = "0,0 5x12",
