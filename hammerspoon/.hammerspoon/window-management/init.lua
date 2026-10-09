@@ -203,19 +203,29 @@ toggleFocusMode = function()
   savedFrame = focusedWindow:frame()
 
   local appName = focusedApp:name()
-  if appName == "Google Chrome" then
-    grid.setWindowToCell(focusedWindow, areas.custom.large)
+  local focusArea = twitchMode.isEnabled() and layouts.twitchAreas.main or nil
+  if twitchMode.isEnabled() or appName == "Google Chrome" then
+    grid.setWindowToCell(focusedWindow, areas.custom.large, focusArea)
   elseif appName == "Things" or appName == "Finder" then
-    grid.setWindowToCell(focusedWindow, areas.custom.small)
+    grid.setWindowToCell(focusedWindow, areas.custom.small, focusArea)
   else
-    grid.setWindowToCell(focusedWindow, areas.custom.medium)
+    grid.setWindowToCell(focusedWindow, areas.custom.medium, focusArea)
+  end
+
+  if twitchMode.isEnabled() then
+    for _, app in ipairs(hs.application.runningApplications()) do
+      local name = app:name()
+      if name == "OBS Studio" or name == "Twitch - Dashboard" then
+        app:unhide()
+      end
+    end
   end
 
   local allWindows = hs.window.filter.new():setCurrentSpace(true):getWindows()
   for _, window in ipairs(allWindows) do
     local app = window:application()
     local name = app and app:name()
-    if app and app ~= focusedApp and name ~= "OBS Studio" and name ~= "Twitch Dashboard" then
+    if app and app ~= focusedApp and name ~= "OBS Studio" and name ~= "Twitch - Dashboard" then
       app:hide()
     end
   end
