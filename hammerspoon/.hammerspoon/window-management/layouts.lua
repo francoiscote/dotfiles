@@ -97,11 +97,19 @@ function export.workVideo(inverted)
   setLayoutWindows(todos, layout.main)
 
   if hasVideo() then
+    setLayoutWindows(browsers, layout.main)
+    setLayoutWindows(editors, layout.main)
+    setLayoutWindows(figma, layout.main)
+    setLayoutWindows(todos, layout.main)
+    setLayoutWindows(terminals, layout.main)
     setLayoutWindows(videos, layout.secondaryTop)
-    setLayoutWindows(terminals, layout.secondaryBottom)
     setLayoutWindows(notes, layout.secondaryBottom)
     setLayoutWindows(obs, layout.secondaryBottom)
   else
+    setLayoutWindows(browsers, layout.main)
+    setLayoutWindows(editors, layout.main)
+    setLayoutWindows(figma, layout.main)
+    setLayoutWindows(todos, layout.main)
     setLayoutWindows(terminals, layout.secondaryFull)
     setLayoutWindows(notes, layout.secondaryFull)
     setLayoutWindows(obs, layout.secondaryFull)
@@ -119,6 +127,7 @@ function export.workCode(inverted)
   setLayoutWindows(browsers, layout.secondaryFull)
   setLayoutWindows(notes, layout.secondaryFull)
   setLayoutWindows(obs, layout.secondaryFull)
+  setLayoutWindows(todos, layout.secondaryFull)
 end
 
 function export.workEven(mainNotes)
@@ -129,9 +138,11 @@ function export.workEven(mainNotes)
     setLayoutWindows(editors, areas.evenSplit.leftFull)
     setLayoutWindows(figma, areas.evenSplit.leftFull)
     setLayoutWindows(videos, areas.evenSplit.leftFull)
+    setLayoutWindows(todos, areas.evenSplit.leftFull)
     setLayoutWindows(notes, areas.evenSplit.rightFull)
   else
     setLayoutWindows(notes, areas.evenSplit.leftFull)
+    setLayoutWindows(todos, areas.evenSplit.leftFull)
     setLayoutWindows(browsers, areas.evenSplit.leftFull)
     setLayoutWindows(terminals, areas.evenSplit.leftFull)
     setLayoutWindows(videos, areas.evenSplit.rightFull)
@@ -147,7 +158,7 @@ end
 function export.workMax()
   pinTwitchWindows()
   if twitchMode.isEnabled() then
-    for _, filter in ipairs({ editors, figma, terminals, browsers, notes, videos }) do
+    for _, filter in ipairs({ editors, figma, terminals, browsers, notes, videos, todos }) do
       setLayoutWindows(filter, "0,0 12x12")
     end
     return
@@ -158,6 +169,7 @@ function export.workMax()
   helpers.maximiseFilteredWindows(browsers)
   helpers.maximiseFilteredWindows(notes)
   helpers.maximiseFilteredWindows(videos)
+  helpers.maximiseFilteredWindows(todos)
   -- grid.setFilteredWindowsToCell(terminals, areas.custom.medium)
   -- grid.setFilteredWindowsToCell(browsers, areas.custom.large)
   -- grid.setFilteredWindowsToCell(notes, areas.custom.small)
