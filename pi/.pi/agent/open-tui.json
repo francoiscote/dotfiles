@@ -1,15 +1,14 @@
 {
   "enabled": true,
+  "inlineFooter": false,
   "settingsLanguage": "en",
   "cursorStyle": "underline",
-  "fullscreen": {
-    "wheelScrollLines": 4
-  },
   "icons": {
     "mode": "nerd"
   },
   "footerSegments": {
     "cwd": true,
+    "hostname": false,
     "sessionName": false,
     "gitBranch": true,
     "gitStatus": true,
@@ -18,7 +17,8 @@
     "context": true,
     "tokens": true,
     "cost": true,
-    "extensionStatuses": true
+    "extensionStatuses": true,
+    "capitalizeProviderName": true
   },
   "telemetry": {
     "enabled": true,
@@ -31,5 +31,8 @@
   },
   "thinkingPeek": {
     "lines": 1
+  },
+  "fullscreen": {
+    "wheelScrollLines": 4
   }
 }

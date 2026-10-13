@@ -1,6 +1,6 @@
 {
-  "lastChangelogVersion": "1.0.3",
-  "theme": "github-light-default/rose-pine-moon",
+  "lastChangelogVersion": "1.2.0",
+  "theme": "system/rose-pine-moon",
   "packages": [
     "npm:@benvargas/pi-themes",
     "npm:@juicesharp/rpiv-ask-user-question",
