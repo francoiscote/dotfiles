@@ -11,6 +11,7 @@
     "npm:pi-x-ide",
     "npm:@latentminds/pi-quotas"
   ],
+  "defaultTools": ["+codemode"],
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-6.1-sol",
   "defaultThinkingLevel": "medium",
@@ -34,5 +35,7 @@
     "openai-codex/gpt-6-luna",
     "openai-codex/gpt-6.1-sol"
   ],
-  "tuiMode": "fullscreen"
+  "tuiMode": "fullscreen",
+  "showHardwareCursor": true,
+  "outputPad": 1
 }
