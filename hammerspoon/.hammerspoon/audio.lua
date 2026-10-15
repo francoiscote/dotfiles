@@ -8,13 +8,12 @@ local primaryOutputs = {
 local secondaryOutputs = {
   "François’s AirPods Pro",
   "External Headphones",
-  "MacBook Pro Speakers",
 }
 
 local function findFirstAvailable(names)
   for _, name in ipairs(names) do
     local device = hs.audiodevice.findOutputByName(name)
-    if device then
+    if device and not device:inUse() then
       return device
     end
   end
@@ -41,6 +40,11 @@ local function toggleOutput()
   local currentDeviceName = currentDevice and currentDevice:name()
   local candidates = contains(primaryOutputs, currentDeviceName) and secondaryOutputs or primaryOutputs
   local nextDevice = findFirstAvailable(candidates)
+
+  if not nextDevice then
+    candidates = primaryOutputs
+    nextDevice = findFirstAvailable(candidates)
+  end
 
   if not nextDevice then
     showAlert("No alternate audio output")
