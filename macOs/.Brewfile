@@ -1,17 +1,12 @@
-tap "1broseidon/tap"
-tap "ampcode/tap", trusted: true
+tap "1broseidon/tap", trusted: { formulae: ["ketch"] }
 tap "schpet/tap"
 tap "stripe/stripe-cli", trusted: true
 # Codec library for encoding and decoding AV1 video streams
 brew "aom"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
 # Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
 # Automatic configure script builder
 brew "autoconf"
-# Library for command-line editing
-brew "readline"
 # General-purpose data compression with high compression ratio
 brew "xz"
 # Zstandard is a real-time compression algorithm
@@ -32,6 +27,8 @@ brew "glib"
 brew "pycparser"
 # C Foreign Function Interface for Python
 brew "cffi"
+# Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
+brew "clang-format"
 # Cloudflare Tunnel client (formerly Argo Tunnel)
 brew "cloudflared"
 # C library implementing the SSH2 protocol
@@ -40,6 +37,8 @@ brew "libssh2"
 brew "libtool"
 # Libraries to talk to Microsoft SQL Server and Sybase databases
 brew "freetds"
+# Image format providing lossless and lossy compression for web images
+brew "webp"
 # TIFF library and utilities
 brew "libtiff"
 # New file format for still image compression
@@ -50,22 +49,16 @@ brew "libavif"
 brew "gd"
 # GNU multiple precision arithmetic library
 brew "gmp"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3", link: true
 # General-purpose scripting language
 brew "php"
 # Dependency Manager for PHP
 brew "composer"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
-# Library to load and enumerate PKCS#11 modules
-brew "p11-kit"
-# GNU Transport Layer Security (TLS) Library
-brew "gnutls"
-# Asynchronous event library
-brew "libevent"
-# Validating, recursive, caching DNS resolver
-brew "unbound"
-# GNU Emacs text editor
-brew "emacs"
+# Convert text between DOS, UNIX, and Mac formats
+brew "dos2unix"
 # Modern, maintained replacement for ls
 brew "eza"
 # Like neofetch, but much faster because written mostly in C
@@ -73,7 +66,11 @@ brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Play, record, convert, and stream select audio and video codecs
-brew "ffmpeg", link: false
+brew "ffmpeg"
+# Library to load and enumerate PKCS#11 modules
+brew "p11-kit"
+# GNU Transport Layer Security (TLS) Library
+brew "gnutls"
 # OpenType text shaping engine
 brew "harfbuzz"
 # Secure hashing function
@@ -91,7 +88,7 @@ brew "srt"
 # OCR (Optical Character Recognition) engine
 brew "tesseract"
 # Play, record, convert, and stream many audio and video codecs
-brew "ffmpeg-full", link: true
+brew "ffmpeg-full"
 # Command-line tools for fly.io services
 brew "flyctl"
 # Command-line fuzzy finder written in Go
@@ -104,24 +101,32 @@ brew "git"
 brew "git-delta"
 # Agent multiplexer that lives in your terminal
 brew "herdr"
+# Library for communicating with USB and Bluetooth HID devices
+brew "hidapi"
+# Review-first terminal diff viewer for agent-authored changesets
+brew "hunk"
 # Tools and libraries to manipulate images in select formats
-brew "imagemagick", link: false
+brew "imagemagick"
 # Library to render SVG files using Cairo
 brew "librsvg"
 # Tools and libraries to manipulate images in many formats
-brew "imagemagick-full", link: true
+brew "imagemagick-full"
 # Image manipulation library
 brew "jpeg"
 # Utility to optimize JPEG files
 brew "jpegoptim"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Cross-platform software keyboard remapper for Linux, macOS and Windows
-brew "kanata"
+# Web search and scraping for agents
+brew "ketch"
 # Simple terminal UI for git commands
 brew "lazygit"
+# Asynchronous event library
+brew "libevent"
 # YAML Parser
 brew "libyaml"
+# Utility for directing compilation
+brew "make"
 # Node version management
 brew "n"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -162,8 +167,8 @@ brew "starship"
 brew "stow"
 # Tool Command Language
 brew "tcl-tk@8"
-# Powerful free data recovery utility
-brew "testdisk"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
 # Internet file retriever
@@ -184,9 +189,7 @@ brew "zsh"
 brew "zsh-autosuggestions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-# Fast web search and scrape CLI for agents
-brew "1broseidon/tap/ketch", trusted: true
-# CLI tool for linear.app that uses git branch names and directory names to open issues and team pages
+# Work with Linear issues, projects and teams from the command line
 brew "schpet/tap/linear", trusted: true
 # Stripe CLI utility
 brew "stripe/stripe-cli/stripe"
@@ -200,8 +203,10 @@ cask "android-platform-tools"
 cask "arq"
 # Universal chat app powered by Matrix
 cask "beeper"
-# Screen capturing tool
-cask "cleanshot"
+# Control USB Cameras from an app
+cask "cameracontroller"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
 # Node-based image, video and audio generator
 cask "comfy"
 # Server and cloud storage browser
@@ -212,8 +217,6 @@ cask "dash@6"
 cask "db-browser-for-sqlite"
 # Voice and text chat software
 cask "discord"
-# Data recovery software
-cask "disk-drill"
 # App to build and share containerised applications and microservices
 cask "docker-desktop"
 # Assign keys, and then decorate and label them
@@ -247,10 +250,6 @@ cask "iina"
 cask "imageoptim"
 # System monitoring app
 cask "istat-menus"
-# Menu bar manager
-cask "jordanbaird-ice"
-# Keyboard customiser
-cask "karabiner-elements"
 # App to manage software development and track bugs
 cask "linear"
 # Screen and video recording software
@@ -297,8 +296,6 @@ cask "visual-studio-code@insiders"
 cask "whatsapp"
 # REST, GraphQL and gRPC client
 cask "yaak"
-# Multiplayer code editor
-cask "zed"
 # Video communication and virtual meeting platform
 cask "zoom"
 vscode "adrianwilczynski.alpine-js-intellisense"
@@ -307,8 +304,8 @@ vscode "andys8.jest-snippets"
 vscode "anthropic.claude-code"
 vscode "apollographql.vscode-apollo"
 vscode "astro-build.astro-vscode"
+vscode "balaenis.pi-x-ide"
 vscode "biomejs.biome"
-vscode "bradgashler.htmltagwrap"
 vscode "bradlc.vscode-tailwindcss"
 vscode "catppuccin.catppuccin-vsc"
 vscode "christian-kohler.npm-intellisense"
@@ -317,7 +314,6 @@ vscode "dbaeumer.vscode-eslint"
 vscode "dbankier.vscode-quick-select"
 vscode "docker.docker"
 vscode "editorconfig.editorconfig"
-vscode "esbenp.prettier-vscode"
 vscode "folke.vscode-monorepo-workspace"
 vscode "formulahendry.auto-rename-tag"
 vscode "fosshaas.fontsize-shortcuts"
@@ -329,6 +325,7 @@ vscode "jmfirth.vsc-space-block-jumper"
 vscode "jonkwheeler.styled-components-snippets"
 vscode "killalau.vscode-liquid-snippets"
 vscode "llvm-vs-code-extensions.vscode-clangd"
+vscode "meezilla.json"
 vscode "mikestead.dotenv"
 vscode "ms-python.debugpy"
 vscode "ms-python.python"
@@ -341,18 +338,17 @@ vscode "ms-vscode.cmake-tools"
 vscode "ms-vscode.cpp-devtools"
 vscode "ms-vscode.cpptools-extension-pack"
 vscode "ms-vscode.remote-explorer"
-vscode "ms-vscode.vscode-speech"
 vscode "ms-vsliveshare.vsliveshare"
 vscode "mvllow.rose-pine"
 vscode "neilding.language-liquid"
 vscode "orta.vscode-jest"
 vscode "pkief.material-icon-theme"
+vscode "raczzalan.webgl-glsl-editor"
 vscode "richie5um2.vscode-sort-json"
 vscode "ronnidc.nunjucks"
 vscode "sdras.vue-vscode-snippets"
 vscode "shopify.theme-check-vscode"
 vscode "sleistner.vscode-fileutils"
-vscode "sourcegraph.amp"
 vscode "sst-dev.opencode"
 vscode "styled-components.vscode-styled-components"
 vscode "sumneko.lua"
@@ -361,6 +357,7 @@ vscode "tamasfe.even-better-toml"
 vscode "tombonnike.vscode-status-bar-format-toggle"
 vscode "twxs.cmake"
 vscode "unifiedjs.vscode-mdx"
+vscode "virgilsisoe.hammerspoon"
 vscode "vue.volar"
 vscode "wix.vscode-import-cost"
 vscode "wmaurer.change-case"
