@@ -12,17 +12,9 @@ local setFrame = helpers.withAxHotfix(function(window, frame)
   window:setFrame(frame, 0)
 end)
 
-local function setFilteredWindowsToPixelArea(windowFilter, area)
-  local screen = layoutScreen or hs.screen.primaryScreen()
+local function setWindowToPixelArea(window, area, screen)
   local origin = screen:frame()
-  local frame = hs.geometry.rect(origin.x + area.x, origin.y + area.y, area.w, area.h)
-
-  for _, window in ipairs(windowFilter:getWindows()) do
-    local windowScreen = window:screen()
-    if windowScreen and windowScreen:id() == screen:id() then
-      setFrame(window, frame)
-    end
-  end
+  setFrame(window, hs.geometry.rect(origin.x + area.x, origin.y + area.y, area.w, area.h))
 end
 
 -- FILTERS
@@ -60,9 +52,34 @@ local function hasVideo()
 end
 
 local function pinTwitchWindows()
-  if twitchMode.isEnabled() then
-    setFilteredWindowsToPixelArea(obs, export.twitchAreas.secondaryBottom)
-    setFilteredWindowsToPixelArea(dashboard, export.twitchAreas.secondaryRight)
+  if not twitchMode.isEnabled() then return end
+
+  local screen = layoutScreen or hs.screen.primaryScreen()
+  local function onScreen(window)
+    local windowScreen = window:screen()
+    return windowScreen and windowScreen:id() == screen:id()
+  end
+
+  for _, window in ipairs(obs:getWindows()) do
+    if onScreen(window) and window:title():match("^OBS[%s%-]") then
+      setWindowToPixelArea(window, export.twitchAreas.secondaryBottom, screen)
+    end
+  end
+
+  -- Dashboard windows have identical titles; preserve their current left/right order.
+  local windows = {}
+  for _, window in ipairs(dashboard:getWindows()) do
+    if onScreen(window) then windows[#windows + 1] = window end
+  end
+  table.sort(windows, function(a, b) return a:frame().x < b:frame().x end)
+  if #windows == 1 then
+    local frame = windows[1]:frame()
+    local midpoint = screen:frame().x + export.twitchAreas.main.x + export.twitchAreas.main.w / 2
+    local area = frame.x + frame.w / 2 < midpoint and export.twitchAreas.secondaryLeft or export.twitchAreas.secondaryRight
+    setWindowToPixelArea(windows[1], area, screen)
+  elseif #windows >= 2 then
+    setWindowToPixelArea(windows[1], export.twitchAreas.secondaryLeft, screen)
+    setWindowToPixelArea(windows[#windows], export.twitchAreas.secondaryRight, screen)
   end
 end
 

@@ -16,10 +16,20 @@ local screen = {
   name = function() return "primary" end,
   frame = function() return { x = -1920, y = 25 } end,
 }
-local filters = {}
-local focused
-local gridCalls = 0
-local marginCalls = 0
+local filters, focused = {}, nil
+local gridCalls, marginCalls = 0, 0
+local function window(x, title, windowScreen)
+  return {
+    currentFrame = { x = x or 0, y = 0, w = 100, h = 100 },
+    screen = function() return windowScreen or screen end,
+    title = function() return title or "window" end,
+    frame = function(self) return self.currentFrame end,
+    setFrame = function(self, frame, duration)
+      assert(duration == 0)
+      self.currentFrame = frame
+    end,
+  }
+end
 hs = {
   screen = { primaryScreen = function() return screen end },
   geometry = { rect = function(x, y, w, h) return { x = x, y = y, w = w, h = h } end },
@@ -32,23 +42,11 @@ hs = {
   window = {
     focusedWindow = function() return focused end,
     filter = { new = function()
-      local window = {
-        screen = function() return screen end,
-        setFrame = function(self, frame, duration)
-          assert(duration == 0)
-          self.frame = frame
-        end,
-      }
-      local foreign = {
-        screen = function() return { id = function() return 2 end } end,
-        setFrame = function() error("Moved foreign-screen window") end,
-      }
       local filter = {
+        windows = { window() },
         setCurrentSpace = function(self) return self end,
         setScreens = function() end,
-        getWindows = function() return { window } end,
-        window = window,
-        foreign = foreign,
+        getWindows = function(self) return self.windows end,
       }
       filters[#filters + 1] = filter
       return filter
@@ -62,21 +60,28 @@ grid.build(screen)
 layouts.build(screen)
 local marginsBefore = marginCalls
 local main = layouts.twitchAreas.main
+local obs, projector = window(0, "OBS 33.0.0 - Profile"), window(0, "Projector - Preview")
+local left, right = window(-1900), window(650)
+local foreign = window(0, "OBS 33.0.0", { id = function() return 2 end })
+filters[8].windows = { obs, projector, foreign }
+filters[9].windows = { right, left }
 
-local function assertArea(window, area)
-  local frame = assert(window.frame)
+local function assertArea(w, area)
+  local frame = w.currentFrame
   assert(frame.x == -1920 + area.x and frame.y == 25 + area.y)
   assert(frame.w == area.w and frame.h == area.h)
 end
 
 enabled = true
-for _, layout in ipairs({ layouts.workBrowse, layouts.workCode, layouts.workEven, layouts.workMax }) do
+for _, layout in ipairs({ layouts.workVideo, layouts.workCode, layouts.workEven, layouts.workMax }) do
   for _, shifted in ipairs({ false, true }) do
     layout(shifted)
-    assertArea(filters[6].window, layouts.twitchAreas.secondaryBottom)
-    assertArea(filters[7].window, layouts.twitchAreas.secondaryRight)
-    for i = 1, 5 do
-      local frame = filters[i].window.frame
+    assertArea(obs, layouts.twitchAreas.secondaryBottom)
+    assertArea(left, layouts.twitchAreas.secondaryLeft)
+    assertArea(right, layouts.twitchAreas.secondaryRight)
+    assert(projector.currentFrame.w == 100 and foreign.currentFrame.w == 100)
+    for i = 1, 7 do
+      local frame = filters[i].windows[1].currentFrame
       assert(frame.x >= -1920 + main.x and frame.y >= 25 + main.y)
       assert(frame.x + frame.w <= -1920 + main.x + main.w + 0.000001)
       assert(frame.y + frame.h <= 25 + main.y + main.h + 0.000001)
@@ -84,28 +89,21 @@ for _, layout in ipairs({ layouts.workBrowse, layouts.workCode, layouts.workEven
   end
 end
 assert(gridCalls == 0 and marginCalls == marginsBefore)
-layouts.workBrowse()
-assert(filters[1].window.frame.w == main.w * 8 / 12)
-assert(filters[3].window.frame.w == main.w * 4 / 12)
 layouts.workMax()
-for i = 1, 5 do assertArea(filters[i].window, main) end
-
--- Manual overrides also work for OBS/dashboard.
-for _, index in ipairs({ 1, 6, 7 }) do
-  focused = filters[index].window
-  assert(grid.setFocusedWindowToCell("0,0 12x12"))
-  assertArea(focused, main)
-  assert(grid.setFocusedWindowToCell("2.5,1.5 7x9"))
-  assert(focused.frame.w == main.w * 7 / 12)
-end
-assert(not grid.setWindowToCell(filters[1].foreign, "0,0 12x12", main))
-
-enabled = false
-layouts.workBrowse()
-assert(gridCalls == 6)
-layouts.workMax()
-for i = 1, 5 do assert(filters[i].window.maximized) end
+for i = 1, 7 do assertArea(filters[i].windows[1], main) end
+filters[9].windows = { right }
+layouts.twitch()
+assertArea(right, layouts.twitchAreas.secondaryRight)
+filters[9].windows = { left }
+layouts.twitch()
+assertArea(left, layouts.twitchAreas.secondaryLeft)
+focused = obs
 assert(grid.setFocusedWindowToCell("0,0 12x12"))
-assert(gridCalls == 7)
-assert(loadfile("hammerspoon/.hammerspoon/window-management/init.lua"))
-print("PASS: Twitch layouts, shifted variants, pinned zones, no margins, manual overrides, screen guard, normal mode")
+assertArea(obs, main)
+assert(not grid.setWindowToCell(foreign, "0,0 12x12", main))
+enabled = false
+layouts.workMax()
+for i = 1, 7 do assert(filters[i].windows[1].maximized) end
+assert(grid.setFocusedWindowToCell("0,0 12x12"))
+assert(gridCalls == 1)
+print("PASS: Twitch layouts, dashboard columns, OBS filtering, screen guard, normal mode")

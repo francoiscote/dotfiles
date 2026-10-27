@@ -2,12 +2,12 @@
 	"name": "pi-extensions",
 	"private": true,
 	"dependencies": {
-		"@benvargas/pi-themes": "^1.2.0",
-		"@juicesharp/rpiv-ask-user-question": "^2.13.10",
+		"@benvargas/pi-themes": "^1.2.1",
+		"@juicesharp/rpiv-ask-user-question": "^2.15.0",
 		"@latentminds/pi-quotas": "^0.5.0",
-		"pi-context-view": "^0.7.2",
+		"pi-context-view": "^0.8.0",
 		"pi-ketch": "^0.1.6",
-		"pi-open-tui": "^0.3.11",
+		"pi-open-tui": "^0.3.12",
 		"pi-rose-pine": "^0.1.0-next.13-next.13",
 		"pi-x-ide": "^1.20.1"
 	}

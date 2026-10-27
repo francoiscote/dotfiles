@@ -14,8 +14,8 @@
   "defaultTools": [
     "+codemode"
   ],
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-6.1-sol",
+  "defaultProvider": "openai",
+  "defaultModel": "gpt-6.1-terra",
   "defaultThinkingLevel": "medium",
   "hideThinkingBlock": true,
   "showCacheMissNotices": true,
@@ -26,18 +26,13 @@
     "openrouter/anthropic/claude-fable-5",
     "openrouter/anthropic/claude-opus-5",
     "openrouter/anthropic/claude-sonnet-5",
-    "opencode/qwen3.6-plus",
-    "opencode/big-pickle",
-    "opencode/deepseek-v4-flash",
-    "opencode/deepseek-v4-pro",
-    "opencode/glm-5.2",
-    "opencode/kimi-k3",
-    "opencode/minimax-m3",
-    "openai-codex/gpt-6-astra",
-    "openai-codex/gpt-6-luna",
-    "openai-codex/gpt-6.1-sol"
+    "openai/gpt-6-astra",
+    "openai/gpt-6-luna",
+    "openai/gpt-6.1-sol",
+    "openai/gpt-6.1-terra"
   ],
   "tuiMode": "fullscreen",
   "showHardwareCursor": true,
-  "outputPad": 1
+  "outputPad": 1,
+  "deviceId": "6e889650-a969-43e0-b11a-550ac4ea5c74"
 }
