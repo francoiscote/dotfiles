@@ -6,10 +6,19 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/schpet/linear-cli.git",
       "skillPath": "skills/linear-cli/SKILL.md",
-      "skillFolderHash": "9498a678c738a19b81e2583d7745464539208d20",
+      "skillFolderHash": "729ad274482d0b1abbf6efcd913cb81c5661328a",
       "pluginName": "linear-cli",
       "installedAt": "2026-08-03T18:07:02.882Z",
-      "updatedAt": "2026-08-03T18:07:02.882Z"
+      "updatedAt": "2026-11-03T18:01:36.637Z"
+    },
+    "Release": {
+      "source": "schpet/linear-cli",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/schpet/linear-cli.git",
+      "skillPath": ".claude/skills/release/SKILL.md",
+      "skillFolderHash": "02fd026a39d6cef847112507bb7c2ba5ca7a0c93",
+      "installedAt": "2026-11-03T18:01:36.638Z",
+      "updatedAt": "2026-11-03T18:01:36.638Z"
     }
   },
   "dismissed": {
@@ -17,16 +26,17 @@
   },
   "lastSelectedAgents": [
     "amp",
-    "antigravity",
-    "antigravity-cli",
     "cline",
     "codex",
     "cursor",
-    "deepagents",
+    "droid",
+    "fx",
     "gemini-cli",
     "github-copilot",
+    "kilo",
     "kimi-code-cli",
     "opencode",
+    "pi",
     "warp",
     "zed"
   ]
