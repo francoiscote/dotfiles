@@ -95,7 +95,8 @@ end
 
 function export.build(screen)
   layoutScreen = screen or hs.screen.primaryScreen()
-  local screenName = layoutScreen:name()
+  -- Screen names are Lua patterns; escape punctuation (e.g. "Built-in").
+  local screenName = layoutScreen:name():gsub("(%W)", "%%%1")
   for _, filter in ipairs(primaryScreenFilters) do
     filter:setScreens(screenName)
   end
