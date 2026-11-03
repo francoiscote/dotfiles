@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "1.4.0",
+  "lastChangelogVersion": "1.5.0",
   "theme": "system/rose-pine-moon",
   "packages": [
     "npm:@benvargas/pi-themes",
@@ -34,5 +34,8 @@
   "tuiMode": "fullscreen",
   "showHardwareCursor": true,
   "outputPad": 1,
-  "deviceId": "6e889650-a969-43e0-b11a-550ac4ea5c74"
+  "deviceId": "6e889650-a969-43e0-b11a-550ac4ea5c74",
+  "extensionChangelogVersions": {
+    "{\"source\":\"npm:pi-x-ide\",\"scope\":\"user\"}": "1.20.1"
+  }
 }
