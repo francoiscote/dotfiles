@@ -1,5 +1,5 @@
 ---
-name: Release
+name: release
 description: This skill should be used when the user asks to "make a release", "create a release", "cut a release", "release a new version", "publish a release", or mentions preparing for release. Provides comprehensive workflow for reviewing changes, updating changelog, determining semver bump, and publishing.
 version: 0.1.0
 ---
