@@ -1,6 +1,7 @@
 {
   "backend": "brave",
   "searxng_url": "http://localhost:8081",
+  "firecrawl_url": "https://api.firecrawl.dev",
   "limit": 5,
   "cache_ttl": "72h",
   "browser": "/Users/fcote/Library/Caches/ketch/browser/chromium-1321438/Chromium.app/Contents/MacOS/Chromium",
