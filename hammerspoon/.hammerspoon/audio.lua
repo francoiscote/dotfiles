@@ -6,7 +6,7 @@ local primaryOutputs = {
 }
 
 local secondaryOutputs = {
-  "François’s AirPods Pro",
+  "AirPods Pro",
   "External Headphones",
 }
 
