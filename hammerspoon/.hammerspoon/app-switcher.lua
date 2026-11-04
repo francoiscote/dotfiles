@@ -15,8 +15,6 @@ local hyperBindings = {
 
 
   -- Middle Row: Main Apps
-  { hyper,      "d", "DevDocs" },
-  { hyperShift, "d", "BoltAI" },
   { hyper,      "g", "Google Meet" },
   { hyperShift, "g", "zoom.us" },
   { hyper,      "h", "com.culturedcode.ThingsMac" },
