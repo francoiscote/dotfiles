@@ -5,13 +5,9 @@ kitty_graphics = true
 
 [ui]
 show_agent_labels_on_pane_borders = true
-
+window_title = "{workspace} : {terminal_title}"
 agent_panel_sort = "spaces"
-[ui.sidebar.spaces]
-row_gap = 0
-
-[ui.sidebar.agents]
-row_gap = 0
+status_indicators = "symbols"
 
 [ui.sound]
 enabled = true
@@ -63,13 +59,5 @@ key = "prefix+l"
 type = "popup"
 command = "lazygit log --screen-mode full"
 description = "run lazygit log"
-width = "90%"
-height = "90%"
-
-[[keys.command]]
-key = "prefix+i"
-type = "popup"
-command = "exec \"${SHELL:-sh}\""
-description = "open scratch terminal"
 width = "90%"
 height = "90%"
