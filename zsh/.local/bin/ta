@@ -1,9 +1,0 @@
-#!/bin/bash
-#
-# Attach or create tmux session
-
-if tmux has-session 2>/dev/null; then
-    tmux attach -t $(tmux list-sessions -F "#{session_name}" | head -n 1)\; display-popup -E -w 100% -h 100% "tmux-fzf-all-sessions"
-else
-    tmux new-session -As "fcote" -c $HOME
-fi
