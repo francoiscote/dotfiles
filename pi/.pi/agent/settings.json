@@ -1,5 +1,6 @@
 {
-  "lastChangelogVersion": "1.5.0",
+  "$schema": "https://pi.dev/schemas/settings.schema.json",
+  "lastChangelogVersion": "1.5.2",
   "theme": "system/rose-pine-moon",
   "packages": [
     "npm:@benvargas/pi-themes",
@@ -9,11 +10,15 @@
     "npm:pi-rose-pine",
     "npm:pi-context-view",
     "npm:pi-x-ide",
-    "npm:@latentminds/pi-quotas"
+    "npm:@latentminds/pi-quotas",
+    "npm:@andrewjacop/pi-herdr"
   ],
   "defaultTools": [
     "+codemode"
   ],
+  "terminal": {
+    "images": "kitty"
+  },
   "defaultProvider": "openai",
   "defaultModel": "gpt-6.1-terra",
   "defaultThinkingLevel": "medium",
@@ -37,6 +42,9 @@
   "deviceId": "6e889650-a969-43e0-b11a-550ac4ea5c74",
   "extensionChangelogVersions": {
     "{\"source\":\"npm:pi-x-ide\",\"scope\":\"user\"}": "1.20.1",
-    "{\"source\":\"npm:pi-open-tui\",\"scope\":\"user\"}": "0.4.2"
-  }
+    "{\"source\":\"npm:pi-open-tui\",\"scope\":\"user\"}": "0.4.4",
+    "{\"source\":\"npm:@andrewjacop/pi-herdr\",\"scope\":\"user\"}": "0.6.0",
+    "{\"source\":\"npm:pi-context-view\",\"scope\":\"user\"}": "0.8.3"
+  },
+  "fullscreenCopyOnSelect": false
 }
