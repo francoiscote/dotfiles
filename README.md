@@ -14,7 +14,6 @@ are managed by [GNU Stow](https://www.gnu.org/software/stow/).
 | **Git** | `delta` diff, `lazygit`, `gh` |
 | **CLI** | `eza`, `ripgrep`, `fd`, `fzf`, `bat`, `btop`, `jq` |
 | **Languages** | Node (`n`), Python (`pyenv`), Ruby (`rbenv`), PHP (`phpbrew`), Rust (Cargo), Java 8 |
-| **AI** | Claude Code, OpenCode, Sourcegraph Amp |
 | **macOS** | Homebrew bundles, system defaults |
 | **Other** | 1Password, Raycast, Obsidian, Linear, CleanShot X |
 
@@ -35,6 +34,11 @@ $ stow git
 $ stow tmux
 $ stow ...
 ```
+
+Agent configurations (shared skills, Claude Code, OpenCode, and Pi) live in
+the private [agents-config](https://github.com/francoiscote/agents-config) repo
+at `~/.agents-configs`. See its README for installation. Zsh automatically
+loads that repo's package `setup.zsh` scripts when present.
 
 Make the content of `~/.scripts` executable
 

@@ -1,1 +1,0 @@
-export PICHAT_VAULT_EXPORT_DIR="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes/5. 🤖 AI Chats/PiChat"
