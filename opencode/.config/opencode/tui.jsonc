@@ -10,9 +10,5 @@
 		"sounds": {
 			"error": "./sounds/error.mp3"
 		}
-	},
-	"plugin": [
-    "./herdr-tui-session.js",
-    "file:///Users/francoiscote/.config/opencode/plugins/orca-opencode-status-tui/tui.js"
-  ]
+	}
 }
