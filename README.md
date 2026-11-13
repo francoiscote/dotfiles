@@ -21,7 +21,7 @@ are managed by [GNU Stow](https://www.gnu.org/software/stow/).
 
 ```shell
 $ brew install stow
-$ git clone git@github.com:francoiscote/dotfiles-macos.git ~/.dotfiles
+$ git clone git@github.com:francoiscote/dotfiles.git ~/.dotfiles
 ```
 
 ## Usage
@@ -35,10 +35,37 @@ $ stow tmux
 $ stow ...
 ```
 
-Agent configurations (shared skills, Claude Code, OpenCode, and Pi) live in
-the private [agents-config](https://github.com/francoiscote/agents-config) repo
-at `~/.agents-configs`. See its README for installation. Zsh automatically
-loads that repo's package `setup.zsh` scripts when present.
+Agent settings live here as Stow packages:
+
+```sh
+cd ~/.dotfiles
+stow --simulate --target="$HOME" agents codex opencode pi
+stow --target="$HOME" agents codex opencode pi
+```
+
+- `agents`: shared skills-manager lockfile at `~/.agents/.skill-lock.json`.
+- `codex`: `config.toml`, `hooks.json`, and `keybindings.json` at `~/.codex`.
+- `opencode`: configuration at `~/.config/opencode`.
+- `pi`: settings, instructions, extensions, dependency manifests, and Pi's
+  separate skills-manager lockfile at `~/.pi/agent`.
+
+Skills live in the private [skills](https://github.com/francoiscote/skills)
+repo at `~/skills`. Run its `./install.sh` to link them into `~/.agents/skills`.
+This repo does not own the skills themselves.
+
+Stow preserves existing directories with `--no-folding` and excludes package
+`setup.zsh` scripts. Zsh sources those scripts directly from dotfiles, including
+Pi's shell environment. Credentials, sessions, caches, and installed dependencies
+stay outside Git. Existing local config files must be backed up and moved aside
+before first stowing; Stow will report conflicts rather than overwrite them.
+
+Codex settings preserve this Mac's current configuration, including local paths,
+plugin entries, project trust, and hook trust state. Review machine-specific
+paths before installing on another Mac. Hooks currently use
+`/opt/homebrew/bin/moshi-hook`; install it separately if using those hooks.
+Pi's dependency manifests preserve its existing package manager files; installed
+`node_modules` remain local. Applications may update their linked settings;
+review those changes before committing.
 
 Make the content of `~/.scripts` executable
 

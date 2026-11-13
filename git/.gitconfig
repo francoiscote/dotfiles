@@ -27,13 +27,13 @@
   whitespace = "red reverse"
 [core]
 	excludesfile = ~/.gitignore_global
-  pager = delta
+  pager = "hunk pager"
 [interactive]
   diffFilter = delta --color-only
 [delta]
   navigate = true  # use n and N to move between diff sections
 [merge]
-    conflictstyle = zdiff3
+	conflictstyle = zdiff3
 [apply]
 	whitespace = nowarn
 [help]
@@ -44,12 +44,6 @@
   rebase = false
 [push]
 	default = simple
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [commit]
 	template = ~/.stCommitMsg
 [filter "lfs"]

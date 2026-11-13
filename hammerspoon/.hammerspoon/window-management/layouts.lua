@@ -28,7 +28,7 @@ local browsers = windowFilter.new({
 }):setCurrentSpace(true)
 local videos = windowFilter.new { ['YouTube'] = true, ['Twitch'] = true, ['Google Meet'] = true, ['zoom.us'] = true, ['VLC'] = true, ['Vial'] = true, ['Google Chrome'] = { allowTitles = 'Picture in Picture' }, ['OBS Studio'] = { allowTitles = '(.*)Windowed Projector(.*)' }, ['Arc'] = { allowRoles = 'AXSystemDialog' }, ['Slack'] = { allowTitles = '(.*)Huddle$' }, ['Oryx'] = true }
 local editors = windowFilter.new({ Code = true, Zed = true }):setCurrentSpace(true)
-local terminals = windowFilter.new({ "iTerm2", "Ghostty" }):setCurrentSpace(true)
+local terminals = windowFilter.new({ "iTerm2", "Ghostty", "T3 Code (Beta)" }):setCurrentSpace(true)
 local todos = windowFilter.new({ "Linear" }):setCurrentSpace(true)
 local notes = windowFilter.new({ "Notion", "Obsidian", "Bear" }):setCurrentSpace(true)
 local figma = windowFilter.new({ "Figma" }):setCurrentSpace(true)

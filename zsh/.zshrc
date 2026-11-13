@@ -94,11 +94,6 @@ for config_file ($DOTFILES/*/setup.zsh); do
   source $config_file
 done
 
-# Agent configs live in a separate repo.
-for config_file ($HOME/.agents-configs/*/setup.zsh(N)); do
-  source $config_file
-done
-
 # -----------------------------------------
 # SOURCE LIB/*.ZSH FILES
 # -----------------------------------------

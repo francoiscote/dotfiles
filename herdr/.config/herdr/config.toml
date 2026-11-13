@@ -47,7 +47,7 @@ next_agent = "ctrl+shift+down"
 goto = "prefix+/"
 
 [[keys.command]]
-key = "prefix+g"
+key = "prefix+l"
 type = "popup"
 command = "lazygit"
 description = "run lazygit"
@@ -55,9 +55,17 @@ width = "90%"
 height = "90%"
 
 [[keys.command]]
-key = "prefix+l"
+key = "prefix+shift+l"
 type = "popup"
 command = "lazygit log --screen-mode full"
 description = "run lazygit log"
+width = "90%"
+height = "90%"
+
+[[keys.command]]
+key = "prefix+y"
+type = "popup"
+command = "y"
+description = "run yazi"
 width = "90%"
 height = "90%"
