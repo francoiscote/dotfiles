@@ -28,7 +28,8 @@ local browsers = windowFilter.new({
 }):setCurrentSpace(true)
 local videos = windowFilter.new { ['YouTube'] = true, ['Twitch'] = true, ['Google Meet'] = true, ['zoom.us'] = true, ['VLC'] = true, ['Vial'] = true, ['Google Chrome'] = { allowTitles = 'Picture in Picture' }, ['OBS Studio'] = { allowTitles = '(.*)Windowed Projector(.*)' }, ['Arc'] = { allowRoles = 'AXSystemDialog' }, ['Slack'] = { allowTitles = '(.*)Huddle$' }, ['Oryx'] = true }
 local editors = windowFilter.new({ Code = true, Zed = true }):setCurrentSpace(true)
-local terminals = windowFilter.new({ "iTerm2", "Ghostty", "T3 Code (Beta)" }):setCurrentSpace(true)
+local terminals = windowFilter.new({ "iTerm2", "Ghostty", "Rex Beta" }):setCurrentSpace(true)
+local ai = windowFilter.new({ "T3 Code (Beta)", "ChatGPT" }):setCurrentSpace(true)
 local todos = windowFilter.new({ "Linear" }):setCurrentSpace(true)
 local notes = windowFilter.new({ "Notion", "Obsidian", "Bear" }):setCurrentSpace(true)
 local figma = windowFilter.new({ "Figma" }):setCurrentSpace(true)
@@ -113,6 +114,7 @@ function export.workVideo(inverted)
   setLayoutWindows(editors, layout.main)
   setLayoutWindows(figma, layout.main)
   setLayoutWindows(todos, layout.main)
+  setLayoutWindows(ai, areas.custom.medium)
 
   if hasVideo() then
     setLayoutWindows(browsers, layout.main)
@@ -138,6 +140,8 @@ function export.workCode(inverted)
   pinTwitchWindows()
   local layout = inverted and areas.mediumSplitInverted or areas.mediumSplit
 
+  setLayoutWindows(ai, areas.custom.medium)
+
   setLayoutWindows(editors, layout.main)
   setLayoutWindows(figma, layout.main)
   setLayoutWindows(terminals, layout.main)
@@ -150,6 +154,9 @@ end
 
 function export.workEven(mainNotes)
   pinTwitchWindows()
+  
+  setLayoutWindows(ai, areas.custom.medium)
+  
   if mainNotes then
     setLayoutWindows(browsers, areas.evenSplit.leftFull)
     setLayoutWindows(terminals, areas.evenSplit.leftFull)
@@ -183,14 +190,13 @@ function export.workMax()
   end
   helpers.maximiseFilteredWindows(editors)
   helpers.maximiseFilteredWindows(figma)
-  helpers.maximiseFilteredWindows(terminals)
-  helpers.maximiseFilteredWindows(browsers)
-  helpers.maximiseFilteredWindows(notes)
   helpers.maximiseFilteredWindows(videos)
   helpers.maximiseFilteredWindows(todos)
-  -- grid.setFilteredWindowsToCell(terminals, areas.custom.medium)
-  -- grid.setFilteredWindowsToCell(browsers, areas.custom.large)
-  -- grid.setFilteredWindowsToCell(notes, areas.custom.small)
+  
+  grid.setFilteredWindowsToCell(browsers, areas.custom.largeTall)
+  grid.setFilteredWindowsToCell(terminals, areas.custom.large)
+  grid.setFilteredWindowsToCell(ai, areas.custom.large)
+  grid.setFilteredWindowsToCell(notes, areas.custom.large)
 end
 
 return export
