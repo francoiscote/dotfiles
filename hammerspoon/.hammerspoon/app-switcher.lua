@@ -22,8 +22,9 @@ local hyperBindings = {
   { hyper,      "j", "Google Chrome" },
   { hyperShift, "j", "Firefox Developer Edition" },
   { hyper,      "k", "Visual Studio Code" },
-  { hyper,      "l", "T3 Code (Beta)" },
-  { hyper,      ";", "Ghostty" },
+  -- { hyper,      "l", "Ghostty" },
+  { hyper,      "l", "Rex Beta" },
+  { hyper,      ";", "T3 Code (Beta)" },
   { hyperShift,  ";", "Figma" },
 
   -- Bottom Row: Email, Calendar and ToDos
