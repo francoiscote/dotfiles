@@ -14,14 +14,15 @@ package.loaded["window-management/helpers"] = {
 local screen = {
   id = function() return 1 end,
   name = function() return "primary" end,
-  frame = function() return { x = -1920, y = 25 } end,
+  frame = function() return { x = -1920, y = 25, w = 2880, h = 1589 } end,
 }
 local filters, focused = {}, nil
 local gridCalls, marginCalls = 0, 0
-local function window(x, title, windowScreen)
+local function window(x, title, windowScreen, appName)
   return {
     currentFrame = { x = x or 0, y = 0, w = 100, h = 100 },
     screen = function() return windowScreen or screen end,
+    application = function() return { name = function() return appName or "Generic" end } end,
     title = function() return title or "window" end,
     frame = function(self) return self.currentFrame end,
     setFrame = function(self, frame, duration)
@@ -60,11 +61,16 @@ grid.build(screen)
 layouts.build(screen)
 local marginsBefore = marginCalls
 local main = layouts.twitchAreas.main
-local obs, projector = window(0, "OBS 33.0.0 - Profile"), window(0, "Projector - Preview")
-local left, right = window(-1900), window(650)
-local foreign = window(0, "OBS 33.0.0", { id = function() return 2 end })
-filters[8].windows = { obs, projector, foreign }
-filters[9].windows = { right, left }
+assert(main.x == 936 and main.w == 1944 and main.h == 1589)
+local obs = window(0, "OBS 33.0.0 - Profile", nil, "OBS Studio")
+local projector = window(0, "Projector - Preview", nil, "OBS Studio")
+local obsidian = window(0, "Notes", nil, "Obsidian")
+local otherScreen = { id = function() return 2 end }
+local foreign = window(0, "OBS 33.0.0", otherScreen, "OBS Studio")
+local foreignNotes = window(0, "Notes", otherScreen, "Obsidian")
+filters[9].windows = { obs, projector, foreign }
+filters[10].windows = { obsidian, foreignNotes }
+filters[7].windows[2] = obsidian
 
 local function assertArea(w, area)
   local frame = w.currentFrame
@@ -76,11 +82,10 @@ enabled = true
 for _, layout in ipairs({ layouts.workVideo, layouts.workCode, layouts.workEven, layouts.workMax }) do
   for _, shifted in ipairs({ false, true }) do
     layout(shifted)
-    assertArea(obs, layouts.twitchAreas.secondaryBottom)
-    assertArea(left, layouts.twitchAreas.secondaryLeft)
-    assertArea(right, layouts.twitchAreas.secondaryRight)
-    assert(projector.currentFrame.w == 100 and foreign.currentFrame.w == 100)
-    for i = 1, 7 do
+    assertArea(obs, layouts.twitchAreas.obs)
+    assertArea(obsidian, layouts.twitchAreas.obsidian)
+    assert(projector.currentFrame.w == 100 and foreign.currentFrame.w == 100 and foreignNotes.currentFrame.w == 100)
+    for i = 1, 8 do
       local frame = filters[i].windows[1].currentFrame
       assert(frame.x >= -1920 + main.x and frame.y >= 25 + main.y)
       assert(frame.x + frame.w <= -1920 + main.x + main.w + 0.000001)
@@ -90,20 +95,43 @@ for _, layout in ipairs({ layouts.workVideo, layouts.workCode, layouts.workEven,
 end
 assert(gridCalls == 0 and marginCalls == marginsBefore)
 layouts.workMax()
-for i = 1, 7 do assertArea(filters[i].windows[1], main) end
-filters[9].windows = { right }
-layouts.twitch()
-assertArea(right, layouts.twitchAreas.secondaryRight)
-filters[9].windows = { left }
-layouts.twitch()
-assertArea(left, layouts.twitchAreas.secondaryLeft)
-focused = obs
+for i = 1, 8 do assertArea(filters[i].windows[1], main) end
+for _, pinned in ipairs({ obs, obsidian }) do
+  focused = pinned
+  assert(not grid.setFocusedWindowToCell("0,0 12x12"))
+end
+assertArea(obs, layouts.twitchAreas.obs)
+assertArea(obsidian, layouts.twitchAreas.obsidian)
+focused = filters[1].windows[1]
 assert(grid.setFocusedWindowToCell("0,0 12x12"))
-assertArea(obs, main)
+assertArea(focused, main)
+local newBrowser = window()
+assert(grid.setWindowToCell(newBrowser, "0,0 12x12"))
+assertArea(newBrowser, main)
 assert(not grid.setWindowToCell(foreign, "0,0 12x12", main))
 enabled = false
 layouts.workMax()
-for i = 1, 7 do assert(filters[i].windows[1].maximized) end
+for _, i in ipairs({ 2, 3, 6, 8 }) do assert(filters[i].windows[1].maximized) end
+local callsBefore = gridCalls
 assert(grid.setFocusedWindowToCell("0,0 12x12"))
-assert(gridCalls == 1)
-print("PASS: Twitch layouts, dashboard columns, OBS filtering, screen guard, normal mode")
+assert(gridCalls == callsBefore + 1)
+local resized = require("window-management/twitch-areas").forScreen({
+  frame = function() return { w = 2560, h = 1409 } end,
+})
+assert(resized.main.x == 832 and resized.main.w == 1728 and resized.main.h == 1409)
+assert(resized.obs.h + resized.obsidian.h == resized.main.h)
+assert(resized.obsidian.y == resized.obs.h)
+print("PASS: Twitch layouts, OBS/Obsidian pinning, screen guard, resolution scaling, normal mode")
+
+local launches, pins = {}, 0
+hs.application = { launchOrFocus = function(name) launches[#launches + 1] = name end }
+hs.styledtext = { new = function(text) return text end }
+layouts.twitch = function() pins = pins + 1 end
+package.loaded["twitch-mode"] = nil
+local twitchMode = require("twitch-mode")
+twitchMode.toggle()
+assert(twitchMode.isEnabled() and launches[1] == "OBS" and launches[2] == "Obsidian")
+assert(#launches == 2 and pins == 1)
+twitchMode.toggle()
+assert(not twitchMode.isEnabled() and #launches == 2 and pins == 1)
+print("PASS: Twitch startup launches OBS/Obsidian and applies sidebar")

@@ -1,8 +1,20 @@
--- Fixed screen-coordinate sizes (points on Retina displays).
--- Origins relative to the usable screen's top-left; no margins.
-return {
-  main = { x = 637, y = 0, w = 1919, h = 1433 },
-  secondaryLeft = { x = 2, y = 0, w = 634, h = 1769 },
-  secondaryRight = { x = 2557, y = 0, w = 643, h = 1769 },
-  secondaryBottom = { x = 637, y = 1434, w = 1919, h = 335 },
-}
+local export = {}
+
+function export.forScreen(screen)
+  local frame = screen:frame()
+  local sidebarWidth = math.floor(frame.w * 0.325 + 0.5)
+  local topHeight = math.floor(frame.h / 2)
+  return {
+    main = { x = sidebarWidth, y = 0, w = frame.w - sidebarWidth, h = frame.h },
+    obs = { x = 0, y = 0, w = sidebarWidth, h = topHeight },
+    obsidian = { x = 0, y = topHeight, w = sidebarWidth, h = frame.h - topHeight },
+  }
+end
+
+function export.isPinned(window)
+  local app = window and window:application()
+  local name = app and app:name()
+  return name == "Obsidian" or (name == "OBS Studio" and window:title():match("^OBS[%s%-]") ~= nil)
+end
+
+return export

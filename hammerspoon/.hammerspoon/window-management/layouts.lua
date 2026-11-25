@@ -6,7 +6,7 @@ local twitchMode = require("twitch-mode")
 local areas = grid.areas
 local layoutScreen
 
-export.twitchAreas = require("window-management/twitch-areas")
+local twitchAreas = require("window-management/twitch-areas")
 
 local setFrame = helpers.withAxHotfix(function(window, frame)
   window:setFrame(frame, 0)
@@ -34,7 +34,7 @@ local todos = windowFilter.new({ "Linear" }):setCurrentSpace(true)
 local notes = windowFilter.new({ "Notion", "Obsidian", "Bear" }):setCurrentSpace(true)
 local figma = windowFilter.new({ "Figma" }):setCurrentSpace(true)
 local obs = windowFilter.new({ "OBS Studio" }):setCurrentSpace(true)
-local dashboard = windowFilter.new({ "Twitch - Dashboard" }):setCurrentSpace(true)
+local obsidian = windowFilter.new({ "Obsidian" }):setCurrentSpace(true)
 
 local primaryScreenFilters = {
   browsers,
@@ -44,7 +44,7 @@ local primaryScreenFilters = {
   notes,
   figma,
   obs,
-  dashboard,
+  obsidian,
   videos
 }
 
@@ -63,24 +63,14 @@ local function pinTwitchWindows()
 
   for _, window in ipairs(obs:getWindows()) do
     if onScreen(window) and window:title():match("^OBS[%s%-]") then
-      setWindowToPixelArea(window, export.twitchAreas.secondaryBottom, screen)
+      setWindowToPixelArea(window, export.twitchAreas.obs, screen)
     end
   end
 
-  -- Dashboard windows have identical titles; preserve their current left/right order.
-  local windows = {}
-  for _, window in ipairs(dashboard:getWindows()) do
-    if onScreen(window) then windows[#windows + 1] = window end
-  end
-  table.sort(windows, function(a, b) return a:frame().x < b:frame().x end)
-  if #windows == 1 then
-    local frame = windows[1]:frame()
-    local midpoint = screen:frame().x + export.twitchAreas.main.x + export.twitchAreas.main.w / 2
-    local area = frame.x + frame.w / 2 < midpoint and export.twitchAreas.secondaryLeft or export.twitchAreas.secondaryRight
-    setWindowToPixelArea(windows[1], area, screen)
-  elseif #windows >= 2 then
-    setWindowToPixelArea(windows[1], export.twitchAreas.secondaryLeft, screen)
-    setWindowToPixelArea(windows[#windows], export.twitchAreas.secondaryRight, screen)
+  for _, window in ipairs(obsidian:getWindows()) do
+    if onScreen(window) then
+      setWindowToPixelArea(window, export.twitchAreas.obsidian, screen)
+    end
   end
 end
 
@@ -96,6 +86,7 @@ end
 
 function export.build(screen)
   layoutScreen = screen or hs.screen.primaryScreen()
+  export.twitchAreas = twitchAreas.forScreen(layoutScreen)
   -- Screen names are Lua patterns; escape punctuation (e.g. "Built-in").
   local screenName = layoutScreen:name():gsub("(%W)", "%%%1")
   for _, filter in ipairs(primaryScreenFilters) do
@@ -183,7 +174,7 @@ end
 function export.workMax()
   pinTwitchWindows()
   if twitchMode.isEnabled() then
-    for _, filter in ipairs({ editors, figma, terminals, browsers, notes, videos, todos }) do
+    for _, filter in ipairs({ editors, figma, terminals, browsers, notes, videos, todos, ai }) do
       setLayoutWindows(filter, "0,0 12x12")
     end
     return

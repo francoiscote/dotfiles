@@ -19,8 +19,9 @@ end
 local focusedApp = app("Google Chrome")
 local obs = app("OBS Studio")
 local dashboard = app("Twitch - Dashboard")
+local obsidian = app("Obsidian")
 local other = app("Ghostty")
-local apps = { focusedApp, obs, dashboard, other }
+local apps = { focusedApp, obs, dashboard, obsidian, other }
 local focusedWindow = {
   application = function() return focusedApp end,
   frame = function() return original end,
@@ -45,7 +46,11 @@ local environment = setmetatable({
     },
   },
   twitchMode = { isEnabled = function() return enabled end },
-  layouts = { twitchAreas = { main = main } },
+  layouts = { twitchAreas = { main = main }, twitch = function() end },
+  twitchAreas = { isPinned = function(window)
+    local name = window:application():name()
+    return name == "OBS Studio" or name == "Obsidian"
+  end },
   areas = { custom = { large = "large", small = "small", medium = "medium" } },
   grid = { setWindowToCell = function(window, cell, area)
     placement = { window = window, cell = cell, area = area }
@@ -61,18 +66,27 @@ local toggle = chunk()
 for _, case in ipairs({ { "Google Chrome", "large" }, { "Finder", "small" }, { "Zed", "medium" } }) do
   enabled = true
   focusedApp.name = function() return case[1] end
-  obs.hidden, dashboard.hidden = true, true
+  obs.hidden, obsidian.hidden = true, true
   toggle()
   assert(placement.window == focusedWindow and placement.cell == "large" and placement.area == main)
-  assert(not obs.hidden and not dashboard.hidden and other.hidden)
+  assert(not obs.hidden and not obsidian.hidden and dashboard.hidden and other.hidden)
   toggle()
   assert(restored == original and not other.hidden)
 end
 
+local previousPlacement = placement
+focusedApp.name = function() return "Obsidian" end
+toggle()
+assert(placement == previousPlacement and not other.hidden)
+focusedApp.name = function() return "OBS Studio" end
+toggle()
+assert(placement == previousPlacement and not other.hidden)
+focusedApp.name = function() return "Zed" end
+
 enabled = false
 toggle()
 assert(placement.area == nil and placement.cell == "medium")
-assert(not obs.hidden and not dashboard.hidden)
+assert(not obs.hidden and obsidian.hidden and dashboard.hidden)
 toggle()
 assert(restored == original)
-print("PASS: Twitch focus proportions, OBS/dashboard visibility, frame restoration, normal focus")
+print("PASS: Twitch focus proportions, OBS/Obsidian visibility and focus guard, frame restoration, normal focus")

@@ -113,6 +113,11 @@ local function setWindowToCell(window, cell, area)
     return false
   end
 
+  if twitchMode.isEnabled() then
+    if twitchAreas.isPinned(window) then return false end
+    area = area or twitchAreas.forScreen(screen).main
+  end
+
   if area then
     local x, y, w, h = cell:match("^([%d%.]+),([%d%.]+) ([%d%.]+)x([%d%.]+)$")
     assert(x, "Invalid grid cell: " .. tostring(cell))
@@ -140,8 +145,7 @@ local function setFilteredWindowsToCell(windowFilter, cell, area)
 end
 
 local function setFocusedWindowToCell(cell)
-  local area = twitchMode.isEnabled() and twitchAreas.main or nil
-  return setWindowToCell(hs.window.focusedWindow(), cell, area)
+  return setWindowToCell(hs.window.focusedWindow(), cell)
 end
 
 return {

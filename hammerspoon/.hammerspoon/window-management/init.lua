@@ -2,6 +2,7 @@ local grid = require("window-management/grid")
 local layouts = require("window-management/layouts")
 local helpers = require("window-management/helpers")
 local twitchMode = require("twitch-mode")
+local twitchAreas = require("window-management/twitch-areas")
 
 local hyper = { "cmd", "ctrl", "alt" }
 local hyperShift = { "cmd", "ctrl", "alt", "shift" }
@@ -33,6 +34,7 @@ local function rebuild()
   local primaryScreen = hs.screen.primaryScreen()
   grid.build(primaryScreen)
   layouts.build(primaryScreen)
+  layouts.twitch()
 end
 
 local function scheduleRebuild()
@@ -199,6 +201,11 @@ toggleFocusMode = function()
     return
   end
 
+  if twitchMode.isEnabled() then
+    layouts.twitch()
+    if twitchAreas.isPinned(focusedWindow) then return end
+  end
+
   focusModeWindow = focusedWindow
   savedFrame = focusedWindow:frame()
 
@@ -215,7 +222,7 @@ toggleFocusMode = function()
   if twitchMode.isEnabled() then
     for _, app in ipairs(hs.application.runningApplications()) do
       local name = app:name()
-      if name == "OBS Studio" or name == "Twitch - Dashboard" then
+      if name == "OBS Studio" or name == "Obsidian" then
         app:unhide()
       end
     end
@@ -225,7 +232,8 @@ toggleFocusMode = function()
   for _, window in ipairs(allWindows) do
     local app = window:application()
     local name = app and app:name()
-    if app and app ~= focusedApp and name ~= "OBS Studio" and name ~= "Twitch - Dashboard" then
+    local keepVisible = name == "OBS Studio" or (twitchMode.isEnabled() and name == "Obsidian")
+    if app and app ~= focusedApp and not keepVisible then
       app:hide()
     end
   end

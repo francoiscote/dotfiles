@@ -15,7 +15,8 @@ function export.toggle()
       color = { red = 1, green = 1, blue = 1 },
     }))
     hs.application.launchOrFocus("OBS")
-    hs.application.launchOrFocus("Twitch - Dashboard")
+    hs.application.launchOrFocus("Obsidian")
+    require("window-management/layouts").twitch()
   else
     menuBar:setTitle()
   end
