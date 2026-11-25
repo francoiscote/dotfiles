@@ -69,7 +69,7 @@ local function setFocusedWindowToAreaWithLargeMargins(area)
 end
 
 local hyperBindings = {
-  { hyperShift, "x", grid.toggleLargeMargins },
+  { hyperShift, "m", grid.toggleLargeMargins },
   { hyper, "q", layouts.workVideo },
   { hyperShift, "q", function()
     layouts
