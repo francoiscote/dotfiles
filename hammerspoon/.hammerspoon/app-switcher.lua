@@ -28,6 +28,7 @@ local hyperBindings = {
   { hyperShift,  ";", "Figma" },
 
   -- Bottom Row: Email, Calendar and ToDos
+  { hyper,      "x", "X" },
   { hyper,      "b", "ChatGPT" },
   { hyper,      "n", "Obsidian" },
   { hyperShift, "n", "Notion" },
