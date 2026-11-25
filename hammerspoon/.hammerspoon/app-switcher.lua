@@ -23,7 +23,7 @@ local hyperBindings = {
   { hyperShift, "j", "Firefox Developer Edition" },
   { hyper,      "k", "Visual Studio Code" },
   -- { hyper,      "l", "Ghostty" },
-  { hyper,      "l", "Rex Beta" },
+  { hyper,      "l", "Rex" },
   { hyper,      ";", "T3 Code (Beta)" },
   { hyperShift,  ";", "Figma" },
 
