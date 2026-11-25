@@ -105,14 +105,15 @@ function export.workVideo(inverted)
   setLayoutWindows(editors, layout.main)
   setLayoutWindows(figma, layout.main)
   setLayoutWindows(todos, layout.main)
-  setLayoutWindows(ai, areas.custom.medium)
-
+  -- setLayoutWindows(ai, layout.main)
+  
   if hasVideo() then
     setLayoutWindows(browsers, layout.main)
     setLayoutWindows(editors, layout.main)
     setLayoutWindows(figma, layout.main)
     setLayoutWindows(todos, layout.main)
     setLayoutWindows(terminals, layout.main)
+    setLayoutWindows(ai, layout.main)
     setLayoutWindows(videos, layout.secondaryTop)
     setLayoutWindows(notes, layout.secondaryBottom)
     setLayoutWindows(obs, layout.secondaryBottom)
@@ -121,6 +122,7 @@ function export.workVideo(inverted)
     setLayoutWindows(editors, layout.main)
     setLayoutWindows(figma, layout.main)
     setLayoutWindows(todos, layout.main)
+    setLayoutWindows(ai, layout.secondaryFull)
     setLayoutWindows(terminals, layout.secondaryFull)
     setLayoutWindows(notes, layout.secondaryFull)
     setLayoutWindows(obs, layout.secondaryFull)
@@ -131,12 +133,12 @@ function export.workCode(inverted)
   pinTwitchWindows()
   local layout = inverted and areas.mediumSplitInverted or areas.mediumSplit
 
-  setLayoutWindows(ai, areas.custom.medium)
-
+  
   setLayoutWindows(editors, layout.main)
   setLayoutWindows(figma, layout.main)
   setLayoutWindows(terminals, layout.main)
   setLayoutWindows(videos, layout.main)
+  setLayoutWindows(ai, layout.main)
   setLayoutWindows(browsers, layout.secondaryFull)
   setLayoutWindows(notes, layout.secondaryFull)
   setLayoutWindows(obs, layout.secondaryFull)
@@ -146,7 +148,6 @@ end
 function export.workEven(mainNotes)
   pinTwitchWindows()
   
-  setLayoutWindows(ai, areas.custom.medium)
   
   if mainNotes then
     setLayoutWindows(browsers, areas.evenSplit.leftFull)
@@ -155,6 +156,7 @@ function export.workEven(mainNotes)
     setLayoutWindows(figma, areas.evenSplit.leftFull)
     setLayoutWindows(videos, areas.evenSplit.leftFull)
     setLayoutWindows(todos, areas.evenSplit.leftFull)
+    setLayoutWindows(ai, areas.evenSplit.leftFull)
     setLayoutWindows(notes, areas.evenSplit.rightFull)
   else
     setLayoutWindows(notes, areas.evenSplit.leftFull)
@@ -164,6 +166,7 @@ function export.workEven(mainNotes)
     setLayoutWindows(videos, areas.evenSplit.rightFull)
     setLayoutWindows(figma, areas.evenSplit.rightFull)
     setLayoutWindows(editors, areas.evenSplit.rightFull)
+    setLayoutWindows(ai, areas.evenSplit.rightFull)
   end
 end
 
